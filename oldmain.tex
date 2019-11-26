@@ -1,0 +1,1078 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, top=16mm, text={170mm, 248mm}, includehead, includefoot, hmarginratio=1:1, heightrounded]{geometry}
+\usepackage{amsmath,amssymb,mathrsfs,amsthm,tikz,shuffle}
+\usepackage{dsfont}
+
+
+\theoremstyle{definition}
+	\newtheorem{para}{}[section]
+		\renewcommand{\thepara}{\thesection.\arabic{para}}
+	\newtheorem{exa}[para]{Example}
+\theoremstyle{plain}
+	\newtheorem{lem}[para]{Lemma}
+	\newtheorem{thm}[para]{Theorem}
+	\newtheorem{pro}[para]{Proposition}
+\renewcommand*{\proofname}{Proof}
+
+
+%+++++++++++++++++++++++数学字体的设置++++++++++++++++++++++++++++++++++++++++%
+\newcommand{\me}{\mathrm{e}}  % for math e
+\newcommand{\mi}{\mathrm{i}} % for math i
+\newcommand{\dif}{\mathrm{d}} %for differential operator d
+\newcommand{\cvec}[1]{\!\vec{\,#1}}
+\newcommand{\Ptimes}{\,\overset{\otimes }{,}\,}
+\DeclareSymbolFont{lettersA}{U}{txmia}{m}{it}
+ \DeclareMathSymbol{\piup}{\mathord}{lettersA}{25}
+ \DeclareMathSymbol{\muup}{\mathord}{lettersA}{22}
+ \DeclareMathSymbol{\deltaup}{\mathord}{lettersA}{14}
+ \newcommand{\uppi}{\piup}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\section{Introduction}
+\section{SE map}
+
+Consider a polynomial $p=\sum_{I} a_I x^I$ with $a_I\geq 0$ for all $I$, where 
+\[
+	x^I=\prod_{i=1}^N x_i^{n^I_i},
+\]
+its Newton polytope $N(p)$ is defined as the convex hull of vectors $\{\mathbf{n}^I=(n^I_1,\dots,n^I_N)\}$.
+
+Now consider the `scattering map' 
+\[
+	\mathbf X(x)=\frac{\partial \log p}{\partial \log \mathbf x},
+\]
+where $x_i\in (0,\infty)$ for all $i$. We claim that $\mathbf{X}$ is an one-to-one map between $(0,\infty)^N$ and the interior of $N(p)$. 
+
+Firstly, suppose the matrix $(n_i^I)$ does not have full rank, i.e. there exists $\mathbf s\neq 0$ such that $\mathbf s \cdot \mathbf n^I=0$ for all $I$. In this case,
+\[
+	\mathbf s\cdot\mathbf X=\mathbf s\cdot\frac{\partial \log p}{\partial \log \mathbf x}=0.
+\]
+Therefore, one can project $\operatorname{im}(\mathbf X)$ by setting some $x_i=1$ so that there's no more vector $\mathbf s$ such that $\mathbf s\cdot \mathbf n^I=0$ for all $I$. Conversely, one can recover the original image by solving these equations $\mathbf s\cdot\mathbf X=0$. Therefore, we can assume that the matrix $(n_i^I)$ has full rank, then $\dim (N(p))=N$.
+
+Next we show that interior points of $N(p)$ are in the $\operatorname{im}(\mathbf{X})$.
+Let $\mathbf{\Lambda}$ be a interior point in $N(p)$ defined by 
+\[
+	\mathbf \Lambda=\sum_{I}\lambda_I\mathbf n^I
+	=\frac{\partial}{\partial \log \mathbf x}\sum_{I}\lambda_I \log x^I
+\]
+where $\sum_I \lambda_I=1$ and $\lambda_I > 0$. Equations $\mathbf X(x)=\mathbf \Lambda$ are 
+\[
+\begin{aligned}
+	0=\frac{\partial }{\partial \log \mathbf x}\left(
+	\log p-\sum_{I}\lambda_I \log x^I
+	\right)=\frac{\partial }{\partial \log \mathbf x}\left(
+	\log F(\mathbf x)
+	\right)=\frac{1}{F(\mathbf x)}\frac{\partial F(\mathbf x)}{\partial \log \mathbf x}
+\end{aligned}
+\]
+where
+\[
+	F(\mathbf x)=\sum_I a_I x^I\prod_J (x^{-J})^{\lambda_J}.
+\]
+Let $\mathbf y=\log \mathbf x$, and then
+\[
+	\begin{aligned}
+		F(\mathbf y)
+		&=\sum_I a_I \exp\left(\mathbf{y}\cdot \left(\mathbf{n}^I-\mathbf{\Lambda}\right)\right)
+	\end{aligned}
+\]
+so we only need to show that $F(\mathbf y)$ has saddle points in $\mathbb R^N$ because $F>0$ for all $\mathbf y$.
+
+To see it, we firstly notice that $F(\mathbf y)$ is a strict convex function of $\mathbf y$. In fact, the Hessian of $F(\mathbf y)$ is 
+\[
+	H_{ij}(\mathbf y)=\frac{\partial^2}{\partial y_i\partial y_j}F(\mathbf y)=\sum_I a_I \exp\left(\mathbf{y}\cdot \left(\mathbf{n}^I-\mathbf{\Lambda}\right)\right)\left(\mathbf{n}^I-\mathbf{\Lambda}\right)_i\left(\mathbf{n}^I-\mathbf{\Lambda}\right)_j.
+\]
+For any $\mathbf v\neq 0$, 
+\[
+	\sum_{i,j}v_iv_jH_{ij}=\sum_I a_I \exp\left(\mathbf{y}\cdot \left(\mathbf{n}^I-\mathbf{\Lambda}\right)\right) \left(\mathbf v\cdot (\mathbf{n}^I-\mathbf{\Lambda})\right)^2 >0.
+\]
+It cannot vanish because that it only happens when $\mathbf v\cdot (\mathbf{n}^I-\mathbf{\Lambda})=0$ for all $I$, but we have assumed $\{\mathbf n^I\}$ has full rank.
+
+For a strict convex function $F(\mathbf y)$ on $\mathbb R^N$, it has a unique minimal in $\mathbb R^N$ iff it does not take its minimal when $\mathbf{y}$ goes to infinity along any direction. In our case, we only need that for any $\mathbf{y}\neq 0$ and $\mathbf\Lambda \in (N(p))^\circ $, there exist some $I$ such that  
+\[
+	\mathbf{y}\cdot (\mathbf{n}^I-\mathbf{\Lambda})>0
+\]
+and if $\mathbf\Lambda \not\in N(p)$, there exist some $\mathbf{y}\neq 0$ such that the exponentials are all negative, then $F(t\mathbf y)\to 0$ when $t\to \infty$.
+
+\begin{center}
+	\includegraphics[scale=0.5]{1.png}
+\end{center}
+
+In fact, if $\mathbf\Lambda \in (N(p))^\circ$, for a given $\mathbf y\neq 0$, the hyperplain $L$ with normal vector $\mathbf y$ crossing $\mathbf \Lambda$ divides the space $\mathbb R^N$ into semi-spaces $L^+$ and $L^-$, then $\mathbf{n}^I$ in $L^+$ are what we are looking for. Conversely, if $\mathbf\Lambda \not\in N(p)$, one can find a hyperplain $L$ such that $N(p)\subset L^-$, then the normal vector of $L$ gives the wanted direction. These are direct results of convexity of $N(p)$.
+
+Therefore, we have proven that $F(\mathbf y)$ has a unique minimal in $\mathbb R^N$ when $\mathbf \Lambda \in (N(p))^\circ$ and no minimal in $\mathbb R^N$ when $\mathbf \Lambda \not\in N(p)$. Hence, 
+\[
+	\mathbf X(x)=\frac{\partial \log p}{\partial \log \mathbf x},
+\]
+is an one-to-one map between $(0,\infty)^N$ and the interior of $N(p)$.
+
+Generally, let $\mathbf{\Lambda}$ be a interior point in Minkowski sum $\sum_p \alpha_p N(p)$ corresponding to $P=\prod_p p^{\alpha_p}$ defined by 
+\[
+	\mathbf{\Lambda}
+	=\sum_p \alpha_p \mathbf{\Lambda}_p
+	=\sum_p \alpha_p \sum_{I_p}\lambda_{I_p}\mathbf{n}^{I_p}
+	=\frac{\partial}{\partial \log \mathbf{x}}\sum_{p}\alpha_p\sum_{I_p}\lambda_{I_p} \log x^{I_p}
+\]
+where $\sum_{I_p} \lambda_{I_p}=1$ and $\lambda_{I_p} > 0$. Equations $\mathbf{X}(x)=\mathbf{\Lambda}$ are 
+\[
+\begin{aligned}
+	0=\frac{\partial }{\partial \log \mathbf{x}}\left(
+	\log P-\sum_{p}\alpha_p\sum_{I_p}\lambda_{I_p} \log x^{I_p}
+	\right)&=\frac{\partial }{\partial \log \mathbf{x}}\left(
+	\log \left(\prod_p F_p^{\alpha_p}\right)
+	\right),
+\end{aligned}
+\]
+where
+\[
+	\begin{aligned}
+		F_p(\mathbf y)&=\sum_{I_p} a_{I_p} \exp\left(\mathbf{y}\cdot \left(\mathbf{n}^{I_p}-\mathbf{\Lambda}_p\right)\right).
+	\end{aligned}
+\]
+Write
+\[
+	F(\mathbf y)=\prod_p F_p(y)^{\alpha_p},
+\]
+we only need to show that $F(y)$ has a unique saddle point in $\mathbb R^N$.
+
+We assume that $\alpha_p>0$ for all $p$. Here, $F(\mathbf y)$ is no longer a strict convex function. However, take a positive number $\alpha_0$ such that $\alpha_0< \alpha_p$ for all $p$, consider a new function
+\[
+	F(y)^{1/\alpha_0}=\prod_p F_p(y)^{\alpha_p/\alpha_0},
+\]
+since $F_p$ are convex functions and $\alpha_p/\alpha_0>1$, $F_p(y)^{\alpha_p/\alpha_0}$ are convex functions, so is their product. Since $F(y)^{1/\alpha_0}$ has the same minimums as $F(y)$, so we can further assume that $\alpha_p>1$ for all $p$.
+
+Finally, we claim that $F(y)$ does not take minimum when $\mathbf{y}$ goes to infinity along any direction. It is because that for a given $\mathbf{y}$ and each $p$, $F_p(t\mathbf{y})\to \infty$ when $t\to \infty$, so does $F(t\mathbf{y})=\prod_p F_p(t\mathbf{y})^{\alpha_p}$. Therefore, equation $\mathbf{X}(x)=\mathbf{\Lambda}$ has a unique solution.
+
+% \section{Integration}
+
+% Consider the integration
+% \[
+% I(\mathbf X,c)=
+% \int_{(0,\infty)^N}\frac{d^N x}{x_1\cdots x_N}\, \left(\prod_{i}x_i^{ X_i}\right) p(x)^{- c}
+% \]
+% for a single polynomial $p(x)=\sum_I a_I x^I$. It can be rewritten as
+% \[
+% I(\mathbf X,c)=\int_{\mathbb R^N}d^N y\left(
+% \sum_I a_I \exp\left((\mathbf{n}^I-\mathbf{X}/c)\cdot \mathbf y\right)
+% \right)^{- c}
+% \]
+% after introducing $\mathbf y=\log \mathbf x$.
+
+% The integration $I(\mathbf X,c)$ converges if and only if $\mathbf X/c$ is in the interior of the Newton polytope $N(p)$. In fact, when $\mathbf X/c\in (N(p))^\circ$, the integrand goes to zero as fast as $\exp(-|y|)$ when $y$ goes to infinity. Conversely, when $\mathbf X/c\not\in (N(p))^\circ$, there exists a direction $\mathbf u$ such that when $\mathbf y=t\mathbf u$ and $t\to \infty$, the integrand goes to a finite number or even infinity.
+
+% When $\mathbf X/c\not\in N(p)$, the analytic continuation of $I(\mathbf X,c)$ is defined by relations 
+% \[
+% 	I(\mathbf X,c-1)=\sum_J a_J I(\mathbf X+\mathbf n^J,c)
+% \]
+% and 
+% \[
+% 	X_i I(\mathbf X,c)=c\sum_Ja_J n_i^J I(\mathbf X+\mathbf n^J,c+1).
+% \]
+% % The solution of these linear equations has the form of
+% % \[
+% % 	I(\mathbf X+\mathbf n^J,c+1)= b_J(\mathbf X/c) I(\mathbf X,c),
+% % \]
+% % where $b_J(\mathbf X/c)$ are determined by linear equations
+% % \[
+% % 	\sum_J b_J(\mathbf X/c)=\sum_J a_J \quad\text{and}\quad \frac{\mathbf X}{c} = \sum_J a_Jb_J(\mathbf X/c)\mathbf n^J.
+% % \]
+% % Furthermore, if there exists a compatible analytic continuation on the whole $\mathbb R^N$, one should require that
+% % \[
+% % 	b_J\left(\frac{\mathbf X+\mathbf n^I}{c+1}\right)b_I\left(\frac{\mathbf X}{c}\right)=b_I\left(\frac{\mathbf X+\mathbf n^J}{c+1}\right)b_J\left(\frac{\mathbf X}{c}\right).
+% % \]
+
+% However, even after analytic continuation, when $\mathbf X/c \in (N(p))^\circ$ approaches a boundary of $N(p)$, $I(\mathbf X,c)$ diverges. Therefore, the pole structure of $I(\mathbf X,c)$ is completely determined by the behavior of the original integration near boundaries of the Newton polytope $N(p)$.
+
+% Now suppose $F$ is a facet of $N(p)$, $\hat{\mathbf n}_F$ is its unit normal vector and $\mathbf\Lambda$ is a point in $F^\circ$. We claim that, if $(\hat{\mathbf n}_F)_i\neq 0$, then
+% \[
+% \begin{aligned}
+% 	\operatornamewithlimits{Res}_{\mathbf X= c\mathbf \Lambda} I(\mathbf X,c)
+% 	&=-(\hat{\mathbf n}_F)_i\int_{\mathbb R^{N-1}}
+% 	\prod_{j\neq i}d y_j\,\left.\left(
+% 	\sum_{\mathbf n^I\in F} a_I \exp\left((\mathbf{n}^I-\mathbf \Lambda)\cdot \mathbf y\right)
+% 	\right)^{-c}\right|_{y_i=0}\\
+% 	&=-(\hat{\mathbf n}_F)_i\int_{(0,\infty)^{N-1}}\prod_{j\neq i}\frac{dx_j}{x_j}\,\left(\prod_{j\neq i}x_j^{ X_j}\right) \left(\sum_{\mathbf n^I\in F}a_I x^I|_{x_i=1}\right)^{-c}.
+% \end{aligned}
+% \]
+% It's important to point out which variable (or equivalently, which direction) are we using to take residue. In the above formula, we take the residue on the line crossing $\mathbf\Lambda$ whose direction vector is $\hat{\mathbf n}_F$. If one approaches the facet in the direction $\mathbf r$, only the $\hat{\mathbf n}_F$ part contributes, so
+% \[
+% 	(\mathbf r\cdot \hat{\mathbf n}_F)\operatornamewithlimits{Res}_{\mathbf X\xrightarrow{\mathbf r}c\mathbf\Lambda} I(\mathbf X,c)=
+% 	\operatornamewithlimits{Res}_{\mathbf X\xrightarrow{\hat{\mathbf n}_F}c\mathbf\Lambda} I(\mathbf X,c)=:\operatornamewithlimits{Res}_{\mathbf X= c\mathbf \Lambda} I(\mathbf X,c).
+% \]
+% When $\mathbf r=\mathbf e_i$, we are taking the residue of $X_i$ at $c\Lambda_i$, then
+% \begin{align*}
+% 	\operatornamewithlimits{Res}_{\mathbf X\xrightarrow{\mathbf e_i}c\mathbf\Lambda} I(\mathbf X,c)=-\int_{(0,\infty)^{N-1}}\prod_{j\neq i}\frac{dx_j}{x_j}\,\left(\prod_{j\neq i}x_j^{ X_j}\right) \left(\sum_{\mathbf n^I\in F}a_I x^I|_{x_i=1}\right)^{- c}.
+% \end{align*}
+
+% Example: Consider the integration,
+% \begin{align*}
+% 	I(a,b,c,d)&=\int_{(0,\infty)^3}\frac{dxdydz}{xyz}\, x^{a} y^{b} z^{c} \left(1+2 x+3 y^2+4 z^3\right)^{-d}\\
+% 	&=\frac{3^{-\frac{b}{2}-1} 2^{-a-\frac{2 c}{3}-1} \Gamma (a) \Gamma \left(\frac{b}{2}\right) \Gamma \left(\frac{c}{3}\right) \Gamma \left(-a+d-\frac{b}{2}-\frac{c}{3}\right)}{\Gamma (d)}.
+% \end{align*}
+% The residue of $a$ at $d-b/2-c/3$ is given by another integration
+% \[
+% 	-\int_{(0,\infty)^2}\frac{dydz}{yz}\,y^{b} z^{c} \left(2+3 y^2+4 z^3\right)^{-d}=-\frac{3^{-\frac{b}{2}-1} \Gamma \left(\frac{b}{2}\right) \Gamma \left(\frac{c}{3}\right) 2^{\frac{b}{2}-\frac{c}{3}-d-1} \Gamma \left(-\frac{b}{2}+d-\frac{c}{3}\right)}{\Gamma (d)}.
+% \]
+
+% \begin{proof}[Proof of the claim]
+% Suppose $\mathbf X/c \in (N(p))^\circ$ is near $F$ so that 
+% \[
+% 	\mathbf X(\epsilon)+\epsilon\hat{\mathbf n}_F=c\mathbf \Lambda,
+% \]
+% where $\epsilon$ is a small positive number, and $\mathbf\Lambda\in F$. Let $\{\mathbf e'_1,\dots,\mathbf e'_{N-1},\hat{\mathbf n}_F\}$ be an orthonormal basis. In this basis, $\mathbf y$ can be decomposed into
+% \[
+% 	\mathbf y=\mathbf y_\parallel+y_\perp \hat{\mathbf n}_F=\sum_{i=1}^{N-1}(y_\parallel)_i\mathbf e'_i+y_\perp \hat{\mathbf n}_F,
+% \]
+% and the integration becomes
+% \[
+% \begin{aligned}
+% I(\mathbf X(\epsilon),c)&=\int_{\mathbb R^{N-1}}d^{N-1} y_\parallel\int_{-\infty}^\infty dy_{\perp}\,\left(L(\mathbf y)+
+% \sum_{\mathbf n^I\in F} a_I \exp\left((\mathbf{n}^I-\mathbf{X}/c)\cdot \mathbf y\right)
+% \right)^{- c}\\
+% &=\text{F.P.}+\int_{\mathbb R^{N-1}}d^{N-1} y_\parallel\int_{0}^\infty dy_{\perp}\,\left(L(\mathbf y)+
+% \exp(\epsilon y_{\perp}/c)\sum_{\mathbf n^I\in F} a_I \exp\left((\mathbf{n}^I-\mathbf \Lambda)\cdot \mathbf y_\parallel\right)
+% \right)^{-c}\\
+% &=:\text{F.P.}+I_d(\mathbf X(\epsilon),c),
+% \end{aligned}
+% \]
+% where $\text{F.P.}$ is a finite part even when $\epsilon=0$ and 
+% \[
+% 	L(\mathbf y)=\sum_{\mathbf n^I\not\in F} a_I \exp\left((\mathbf{n}^I-\mathbf{X}/c)\cdot \mathbf y\right).
+% \]
+% We claim that $\mathbf y_\parallel$, $\lim_{\epsilon\to 0}L(\mathbf y_\parallel,y_\perp/\epsilon)=0$ because it's bounded by 
+% \[
+% 	0<L(\mathbf y_\parallel,y_\perp/\epsilon)<B\exp(-Ay_\perp/\epsilon),
+% \]
+% where $A$, $B$ are some positive numbers.
+
+% % We claim that for a given $\mathbf y_\parallel$, there exist positive numbers $A$ and $B$ such that 
+% % \[
+% % 	0<L(\mathbf y)<B\exp(-Ay_\perp).
+% % \]
+% % In fact, 
+% % \[
+% % 	L(\mathbf y)=\sum_{\mathbf n^I\not\in F} a_I \exp\left((\mathbf{n}^I-\mathbf \Lambda)\cdot \mathbf y_\parallel+y_\perp(\epsilon/c+(\mathbf n^I-\mathbf \Lambda)\cdot \hat{\mathbf n}_F)\right),
+% % \]
+% % where $\epsilon/c+(\mathbf n^I-\mathbf \Lambda)\cdot \hat{\mathbf n}_F<0$ for all $\mathbf n^I\not\in F$, so we can choose positive numbers
+% % \[
+% % 	A<\min_I(|\epsilon/c+(\mathbf n^I-\mathbf \Lambda)\cdot \hat{\mathbf n}_F|)
+% % 	\quad \text{and}\quad 
+% % 	B>\sum_{\mathbf n^I\not\in F} a_I \exp((\mathbf{n}^I-\mathbf \Lambda)\cdot \mathbf y_\parallel)
+% % \]
+% % to get the inequality.
+
+% Now,
+% % \begin{align*}
+% % 	I_d(\mathbf X(\epsilon),c)&<\int_{\mathbb R^{N-1}}d^{N-1} y_\parallel\int_{0}^\infty dy_{\perp}\,\left(
+% % 	\exp(\epsilon y_{\perp}/c)\sum_{\mathbf n^I\in F} a_I \exp\left((\mathbf{n}^I-\mathbf \Lambda)\cdot \mathbf y_\parallel\right)
+% % 	\right)^{-c}\\
+% % 	&=\int_{0}^\infty dy_{\perp}\,\exp(-\epsilon y_{\perp})\int_{\mathbb R^{N-1}}d^{N-1} y_\parallel\,\left(
+% % 	\sum_{\mathbf n^I\in F} a_I \exp\left((\mathbf{n}^I-\mathbf \Lambda)\cdot \mathbf y_\parallel\right)
+% % 	\right)^{-c}\\
+% % 	&=\frac{1}{\epsilon}\int_{\mathbb R^{N-1}}d^{N-1} y_\parallel\,\left(
+% % 	\sum_{\mathbf n^I\in F} a_I \exp\left((\mathbf{n}^I-\mathbf \Lambda)\cdot \mathbf y_\parallel\right)
+% % 	\right)^{-c},
+% % \end{align*}
+% % so
+% % \[
+% % 	\lim_{\epsilon\to 0}\epsilon I_d(\mathbf X(\epsilon),c)
+% % 	< \int_{\mathbb R^{n-1}}d^{N-1} y_\parallel\,\left(
+% % 		\sum_{\mathbf n^I\in F} a_I \exp\left((\mathbf{n}^I-\mathbf \Lambda)\cdot \mathbf y_\parallel\right)
+% % 		\right)^{-c}
+% % \]
+% % On the other hand, 
+% write $z=\epsilon y_\perp$, then
+% \begin{align*}
+% 	\lim_{\epsilon\to 0}&\,\epsilon I_d(\mathbf X(\epsilon),c)\\
+% 	&=\lim_{\epsilon\to 0}\int_{\mathbb R^{N-1}}d^{N-1} y_\parallel\int_{0}^\infty dz\,\left(L(\mathbf y_\parallel,z/\epsilon)+
+% 	\exp(z/c)\sum_{\mathbf n^I\in F} a_I \exp\left((\mathbf{n}^I-\mathbf \Lambda)\cdot \mathbf y_\parallel\right)
+% 	\right)^{-c},\\
+% 	&=\int_{\mathbb R^{N-1}}d^{N-1} y_\parallel\int_{0}^\infty dz\,\exp(z)\left(
+% 	\sum_{\mathbf n^I\in F} a_I \exp\left((\mathbf{n}^I-\mathbf \Lambda)\cdot \mathbf y_\parallel\right)
+% 	\right)^{-c},\\
+% 	&=\int_{\mathbb R^{N-1}}d^{N-1} y_\parallel\,\left(
+% 		\sum_{\mathbf n^I\in F} a_I \exp\left((\mathbf{n}^I-\mathbf \Lambda)\cdot \mathbf y_\parallel\right)
+% 		\right)^{-c}.
+% \end{align*}
+% Finally, we get that
+% \[
+% 	\begin{aligned}
+% 		\operatornamewithlimits{Res}_{\mathbf X= c\mathbf \Lambda} I(\mathbf X,c)=
+% 	-\lim_{\epsilon\to 0}\epsilon I_d(\mathbf X(\epsilon),c)&=-\int_{\mathbb R^{N-1}}d^{N-1} y_\parallel\,\left(
+% 		\sum_{\mathbf n^I\in F} a_I \exp\left((\mathbf{n}^I-\mathbf \Lambda)\cdot \mathbf y_\parallel\right)
+% 		\right)^{-c}\\
+% 		&=-\int_{\mathbb R^{N}}d^{N} y\,\delta(\mathbf y\cdot \hat{\mathbf n}_F)\left(
+% 			\sum_{\mathbf n^I\in F} a_I \exp\left((\mathbf{n}^I-\mathbf \Lambda)\cdot \mathbf y_\parallel\right)
+% 			\right)^{-c}\\
+% 	\end{aligned}
+% \]
+
+% Now suppose $(\hat{\mathbf n}_F)_i\neq 0$, let's introduce a new set of variables 
+% \[
+% 	z_j=y_j-\frac{y_i}{(\hat{\mathbf n}_F)_i}(\hat{\mathbf n}_F)_j
+% 	=y_j+\sum_{k\neq i}\frac{(\hat{\mathbf n}_F)_j(\hat{\mathbf n}_F)_k}{(\hat{\mathbf n}_F)_i^2}y_k
+% \]
+% so that $z_i=0$ and $(\mathbf{n}^I-\mathbf \Lambda)\cdot \mathbf z= (\mathbf{n}^I-\mathbf \Lambda)\cdot \mathbf y$.
+% The Jacobian of this transformation is 
+% \[
+% 	\left|\frac{\partial z_j}{\partial y_k}\right|_{j,k\neq i}=\left|\delta_{jk}+\frac{(\hat{\mathbf n}_F)_j(\hat{\mathbf n}_F)_k}{(\hat{\mathbf n}_F)_i^2}\right|_{j,k\neq i}=(\hat{\mathbf n}_F)_i^{-2},
+% \]
+% thus
+% \[
+% 	\operatornamewithlimits{Res}_{\mathbf X= c\mathbf \Lambda} I(\mathbf X,c)= -(\hat{\mathbf n}_F)_i\int_{\mathbb R^{N-1}}\prod_{j\neq i}dz_j\,\left(
+% 	\sum_{\mathbf n^I\in F} a_I \exp\left((\mathbf{n}^I-\mathbf \Lambda)\cdot \mathbf z\right)
+% 	\right)^{-c}_{z_i=0}.
+% \]
+% \end{proof}
+
+% Generally, consider the integration
+% \[
+% I(\mathbf X;c_\alpha)=\int_{(0,\infty)^N}\frac{d^N x}{x_1\cdots x_N}\, \left(\prod_{i}x_i^{ X_i}\right) \prod_{\alpha}p_\alpha(x)^{- c_\alpha}.
+% \]
+% The facet $F$ of Minkowski sum $\sum_{\alpha}c_\alpha N(p_\alpha)$ is the Minkowski sum of boundaries of $N(p_\alpha)$, i.e. $F=\sum_\alpha c_\alpha F_\alpha$. Then, the residue of $I(\mathbf X;c_\alpha)$ on the facet $F$ is
+% \[
+% \begin{aligned}
+% 	\operatornamewithlimits{Res}_{\mathbf X= c\mathbf \Lambda} I(\mathbf X;c_\alpha)
+% 	&=-(\hat{\mathbf n}_F)_i\int_{(0,\infty)^{N-1}}\prod_{j\neq i}\frac{dx_j}{x_j}\,\left(\prod_{j\neq i}x_j^{ X_j}\right) \prod_{\alpha}q_{\alpha}^{-c_\alpha}(x),
+% \end{aligned}
+% \]
+% where 
+% \[
+% 	q_\alpha=\sum_{\mathbf n^{I_\alpha}\in F_\alpha}a_{I_\alpha} x^{I_\alpha}|_{x_i=1}.
+% \]
+
+% The direct proof of this generalization may be very subtle. However, we can reduce it to the case that $c_\alpha$ are all rational. In this case, there exists a integer $n$ such that $(\prod_\alpha p_\alpha^{c_{\alpha}})^n=(\prod_\alpha p_\alpha^{n c_{\alpha}})$ is a polynomial, and it's trivial. Since rational numbers are dense in real numbers, the general case is proven. 
+
+\section{poles and their residues}
+In this section, we talk about the position and residue of every pole of the integral 
+\begin{equation}
+I({\bf X},c)=\int_{(0,\infty)^N}\frac{{\text d} x_1{\text d}x_2\cdots{\text d}x_n}{x_1x_2\cdots x_n}x_1^{X_1}\cdots x_n^{X_n}P(x_1,\cdots,x_n)^{-c}
+\end{equation}
+where ${\bf X}=(X_1,\cdots,X_n)$, $c$ is positive and $P$ a polynomial. Note that we only have a single positive $P(x)=\sum a_Jx^{n_J}$ here and general case is trivial from the discussion this part.
+
+Firstly we should briefly discuss the domain in which integral converge. We have seen that the integral can be rewritten as an exponential form:
+\begin{equation}
+I({\bf X},c)=\int_{R^N}{\text d}^N y\Big(\sum_Ia_I \exp(({\bf n}^I-\frac{{\bf X}}c)\cdot {\bf y})\Big)^{-c}
+\end{equation}
+where ${\bf y}=\log {\bf x}$, and ${\bf n}^I$ are the coordinates of the vertices. Same to the discussion of $1-1$ map in the first part, only when $\frac{{\bf X}}c$ is in the interior of the Newton polytope determined by $P(x)$ (denoted as $N(P)$ below) can such an integral converge as its integrand goes to zero as fast as $\exp(-|y|)$ when $y$ goes to infinity. When $\frac{{\bf X}}c\notin (N(P))^\circ$, the integral will diverge.
+
+We thus extend the definition of the integral to the whole Euclid space by analytic continuation. Firstly, we trivially have relation:
+\begin{equation}\label{tiv}
+I({\bf X},c-1)=\sum_J a_J I({\bf X+n}^J,c)
+\end{equation} 
+by the definition of the integral. Secondly, by the IBP relations:
+\begin{equation}
+0=\int dx\  \partial_{x_i}(x^X P^{-c})
+\end{equation}
+a group of new relations can also be derived:
+\begin{equation}\label{IBP}
+X_iI({\bf X},c)=c\sum_J a_J n^J_i I({\bf X+n}^J,c+1)
+\end{equation}
+for each $i$. These two relations then help us define a function of $({\bf X},c)$ on the whole space. We also denote this function as $I({\bf X},c)$.  It, as an result, have poles when $\frac{{\bf X}}c$ goes to all those facets of Newton polytope $N(P)$, which we denote as $\langle {\mathscr X}, {\mathscr W}\rangle=0$ below. Here ${\mathscr W}=(-c_0,c_1,\cdots,c_n)=(-c_0,{\bf W})$ are those unit dual vectors of $N(P)$, one to one corresponding to some facets $F$ of the Newton polytope. ${\mathscr X}=(c,{\bf X})$. We call this kind of pole {\it massless poles}. 
+
+We now calculate the residues. At every hyperplane
+\begin{equation}
+\langle {\mathscr X}, {\mathscr W}\rangle=\sum_i c_i X_i-cc_0=0
+\end{equation}
+multiplying $I({\bf X},c)$ and using relation \eqref{IBP}, we can rewrite the integral to
+\begin{equation}
+I({\bf X},c)=\frac{c\int \frac{dx}{x_1...x_n} x_1^{X_1}...\ x_n^{X_n}(\sum_J a_J(\sum_ic_in^J_i-c_0)x_1^{n^J_1}...x_n^{n^J_n})P^{-c-1}}{\langle {\mathscr X}, {\mathscr W}\rangle}
+\end{equation} 
+Without losing generality, we firstly suppose $c_1\neq 0$ and approach any point on the facet in the direction ${\bf t}_1=(1,0,\cdots,0)$. For convenience we can then change $\{x_2,...,x_n\}$ to new variables as:
+\begin{equation}\label{change}
+t_i=\frac{x_i}{x_1^{\frac{c_i}{c_1}}},\ \ \ i=2....n
+\end{equation} 
+also varying in $(0,\infty)$. Note that Jacobian of this changement is not zero. Taking replacement $X_1=\frac{cc_0}{c_1}-\sum_{i=2}^n\frac{c_i}{c_1} X_i$ and integrating $x_1$ in the numerator, residue of $I({\bf X},c)$ through direction ${\bf t}_1$ at this pole is then:
+\begin{equation}
+\begin{split}
+\operatorname*{Res}_{\langle {\mathscr X}, {\mathscr W}\rangle\xrightarrow{{\bf t}_1}0}I({\bf X},c)&=\frac{c}{c_1}\int \frac{dx_1dt_2...dt_n}{x_1t_2...t_n}x_1^{\frac{cc_0}{c_1}}t_2^{X_2}...t_n^{X_n}(\sum_J a_J(\langle{\bf n}^J,{\bf W}\rangle-c_0)x_1^{\frac{\langle{\bf n}^J,{\bf W}\rangle}{c_1}}t_2^{n^J_2}...t_n^{n^J_n})P^{-c-1}\\
+&=\int \frac{dt_2...dt_n}{t_2...t_n}t_2^{X_2}...t_n^{X_n}(x_1^{\frac{cc_0}{c_1}}P^{-c})\Big|^{x_1\to \infty}_{x_1=0})
+\end{split}
+\end{equation}
+where the term in the bracket is
+\begin{equation}
+x_1^{cc_0/c_1}P^{-c}=\left(\sum_J a_J x_1^{\frac{\langle{\bf n}^J,{\bf W}\rangle-c_0}{c_1}}t_2^{n^J_2}...t_n^{n^J_n}\right)^{-c}
+\end{equation} 
+Thus the residue depends on the sign of $\langle{\bf n}^J,{\bf W}\rangle-c_0$, which is in fact the linear equation determining the facet we are considering.  As $c\geq 0$ and $P(x)$ is positive too, if $\langle{\bf n}^J,{\bf W}\rangle-c_0\geq 0$  always holds, then $x_1^{\frac{cc_0}{c_1}}P^{-c}\Big|_{x_1\to \infty}=0$ and only those terms satisfying  $\langle{\bf n}^J,{\bf W}\rangle-c_0=0$ contribute to the final answer, {\it i.e.} only those terms corresponding to the vertices on this facets contribute, which leaves us the desired result (up to a $\pm$ sign):
+\begin{equation}
+\operatorname*{Res}_{\langle {\mathscr X}, {\mathscr W}\rangle\xrightarrow{{\bf t}_1}0}I({\bf X},c)=\int \frac{dt_2...dt_n}{t_2...t_n}t_2^{X_2}...t_n^{X_n}\left(\sum_{\langle{\bf n}^J,{\bf W}\rangle-c_0=0} a_J t_2^{n^J_2}...t_n^{n^J_n}\right)^{-c}
+\end{equation}
+Similar analyzing can also be applied to the case when $\langle{\bf n}^J,{\bf W}\rangle-c_0\leq 0$  always holds. One can then find out an identical result as above. In fact, one of the conditions $\langle{\bf n}^J,{\bf W}\rangle-c_0\geq0$ or $\leq0$ will always hold for every facet of every Newton polytope, which is a direct result of the convex polytope.  Geometrically, this condition distinguishes whether the whole polytope is ``upper'' or ``lower'' than the hyperplane we consider. 
+
+Obliviously, we can take residues through different directions ${\bf t}_i$, {\it i.e.} take different replacements $X_i=\frac{cc_0}{c_i}-\sum_{j\neq i}\frac{c_j}{c_i}X_j$ for arbitrary $i$ and integrate $x_i$ in the numerator, to obtain similar results.  One can check that the Jacobian of corresponding variables changement \eqref{change} is always nonzero for any $i$. (However, it may still not work for some $i$ if $c_i=0$. Geometrically it means that the normal vector of the facet $\hat{\bf n}$ has zero $i-$th component $ (\hat {\bf n})_i=0$, so that ${\bf t}_i$ is parallel to the facet $\langle {\mathscr X}, {\mathscr W}\rangle=0$ and the residue through this direction is not well-defined). After explicit same procedures, the residue of $I({\bf X},c)$ at $\langle {\mathscr X}, {\mathscr W}\rangle=0$ through ${\bf t}_i$ reads:
+\begin{equation}\label{massless residue}
+\operatorname*{Res}_{\langle {\mathscr X}, {\mathscr W}\rangle\xrightarrow{{\bf t}_i}0}I({\bf X},c)=(\pm)\int_{(0,\infty)^{N-1}}\prod_{j\neq i}(\frac{dx_j}{x_j}x_j^{X_j})(\sum_{\langle{\bf n}^J,{\bf W}\rangle-c_0=0} a_J x_1^{n^J_1}...x_n^{n^J_n}\Big|_{x_i=1})^{-c}
+\end{equation}
+here ${\bf t}_i=(0,\cdots,1({\text ith}),\cdots,0)$. As the sum in \eqref{massless residue} only runs over the terms of $P(x)$ which are on the hyperplane $\langle {\mathscr X}, {\mathscr W}\rangle=0$, it determines a new polytope, which is mapped from the facet of the origin polytope on the hyperplane we consider.
+
+Finally, we can more generally consider the residue of a massless pole in arbitrary direction ${\bf s}=(s_1,\cdots,s_n)$, especially $\hat{\bf n}$, the normal vector of the hyperplane.  In fact, as residues taken through arbitrary directions ${\bf s}$ satisfy:
+\begin{equation}
+({\bf s\cdot \hat {n}})\operatorname*{Res}_{\langle {\mathscr X}, {\mathscr W}\rangle\xrightarrow{{\bf s}}0}I({\bf X},c)=\operatorname*{Res}_{\langle {\mathscr X}, {\mathscr W}\rangle\xrightarrow{\hat{\bf n}}0}I({\bf X},c)
+\end{equation} 
+we can thus derive $\operatorname*{Res}_{\langle {\mathscr X}, {\mathscr W}\rangle\xrightarrow{{\bf s}}0}I({\bf X},c)$ from $\operatorname*{Res}_{\langle {\mathscr X}, {\mathscr W}\rangle\xrightarrow{{\bf t}_i}0}I({\bf X},c)$. For example, through the normal vector $\hat{\bf n}$, and for arbitrary $i$ so that $(\hat {\bf n})_i\neq0$, the residue $\operatorname*{Res}_{\langle {\mathscr X}, {\mathscr W}\rangle\xrightarrow{\hat{\bf n}}0}I({\bf X},c)$ reads:
+\begin{equation}
+\operatorname*{Res}_{\langle {\mathscr X}, {\mathscr W}\rangle\xrightarrow{\hat{\bf n}}0}I({\bf X},c)=(\pm)(\hat {\bf n})_i\int_{(0,\infty)^{N-1}}\prod_{j\neq i}(\frac{dx_j}{x_j}x_j^{X_j})(\sum_{\langle{\bf n}^J,{\bf W}\rangle-c_0=0} a_J x_1^{n^J_1}...x_n^{n^J_n}\Big|_{x_i=1})^{-c}
+\end{equation}
+similar for arbitrary ${\bf s}$.
+
+The multiple polynomials case:
+\begin{equation}
+I({\bf X},c_{\alpha})=\int_{(0,\infty)^N}\frac{{\text d} x_1{\text d}x_2\cdots{\text d}x_n}{x_1x_2\cdots x_n}x_1^{X_1}\cdots x_n^{X_n}\prod_{\alpha} P_\alpha(x_1,\cdots,x_n)^{-c_{\alpha}}
+\end{equation}
+is almost the same as the situation above. As arbitrary facet $F$ of the Minkowski sum $\sum_{\alpha}c_{\alpha}N(P_{\alpha})$ is also a Minkowski sum of facets $F_\alpha$ of $N(P_{\alpha})$, {\it i.e.} $F=\sum_{\alpha}c_{\alpha}F_\alpha$, we claim that the residue of $I({\bf X},c_{\alpha})$  on this facet is (through the normal direction of the facet):
+\begin{equation}
+\operatorname*{Res}_{{\bf X}\xrightarrow{\hat{\bf n}}F}I({\bf X},c_\alpha)=(\pm)(\hat {\bf n})_i\int_{(0,\infty)^{N-1}}\prod_{j\neq i}(\frac{dx_j}{x_j}x_j^{X_j})\prod_{\alpha} q_\alpha(x_1,\cdots,x_n)^{-c_{\alpha}}
+\end{equation}
+where
+\begin{equation}
+q_\alpha(x_1,\cdots,x_n)=\sum_{{\bf n}^{J_\alpha}\in F_{\alpha}}a_{J_\alpha}x^{J_\alpha}\Big|_{x_i=1}
+\end{equation}
+In fact, notice that the shape of Minkowski sum  $\sum_{\alpha}c_{\alpha}N(P_{\alpha})$ is independent of $c_\alpha$, so they have similar pole structures, and we can reduce it to the case when $c_\alpha=c$ for arbitrary $\alpha$. So that $\prod_\alpha P_\alpha^{-c}=P^{-c}$ for a single positive polynomial $P$, and we only need to show $\prod_{\alpha} q_\alpha=P\Big|_{x_i=1}$, which is trivial.
+
+Besides those massless poles, similar to the string integral case, the integral should also have {\it massive poles}, which may have the structure:
+\begin{equation}\label{massive}
+{\langle {\mathscr X}, {\mathscr W}\rangle}=C
+\end{equation}  
+where $C$ is integer. Geometrically, such a hyperplane always lies away from the Newton polytope.  To determine the possible values of the integer $C$, we thus should use equations \eqref{tiv}, {\it i.e.} analytic continuation, to evaluate the function  $I({\bf X},c)$  on those poles. After arbitrary finite steps of analytic continuation, the function can be generally written as:
+\begin{equation}\label{arb}
+ I({\bf X},c)=\sum_{l} b_{l} I({\bf X}+\sum_J k_l^J {\bf n}^J,c+\sum_J k_l^J)
+\end{equation}   
+where $b_l$ are positive. Note that here $\sum_J k_l^J$ in each term $i$ need not to be equal. As a consequence, $I({\bf X},c)$ has a pole when evaluating on \eqref{massive} if and only if at least one of the terms on the RHS of \eqref{arb} diverges , which means that the equation
+\begin{equation}
+\sum_i c_i (X_i+\sum_J k_l^J {\bf n}_i^J)-c_0(c+\sum_J k_l^J)=0
+\end{equation}
+is satisfied for some groups of $k_l$, {\it i.e.} $C$ is always able to be  expressed as a linear combination $\sum_J k^J (c_0-\sum_i c_i{\bf n}_i^J)$. In another word, every group of $k_l$  determines a massive pole of function $I({\bf X},c)$, which has a form:
+\begin{equation}
+{\langle {\mathscr X}, {\mathscr W}\rangle}=\sum_J k^J (c_0-\sum_i c_i{\bf n}_i^J)
+\end{equation}
+Thus $C$ can be both positive and negative, depending on whether the polytope is ``upper" or ``lower" than the massless pole ${\langle {\mathscr X}, {\mathscr W}\rangle}=0$.
+
+As a example, consider the integral:
+\begin{equation}
+I(a,b,c,d)=\int_{(0,\infty)^3}\frac{dxdydz}{xyz}x^ay^bz^c(1+r x^m+s y^n+t z^l)^{-d}
+\end{equation}
+where $d,m,n,l,r,s,t$ are positive. From geometrical perspective we know that it corresponds to a $3-$dim simplex whose vertices settle at $(0,0,0)$, $(m,0,0)$, $(0,n,0)$ and $(0,0,l)$. Direct computation gives us the result:
+\begin{equation}
+I(a,b,c,d)=\frac{\Gamma(\frac am)\Gamma(\frac bn)\Gamma(\frac cl)\Gamma(-\frac am-\frac bn-\frac cl+d)}{r^{\frac am}s^{\frac bn }t^{\frac cl}mnl\Gamma(d)}
+\end{equation}
+By properties of Gamma function, $I(a,b,c,d)$ thus has massless pole $a=b=c=0$ and $-\frac am-\frac bn-\frac cl+d=0$, corresponding to every facets of the Newton polytope. Moreover, $a=b=c=-k$ and $-\frac am-\frac bn-\frac cl+d=-k$, where $k$ is negative, are massive poles of the integral. Finally, one can check that the results of the residue at every massless pole obey the rules we carried out above.
+
+
+\section{General prescription of pole subtraction}
+
+In general, the integrals to consider can be written as the sum of integrals of form
+\begin{equation}
+    I=\int_{[0,1]^{n}}\frac{\dif u_{1}\cdots \dif u_{n}}{u_{1}\cdots u_{n}} \prod_{i=1}^{n}u_{i}^{\epsilon X_{i}} 
+    \prod_{j=1}^{m}P_{j}(\{u_{i}\})^{\epsilon Y_{j}} \label{prepolesub}
+\end{equation}
+where the integration domain is $n$-dimensional hypercube $[0,1]^{n}$, $\epsilon$ plays the role of string tension $\alpha^{\prime}$, and ${P_{j}}$ are some arbitrary polynomials of $u$'s. To apply the pole subtraction, in general, we require each of $P$'s doesn't vanish as all $u \to 0$, i.e. $P$'s all have a non-vanishing constant. If so, then we can define the subtracted integral as 
+\begin{align}
+  I^{\text{sub}}&= I - \sum_{a=1}^{n}\frac{1}{\epsilon X_{a}}\int_{[0,1]^{n-1}}\dif u_{1}\cdots \widehat{\dif u_{a}}\cdots \dif u_{n} \prod_{i\neq a}^{n}u_{i}^{\epsilon X_{i}-1} 
+  \prod_{j=1}^{m}P_{j}(\{u_{a}{=}0\})^{\epsilon Y_{j}} \nonumber \\
+  &\quad +\sum_{a<b}\frac{1}{\epsilon^{2} X_{a}X_{b}}\int_{[0,1]^{n-2}}\dif u_{1}\cdots 
+  \widehat{\dif u_{a}}\cdots \widehat{\dif u_{b}}\cdots \dif u_{n} \prod_{i\neq a,b}^{n}u_{i}^{\epsilon X_{i}-1}
+  \prod_{j=1}^{m}P_{j}(\{u_{a}{=}0,u_{b}{=}0\})^{\epsilon Y_{j}}  \nonumber \\
+  &\quad +\cdots+ (-1)^{n}\prod_{a=1}^{n}\frac{1}{\epsilon X_{a}} \prod_{j=1}^{m} P_{j}(\{0\})^{\epsilon Y_{j}}
+\end{align}
+where the integration $\int \dif u_{a} \:u_{a}^{\epsilon X_{a}-1}$ yields the factor $(\epsilon X_{a})^{-1}$ and $P_{j}(\{0\})$ is the constant term in $P_{j}$. Note that the $\epsilon$-expansion of $I^{\text{sub}}$ can be obtained by expanding the integrand in $\epsilon$ and integrating order by order since the singularities on boundaries are all cancel. Here we use a simple example to illustrate how this procedure work and break down. Let us consider the integral 
+\begin{equation}
+    I_{1}(c) = \int_{[0,1]^{2}} \frac{\dif u_{1}\dif u_{2}}{u_{1}u_{2}} u_{1}^{\epsilon X_{1}}u_{2}^{\epsilon X_{2}} (u_{1}+u_{2}+c)^{\epsilon Y_{1}}
+\end{equation}
+where $c$ is chosen to be a positive constant for convenience. Then it is easy to see 
+\begin{align}
+ I_{1}^{\text{sub}}(c)&= \int_{[0,1]^{2}}\frac{\dif u_{1}\dif u_{2}}{u_{1}u_{2}} u_{1}^{\epsilon X_{1}}u_{2}^{\epsilon X_{2}} 
+ \Bigl((u_{1}+u_{2}+c)^{\epsilon Y_{1}}-(u_{1}+c)^{\epsilon Y_{1}}-(u_{2}+c)^{\epsilon Y_{1}} + c^{\epsilon Y_{1}}  \Bigr) \nonumber\\
+  &= \epsilon Y_{1}\int_{[0,1]^{2}} \frac{\dif u_{1}\dif u_{2}}{u_{1}u_{2}} \ln\biggl(\frac{c(u_{1}+u_{2}+c)}{(c+u_{1})(c+u_{2})}\biggr)
+  +O(\epsilon^{2})  
+\end{align}
+and the integrand of leading order has a good behaviour when $u_{1}$ or $u_{2}$ goes to zero as long as $c\neq 0$. We find the pole subtraction break down when $c=0$, the reason is that the boundary point $(0,0)$ is not \emph{normal-crossing} since there are three lines crossing it.  (Loosely speaking, by normal crossing, we mean there are $n$ boundaries at most intersecting each other at a point for a $n$-dimensional geometry object. Obviously, the boundaries of simple polytopes are all normal-crossing). The approach to this question is to  blow up this point. The specific method is decomposing the integration domain into two parts $0<u_{1}<u_{2}<1$ and $0<u_{2}<u_{1}<1$ then using the blow-up map for each part:
+\begin{align*}
+    I_{1}(0) &=\int_{0<u_{1}<u_{2}<1} \frac{\dif u_{1}\dif u_{2}}{u_{1}u_{2}} u_{1}^{\epsilon X_{1}}u_{2}^{\epsilon X_{2}} (u_{1}+u_{2})^{\epsilon Y_{1}} + (X_{1}\leftrightarrow X_{2} ) \\
+    &=\int_{[0,1]^{2}} \frac{\dif t_{1}\dif t_{2}}{t_{1}t_{2}} t_{1}^{\epsilon X_{1}}t_{2}^{\epsilon(X_{1}+X_{2}+Y_{1})}(1+t_{1})^{\epsilon Y_{1}} + (X_{1}\leftrightarrow X_{2} ) \\
+    &=\frac{1}{\epsilon(X_{1}+X_{2}+Y_{1})}\left(\frac{1}{\epsilon X_{1}}+ \frac{\zeta_{2}}{2}\epsilon Y_{1}+\cdots\right)+ (X_{1}\leftrightarrow X_{2} )
+\end{align*}
+where $t_{1}=u_{1}/u_{2}$ and $t_{2}=u_{2}$ are blow-up maps.
+
+\section{Cluster Integral}
+
+Now let us consider cluster integrals which have the form of 
+\begin{equation}
+    I_{\text{cl}}=\int_{[0,1]^{m}} \prod_{i=1}^{m}\frac{\dif u_{a_{i}}}{u_{a_{i}}(1-u_{a_{i}})} \:\prod_{i=1}^{n} u_{i}^{X_{i}} 
+    \label{gencint} 
+\end{equation}
+where $u$'s satisfy the global $u$-equations
+\[
+  1-u_{i}=\prod_{j}u^{(i\parallel j)}    
+\]
+with compatibility degree $(i\parallel j)$, and $\{u_{a_{1}},\cdots,u_{a_{m}}\}$ compose a good cluster. Due to the transformation property between good clusters, the integration variable can be chosen as an arbitrary good cluster. For example, the $A_{2}$ cluster integral is
+\begin{align*}
+    I({A_{2}})&=\int_{[0,1]^{2}} \frac{ \dif u_{13}\dif u_{14}}{u_{13}(1-u_{13})u_{14}(1-u_{14})}u_{13}^{\epsilon X_{13}} u_{14}^{\epsilon X_{14}} u_{24}^{\epsilon X_{24}} u_{25}^{\epsilon X_{25}} u_{35}^{\epsilon X_{35}} \\
+    &=\int_{[0,1]^{2}} \frac{ \dif u_{13}\dif u_{14}}{u_{13}(1-u_{13})u_{14}(1-u_{14})}u_{13}^{\epsilon X_{13}} u_{14}^{\epsilon X_{14}} (1-u_{13})^{\epsilon X_{24}}   (1-u_{14})^{\epsilon X_{35}} (1-u_{13}u_{14})^{\epsilon(X_{25}-X_{24}-X_{35})} 
+\end{align*}
+where we have used the global $u$-equations 
+\begin{align*}
+    1-u_{13}=u_{24} u_{25}, \quad \text{and cyclic}
+\end{align*}
+to solve $u_{24}$, $u_{25}$, and $u_{35}$ in terms of $u_{13}$ and $u_{14}$. 
+
+
+The good news for cluster integrals is that the cluster polytopes are all simple polytopes, thus there is no need to blow up. The bad news is the polynomials $P$ appearing in cluster integrals are usually complicated.
+
+
+\subsection{Pole subtractions for cluster integrals}
+
+
+To apply the pole subtraction procedure to the general cluster integral eq.(\ref{gencint}), we need to transform this integral into the form (\ref{prepolesub}), in other words, the cluster integral eq.(\ref{gencint}) should be decomposed into several parts such that each part contain one pole contribution at most. Since pole contributions arise from singularities of canonical form on integration region, the only thing need to do is the decomposition of the canoncial form
+\[
+  \bigwedge_{i=1}^{m}\dif \log\frac{u_{a_{i}}}{1-u_{a_{i}}}\:.    
+\]
+This decompose is not unique, but there is a universal and straightforward decomposition for any kind of cluster integral:
+\begin{align}
+    \bigwedge_{i=1}^{m}\dif \log \frac{ u_{a_{i}}}{(1-u_{a_{i}})} &=
+    \bigwedge_{i=1}^{m}\left(\dif\log u_{a_{i}}-\sum_{b_{i}=1}^{n}(a_{i}\parallel b_{i})\dif\log u_{b_{i}}\right) \nonumber  \\
+    &=(-1)^{m}\sum_{\vec{b}\in (\mathds{Z}_{n})^{m}} \prod_{j=1}^{m}[a_{j}\parallel b_{j}] \bigwedge_{i=1}^{m}\dif\log u_{b_{i}}
+\end{align}
+where $\vec{b}=(b_{1},b_{2},\cdots,b_{m})$ takes value from $m$-dimensional lattice with length $n$, and we define
+\[
+ [i\parallel j] :=\begin{cases}
+    (i\parallel j) & \text{if }i\neq j \\
+    -1 & \text{if }i=j
+ \end{cases}    \:.
+\]  
+This decomposition obviously satisfy the pre-request for pole subtractions, and note that each term $\bigwedge \dif \log u_{b_{i}}$ in summation doesn't have singularities on the integration domain if all $u_{b}$'s are incompatible with each other.       
+
+There are two problems along with this decomposition. First, there are too many terms in this decomposition, for instance, there are 155 terms for $B_{3}$ and 943 terms for $D_{4}$. Although not all terms need undergoing pole subtractions, there are still many terms that need pole subtraction, for example, there are 57 terms for $B_{3}$ that need pole subtraction. Second, this decomposition will introduce \emph{bad clusters}. Next, I will use several terms in $B_{3}$ to illustrate the usage of pole subtraction.
+
+\subsection{Several integrals in the decomposition of $B_{3}$ cluster integral}
+
+For $B_{3}$, the global $u$-equations are
+\begin{align}
+    1-u_{1}&=u_{2}u_{3}u_{4}u_{23}u_{34}u_{24}  \qquad \qquad\text{and cyclic}  \nonumber \\
+    1-u_{12}&=u_{3}^{2}u_{4}^{2}u_{23}u_{34}^{2}u_{41}u_{24}u_{31}  \qquad \:\text{and cyclic}  \label{B3ueq} \\
+    1-u_{13}&=u_{4}^{2}u_{34}u_{41}u_{24}u_{42}  \qquad\qquad\:\:\:\text{and cyclic} \nonumber 
+\end{align}
+The cluster integral is 
+\begin{align}
+    I(B_{3})=\int_{[0,1]^{3}} \dif \log\frac{u_{1}}{1-u_{1}}\dif \log\frac{u_{12}}{1-u_{12}}\dif \log\frac{u_{13}}{1-u_{13}} 
+    \prod_{i=1}^{4} u_{i}^{\epsilon X_{i}} u_{i,i+1}^{\epsilon X_{i,i+1}} u_{i,i+2}^{\epsilon X_{i,i+2}} \label{B3int}
+\end{align}
+where all indices are live in $\mathds{Z}_{4}$. In the decomposition of the canonical form for $B_{3}$, one consisting of good cluster is $\dif \log u_{1}\dif\log u_{12}\dif \log u_{13}$, and one consisting of bad cluster is $\dif \log u_{1} \dif \log u_{13}\dif \log u_{31}$.
+
+\subsubsection*{Pole subtraction for $\dif \log u_{1}\dif\log u_{12}\dif \log u_{13}$} 
+
+The advantage for good cluster, say $u_{1}$, $u_{12}$ and $u_{13}$, is the solutions of eq.(\ref{B3ueq}) in terms of the cluster variable are rational. In other word, the remainder $u$-variables can be expressed as $\{u_{1},u_{12},u_{13}\}$ rationally. Then the pole subtraction is straightforward
+\begin{align}
+    I_{\text{sub}}^{\text{good}}(B_{3})&=\int_{[0,1]^{3}}\frac{\dif u_{1}\dif u_{12}\dif u_{13}}{u_{1}u_{12}u_{13}}\:u_{1}^{\epsilon X_{1}}u_{12}^{\epsilon X_{12}}u_{13}^{\epsilon X_{13}} \nonumber \\
+    &\qquad \times \Biggl(\prod_{i=2}^{4} u_{i}(u_{1},u_{12},u_{13})^{\epsilon X_{i}} u_{i,i+1}(u_{1},u_{12},u_{13})^{\epsilon X_{i,i+1}} u_{i,i+2}(u_{1},u_{12},u_{13})^{\epsilon X_{i,i+2}} \nonumber \\
+    &\qquad \quad -\prod_{i=2}^{4} u_{i}(0,u_{12},u_{13})^{\epsilon X_{i}} u_{i,i+1}(0,u_{12},u_{13})^{\epsilon X_{i,i+1}} u_{i,i+2}(0,u_{12},u_{13})^{\epsilon X_{i,i+2}}  \nonumber \\
+    &\qquad\quad  -\cdots  \nonumber \\
+    &\qquad \quad -\prod_{i=2}^{4} u_{i}(0,0,0)^{\epsilon X_{i}} u_{i,i+1}(0,0,0)^{\epsilon X_{i,i+1}} u_{i,i+2}(0,0,0)^{\epsilon X_{i,i+2}}
+    \Biggr)
+\end{align}
+Due to the factorization property of $u$-equations, terms to subtract are integrals for subalgebra of $B_{3}$. The non-vanishing of $u(0,0,0)$ are ensured by the global $u$-equation.
+
+\subsubsection*{Pole subtraction for $\dif \log u_{1}\dif\log u_{13}\dif \log u_{31}$} 
+
+The pole subtraction procedure for the $\dif\log$ from consisting of a bad cluster is not straightforward, since the other $u$-variable can not expressed rationally as these $u$ variables. Thus, we must represent this integral in terms of a good cluster
+\begin{align}
+    I_{\text{sub}}^{\text{bad}}(B_{3})&=\int_{[0,1]^{3}}\frac{\partial(\log u_{1},\log u_{31},\log u_{13})}{\partial(u_{1},u_{12},u_{13})}\dif u_{1}\dif u_{12}\dif u_{13}\:u_{1}^{\epsilon X_{1}}u_{13}^{\epsilon X_{13}} u_{31}(u_{1},u_{12},u_{13})^{\epsilon X_{31}} \nonumber \\
+    &\qquad \times \Biggl(\prod_{i=2}^{4} u_{i}(u_{1},u_{12},u_{13})^{\epsilon X_{i}}\prod_{i=1}^{4} u_{i,i+1}(u_{1},u_{12},u_{13})^{\epsilon X_{i,i+1}}\prod_{i=2,4} u_{i,i+2}(u_{1},u_{12},u_{13})^{\epsilon X_{i,i+2}} \nonumber \\
+    &\qquad \quad -\biggl(\prod_{i=2}^{4} u_{i}(u_{1},u_{12})^{\epsilon X_{i}}\prod_{i=1}^{4} u_{i,i+1}(u_{1},u_{12})^{\epsilon X_{i,i+1}}
+    \prod_{i=2,4} u_{i,i+2}(u_{1},u_{12})^{\epsilon X_{i,i+2}}\biggr)\bigg\vert_{u_{13=0}}  \nonumber \\
+    &\qquad\quad  -\cdots  \nonumber \\
+    &\qquad \quad -\biggl(\prod_{i=2}^{4} u_{i}^{\epsilon X_{i}}\prod_{i=1}^{4} u_{i,i+1}^{\epsilon X_{i,i+1}}
+    \prod_{i=2,4} u_{i,i+2}^{\epsilon X_{i,i+2}}\biggr)\bigg\vert_{u_{13=0},u_{31}=0,u_{1}=0} 
+    \Biggr)
+\end{align}
+where the meaning of $(\cdots)\vert_{u_{13}=0}$ is $u$-variables in parenthesis are solved in terms of $u_{1}$ and $u_{12}$ with $u_{13}=0$.
+
+\iffalse
+
+A way to work out the cluster integrals is the following:
+(i)Using the global u-equations to decompose the $\dif \log$ form in cluster integrals such that each term contain one pole contribution at most. (ii)performing pole subtraction for each term. For example
+\begin{align*}
+I(A_{2})&=\int _{[0,1]^{2}} \dif \log\frac{u_{13}}{1-u_{13}} \dif \log\frac{u_{14}}{1-u_{14}} \prod u_{ij}^{\epsilon X_{ij}} 
+=\int \dif \log\frac{u_{13}}{u_{24}u_{25}} \dif \log\frac{u_{14}}{u_{25}u_{35}} \prod u_{ij}^{\epsilon X_{ij}}  \\
+&=\sum_{i=1}^{5}\int \dif\log u_{i,i+2}\dif\log u_{i,i+3} \prod u_{ij}^{\epsilon X_{ij}}
++ 3\int\dif \log u_{13}\dif \log u_{24}  \prod u_{ij}^{\epsilon X_{ij}}
+\end{align*}
+here all indices live in $\mathds{Z}_{5}$. Note that the last term contains no pole contribution, thus can be directly expanded and integrated order by order
+\[
+    3\int\dif \log u_{13}\dif \log u_{24}  \prod u_{ij}^{\epsilon X_{ij}}=3\int \frac{\dif u_{13}\dif u_{14}}{1-u_{13}u_{14}} \prod u_{ij}^{\epsilon X_{ij}} =3\Biggl(\zeta_{2}-\epsilon \zeta_{3}\sum_{i=1}^{5} X_{i,i+2}+O(\epsilon^{2})\Biggr),
+\] 
+while the result of the first term after pole subtraction is 
+\begin{align*}
+    &\quad \int_{[0,1]^{2}}\frac{\dif u_{13}\dif u_{14}}{u_{13}u_{14}} \prod u_{ij}^{\epsilon X_{ij}}  \\
+    &=\frac{1}{\epsilon X_{13}}\frac{\Gamma(\epsilon X_{14})\Gamma(\epsilon X_{35}+1)}{\Gamma(\epsilon (X_{14}+X_{35})+1)}
+    +\frac{1}{\epsilon X_{14}}\frac{\Gamma(\epsilon X_{13})\Gamma(\epsilon X_{35}+1)}{\Gamma(\epsilon (X_{13}+X_{35})+1)} 
+    -\frac{1}{\epsilon^{2}X_{13}X_{14}} +\int_{[0,1]^{2}}\frac{\dif u_{13}\dif u_{14}}{u_{13}u_{14}} K_{\text{sub}}
+\end{align*}
+where 
+\begin{align*}
+    K_{\text{sub}}&=u_{13}^{\epsilon X_{13}} u_{14}^{\epsilon X_{14}}\Bigl((1-u_{13})^{\epsilon X_{24}}(1-u_{14})^{\epsilon X_{35}} (1-u_{13}u_{14})^{\epsilon(X_{25}-X_{24}-X_{35})} \\
+    &\quad \qquad\qquad\qquad-(1-u_{14})^{\epsilon X_{35}}-(1-u_{13})^{\epsilon X_{24}}+1 \Bigr)\\
+\end{align*}
+and
+\[
+    \int_{[0,1]^{2}}\frac{\dif u_{13}\dif u_{14}}{u_{13}u_{14}} K_{\text{sub}}=\epsilon\zeta_{3}(X_{24}+X_{35}-X_{25})+O(\epsilon^{2})    
+\]
+\fi
+
+\subsection{Problems of integration ordering and linear reducibility}
+
+Let me first illustrate the problem of integration ordering by considering the following integral
+\[
+   I_{\text{exa}}= \int_{[0,1]^{2}} \frac{\dif x\dif y}{1-2xy+x^{2}y} = \frac{\pi^{2}}{4}  \:. 
+\]
+It is obvious that this integral can be worked out via two ordering of integration:
+\begin{align*}
+        I_{\text{exa}} &=\int_{0}^{1} \dif x \int_{0}^{1}\dif y\: \frac{1}{1-2xy+x^{2}y} =\int_{0}^{1}\dif x \frac{-2\log(1-x)}{(2-x)x}\\
+        I_{\text{exa}} &=\int_{0}^{1} \dif y \int_{0}^{1}\dif x\: \frac{1}{1-2xy+x^{2}y} =\int_{0}^{1}\dif y \frac{\arctan\bigl(\sqrt{y/(1-y)}\bigr)}{\sqrt{(1-y)y}}         
+\end{align*}
+Here we find a square root appear in the second integration ordering. The reason is quite simple: the integration over $x$ is equivalent to solve the polynomial equation $1-xy+x^{2}y$, whose solution $x_{\pm}(y)=1\pm\sqrt{1-y^{-1}}$ is irrational. The maple program Hyperint can only handle the integrals whose integrand is manifestly linear reducible. The precise definition of linear reducible integrand is the following:
+
+
+\subsubsection{2-dimensional cluster integrals}
+
+For $B_{2}/C_{2}$, the global $u$-equation are 
+\begin{align}
+    1-u_{12}&=u_{23}u_{31}u_{3}^{2}, \qquad 1-u_{1}=u_{2}u_{3}u_{23} \nonumber \\
+    1-u_{23}&=u_{12}u_{31}u_{1}^{2}, \qquad 1-u_{2}=u_{3}u_{1}u_{31}  \\
+    1-u_{31}&=u_{23}u_{12}u_{2}^{2}, \qquad 1-u_{3}=u_{1}u_{2}u_{12} \nonumber
+\end{align}
+such that the local $u$-equations are
+\begin{equation*}
+\frac{1-u_{i-1,i}}{u_{i-1,i}}\frac{1-u_{i,i+1}}{u_{i,i+1}}= (1-u_{i})^{2} \qquad 
+\frac{1-u_{i}}{u_{i}}\frac{1-u_{i+1}}{u_{i+1}} = 1-u_{i,i+1}
+\end{equation*}
+The solution in terms of $\{u_{1},u_{12}\}$ is 
+\begin{equation}
+u_{2}=\frac{1-u_{1}}{P_{1}},\qquad u_{3}=\frac{P_{2}}{P_{1}},\qquad u_{23}=\frac{P_{1}^{2}}{P_{2}} \qquad u_{31}=\frac{1-u_{12}}{P_{2}}  
+\end{equation}
+where 
+\begin{equation}
+    P_{1}=1-u_{1}u_{12},\qquad P_{2}=1-2u_{1}u_{12}+u_{1}^{2}u_{12} \label{B2pol}
+\end{equation}
+The integral is 
+\begin{align}
+    I(B_{2})&=\int_{[0,1]^{2}}\dif\log\frac{u_{1}}{1-u_{1}}\dif\log\frac{u_{12}}{1-u_{12}}\,u_{1}^{\epsilon X_{1}} u_{12}^{\epsilon X_{12}}
+    (1-u_{1})^{\epsilon X_{2}}(1-u_{12})^{\epsilon X_{31}} \nonumber\\
+   &\qquad \times P_{1}^{\epsilon(2X_{23}-X_{2}-X_{3})}P_{2}^{\epsilon(X_{3}-X_{23}-X_{31})}
+\end{align}
+Note that
+\begin{equation}
+    \dif\log\frac{u_{1}}{1-u_{1}}\dif\log\frac{u_{12}}{1-u_{12}}
+    =\sum_{i=1}^{3}\dif\log u_{i}\dif\log\frac{u_{i,i+1}}{1-u_{i,i+1}}
+\end{equation}
+
+For $G_{2}$ we just record local $u$-equations here:
+\begin{equation}
+    \frac{1-u_{i-1,i}}{u_{i-1,i}}\frac{1-u_{i,i+1}}{u_{i,i+1}}= (1-u_{i})^{3} \qquad 
+\frac{1-u_{i}}{u_{i}}\frac{1-u_{i+1}}{u_{i+1}} = 1-u_{i,i+1}
+\end{equation}
+Here all indices live in $\mathds{Z}_{4}$. The solution is
+\begin{align}
+   u_{2}&=\frac{1-u_{1}}{P_{1}},\qquad u_{3}=\frac{P_{3}}{P_{1}P_{2}},\qquad 
+   u_{4}=\frac{P_{4}}{P_{2}} ,\nonumber \\ 
+   u_{23}&=\frac{P_{1}^{3}}{P_{3}},\qquad  u_{34}=\frac{P_{2}^{3}}{P_{3}P_{4}}, \qquad u_{41}=\frac{1-u_{12}}{P_{4}} 
+\end{align}
+where $P_{1}$ and $P_{2}$ are the same as in eq.(\ref{B2pol}), 
+\begin{align}
+ P_{3}&=1-3u_{1}u_{12}+u_{1}^{3}u_{12}+3u_{1}^{2}u_{12}^{2}-2u_{1}^{3}u_{12}^{2} \nonumber \\
+ P_{4}&=1-3u_{1}u_{12}+3u_{1}^{2}u_{12}-u_{1}^{3}u_{12}
+\end{align}
+The integral is
+\begin{align*}
+    I(G_{2})&=\int_{[0,1]^{2}}\dif\log\frac{u_{1}}{1-u_{1}}\dif\log\frac{u_{12}}{1-u_{12}}\,u_{1}^{\epsilon X_{1}} u_{12}^{\epsilon X_{12}}
+    (1-u_{1})^{\epsilon X_{2}}(1-u_{12})^{\epsilon X_{41}} \nonumber\\
+   &\qquad \times P_{1}^{\epsilon(3X_{23}-X_{2}-X_{3})}P_{2}^{\epsilon(3X_{34}-X_{3}-X_{4})}
+   P_{3}^{\epsilon(X_{3}-X_{23}-X_{34})}P_{4}^{\epsilon(X_{4}-X_{34}-X_{41})}
+\end{align*}
+Note that
+\begin{equation}
+    \dif\log\frac{u_{1}}{1-u_{1}}\dif\log\frac{u_{12}}{1-u_{12}}
+    =\sum_{i=1}^{4}\dif\log u_{i}\dif\log\frac{u_{i,i+1}}{1-u_{i,i+1}}
+\end{equation}
+
+
+
+\section{Cn PT}
+
+The other world sheet model of $C_n$: $2n+2$ punctures on the real line (with the infinity) $\mathbb R\cup \{\infty\}$ with $z_{i+n+1}=z'_i=-z_i$. Remaining symmetries are 
+\[
+	z\to \lambda z\quad \text{and}\quad z\to \frac{1}{z},
+\]
+where $\lambda\in \mathbb R-\{0\}$.
+
+Now we can consider the configuration of punctures in $C_{n-1}$, first the simplest cases
+\[
+	<-z_n<\cdots<-z_1<z_1<z_2<\cdots<z_{n}.
+\]
+The canonical form of this region is
+\[
+	PT(1,\dots,n)=d\log \frac{2z_1}{z_1-z_2}\wedge\cdots\wedge d\log \frac{z_{n-2}-z_{n-1}}{z_{n-1}-z_n}
+	=\frac{\Omega_n}{z_1(z_1-z_2)\cdots (z_{n-1}-z_{n})},
+\]
+where $\Omega_n$ is the standard measure of projective space
+\[
+	\sum_{i=1}^{n} (-1)^{i-1}z_i\,dz_1\wedge \cdots\wedge \widehat{dz_i}\wedge \cdots\wedge dz_{n}.
+\]
+The form is invariant under the symmetry $z\mapsto 1/z$ which relates to the fact that 
+$PT(1,\dots,n)=PT(n,\dots,1)$. There should be no difference between $0$ and $\infty$ on the $\mathbb R\cup \{\infty\}$. However the function
+\[
+	\frac{1}{z_1(z_1-z_2)\cdots (z_{n-1}-z_{n})}
+\]
+isn't invariant under $(1,\dots,n)\to (n,\dots,1)$, so we can consider the symmetrized function as our new function.
+\[
+    \boxed{
+		\mathsf{nPT}(1,\dots,n):=\frac{1}{4}\left(\frac{1}{z_n}+\frac{1}{z_1}\right)\frac{1}{\left(z_1-z_2\right) \cdots \left(z_{n-1}-z_n\right)},
+	}
+\]
+it's invariant under  under $(1,\dots,n,n+1)\to (n+1,n,\dots,1)$ now (up to a sign), and we can fix one $z_i$ to be $1$.
+
+The old PT of $C_{n-1}$ is
+\[
+    \boxed{
+		\mathsf{oPT}(1,\dots,n):=\frac{1}{\left(z_1-z_2\right) \cdots \left(z_{n-1}-z_n\right)\left(z_1+z_n\right)},
+	}
+\]
+whose related form is 
+\[
+	d\log \frac{z_n+z_1}{z_2-z_1}\wedge d\log \frac{z_1-z_2}{z_2-z_3}\wedge\cdots\wedge d\log \frac{z_{n-2}-z_{n-1}}{z_{n-1}-z_n}
+\]
+
+old pts in new pts
+\[
+	\boxed{
+	\mathsf{oPT}(1,\dots,n)=\sum_{k=1}^n \mathsf{nPT}(1,(2,\dots,k)\shuffle (n',\dots,(k+1)'))
+	}
+\]
+rank of new PTs:
+\[
+    (n+1)(2n-1)!!
+\]
+rank of old PTs:
+\[
+    (2n-1)!!
+\]
+
+BCJ: for KN 
+\[
+	\mathsf{KN}=\prod_{i\neq j}(z_i-z_j)^{s_{ij}}
+\]
+% we have 
+% \[
+% 	\begin{aligned}
+% 	\sum_{k=1}^{n}2s_{1;1,\cdots,k}\,&\mathsf{nPT}(2,\dots,k,1,k+1,\dots,n)+\\
+% 	&\sum_{k=1}^{n}(s_{11'}+2s_{1;1,\dots,k})\mathsf{nPT}(2,\dots,k,1',k+1,\dots,n)=0
+% 	\end{aligned}
+% \]
+% on the support of SE.
+
+\section{BCJ relation for $C_{n}$}
+
+If we define the PT factor as 
+\[
+\mathsf{nPT}(1,\dots,n):=
+\frac{1}{4}\left(\frac{1}{z_n}+\frac{1}{z_1}\right)\frac{1}{\left(z_1-z_2\right) \cdots \left(z_{n-1}-z_n\right)}
+\]
+we have the following relation
+\begin{align*}
+&\quad \sum_{i=2}^{n}\biggl(\sum_{j=2}^{i}s_{1j}\biggr)\mathsf{PT}(2^{+},\ldots,i^{+},1^{+},i{+}1^{+},\ldots, n^{+}) \\
+&=\frac{1}{2}s_{1\tilde{1}}\mathsf{PT}(1^{-},2^{+},\cdots,n^{+}) +\sum_{i=2}^{n}
+\biggl(\frac{1}{2}s_{1\tilde{1}}+\sum_{j=2}^{i}s_{\tilde{1}j}\biggr)\mathsf{PT}(2^{+},\ldots i^{+},1^{-},i{+}1^{+},\ldots n^{+})
+\end{align*}
+on the support of scattering equation
+\[
+\sum_{j\neq i} \frac{s_{ij}}{z_{i}-z_{j}}+ \sum_{j=1}^{n} \frac{s_{i\tilde{\jmath}}}{z_{i}+z_{j}} =0
+\]
+
+\section{$B_3$}
+
+Here we will use Shi arrangement to deal with $B_3$. The Shi arrangement of $B_n$ contains $n+1$ punctures $\{z_i\}_{i=1,\dots,n+1}$ on the real line with the freedom corresponding to the global transformation $z_i\to z_i+a$, so we can use it to fix $z_{n+1}=0$. Then the shi arrangement is given by the following hyperplains
+\[
+    z_i-z_j=0\quad \text{and}\quad z_i-z_j=1,
+\]
+for $1\leq i<j\leq n+1$. 
+
+The the $u$ variables of $B_n$ can be solved by these $z_i$ by 
+\[
+    u_1=1+z_1-z_2,\quad \dots,\quad u_{n}=1+z_{n}-z_{n+1},\quad u_{n+1}=z_{n+1}-z_1
+\]
+and 
+\[
+\begin{aligned}
+    u_{ji}&=\frac{(z_{j+1}-z_{i})(z_{i+1}-z_j)}{(z_{j+1}-z_{i+1})(z_i-z_j)}\quad &&\text{for $i<j$},\\
+    u_{ij}&=\frac{(\tilde z_{j+1}-z_{i})(\tilde z_{i+1}-z_j)}{(\tilde z_{j+1}-z_{i+1})(\tilde z_i-z_j)}\quad &&\text{for $i<j$},
+\end{aligned}
+\]
+where $\tilde{z}_i=z_{i+n+1}=z_{i}+1$, where index are living in $\mathbb Z_{2n+2}$.
+
+
+By finite field method, it's well known that there are $(n+2)^n$ chambers for $B_n$, where $n^n$ are bounded. For $B_3$, there're $125$ regions, they are given by the sign pattern of 
+\begin{align*}
+    (z_1-z_2,z_1-z_2-1,z_1-z_3,&z_1-z_3-1,z_1-z_4,z_1-z_4-1,\\
+    &z_2-z_3,z_2-z_3-1,z_2-z_4,z_2-z_4-1,z_3-z_4,z_3-z_4-1),
+\end{align*}
+\[
+\begin{array}{lcr}
+    + + + + + + + + + + + + & + + - - - - - - - - + + & + - - - + - - - - - + + \\
+    + + + + + + + + + + + - & + + - - - - - - - - + - & + - - - + - - - - - + - \\
+    + + + + + + + + + + - - & + + - - - - - - - - - - & + - - - - - - - - - + + \\
+    + + + + + + + + + - - - & + - + + + + + + + + + + & + - - - - - - - - - + - \\
+    + + + + + + + + - - - - & + - + + + + + + + + + - & + - - - - - - - - - - - \\
+    + + + + + + + - + + + + & + - + + + + + + + + - - & - - + + + + + + + + + + \\
+    + + + + + + + - + + + - & + - + + + + + + + - - - & - - + + + + + + + + + - \\
+    + + + + + + + - + - + - & + - + + + + + - + + + + & - - + + + + + + + + - - \\
+    + + + + + + + - + - - - & + - + + + + + - + + + - & - - + + + - + + + + - - \\
+    + + + + + + + - - - - - & + - + + + + + - + - + - & - - + + + - + + + - - - \\
+    + + + + + + - - + + + + & + - + + + + + - + - - - & - - + + - - + + + + - - \\
+    + + + + + + - - + - + + & + - + + + - + + + - - - & - - + + - - + + + - - - \\
+    + + + + + + - - + - + - & + - + + + - + + - - - - & - - + + - - + + - - - - \\
+    + + + + + + - - - - + + & + - + + + - + - + - - - & - - + - + + + + + + + + \\
+    + + + + + + - - - - + - & + - + + + - + - - - - - & - - + - + + + + + + + - \\
+    + + + + + + - - - - - - & + - + + - - + + - - - - & - - + - + + + - + + + + \\
+    + + + + + - + + - - - - & + - + + - - + - - - - - & - - + - + + + - + + + - \\
+    + + + + + - + - - - - - & + - + - + + + - + + + + & - - + - + - + + + + + - \\
+    + + + + + - - - - - - - & + - + - + + + - + + + - & - - + - + - + + + + - - \\
+    + + + + - - + + - - - - & + - + - + + + - + - + - & - - + - + - + + + - - - \\
+    + + + + - - + - - - - - & + - + - + + - - + + + + & - - + - + - + - + + + - \\
+    + + + + - - - - - - - - & + - + - + + - - + - + + & - - + - + - + - + - + - \\
+    + + + - + + - - + + + + & + - + - + + - - + - + - & - - + - + - + - + - - - \\
+    + + + - + + - - + - + + & + - + - + - + - + - + - & - - + - - - + + + + - - \\
+    + + + - + + - - + - + - & + - + - + - + - + - - - & - - + - - - + + + - - - \\
+    + + + - + + - - - - + + & + - + - + - + - - - - - & - - + - - - + + - - - - \\
+    + + + - + + - - - - + - & + - + - + - - - + - + - & - - + - - - + - + - - - \\
+    + + + - + - - - - - + - & + - + - + - - - - - + - & - - + - - - + - - - - - \\
+    + + + - + - - - - - - - & + - + - + - - - - - - - & - - - - + + + + + + + + \\
+    + + + - - - - - - - - - & + - + - - - + - - - - - & - - - - + + + - + + + + \\
+    + + - - + + - - + + + + & + - + - - - - - - - - - & - - - - + + - - + + + + 
+\end{array}
+\]
+\[
+\begin{array}{lcr}
+    + + - - + + - - + - + + & + - - - + + - - + + + + & - - - - + - + + + + + + \\
+    + + - - + + - - - - + + & + - - - + + - - + - + + & - - - - + - + + + + + - \\
+    + + - - + - - - - - + + & + - - - + - - - + - + + & - - - - + - + - + + + + \\
+    + + - - + - - - - - + - & + - - - + - - - + - + - & - - - - + - + - + + + - \\
+    - - - - + - + - + - + - & - - - - - - + + + - - - & - - - - - - - - + + + + \\
+    - - - - + - - - + + + + & - - - - - - + + - - - - & - - - - - - - - + - + + \\
+    - - - - + - - - + - + + & - - - - - - + - + + + + & - - - - - - - - + - + - \\
+    - - - - + - - - + - + - & - - - - - - + - + + + - & - - - - - - - - - - + + \\
+    - - - - - - + + + + + + & - - - - - - + - + - + - & - - - - - - - - - - + - \\
+    - - - - - - + + + + + - & - - - - - - + - + - - - & - - - - - - - - - - - - \\
+    - - - - - - + + + + - - & - - - - - - + - - - - - & 
+\end{array}
+\]
+
+\[
+    \log(\mathsf{KN})=\sum_{1\leq i<j\leq n}s_{i,j} \log \left(z_i-z_j\right)+t_{i,j} \log \left(z_i-z_j-1\right).
+\]
+
+After blow-up, there are 
+\[
+    \langle |10\to 40,8\to 16,11\to 16,9\to 38,13\to 8,12\to 7|\rangle
+\]
+
+An example of polytope with $13$ facets:
+\[
+    \{z_2>z_1, z_3>z_2, z_4>z_3\}.
+\]
+A positive parameterization is 
+\[
+    x=z_2-z_1,\quad y=z_3-z_2,\quad z=z_4-z_3,
+\]
+and then 
+\[
+\begin{aligned}
+    \mathsf{KN} =&\, x^{s_{12}} y^{s_{23}} z^{s_{34}} (x+1)^{t_{12}} (y+1)^{t_{23}} (z+1)^{t_{34}} (x+y)^{s_{13}} (y+z)^{s_{24}}\\
+    &(x+y+1)^{t_{13}} (y+z+1)^{t_{24}} (x+y+z)^{s_{14}} (x+y+z+1)^{t_{14}}
+\end{aligned}
+\]
+
+\vspace{2em}
+
+An example of polytope with $12$ facets:
+\[
+    \{z_1-1<z_2<z_1, z_1-1<z_3<z_2, z_2-1<z_4<z_1-1\}
+\]
+A positive parameterization is 
+\[
+   x=\frac{z_1-z_2-1}{z_2-z_1},\quad y=\frac{z_1-z_3-1}{z_3-z_2},\quad 
+   z=\frac{z_2-z_4-1}{-z_1+z_4+1}
+\]
+and then 
+\[
+\begin{aligned}
+    \mathsf{KN} =&\, y^{t_{13}} z^{t_{24}} x^{s_{23}+t_{12}+t_{13}} (x+1)^{-s_{1234}-t_{1234}} (y+1)^{-s_{3|124}-t_{3|124}} (z+1)^{-s_{4|123}-t_{4|123}} \\
+    & (x+y+1)^{s_{13}} (x z+x+1)^{s_{24}}(x z+x+z+2)^{s_{14}} (x y+y+1)^{t_{23}} (x y z+x y+y+1)^{s_{34}} \\
+    &(x z+x+y z+z)^{t_{34}},
+\end{aligned}
+\]
+where $s_{a|S}=\sum_{b\in S}s_{ab}$ and $s_{S}=(1/2)\sum_{a,b\in S}s_{ab}$, $t_{a|S}$ and $t_S$ are defined similarly.
+
+\vspace{2em}
+
+An example of polytope with $11$ facets:
+\[
+    \{z_2<z_1-1, z_3<z_2-1, z_3<z_4<z_2-1\}
+\]
+A positive parameterization is 
+\[
+    x=z_1-z_2-1,\quad y=z_2-z_3-1,\quad z=\frac{z_3-z_4}{-z_2+z_4+1}
+\]
+and then 
+\[
+\begin{aligned}
+    \mathsf{KN} =&\, x^{t_{12}} y^{s_{34}+t_{23}+t_{24}}z^{s_{34}} (x+1)^{s_{12}} (y+1)^{s_{23}} (z+1)^{-s_{4|123}-t_{4|123}} (x+y+2)^{s_{13}} (y+z+1)^{s_{24}} \\
+    &(x+y+1)^{t_{13}} (y z+z+1)^{t_{34}} (x z+x+y+2 z+2)^{s_{14}} (x z+x+y+z+1)^{t_{14}}
+\end{aligned}
+\]
+
+\vspace{2em}
+
+An example of polytope with $10$ facets:
+\[
+    \{z_2<z_1-1, z_3<z_2-1, z_4<z_3-1\}
+\]
+A positive parameterization is 
+\[
+    x=z_1-z_2-1,\quad y=z_2-z_3-1,\quad z=1-z_3-z_4
+\]
+and then 
+\[
+\begin{aligned}
+    \mathsf{KN} =&\, x^{t_{12}} y^{t_{23}} z^{t_{34}} (x+1)^{s_{12}} (y+1)^{s_{23}} (z+1)^{s_{34}}  (x+y+2)^{s_{13}} (y+z+2)^{s_{24}} \\ 
+    &(x+y+1)^{t_{13}} (y+z+1)^{t_{24}} (x+y+z+3)^{s_{14}} (x+y+z+2)^{t_{14}}
+\end{aligned}
+\]
+
+\vspace{2em}
+
+An example of polytope with $9$ facets:
+\[
+    \{z_2<z_1-1, z_3<z_2-1, z_2-1<z_4<z_2\}
+\]
+A positive parameterization is 
+\[
+    x=z_1-z_2-1,\quad y=z_2-z_3-1,\quad z=\frac{z_2-z_4-1}{z_4-z_2}
+\]
+and then 
+\[
+\begin{aligned}
+    \mathsf{KN} =&\, x^{t_{12}} y^{t_{23}} z^{t_{24}} (x+1)^{s_{12}} (y+1)^{s_{23}} (z+1)^{-s_{4|123}-t_{4|123}} (x+y+2)^{s_{13}} \\ 
+    &(x z+x+z+2)^{s_{14}} (y z+y+z)^{s_{34}} (x+y+1)^{t_{13}} (x z+x+1)^{t_{14}} (y z+y+2 z+1)^{t_{34}}
+\end{aligned}
+\]
+
+\vspace{2em}
+
+An example of polytope with $8$ facets:
+\[
+    \{z_2<z_1-1, z_3<z_2-1, z_3-1<z_4<z_3\}
+\]
+A positive parameterization is 
+\[
+    x=z_1-z_2-1,\quad y=z_2-z_3-1,\quad z=\frac{z_3-z_4-1}{z_4-z_3}
+\]
+and then 
+\[
+\begin{aligned}
+    \mathsf{KN} =&\, x^{t_{12}} y^{t_{23}} z^{t_{34}} (x+1)^{s_{12}} (y+1)^{s_{23}} (z+1)^{-s_{4|123}-t_{4|123}} (x+y+2)^{s_{13}} \\
+    &(y z+y+z+2)^{s_{24}} (x+y+1)^{t_{13}} (y z+y+1)^{t_{24}} \\ 
+    &(x z+x+y z+y+2 z+3)^{s_{14}} (x z+x+y z+y+z+2)^{t_{14}}
+\end{aligned}
+\]
+
+\section{$G_2$}
+
+We can ger $G_2$ form $B_3$ by setting 
+\[
+    u_i=u_{i-1,i+1},
+\]
+or in $z$ variables
+\[
+    z_4=\frac{z_2 \left(z_1-z_3+1\right)-z_3}{z_1-z_3}
+\]
+
+
+We can plot the regions of $G_2$ by $u=0$ according to $z$ variables,
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{g2.pdf}
+\end{center}
+where we take $z_1=0$, $z_2$ and $z_3$ as our basic variables.
+
+After blow-up, there are 
+\[
+    \langle|5 \to 20, 6 \to 4, 8 \to 1|\rangle
+\]
+
+
+25 regions:
+
+First 18 regions:
+
+\[\left\{z_3<-1,\frac{z_3^2}{z_3-1}<z_2<-\frac{z_3}{z_3-1}\right\}
+\quad\left\{z_3<0,z_2<z_3-1\right\}
+\quad\left\{z_3<0,z_2>1\right\}\]
+\[\left\{z_3>2,1<z_2<z_3-1\right\}
+\quad \left\{z_3<0,0<z_2<1\right\}
+\quad \left\{z_3>1,z_2>\frac{z_3^2}{z_3-1}\right\}\]
+\[\left\{z_2<-1,z_3>\frac{z_2}{z_2+1}\right\}
+\quad \left\{z_3>1,-\frac{z_3}{z_3-1}<z_2<0\right\}
+\quad \left\{z_3<0,z_3-1<z_2<z_3\right\}\]
+\[\left\{1<z_3<2,z_3-1<z_2<1\right\}
+\quad \left\{z_3>1,z_3<z_2<\frac{z_3^2}{z_3-1}\right\}
+\quad \left\{0<z_3<1,0<z_2<z_3\right\}\]
+\[\left\{z_2>1,0<z_3<\frac{z_2}{z_2+1}\right\}
+\quad \left\{\frac{1}{2}<z_3<1,1<z_2<-\frac{z_3}{z_3-1}\right\}
+\quad \left\{\frac{1}{2}<z_3<1,\frac{z_3^2}{z_3-1}<z_2<z_3-1\right\}\]
+\[\left\{0<z_2<1,0<z_3<\frac{z_2}{z_2+1}\right\}
+\quad \left\{0<z_3<\frac{1}{2},z_3-1<z_2<\frac{z_3^2}{z_3-1}\right\}\]
+\[\left\{-1<z_3<0,-\frac{z_3}{z_3-1}<z_2<\frac{z_3^2}{z_3-1}\right\}\]
+
+Last 7 regions:
+
+\[\left(0<z_3\leq \frac{1}{2}\land z_2<z_3-1\right)\lor \left(\frac{1}{2}<z_3<1\land z_2<\frac{z_3^2}{z_3-1}\right)\]
+\[\left(0<z_3\leq \frac{1}{2}\land z_3<z_2<-\frac{z_3}{z_3-1}\right)\lor \left(\frac{1}{2}<z_3<1\land z_3<z_2<1\right)\]
+\[\left(0<z_3\leq \frac{1}{2}\land \frac{z_3^2}{z_3-1}<z_2<0\right)\lor \left(\frac{1}{2}<z_3<1\land z_3-1<z_2<0\right)\]
+\[\left(1<z_3\leq 2\land 0<z_2<z_3-1\right)\lor \left(z_3>2\land 0<z_2<1\right)\]
+\[\left(1<z_3\leq 2\land 1<z_2<z_3\right)\lor \left(z_3>2\land z_3-1<z_2<z_3\right)\]
+\[\left(z_3\leq -1\land z_3<z_2<\frac{z_3^2}{z_3-1}\right)\lor \left(-1<z_3<0\land z_3<z_2<-\frac{z_3}{z_3-1}\right)\]
+\[\left(z_3\leq -1\land -\frac{z_3}{z_3-1}<z_2<0\right)\lor \left(-1<z_3<0\land \frac{z_3^2}{z_3-1}<z_2<0\right)\]
+
+Positive parameterization of first $18$ regions respectively:
+
+\[\left\{z_2 = -\frac{(x+1) (x+y+1)}{(x+2) (y+1)},z_3 = -x-1\right\}
+\quad \left\{z_2 = -x-y-1,z_3 = -x\right\}\]
+\[\left\{z_2 = y+1,z_3 = -x\right\}
+\quad \left\{z_2 = -\frac{-x y-y-1}{y+1},z_3 = x+2\right\}\]
+\[\left\{z_2 = \frac{y}{y+1},z_3 = -x\right\}
+\quad \left\{z_2 = \frac{x^2+x y+2 x+1}{x},z_3 = x+1\right\}\]
+\[\left\{z_2 = -x-1,z_3 = \frac{x y+x+1}{x}\right\}
+\quad \left\{z_2 = \frac{-x-1}{x (y+1)},z_3 = x+1\right\}\]
+\[\left\{z_2 = -\frac{x y+x+1}{y+1},z_3 = -x\right\}
+\quad \left\{z_2 = -\frac{x (-y)-x-y}{(x+1) (y+1)},z_3 = -\frac{-2 x-1}{x+1}\right\}\]
+\[\left\{z_2 = \frac{(x+1) (x y+x+y)}{x (y+1)},z_3 = x+1\right\}
+\quad \left\{z_2 = \frac{x y}{(x+1) (y+1)},z_3 = \frac{x}{x+1}\right\}\]
+\[\left\{z_2 = x+1,z_3 = \frac{(x+1) y}{(x+2) (y+1)}\right\}
+\quad \left\{z_2 = \frac{2 x y+y+1}{y+1},z_3 = \frac{2 x+1}{2 (x+1)}\right\}\]
+\[\left\{z_2 = \frac{-4 x^2-4 x-y-1}{2 (x+1) (y+1)},z_3 = \frac{2 x+1}{2 (x+1)}\right\}
+\quad \left\{z_2 = \frac{x}{x+1},z_3 = \frac{x y}{(2 x+1) (y+1)}\right\}\]
+\[\left\{z_2 = \frac{x^2 (-y)-x^2-4 x-4}{2 \left(x^2+3 x+2\right) (y+1)},z_3 = \frac{x}{2 (x+1)}\right\}
+\quad \left\{z_2 = \frac{-x-y-1}{\left(x^2+3 x+2\right) (y+1)},z_3 = \frac{1}{-x-1}\right\}\]
+
+Positive parameterization of last $7$ regions respectively:
+
+\[\left\{z_2 = -\frac{(x+1) (x y+x+y+2)}{(x+2) (y+1)},z_3 = \frac{(x+1) y}{(x+2) (y+1)}\right\}\]
+\[\left\{z_2 = \frac{x}{x+1},z_3 = \frac{x (2 x y+x+y+1)}{\left(2 x^2+3 x+1\right) (y+1)}\right\}\]
+\[\left\{z_2 = -\frac{x^2}{\left(2 x^2+3 x+1\right) (y+1)},z_3 = \frac{x (2 x y+x+y+1)}{\left(2 x^2+3 x+1\right) (y+1)}\right\}\]
+\[\left\{z_2 = \frac{y}{y+1},z_3 = -\frac{x (-y)-x-2 y-1}{y+1}\right\}\]
+\[\left\{z_2 = x+1,z_3 = -\frac{x (-y)-x-2 y-1}{y+1}\right\}\]
+\[\left\{z_2 = \frac{x^2 (-y)-x^2-2 x-1}{\left(2 x^2+x\right) (y+1)},z_3 = \frac{x^2 (-y)-x^2-2 x-1}{\left(x^2+x\right) (y+1)}\right\}\]
+\[\left\{z_2 = \frac{-x^2-2 x-y-1}{\left(x^2+3 x+2\right) (y+1)},z_3 = \frac{-x^2-2 x-y-1}{(x+1) (y+1)}\right\}\]
+
+\end{document}
