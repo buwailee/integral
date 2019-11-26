@@ -1,0 +1,42 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, top=16mm, text={170mm, 248mm}, includehead, includefoot, hmarginratio=1:1, heightrounded]{geometry}
+\usepackage{amsmath,amssymb,mathrsfs,amsthm,tikz,shuffle}
+\usepackage{dsfont}
+
+
+\theoremstyle{definition}
+	\newtheorem{para}{}[section]
+		\renewcommand{\thepara}{\thesection.\arabic{para}}
+	\newtheorem{exa}[para]{Example}
+\theoremstyle{plain}
+	\newtheorem{lem}[para]{Lemma}
+	\newtheorem{thm}[para]{Theorem}
+	\newtheorem{pro}[para]{Proposition}
+\renewcommand{\proofname}{Proof}
+
+
+%+++++++++++++++++++++++数学字体的设置++++++++++++++++++++++++++++++++++++++++%
+\newcommand{\me}{\mathrm{e}}  % for math e
+\newcommand{\mi}{\mathrm{i}} % for math i
+\newcommand{\dif}{\mathrm{d}} %for differential operator d
+\newcommand{\cvec}[1]{\!\vec{\,#1}}
+\newcommand{\Ptimes}{\,\overset{\otimes }{,}\,}
+\DeclareSymbolFont{lettersA}{U}{txmia}{m}{it}
+ \DeclareMathSymbol{\piup}{\mathord}{lettersA}{25}
+ \DeclareMathSymbol{\muup}{\mathord}{lettersA}{22}
+ \DeclareMathSymbol{\deltaup}{\mathord}{lettersA}{14}
+ \newcommand{\uppi}{\piup}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\section{Intro}
+
+\section{Map}
+
+\section{Blow up}
+
+\section{General prescription of pole subtraction}
+
+\end{document}
