@@ -179,6 +179,40 @@ Finally, we claim that $F(y)$ does not take minimum when $\mathbf{y}$ goes to in
 
 \section{Blow up}
 
+Consider the following integral
+\[
+	\int_{\mathbb R_+^d}\frac{d x_1}{x_1} \cdots \frac{d x_d}{x_d} x_1^{n_1}\cdots x_d^{\alpha' n_d} P(x_1,\dots,x_d)^{-\alpha' c}, 
+\]
+where $P$ is a polynomial, here we can further assume that $P(0,\dots,0)\neq 0$. When $\alpha'\to 0$, the integral diverge, we want to calculate the leading term of $(\alpha')^{-1}$ of this integral. blabla
+
+Let's first consider the one-dimensional example, the Beta function 
+\[
+	B(\alpha' a,\alpha' b)=\int_0^1 \frac{dt}{t(1-t)} t^{\alpha' a}(1-t)^{\alpha' b}=\int_{\mathbb R_+}\frac{dt}{t}t^{\alpha' a}(1+t)^{\alpha'(a+b)}.
+\]
+To calculate the integral, we can decompose the integral by 
+\[
+	\biggl(\int_{0}^\epsilon +\int_\epsilon^{1/\epsilon}+\int_{1/\epsilon}^\infty\biggr)\frac{dt}{t} t^{\alpha' a}(1+t)^{\alpha'(a+b)}.
+	\]
+The middle integral is finte when $\alpha'\to 0$ so that do not contribute the leading term, the first integral is 
+	\[
+		\int_0^\epsilon \frac{dt}t t^{\alpha' a}(1+t)^{\alpha'(a+b)}
+	\sim \int_0^\epsilon \frac{dt}t t^{\alpha' a} 
+	= \frac{\epsilon^{\alpha' a}}{\alpha'a} \sim \frac{1}{\alpha'a},
+\]
+and the last integral is 
+\[
+	\int_{1/\epsilon}^\infty \frac{dt}t t^{\alpha' a}(1+t)^{\alpha'(a+b)} 
+	= \int_0^\epsilon \frac{dt}{t} t^{\alpha' b}(1+t)^{\alpha' (a+b)}
+	\sim \frac{1}{\alpha' b},
+\]
+so the leading term of this integral is 
+\[
+	B(\alpha' a,\alpha' b)\sim\frac 1{\alpha'}\biggl(\frac1a+\frac1b\biggr).
+\]
+
+There's one important lesson from the above simple integral, the leading terms of the integral comes from the vertices of the regions. 
+
+
 \section{General prescription of pole subtraction}
 
 \end{document}
