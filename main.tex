@@ -187,31 +187,58 @@ where $P$ is a polynomial, here we can further assume that $P(0,\dots,0)\neq 0$.
 
 Let's first consider the one-dimensional example, the Beta function 
 \[
-	B(\alpha' a,\alpha' b)=\int_0^1 \frac{dt}{t(1-t)} t^{\alpha' a}(1-t)^{\alpha' b}=\int_{\mathbb R_+}\frac{dt}{t}t^{\alpha' a}(1+t)^{\alpha'(a+b)}.
+	B(\alpha' a,\alpha' b)=\int_0^1 \frac{dt}{t(1-t)} t^{\alpha' a}(1-t)^{\alpha' b}=\int_{\mathbb R_+}\frac{dt}{t}t^{\alpha' a}(1+t)^{-\alpha'(a+b)}.
 \]
 To calculate the integral, we can decompose the integral by 
 \[
-	\biggl(\int_{0}^\epsilon +\int_\epsilon^{1/\epsilon}+\int_{1/\epsilon}^\infty\biggr)\frac{dt}{t} t^{\alpha' a}(1+t)^{\alpha'(a+b)}.
+	\biggl(\int_{0}^\epsilon +\int_\epsilon^{1/\epsilon}+\int_{1/\epsilon}^\infty\biggr)\frac{dt}{t} t^{\alpha' a}(1+t)^{-\alpha'(a+b)}.
 	\]
-The middle integral is finte when $\alpha'\to 0$ so that do not contribute the leading term, the first integral is 
+The middle integral is finte when $\alpha'\to 0$ so that it does not contribute, the other two integrals are
 	\[
-		\int_0^\epsilon \frac{dt}t t^{\alpha' a}(1+t)^{\alpha'(a+b)}
+		\int_0^\epsilon \frac{dt}t t^{\alpha' a}(1+t)^{-\alpha'(a+b)}
 	\sim \int_0^\epsilon \frac{dt}t t^{\alpha' a} 
 	= \frac{\epsilon^{\alpha' a}}{\alpha'a} \sim \frac{1}{\alpha'a},
-\]
-and the last integral is 
-\[
-	\int_{1/\epsilon}^\infty \frac{dt}t t^{\alpha' a}(1+t)^{\alpha'(a+b)} 
-	= \int_0^\epsilon \frac{dt}{t} t^{\alpha' b}(1+t)^{\alpha' (a+b)}
+	\]
+	\[
+	\int_{1/\epsilon}^\infty \frac{dt}t t^{\alpha' a}(1+t)^{-\alpha'(a+b)} 
+	= \int_0^\epsilon \frac{dt}{t} t^{\alpha' b}(1+t)^{-\alpha' (a+b)}
 	\sim \frac{1}{\alpha' b},
 \]
 so the leading term of this integral is 
 \[
-	B(\alpha' a,\alpha' b)\sim\frac 1{\alpha'}\biggl(\frac1a+\frac1b\biggr).
+	B(\alpha' a,\alpha' b)\sim\frac 1{\alpha'}\biggl(\frac 1a+\frac 1b\biggr).
+	\]
+	
+There's one important lesson from the above simple integral, the leading terms of the integral come from the vertices of the regions. 
+
+Now let's come to the two dimensional example,
+\[
+	I=\int_{\mathbb R_+^2} \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y)^{-\alpha' c}.
 \]
-
-There's one important lesson from the above simple integral, the leading terms of the integral comes from the vertices of the regions. 
-
+The leading terms come form the neighbourhoods of the vertices, let's conider the simplest vertice first, 
+\begin{align*}
+	I(0,\infty)&=\int_{0}^\epsilon\int_{1/\epsilon}^\infty \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y)^{-\alpha' c}\\
+	&=
+	\int_{0}^\epsilon\int^{\epsilon}_0 \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{-\alpha' (c-b)}(xy+1)^{-\alpha' c}\\
+	&\sim 
+	\int_{0}^\epsilon\int^{\epsilon}_0 \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{-\alpha' (c-b)}\\
+	&\sim 
+	\frac{1}{{\alpha'}^2}\frac{1}{a} \frac{1}{c-b}
+\end{align*}
+similarly, $I(\infty,0)\sim ({\alpha'}^2 b (c-a))^{-1}$. Now the hard vertice
+\begin{align*}
+	I(0,0)&=\int_{0}^\epsilon\int_0^{\epsilon} \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y)^{-\alpha' c}
+\end{align*}
+When $(x,y)\to (0,0)$, we cannot decouple $x$ and $y$ because of the factor $(x+y)^{-\alpha' c}$. A clever way to calculate it is blowing-up. Let $x = tp$ and $y=t(1-p)$, then
+\[
+	\frac{dxdy}{xy} = \frac{dp}{p(1-p)}\frac{dt}{t},
+\]
+and
+\begin{align*}
+	I(0,0)&=\int_0^{1}\frac{dp}{p(1-p)}\int_{0}^\epsilon\frac{dt}{t} t^{\alpha'(a+b-c)}p^{\alpha' a}(1-p)^{\alpha' b}\\
+	&\sim \frac{1}{\alpha'}\frac{1}{a+b-c}\int_0^{1}\frac{dp}{p(1-p)}p^{\alpha' a}(1-p)^{\alpha' b}\\
+	&\sim \frac{1}{{\alpha'}^2}\frac{1}{a+b-c}\biggl(\frac 1a+\frac 1b\biggr)
+\end{align*}
 
 \section{General prescription of pole subtraction}
 
