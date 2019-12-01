@@ -239,6 +239,77 @@ and
 	&\sim \frac{1}{\alpha'}\frac{1}{a+b-c}\int_0^{1}\frac{dp}{p(1-p)}p^{\alpha' a}(1-p)^{\alpha' b}\\
 	&\sim \frac{1}{{\alpha'}^2}\frac{1}{a+b-c}\biggl(\frac 1a+\frac 1b\biggr)
 \end{align*}
+similarly, 
+\[
+	I(\infty,\infty)\sim \frac{1}{{\alpha'}^2}\frac{1}{c-a-b}\biggl(\frac 1{c-a}+\frac 1{c-b}\biggr).
+\]
+The leading terms of original integral is 
+\[
+	I\sim I(0,0)+I(0,\infty)+I(\infty,0)+I(\infty,\infty).
+\]
+
+Now let's consider the general story. Genearlly, the integral near a vertice need not to be decoupled, so blowing-up is necessary. 
+
+Suppose a boundary defined by local coordinates $x_1=\cdots=x_n=0$ need to be blowed up in integration. Now let $x_i=ty_i$, where $[y_1,\dots,y_n]$ are positive projective coordinates. Near the boundary, the canonical form of $\Omega$ performs as 
+\[
+	\Omega=\frac{dx_1}{x_1}\wedge \cdots\wedge\frac{dx_n}{x_n}
+	\wedge \Phi(x')+O(t^0),
+\]
+where $x'$ are other coordinates. In new coordinates, it can be written as 
+\[
+	\Omega=\frac{1}{y_n}\frac{dt}{t}\wedge \frac{dy_1}{y_1}\wedge \cdots\wedge\frac{dy_{n-1}}{y_{n-1}}\wedge \Phi(x')+O(t^0),
+\]
+where $y_n=1-(y_1+\cdots+y_{n-1})$. Therofore,
+\[
+	\operatorname{Res}_{t=0}(\Omega)=\frac{1}{y_n}\frac{dy_1}{y_1}\wedge \cdots\wedge\frac{dy_{n-1}}{y_{n-1}}\wedge \Phi(x')=\Omega_{n-1}(y)\wedge \Phi(x'),
+\]
+$\Omega_{n-1}(y)$ the canonical form of a standard $(n-1)$-dimensional simplex. If we rewrite it in new coordinates $\{z_i\}$ such that
+\[
+	z_0=0,\quad y_i=z_i-z_{i-1},\quad z_{n}=1,
+\]
+then 
+\[
+	\Omega_{n-1}(z)=\frac{dz_1\wedge\cdots\wedge dz_n}{(z_1-z_0)\cdots (z_n-z_{n-1})}.
+\]
+It's the more familiar form.
+
+Consider a set of irreducible polynomials $\{p_i\}$, let $Z(p_i)$ be the zero point set of $p_i$ in $\mathbb{R}^n$. Suppose a curved polytope $\mathcal P$ is bounded by $\bigcup_i Z(p_i)$, if $F_k$ is a codimension $k$ face of $\mathcal P$ where $\#\{i\,:\,F_k\subset Z(p_i)\}>k$, then we call it a degenerated face.
+
+Now Consider the integration
+\[
+	I(\alpha')=\int_{\mathcal P} \Omega_{\mathcal P}(x)\prod_i(p_i(x))^{\alpha' s_i},
+\]
+where $\Omega$ is the canonical form of $\mathcal P$, and we suppose $I(\alpha')$ is finite when $\alpha'>0$.
+It's clear that $I(\alpha')$ diverge when $\alpha'\to 0$. We want to find all possible poles in the leading order of its Laurent series with respect to $\alpha$ at $\alpha=0$. It's a rational function of $s_i$ since $p_i$ are all polynomials.
+
+If $F$ is a facet of $\mathcal P$. Locally, if $F$ is defined by $x=0$, then near $F$, the integration is 
+\[
+	\int_0^\epsilon \frac{d x}{x} x^{\alpha' a} \int_{x'}\Psi(x')
+	\sim \frac{1}{\alpha' a}\int_{x'}\Psi(x'),
+\]
+where $x'$ are other coordinates and $\Psi(x')$ is the left part of $\Omega_{\mathcal P}(x)\prod_i(p_i(x))^{\alpha' s_i}$. Then $a$ is a possible pole.
+
+If $F$ is a degenerated face defined by local coordinates $x_1=\cdots=x_n=0$. We need blow up the boundary in the integration. Suppose polynomials are factorized into
+\[
+	p_i(x)=t^{k_i}q_i(x',y,t),
+\]
+where $q_i(x',y,0)\neq 0$. Therefore, in integration, near this boundary and when $\alpha'$ is small, 
+\[
+	\begin{aligned}
+		\int_{x'} \int_{x\in [0,\epsilon]^n} \Omega(x,x')\, \prod_i(p_i(x))^{\alpha' s_i}
+		&\sim 
+		\int_{[0,1]^{n-1}}\Omega_{n-1}(y)
+		\int_{x'}\Phi(x')\prod_i
+		(q_i(x',y,0))^{\alpha' s_i}
+		\int_0^\epsilon \, \frac{dt}{t} t^{\alpha' \sum_i k_is_i}\\
+		&\sim \frac{1}{\alpha' (\sum_i k_is_i)}
+		\int_{[0,1]^{n-1}}\Omega_{n-1}(y)
+		\int_{x'}\Phi(x')\prod_i
+		(q_i(x',y,0))^{\alpha' s_i},
+	\end{aligned}
+\]
+then $\sum_i k_is_i$ could be a pole. 
+
 
 \section{General prescription of pole subtraction}
 
