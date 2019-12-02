@@ -185,8 +185,8 @@ Consider the integration
 \[
 	I(\alpha')=\int_{\mathcal P} \Omega_{\mathcal P}(x)\prod_i(p_i(x))^{\alpha' s_i},
 \]
-where $\Omega$ is the canonical form of $\mathcal P$, and we suppose $I(\alpha')$ is finite when $\alpha'>0$.
-It's clear that $I(\alpha')$ diverge when $\alpha'\to 0$. We want to calculate the leading order of its Laurent series with respect to $\alpha'$ at $\alpha'=0$. It's a rational function of $s_i$ since $p_i$ are all polynomials.
+where $\Omega$ is the canonical form of the $D$-dimensional positive geometry $\mathcal P$, and we suppose $I(\alpha')$ is finite when $\alpha'>0$.
+It's clear that $I(\alpha')$ diverge when $\alpha'\to 0$ because the simple pole of canonical form on the boundary of $\mathcal P$. We want to calculate the leading order of its Laurent series with respect to $\alpha'$ at $\alpha'=0$. It's a rational function of $s_i$ since $p_i$ are all polynomials.
 
 % Consider the following integral
 % \[
@@ -218,7 +218,7 @@ so the leading term of this integral is
 	B(\alpha' a,\alpha' b)\sim\frac 1{\alpha'}\biggl(\frac 1a+\frac 1b\biggr).
 \]
 
-One important lesson from the above trivial integral is that the leading terms of the integral come from the vertices of the regions (positive geometry). 
+One important lesson from the above trivial integral is that the leading terms of the integral come from the vertices of the positive geometry. 
 
 Now let's come to the two-dimensional example,
 \[
@@ -239,12 +239,12 @@ similarly, $I(\infty,0)\sim ({\alpha'}^2 b (c-a))^{-1}$. Now the hard vertex
 	I(0,0)&=\int_{0}^\epsilon\int_0^{\epsilon} \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y)^{-\alpha' c}
 \end{align*}
 When $(x,y)\to (0,0)$, we cannot decouple $x$ and $y$ because of the factor $(x+y)^{-\alpha' c}$. A clever way to calculate it is blowing-up. Let $x = tp$ and $y=t(1-p)$, then
-\[
+\begin{equation}\label{canonicalformunderblowup}
 	\frac{dxdy}{xy} = \frac{dp}{p(1-p)}\frac{dt}{t},
-\]
+\end{equation}
 and
 \begin{align*}
-	I(0,0)&=\int_0^{1}\frac{dp}{p(1-p)}\int_{0}^\epsilon\frac{dt}{t} t^{\alpha'(a+b-c)}p^{\alpha' a}(1-p)^{\alpha' b}\\
+	I(0,0)&=\int_{0}^\epsilon\frac{dt}{t} t^{\alpha'(a+b-c)}\int_0^{1}\frac{dp}{p(1-p)}p^{\alpha' a}(1-p)^{\alpha' b}\\
 	&\sim \frac{1}{\alpha'}\frac{1}{a+b-c}\int_0^{1}\frac{dp}{p(1-p)}p^{\alpha' a}(1-p)^{\alpha' b}\\
 	&\sim \frac{1}{{\alpha'}^2}\frac{1}{a+b-c}\biggl(\frac 1a+\frac 1b\biggr)
 \end{align*}
@@ -257,7 +257,7 @@ The leading terms of original integral is
 	I\sim I(0,0)+I(0,\infty)+I(\infty,0)+I(\infty,\infty).
 \]
 
-Now let's consider the general story. Generally, the integral near a vertex need not to be decoupled, so blowing-up is necessary. 
+Now let's consider the general story. Generally, the integral near a vertex need not to be decoupled as $I(0,\infty)$ above, so blowing-up is necessary. One important feature of $\Omega_{\mathcal P}$ is `invariant' under the blowing-up because the residue of the canonical form on the boundary is the canonical form of the boundary.
 
 Suppose a boundary defined by local coordinates $x_1=\cdots=x_n=0$ need to be blowed up in integration. Now let $x_i=ty_i$, where $[y_1,\dots,y_n]$ are positive projective coordinates. Near the boundary, the canonical form of $\Omega$ performs as 
 \[
@@ -268,11 +268,11 @@ where $x'$ are other coordinates. In new coordinates, it can be written as
 \[
 	\Omega=\frac{1}{y_n}\frac{dt}{t}\wedge \frac{dy_1}{y_1}\wedge \cdots\wedge\frac{dy_{n-1}}{y_{n-1}}\wedge \Phi(x')+O(t^0),
 \]
-where $y_n=1-(y_1+\cdots+y_{n-1})$. Therefore,
+where $y_n=1-(y_1+\cdots+y_{n-1})$ and $\Phi$ is the canonical form of the boundary of $\mathcal P$ given by $x_1=\cdots=x_n=0$. Therefore,
 \[
 	\operatorname{Res}_{t=0}(\Omega)=\frac{1}{y_n}\frac{dy_1}{y_1}\wedge \cdots\wedge\frac{dy_{n-1}}{y_{n-1}}\wedge \Phi(x')=\Omega_{n-1}(y)\wedge \Phi(x'),
 \]
-$\Omega_{n-1}(y)$ the canonical form of a standard $(n-1)$-dimensional simplex. If we rewrite it in new coordinates $\{z_i\}$ such that
+$\Omega_{n-1}(y)$ the canonical form of a standard $(n-1)$-dimensional simplex $\Delta_{n-1}$. If we rewrite it in new coordinates $\{z_i\}$ such that
 \[
 	z_0=0,\quad y_i=z_i-z_{i-1},\quad z_{n}=1,
 \]
@@ -282,42 +282,52 @@ then
 \]
 It's the more familiar form.
 
-Consider a set of irreducible polynomials $\{p_i\}$, let $Z(p_i)$ be the zero point set of $p_i$ in $\mathbb{R}^n$. Suppose a curved polytope $\mathcal P$ is bounded by $\bigcup_i Z(p_i)$, if $F_k$ is a codimension $k$ face of $\mathcal P$ where $\#\{i\,:\,F_k\subset Z(p_i)\}>k$, then we call it a degenerated face.
+% Consider a set of irreducible polynomials $\{p_i\}$, let $Z(p_i)$ be the zero point set of $p_i$ in $\mathbb{R}^n$. Suppose a curved polytope $\mathcal P$ is bounded by $\bigcup_i Z(p_i)$, if $F_k$ is a codimension $k$ face of $\mathcal P$ where $\#\{i\,:\,F_k\subset Z(p_i)\}>k$, then we call it a degenerated face.
 
-Now Consider the integration
-\[
-	I(\alpha')=\int_{\mathcal P} \Omega_{\mathcal P}(x)\prod_i(p_i(x))^{\alpha' s_i},
-\]
-where $\Omega$ is the canonical form of $\mathcal P$, and we suppose $I(\alpha')$ is finite when $\alpha'>0$.
-It's clear that $I(\alpha')$ diverge when $\alpha'\to 0$. We want to find all possible poles in the leading order of its Laurent series with respect to $\alpha$ at $\alpha=0$. It's a rational function of $s_i$ since $p_i$ are all polynomials.
+% Now Consider the integration
+% \[
+% 	I(\alpha')=\int_{\mathcal P} \Omega_{\mathcal P}(x)\prod_i(p_i(x))^{\alpha' s_i},
+% \]
+% where $\Omega$ is the canonical form of $\mathcal P$, and we suppose $I(\alpha')$ is finite when $\alpha'>0$.
+% It's clear that $I(\alpha')$ diverge when $\alpha'\to 0$. We want to find all possible poles in the leading order of its Laurent series with respect to $\alpha$ at $\alpha=0$. It's a rational function of $s_i$ since $p_i$ are all polynomials.
 
-If $F$ is a facet of $\mathcal P$. Locally, if $F$ is defined by $x=0$, then near $F$, the integration is 
-\[
-	\int_0^\epsilon \frac{d x}{x} x^{\alpha' a} \int_{x'}\Psi(x')
-	\sim \frac{1}{\alpha' a}\int_{x'}\Psi(x'),
-\]
-where $x'$ are other coordinates and $\Psi(x')$ is the left part of $\Omega_{\mathcal P}(x)\prod_i(p_i(x))^{\alpha' s_i}$. Then $a$ is a possible pole.
+% If $F$ is a facet of $\mathcal P$. Locally, if $F$ is defined by $x=0$, then near $F$, the integration is 
+% \[
+% 	\int_0^\epsilon \frac{d x}{x} x^{\alpha' a} \int_{x'}\Psi(x')
+% 	\sim \frac{1}{\alpha' a}\int_{x'}\Psi(x'),
+% \]
+% where $x'$ are other coordinates and $\Psi(x')$ is the left part of $\Omega_{\mathcal P}(x)\prod_i(p_i(x))^{\alpha' s_i}$.
 
-If $F$ is a degenerated face defined by local coordinates $x_1=\cdots=x_n=0$. We need blow up the boundary in the integration. Suppose polynomials are factorized into
+If $F$ is a degenerated face defined by local coordinates $x_1=\cdots=x_n=0$, and we need blow up the boundary in the integration. Suppose polynomials are factorized into
 \[
-	p_i(x)=t^{k_i}q_i(x',y,t),
+	p_i(x) = t^{k_i}q_i(x',y,t).
 \]
-where $q_i(x',y,0)\neq 0$. Therefore, in integration, near this boundary and when $\alpha'$ is small, 
+Therefore, in integration, near this boundary and when $\alpha'$ is small, 
 \[
 	\begin{aligned}
 		\int_{x'} \int_{x\in [0,\epsilon]^n} \Omega(x,x')\, \prod_i(p_i(x))^{\alpha' s_i}
-		&\sim 
-		\int_{[0,1]^{n-1}}\Omega_{n-1}(y)
-		\int_{x'}\Phi(x')\prod_i
-		(q_i(x',y,0))^{\alpha' s_i}
-		\int_0^\epsilon \, \frac{dt}{t} t^{\alpha' \sum_i k_is_i}\\
-		&\sim \frac{1}{\alpha' (\sum_i k_is_i)}
-		\int_{[0,1]^{n-1}}\Omega_{n-1}(y)
-		\int_{x'}\Phi(x')\prod_i
-		(q_i(x',y,0))^{\alpha' s_i},
+		&=
+		\int_0^\epsilon \, \frac{dt}{t} t^{\alpha' \sum_i k_is_i}\int_{y\in\Delta_{n-1}}\int_{x'}\Omega_{n-1}(y)
+		\Phi(x')\prod_i
+		(q_i(x',y,t))^{\alpha' s_i},
 	\end{aligned}
 \]
-then $\sum_i k_is_i$ could be a pole. 
+however we still need to worry about the blowing-up of $t$ and $x'$, the only way to simplify the result is to hope $q_i(x',y,t)$ has a simple form, for example, $q_i(x',y,t)=g_i(x')h_i(y)$ for all $i$.
+
+Suppose we are at the vertices defined by $x_1,\dots,x_D=0$, and for each polynomial $p(x)=\sum_{I\in \mathscr A}a_I x^{n^I}$ we can choose a positive basis of $\{n^I\}_{I\in \mathscr B}$ such that for all $I \in \mathscr A$, 
+\[
+	n^I = \sum_{J\in \mathscr B}c^I_J n^J,
+\]
+where $c^I_J\geq 0$ are rational numbers, and then define a new polynomial $\bar p(x)=\sum_{J\in \mathscr B}a_J x^{n^J}$. For example, for $p=x+y^2+xy$, $\bar p=x+y^2$.
+
+% We can always choose a face of $\mathcal P$ and then integrate out one dimension to get some lower dimensional integrals. For example, if we blow up vertices again and agian, we will get $(D-1)!(\#V_{\mathcal P})$ terms since the number of vertices of $\Delta_n$ is $n$, where $\#V_{\mathcal P}$ is the number of vertices of $\mathcal P$. However, once we choosing a good face to factorize the integral, \textit{i.e.} 
+% \[
+% 	q_i(x',y)=g_i(x')h_i(y)
+% \]
+% for each $i$, then $\#V_{\mathcal P}(D-1)!$ is naively reduced to $(\#V_{\mathcal P})(\#V_{F})(n-1)!(D-n-1)!$. 
+
+
+
 
 
 \section{General prescription of pole subtraction}
