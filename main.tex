@@ -179,21 +179,30 @@ Finally, we claim that $F(y)$ does not take minimum when $\mathbf{y}$ goes to in
 
 \section{Blow up}
 
-Consider the following integral
+Some review of positive geometry \& canonical form. blabla
+
+Consider the integration
 \[
-	\int_{\mathbb R_+^d}\frac{d x_1}{x_1} \cdots \frac{d x_d}{x_d} x_1^{n_1}\cdots x_d^{\alpha' n_d} P(x_1,\dots,x_d)^{-\alpha' c}, 
+	I(\alpha')=\int_{\mathcal P} \Omega_{\mathcal P}(x)\prod_i(p_i(x))^{\alpha' s_i},
 \]
-where $P$ is a polynomial, here we can further assume that $P(0,\dots,0)\neq 0$. When $\alpha'\to 0$, the integral diverge, we want to calculate the leading term of $(\alpha')^{-1}$ of this integral. blabla
+where $\Omega$ is the canonical form of $\mathcal P$, and we suppose $I(\alpha')$ is finite when $\alpha'>0$.
+It's clear that $I(\alpha')$ diverge when $\alpha'\to 0$. We want to calculate the leading order of its Laurent series with respect to $\alpha'$ at $\alpha'=0$. It's a rational function of $s_i$ since $p_i$ are all polynomials.
+
+% Consider the following integral
+% \[
+% 	\int_{\mathbb R_+^d}\frac{d x_1}{x_1} \cdots \frac{d x_d}{x_d} x_1^{n_1}\cdots x_d^{\alpha' n_d} P(x_1,\dots,x_d)^{-\alpha' c}, 
+% \]
+% where $P$ is a polynomial, here we can further assume that $P(0,\dots,0)\neq 0$. When $\alpha'\to 0$, the integral diverge, we want to calculate the leading term of $(\alpha')^{-1}$ of this integral. blabla
 
 Let's first consider the one-dimensional example, the Beta function 
 \[
-	B(\alpha' a,\alpha' b)=\int_0^1 \frac{dt}{t(1-t)} t^{\alpha' a}(1-t)^{\alpha' b}=\int_{\mathbb R_+}\frac{dt}{t}t^{\alpha' a}(1+t)^{-\alpha'(a+b)}.
+	B(\alpha' a,\alpha' b)=\int_0^1 \frac{dt}{t(1-t)}\, t^{\alpha' a}(1-t)^{\alpha' b}=\int_{\mathbb R_+}\frac{dt}{t}\, t^{\alpha' a}(1+t)^{-\alpha'(a+b)}.
 \]
 To calculate the integral, we can decompose the integral by 
 \[
-	\biggl(\int_{0}^\epsilon +\int_\epsilon^{1/\epsilon}+\int_{1/\epsilon}^\infty\biggr)\frac{dt}{t} t^{\alpha' a}(1+t)^{-\alpha'(a+b)}.
+	\biggl(\int_{0}^\epsilon +\int_\epsilon^{1/\epsilon}+\int_{1/\epsilon}^\infty\biggr)\frac{dt}{t}\, t^{\alpha' a}(1+t)^{-\alpha'(a+b)}.
 	\]
-The middle integral is finte when $\alpha'\to 0$ so that it does not contribute, the other two integrals are
+The middle integral is finite when $\alpha'\to 0$ so that it does not contribute, the other two integrals are
 	\[
 		\int_0^\epsilon \frac{dt}t t^{\alpha' a}(1+t)^{-\alpha'(a+b)}
 	\sim \int_0^\epsilon \frac{dt}t t^{\alpha' a} 
@@ -207,15 +216,15 @@ The middle integral is finte when $\alpha'\to 0$ so that it does not contribute,
 so the leading term of this integral is 
 \[
 	B(\alpha' a,\alpha' b)\sim\frac 1{\alpha'}\biggl(\frac 1a+\frac 1b\biggr).
-	\]
-	
-There's one important lesson from the above simple integral, the leading terms of the integral come from the vertices of the regions. 
+\]
 
-Now let's come to the two dimensional example,
+One important lesson from the above trivial integral is that the leading terms of the integral come from the vertices of the regions (positive geometry). 
+
+Now let's come to the two-dimensional example,
 \[
 	I=\int_{\mathbb R_+^2} \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y)^{-\alpha' c}.
 \]
-The leading terms come form the neighbourhoods of the vertices, let's conider the simplest vertice first, 
+The leading terms come form the neighbourhoods of the vertices, let's consider the simplest vertex first, 
 \begin{align*}
 	I(0,\infty)&=\int_{0}^\epsilon\int_{1/\epsilon}^\infty \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y)^{-\alpha' c}\\
 	&=
@@ -225,7 +234,7 @@ The leading terms come form the neighbourhoods of the vertices, let's conider th
 	&\sim 
 	\frac{1}{{\alpha'}^2}\frac{1}{a} \frac{1}{c-b}
 \end{align*}
-similarly, $I(\infty,0)\sim ({\alpha'}^2 b (c-a))^{-1}$. Now the hard vertice
+similarly, $I(\infty,0)\sim ({\alpha'}^2 b (c-a))^{-1}$. Now the hard vertex
 \begin{align*}
 	I(0,0)&=\int_{0}^\epsilon\int_0^{\epsilon} \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y)^{-\alpha' c}
 \end{align*}
@@ -248,7 +257,7 @@ The leading terms of original integral is
 	I\sim I(0,0)+I(0,\infty)+I(\infty,0)+I(\infty,\infty).
 \]
 
-Now let's consider the general story. Genearlly, the integral near a vertice need not to be decoupled, so blowing-up is necessary. 
+Now let's consider the general story. Generally, the integral near a vertex need not to be decoupled, so blowing-up is necessary. 
 
 Suppose a boundary defined by local coordinates $x_1=\cdots=x_n=0$ need to be blowed up in integration. Now let $x_i=ty_i$, where $[y_1,\dots,y_n]$ are positive projective coordinates. Near the boundary, the canonical form of $\Omega$ performs as 
 \[
@@ -259,7 +268,7 @@ where $x'$ are other coordinates. In new coordinates, it can be written as
 \[
 	\Omega=\frac{1}{y_n}\frac{dt}{t}\wedge \frac{dy_1}{y_1}\wedge \cdots\wedge\frac{dy_{n-1}}{y_{n-1}}\wedge \Phi(x')+O(t^0),
 \]
-where $y_n=1-(y_1+\cdots+y_{n-1})$. Therofore,
+where $y_n=1-(y_1+\cdots+y_{n-1})$. Therefore,
 \[
 	\operatorname{Res}_{t=0}(\Omega)=\frac{1}{y_n}\frac{dy_1}{y_1}\wedge \cdots\wedge\frac{dy_{n-1}}{y_{n-1}}\wedge \Phi(x')=\Omega_{n-1}(y)\wedge \Phi(x'),
 \]
