@@ -186,7 +186,7 @@ Consider the integration
 	I(\alpha')=\int_{\mathcal P} \Omega_{\mathcal P}(x)\prod_i(p_i(x))^{\alpha' s_i},
 \]
 where $\Omega$ is the canonical form of the $D$-dimensional positive geometry $\mathcal P$, and we suppose $I(\alpha')$ is finite when $\alpha'>0$.
-It's clear that $I(\alpha')$ diverge when $\alpha'\to 0$ because the simple pole of canonical form on the boundary of $\mathcal P$. We want to calculate the leading order of its Laurent series with respect to $\alpha'$ at $\alpha'=0$. It's a rational function of $s_i$ since $p_i$ are all polynomials.
+It's clear that $I(\alpha')$ diverge when $\alpha'\to 0$ because the simple pole of canonical form on the boundary of $\mathcal P$. We want to calculate the leading order of its Laurent series with respect to $\alpha'$ at $\alpha'=0$. % It's a rational function of $s_i$ since $p_i$ are all polynomials.
 
 % Consider the following integral
 % \[
@@ -196,22 +196,21 @@ It's clear that $I(\alpha')$ diverge when $\alpha'\to 0$ because the simple pole
 
 Let's first consider the one-dimensional example, the Beta function 
 \[
-	B(\alpha' a,\alpha' b)=\int_0^1 \frac{dt}{t(1-t)}\, t^{\alpha' a}(1-t)^{\alpha' b}=\int_{\mathbb R_+}\frac{dt}{t}\, t^{\alpha' a}(1+t)^{-\alpha'(a+b)}.
+	B(\alpha' a,\alpha' b)=\int_0^1 \frac{dt}{t(1-t)}\, t^{\alpha' a}(1-t)^{\alpha' b}.
 \]
 To calculate the integral, we can decompose the integral by 
 \[
-	\biggl(\int_{0}^\epsilon +\int_\epsilon^{1/\epsilon}+\int_{1/\epsilon}^\infty\biggr)\frac{dt}{t}\, t^{\alpha' a}(1+t)^{-\alpha'(a+b)}.
-	\]
+	\biggl(\int_{0}^\epsilon +\int_\epsilon^{1-\epsilon}+\int_{1-\epsilon}^1\biggr) \frac{dt}{t(1-t)}\, t^{\alpha' a}(1-t)^{\alpha' b}.
+\]
 The middle integral is finite when $\alpha'\to 0$ so that it does not contribute, the other two integrals are
 	\[
-		\int_0^\epsilon \frac{dt}t t^{\alpha' a}(1+t)^{-\alpha'(a+b)}
+		\int_0^\epsilon  \frac{dt}{t(1-t)}\, t^{\alpha' a}(1-t)^{\alpha' b}
 	\sim \int_0^\epsilon \frac{dt}t t^{\alpha' a} 
 	= \frac{\epsilon^{\alpha' a}}{\alpha'a} \sim \frac{1}{\alpha'a},
 	\]
-	\[
-	\int_{1/\epsilon}^\infty \frac{dt}t t^{\alpha' a}(1+t)^{-\alpha'(a+b)} 
-	= \int_0^\epsilon \frac{dt}{t} t^{\alpha' b}(1+t)^{-\alpha' (a+b)}
-	\sim \frac{1}{\alpha' b},
+\[
+	\int_{1-\epsilon}^1  \frac{dt}{t(1-t)}\, t^{\alpha' a}(1-t)^{\alpha' b}
+	\sim \int_0^\epsilon \frac{dt}{t}\, t^{\alpha' b} \sim \frac{1}{\alpha' b},
 \]
 so the leading term of this integral is 
 \[
@@ -222,42 +221,79 @@ One important lesson from the above trivial integral is that the leading terms o
 
 Now let's come to the two-dimensional example,
 \[
-	I=\int_{\mathbb R_+^2} \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y)^{-\alpha' c}.
+	I=\int_{\mathbb R_1+^2} \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y)^{-\alpha' c}.
 \]
-The leading terms come form the neighbourhoods of the vertices, let's consider the simplest vertex first, 
-\begin{align*}
-	I(0,\infty)&=\int_{0}^\epsilon\int_{1/\epsilon}^\infty \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y)^{-\alpha' c}\\
-	&=
-	\int_{0}^\epsilon\int^{\epsilon}_0 \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{-\alpha' (c-b)}(xy+1)^{-\alpha' c}\\
-	&\sim 
-	\int_{0}^\epsilon\int^{\epsilon}_0 \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{-\alpha' (c-b)}\\
-	&\sim 
+The leading terms come form the neighbourhoods of four vertices $(0,0)$, $(0,\infty)$, $(\infty,0)$ and $(\infty,\infty)$. Let's consider the simplest vertex first, 
+\[
+	I(0,\infty)=\int_{0}^\epsilon\int_{1/\epsilon}^\infty \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y)^{-\alpha' c}\sim \int_{0}^\epsilon\int_{1/\epsilon}^\infty \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' (b-c)}\sim 
 	\frac{1}{{\alpha'}^2}\frac{1}{a} \frac{1}{c-b}
-\end{align*}
-similarly, $I(\infty,0)\sim ({\alpha'}^2 b (c-a))^{-1}$. Now the hard vertex
-\begin{align*}
-	I(0,0)&=\int_{0}^\epsilon\int_0^{\epsilon} \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y)^{-\alpha' c}
-\end{align*}
-When $(x,y)\to (0,0)$, we cannot decouple $x$ and $y$ because of the factor $(x+y)^{-\alpha' c}$. A clever way to calculate it is blowing-up. Let $x = tp$ and $y=t(1-p)$, then
+\]
+similarly, $I(\infty,0)\sim ({\alpha'}^2 b (c-a))^{-1}$. Near the vertex $(0,\infty)$, the integral decouples because the mixed factor $x+y \sim y$ when $y \gg x$.  
+
+Now consider the harder vertex
+\[
+	I(0,0)=\int_{0}^\epsilon\int_0^{\epsilon} \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y)^{-\alpha' c}.
+\]
+When $(x,y)\to (0,0)$, we cannot decouple $x$ and $y$ in the mixed factor $(x+y)^{-\alpha' c}$ because we don't know which one is dominated. A clever way to calculate it is blowing-up. Let $x = tp$ and $y=t(1-p)$, then
 \begin{equation}\label{canonicalformunderblowup}
 	\frac{dxdy}{xy} = \frac{dp}{p(1-p)}\frac{dt}{t},
 \end{equation}
 and
-\begin{align*}
-	I(0,0)&=\int_{0}^\epsilon\frac{dt}{t} t^{\alpha'(a+b-c)}\int_0^{1}\frac{dp}{p(1-p)}p^{\alpha' a}(1-p)^{\alpha' b}\\
-	&\sim \frac{1}{\alpha'}\frac{1}{a+b-c}\int_0^{1}\frac{dp}{p(1-p)}p^{\alpha' a}(1-p)^{\alpha' b}\\
-	&\sim \frac{1}{{\alpha'}^2}\frac{1}{a+b-c}\biggl(\frac 1a+\frac 1b\biggr)
-\end{align*}
-similarly, 
+\begin{equation*}
+	I(0,0)=\int_{0}^\epsilon\frac{dt}{t} t^{\alpha'(a+b-c)}\int_0^{1}\frac{dp}{p(1-p)}p^{\alpha' a}(1-p)^{\alpha' b}%\sim \frac{1}{\alpha'}\frac{1}{a+b-c}\int_0^{1}\frac{dp}{p(1-p)}p^{\alpha' a}(1-p)^{\alpha' b}
+	\sim \frac{1}{{\alpha'}^2}\frac{1}{a+b-c}\biggl(\frac 1a+\frac 1b\biggr).
+\end{equation*}
+In this example, whether $x$ or $y$ is dominated in the integration is characterized by $p$, and both vertices $p\sim 0$ ($x\ll y$) and $p\sim 1$ ($y\ll x$) contribute. Similarly, 
 \[
-	I(\infty,\infty)\sim \frac{1}{{\alpha'}^2}\frac{1}{c-a-b}\biggl(\frac 1{c-a}+\frac 1{c-b}\biggr).
+	I(\infty,\infty)\sim \frac{1}{{\alpha'}^2}\frac{1}{c-a-b}\biggl(\frac 1{c-a}+\frac 1{c-b}\biggr),
 \]
-The leading terms of original integral is 
+so the leading terms of original integral is 
 \[
 	I\sim I(0,0)+I(0,\infty)+I(\infty,0)+I(\infty,\infty).
 \]
 
-Now let's consider the general story. Generally, the integral near a vertex need not to be decoupled as $I(0,\infty)$ above, so blowing-up is necessary. One important feature of $\Omega_{\mathcal P}$ is `invariant' under the blowing-up because the residue of the canonical form on the boundary is the canonical form of the boundary.
+Now let's consider the general story. Generally, the integral near a vertex need not to be decoupled as $I(0,\infty)$ above, so blowing-up is necessary. Suppose we come to the vertex defined locally by $x_1=\cdots=x_D=0$, 
+\[
+	I(0,\dots,0)\sim \int_{[0,\epsilon]^D} \frac{d x_1}{x_1}\cdots \frac{d x_D}{x_D} \prod_i(p_i(x))^{\alpha' s_i}.
+\]
+In each polynomial $p_i$, 
+\[
+	p_i(x)=\sum_{I} a_{iI} x^{n^I},
+\]
+we need to worry about which $x^{n^I}$ is dominated in the integration, however not all terms can  dominate the integral. For example, if we find that $x^{n^J}=x^{n^I}x^{v}$ or equivalently $n^J=n^I+v$ for some non-zero positive vector $v$, there's no need to consider $x^{n^J}$ anymore because it goes to zero faster than $x^{n^I}$. 
+
+More formally, for a polynomial $p(x)=\sum_{I\in \mathscr A}a_I x^{n^I}$ we can choose a basis of $\{n^I\}_{I\in \mathscr B}$ such that for all $I \in \mathscr A-\mathscr B$, there exist non-negative numbers $\{c^I_J\}$ such that
+\[
+	n^I = \sum_{J\in \mathscr B}c^I_J n^J,\quad \sum_J c^I_J>  1,
+\]
+and then we can replace $p(x)$ by a new polynomial $\bar p(x)=\sum_{J\in \mathscr B}a_J x^{n^J}$ because for all $I \in \mathscr A-\mathscr B$ it goes to zero faster than at least one $x^{n^J}$. In fact, after setting $x_i=t y_i$, for $I \in \mathscr A-\mathscr B$, 
+\[
+	x^{n^I}=\prod_J (x^{n^J})^{c^I_J}=x^{\sum_J c^I_J n^J} = t^{\sum_J c^I_J |n^J|}y^{\sum_J c^I_J n^J}
+\]
+where there always exists a $K\in \mathscr B$ such that $|n^K|<\sum_J c^I_J |n^J|$, otherwise
+\[
+	\sum_{K\in \mathscr B} c^I_K|n^K|\geq \left(\sum_{K\in \mathscr B} c^I_K\right)\sum_{J\in \mathscr B} c^I_J |n^J|>\sum_{J\in \mathscr B} c^I_J |n^J|,
+\]
+so there's a contradiction.
+
+Geometrically, if we consider the cone $C$ spanned by all $\{n^I\}$, then the basis can be choosen as the vertices on the boundary of $C$, and terms corresponding to points inside $C$ can be dropped.
+For example, suppose that $p(x,y)=x^3+y^3+xy+x^3y^2+xy^3$, we draw each $n^I$ in the following diagram,
+\begin{center}
+	\begin{tikzpicture}
+		\fill[gray!20] (0,4) -- (0,3) -- (1,1) -- (3,0) -- (4,0) -- (4,4);
+		\draw[thick] (0,4) -- (0,3) -- (1,1) -- (3,0) -- (4,0);
+		\draw[->](-0.1,0) -- (4,0);
+		\draw[->](0,-0.1) -- (0,4);
+		\node at (3,2) {$\times$};
+		\node at (1,3) {$\times$};
+		\node[inner sep=1.5pt,circle,fill=blue] at (0,3) {};
+		\node[inner sep=1.5pt,circle,fill=blue] at (1,1) {};
+		\node[inner sep=1.5pt,circle,fill=blue] at (3,0) {};
+	\end{tikzpicture}
+\end{center}
+where $x^3y^2\leftrightarrow (3,2)$ and $xy^3\leftrightarrow (1,3)$ are represented by $\times$ in the diagram and other terms are represented by blue points. The basis is given by blue points $\{x^3\leftrightarrow (3,0),y^3\leftrightarrow (0,3),xy\leftrightarrow (1,1)\}$, and the gray region is the set of all vectors $v=\sum_{J\in \mathscr B}c^I_J n^J$ where $\sum_J c^I_J>1$, therefore we throw away terms in the gray region and then get that $\bar p(x)=x^3+y^3+xy$. 
+
+Now we start to consider how to blow up. One important feature of $\Omega_{\mathcal P}$ is `invariant' under the blowing-up because the residue of the canonical form on the boundary is the canonical form of the boundary.
 
 Suppose a boundary defined by local coordinates $x_1=\cdots=x_n=0$ need to be blowed up in integration. Now let $x_i=ty_i$, where $[y_1,\dots,y_n]$ are positive projective coordinates. Near the boundary, the canonical form of $\Omega$ performs as 
 \[
@@ -314,21 +350,11 @@ Therefore, in integration, near this boundary and when $\alpha'$ is small,
 \]
 however we still need to worry about the blowing-up of $t$ and $x'$, the only way to simplify the result is to hope $q_i(x',y,t)$ has a simple form, for example, $q_i(x',y,t)=g_i(x')h_i(y)$ for all $i$.
 
-Suppose we are at the vertices defined by $x_1,\dots,x_D=0$, and for each polynomial $p(x)=\sum_{I\in \mathscr A}a_I x^{n^I}$ we can choose a positive basis of $\{n^I\}_{I\in \mathscr B}$ such that for all $I \in \mathscr A$, 
-\[
-	n^I = \sum_{J\in \mathscr B}c^I_J n^J,
-\]
-where $c^I_J\geq 0$ are rational numbers, and then define a new polynomial $\bar p(x)=\sum_{J\in \mathscr B}a_J x^{n^J}$. For example, for $p=x+y^2+xy$, $\bar p=x+y^2$.
-
 % We can always choose a face of $\mathcal P$ and then integrate out one dimension to get some lower dimensional integrals. For example, if we blow up vertices again and agian, we will get $(D-1)!(\#V_{\mathcal P})$ terms since the number of vertices of $\Delta_n$ is $n$, where $\#V_{\mathcal P}$ is the number of vertices of $\mathcal P$. However, once we choosing a good face to factorize the integral, \textit{i.e.} 
 % \[
 % 	q_i(x',y)=g_i(x')h_i(y)
 % \]
 % for each $i$, then $\#V_{\mathcal P}(D-1)!$ is naively reduced to $(\#V_{\mathcal P})(\#V_{F})(n-1)!(D-n-1)!$. 
-
-
-
-
 
 \section{General prescription of pole subtraction}
 
