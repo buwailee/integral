@@ -45,7 +45,12 @@ whose Newton polytope is defined as the Minkowski sum  $N_P=\sum_j \alpha_j N(p_
 \[
 	\mathbf X(x)=\frac{\partial \log P}{\partial \log \mathbf x},
 \]
-where $x_i\in (0,\infty)$ for all $i$, is an one-to-one map between $(0,\infty)^N$ and the interior of $N_P$. 
+where $x_i\in (0,\infty)$ for all $i$, is a one-to-one map from $(0,\infty)^N$ to the interior of $N_P$ when matrix $(n_i^I)$ has full rank
+\footnote{When matrix $(n_i^I)$ doesn't have full rank, the map is not one-to-one. But in fact, we can always assume it has full rank, thus $\dim (N(p))=N$. If not, there exists $\mathbf s\neq 0$ such that $\mathbf s \cdot \mathbf n^I=0$ for all $I$. In this case,
+\[
+	\mathbf s\cdot\mathbf X=\mathbf s\cdot\frac{\partial \log p}{\partial \log \mathbf x}=0.
+\]
+Therefore, one can project $\operatorname{im}(\mathbf X)$ by setting some $x_i=1$ so that there's no more vector $\mathbf s$ such that $\mathbf s\cdot \mathbf n^I=0$ for all $I$. Conversely, one can recover the original image by solving these equations $\mathbf s\cdot\mathbf X=0$}. 
 
 \end{thm}
 
@@ -55,16 +60,10 @@ Consider a unique polynomial $p=\sum_{I} a_I x^I$ with $a_I\geq 0$ for all $I$. 
 \[
 	\mathbf X(x)=\frac{\partial \log p}{\partial \log \mathbf x},
 \]
-where $x_i\in (0,\infty)$ for all $i$.
+where $x_i\in (0,\infty)$ for all $i$. Then the theorem is equivalent to the claim that the equations $\mathbf X(x)=\mathbf\Lambda$ have a solution in $\mathbb R^N$ iff $\mathbf\Lambda\in (N(p))^\circ$. Moreover, the solution is always unique for each interior point.
 
-Firstly, without loss of generality, we can assume that the matrix $(n_i^I)$ has full rank. Therefore $\dim (N(p))=N$. If not, there exists $\mathbf s\neq 0$ such that $\mathbf s \cdot \mathbf n^I=0$ for all $I$. In this case,
-\[
-	\mathbf s\cdot\mathbf X=\mathbf s\cdot\frac{\partial \log p}{\partial \log \mathbf x}=0.
-\]
-Therefore, one can project $\operatorname{im}(\mathbf X)$ by setting some $x_i=1$ so that there's no more vector $\mathbf s$ such that $\mathbf s\cdot \mathbf n^I=0$ for all $I$. Conversely, one can recover the original image by solving these equations $\mathbf s\cdot\mathbf X=0$. 
 
-Next we show that interior points of $N(p)$ are in the $\operatorname{im}(\mathbf{X})$.
-Let $\mathbf{\Lambda}$ be a interior point in $N(p)$ defined by 
+To prove the claim, let $\mathbf{\Lambda}$ be an interior point in $N(p)$ defined by 
 \[
 	\mathbf \Lambda=\sum_{I}\lambda_I\mathbf n^I
 	=\frac{\partial}{\partial \log \mathbf x}\sum_{I}\lambda_I \log x^I
@@ -90,7 +89,9 @@ Let $\mathbf y=\log \mathbf x$, and then
 		&=\sum_I a_I \exp\left(\mathbf{y}\cdot \left(\mathbf{n}^I-\mathbf{\Lambda}\right)\right)
 	\end{aligned}
 \]
-so we only need to show that $F(\mathbf y)$ has saddle points in $\mathbb R^N$ because $F>0$ for all $\mathbf y$. To see it, we firstly notice that $F(\mathbf y)$ is a strict convex function of $\mathbf y$. In fact, the Hessian of $F(\mathbf y)$ is 
+so we only need to show that $F(\mathbf y)$ has a unique saddle points in $\mathbb R^N$ because $F>0$ for all $\mathbf y$.
+
+ To see it, we firstly notice that $F(\mathbf y)$ is a strict convex function of $\mathbf y$. In fact, the Hessian of $F(\mathbf y)$ is 
 \[
 	H_{ij}(\mathbf y)=\frac{\partial^2}{\partial y_i\partial y_j}F(\mathbf y)=\sum_I a_I \exp\left(\mathbf{y}\cdot \left(\mathbf{n}^I-\mathbf{\Lambda}\right)\right)\left(\mathbf{n}^I-\mathbf{\Lambda}\right)_i\left(\mathbf{n}^I-\mathbf{\Lambda}\right)_j.
 \]
@@ -102,9 +103,9 @@ It cannot vanish because that it only happens when $\mathbf v\cdot (\mathbf{n}^I
 
 For a strict convex function $F(\mathbf y)$ on $\mathbb R^N$, it has a unique minimal in $\mathbb R^N$ iff it does not take its minimal when $\mathbf{y}$ goes to infinity along any direction. In our case, we only need that for any $\mathbf{y}\neq 0$ and $\mathbf\Lambda \in (N(p))^\circ $, there exist some $I$ such that  
 \[
-	\mathbf{y}\cdot (\mathbf{n}^I-\mathbf{\Lambda})>0
+	\mathbf{y}\cdot (\mathbf{n}^I-\mathbf{\Lambda})>0,
 \]
-and if $\mathbf\Lambda \not\in N(p)$, there exist some $\mathbf{y}\neq 0$ such that the exponentials are all negative, then $F(t\mathbf y)\to 0$ when $t\to \infty$, which is direct result of convexity of $N(p)$.
+which is direct result of convexity of $N(p)$: (figure \cite{}) If $\mathbf\Lambda \in (N(p))^\circ$, for a given $\mathbf y\neq 0$, the hyperplain $L$ with normal vector $\mathbf y$ crossing $\mathbf \Lambda$ divides the space $\mathbb R^N$ into semi-spaces $L^+$ and $L^-$, then $\mathbf{n}^I$ in $L^+$ are what we are looking for.
 
 \begin{figure}[htbp]
 \centering
@@ -121,21 +122,19 @@ and if $\mathbf\Lambda \not\in N(p)$, there exist some $\mathbf{y}\neq 0$ such t
 \put(20,0){$\mathbf{n}^I$};
 \end{tikzpicture}
 
-\caption{}
-In fact, if $\mathbf\Lambda \in (N(p))^\circ$, for a given $\mathbf y\neq 0$, the hyperplain $L$ with normal vector $\mathbf y$ crossing $\mathbf \Lambda$ divides the space $\mathbb R^N$ into semi-spaces $L^+$ and $L^-$, then $\mathbf{n}^I$ in $L^+$ are what we are looking for. Conversely, if $\mathbf\Lambda \not\in N(p)$, one can find a hyperplain $L$ such that $N(p)\subset L^-$, then the normal vector of $L$ gives the wanted direction. 
+
+ 
 
 \end{figure}
+Conversely, if $\mathbf\Lambda \not\in N(p)$, one can find a hyperplain $L$ such that $N(p)\subset L^-$, then the normal vector $\mathbf{y}$ of $L$ gives the wanted direction, making the exponentials all negative. $F(t\mathbf y)\to 0$ when $t\to \infty$. As a positive convex function, $F(\mathbf y)$ has no saddle point in $\mathbb R^N$.
 
 
 
-
-
-
-Therefore, we have proven that $F(\mathbf y)$ has a unique minimal in $\mathbb R^N$ when $\mathbf \Lambda \in (N(p))^\circ$ and no minimal in $\mathbb R^N$ when $\mathbf \Lambda \not\in N(p)$. Hence, 
+Therefore, we have proven that $F(\mathbf y)$ has a unique minimal in $\mathbb R^N$ when $\mathbf \Lambda \in (N(p))^\circ$ and no saddle point in $\mathbb R^N$ when $\mathbf \Lambda \not\in N(p)$, which proves the claim. Hence, 
 \[
 	\mathbf X(x)=\frac{\partial \log p}{\partial \log \mathbf x},
 \]
-is an one-to-one map between $(0,\infty)^N$ and the interior of $N(p)$, which finishes the first step.
+is an one-to-one map from $(0,\infty)^N$ to the interior of $N(p)$, which finishes the first step.
 
 
 
