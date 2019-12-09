@@ -99,13 +99,13 @@ For any $\mathbf v\neq 0$,
 \[
 	\sum_{i,j}v_iv_jH_{ij}=\sum_I a_I \exp\left(\mathbf{y}\cdot \left(\mathbf{n}^I-\mathbf{\Lambda}\right)\right) \left(\mathbf v\cdot (\mathbf{n}^I-\mathbf{\Lambda})\right)^2 >0.
 \]
-It cannot vanish because that it only happens when $\mathbf v\cdot (\mathbf{n}^I-\mathbf{\Lambda})=0$ for all $I$, but we have assumed $\{\mathbf n^I\}$ has full rank.
+It cannot vanish because that it only happens when $\mathbf v\cdot (\mathbf{n}^I-\mathbf{\Lambda})=0$ for all $I$. However, we have assumed $\{\mathbf n^I\}$ has full rank, {\it i.e. $dim(N(p))=N$}. Following the convexity of $N(p)$, vectors $\mathbf{n}^I-\mathbf{\Lambda}$ span the whole space $\mathbb R^N$. Thus a nonzero $\mathbf v$  making $\mathbf v\cdot (\mathbf{n}^I-\mathbf{\Lambda})=0$ for all $I$ cannot exist.
 
 For a strict convex function $F(\mathbf y)$ on $\mathbb R^N$, it has a unique minimal in $\mathbb R^N$ iff it does not take its minimal when $\mathbf{y}$ goes to infinity along any direction. In our case, we only need that for any $\mathbf{y}\neq 0$ and $\mathbf\Lambda \in (N(p))^\circ $, there exist some $I$ such that  
 \[
 	\mathbf{y}\cdot (\mathbf{n}^I-\mathbf{\Lambda})>0,
 \]
-which is direct result of convexity of $N(p)$: (figure \cite{}) If $\mathbf\Lambda \in (N(p))^\circ$, for a given $\mathbf y\neq 0$, the hyperplain $L$ with normal vector $\mathbf y$ crossing $\mathbf \Lambda$ divides the space $\mathbb R^N$ into semi-spaces $L^+$ and $L^-$, then $\mathbf{n}^I$ in $L^+$ are what we are looking for.
+which is direct result from the convexity of $N(p)$: (figure \cite{}) If $\mathbf\Lambda \in (N(p))^\circ$, for a given $\mathbf y\neq 0$, the hyperplain $L$ with normal vector $\mathbf y$ crossing $\mathbf \Lambda$ divides the space $\mathbb R^N$ into semi-spaces $L^+$ and $L^-$, then $\mathbf{n}^I$ in $L^+$ are what we are looking for.
 
 \begin{figure}[htbp]
 \centering
