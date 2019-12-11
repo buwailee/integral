@@ -181,9 +181,9 @@ Finally, we claim that $F(y)$ does not take minimum when $\mathbf{y}$ goes to in
 Some review of positive geometry \& canonical form. blabla
 
 Consider the integration
-\[
+\begin{equation}\label{int}
 	I(\alpha')=\int_{\mathcal P} \Omega_{\mathcal P}(x)\prod_i(p_i(x))^{\alpha' s_i},
-\]
+\end{equation}
 where $\Omega$ is the canonical form of the $D$-dimensional positive geometry $\mathcal P$, and we suppose $I(\alpha')$ is finite when $\alpha'>0$.
 It's clear that $I(\alpha')$ diverge when $\alpha'\to 0$ because the simple pole of canonical form on the boundary of $\mathcal P$. We want to calculate the leading order of its Laurent series with respect to $\alpha'$ at $\alpha'=0$. % It's a rational function of $s_i$ since $p_i$ are all polynomials.
 
@@ -292,9 +292,9 @@ For example, suppose that $p(x,y)=x^3+y^3+xy+x^3y^2+xy^3$, we draw each $n^I$ in
 \end{center}
 where $x^3y^2\leftrightarrow (3,2)$ and $xy^3\leftrightarrow (1,3)$ are represented by $\times$ in the diagram and other terms are represented by blue points. The basis is given by blue points $\{x^3\leftrightarrow (3,0),y^3\leftrightarrow (0,3),xy\leftrightarrow (1,1)\}$, and the gray region is the set of all vectors $v=\sum_{J\in \mathscr B}c^I_J n^J$ where $\sum_J c^I_J>1$, therefore we throw away terms in the gray region and then get that $\bar p(x)=x^3+y^3+xy$. 
 
-Now we start to consider how to blow up. One important feature of $\Omega_{\mathcal P}$ is `invariant' under the blowing-up because the residue of the canonical form on the boundary is the canonical form of the boundary.
+Now we start to consider how to blow up. As has seen from eq.\eqref{canonicalformunderblowup}, one important feature of $\Omega_{\mathcal P}$ is `invariant' under the blowing-up because the residue of the canonical form on the boundary is the canonical form of the boundary.
 
-Suppose a boundary defined by local coordinates $x_1=\cdots=x_n=0$ need to be blowed up in integration. Now let $x_i=ty_i$, where $[y_1,\dots,y_n]$ are positive projective coordinates. Near the boundary, the canonical form of $\Omega$ performs as 
+Suppose we blow up near the boundary defined locally by $x_1=\cdots=x_n=0$ in integral eq.\eqref{int}. Now let $x_i=ty_i$, where $[y_1,\dots,y_n]$ are positive projective coordinates. Near the boundary, the canonical form of $\Omega$ performs as 
 \[
 	\Omega=\frac{dx_1}{x_1}\wedge \cdots\wedge\frac{dx_n}{x_n}
 	\wedge \Phi(x')+O(t^0),
@@ -307,15 +307,16 @@ where $y_n=1-(y_1+\cdots+y_{n-1})$ and $\Phi$ is the canonical form of the bound
 \[
 	\operatorname{Res}_{t=0}(\Omega)=\frac{1}{y_n}\frac{dy_1}{y_1}\wedge \cdots\wedge\frac{dy_{n-1}}{y_{n-1}}\wedge \Phi(x')=\Omega_{n-1}(y)\wedge \Phi(x'),
 \]
-$\Omega_{n-1}(y)$ the canonical form of a standard $(n-1)$-dimensional simplex $\Delta_{n-1}$. If we rewrite it in new coordinates $\{z_i\}$ such that
-\[
-	z_0=0,\quad y_i=z_i-z_{i-1},\quad z_{n}=1,
-\]
-then 
-\[
-	\Omega_{n-1}(z)=\frac{dz_1\wedge\cdots\wedge dz_n}{(z_1-z_0)\cdots (z_n-z_{n-1})}.
-\]
-It's the more familiar form.
+$\Omega_{n-1}(y)$ the canonical form of a standard $(n-1)$-dimensional simplex $\Delta_{n-1}$. 
+% If we rewrite it in new coordinates $\{z_i\}$ such that
+% \[
+% 	z_0=0,\quad y_i=z_i-z_{i-1},\quad z_{n}=1,
+% \]
+% then 
+% \[
+% 	\Omega_{n-1}(z)=\frac{dz_1\wedge\cdots\wedge dz_n}{(z_1-z_0)\cdots (z_n-z_{n-1})}.
+% \]
+% It's the more familiar form.
 
 % Consider a set of irreducible polynomials $\{p_i\}$, let $Z(p_i)$ be the zero point set of $p_i$ in $\mathbb{R}^n$. Suppose a curved polytope $\mathcal P$ is bounded by $\bigcup_i Z(p_i)$, if $F_k$ is a codimension $k$ face of $\mathcal P$ where $\#\{i\,:\,F_k\subset Z(p_i)\}>k$, then we call it a degenerated face.
 
@@ -333,11 +334,11 @@ It's the more familiar form.
 % \]
 % where $x'$ are other coordinates and $\Psi(x')$ is the left part of $\Omega_{\mathcal P}(x)\prod_i(p_i(x))^{\alpha' s_i}$.
 
-If $F$ is a degenerated face defined by local coordinates $x_1=\cdots=x_n=0$, and we need blow up the boundary in the integration. Suppose polynomials are factorized into
+What's more, suppose polynomials are factorized into
 \[
 	p_i(x) = t^{k_i}q_i(x',y,t).
 \]
-Therefore, in integration, near this boundary and when $\alpha'$ is small, 
+Therefore, the integral, near this boundary and when $\alpha'$ is small, becomes
 \[
 	\begin{aligned}
 		\int_{x'} \int_{x\in [0,\epsilon]^n} \Omega(x,x')\, \prod_i(p_i(x))^{\alpha' s_i}
@@ -347,14 +348,10 @@ Therefore, in integration, near this boundary and when $\alpha'$ is small,
 		(q_i(x',y,t))^{\alpha' s_i},
 	\end{aligned}
 \]
-however we still need to worry about the blowing-up of $t$ and $x'$, the only way to simplify the result is to hope $q_i(x',y,t)$ has a simple form, for example, $q_i(x',y,t)=g_i(x')h_i(y)$ for all $i$.
+however we still need to worry about the blowing-up of $t$, $y$ and $x'$.
 
-% We can always choose a face of $\mathcal P$ and then integrate out one dimension to get some lower dimensional integrals. For example, if we blow up vertices again and agian, we will get $(D-1)!(\#V_{\mathcal P})$ terms since the number of vertices of $\Delta_n$ is $n$, where $\#V_{\mathcal P}$ is the number of vertices of $\mathcal P$. However, once we choosing a good face to factorize the integral, \textit{i.e.} 
-% \[
-% 	q_i(x',y)=g_i(x')h_i(y)
-% \]
-% for each $i$, then $\#V_{\mathcal P}(D-1)!$ is naively reduced to $(\#V_{\mathcal P})(\#V_{F})(n-1)!(D-n-1)!$. 
+\section{Application and Example}
 
-\section{General prescription of pole subtraction}
+% string Z integral, Cn, Gkn ...
 
 \end{document}
