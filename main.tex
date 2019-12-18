@@ -35,11 +35,50 @@
 
 \section{Map}
 
+Newton Polytope: For a substraction free Laurent polynomial 
+\[
+	f = \sum_{I\in \mathscr A} a_I \prod_{i=1}^n x_i^{n^I_i},
+\]
+we define the Newton polytope of $f$ by
+\[
+	N(f)=\operatorname{ConvexHull}\bigl(\{\mathbf n^I\,:\, I\in \mathscr A\}\bigr),
+\]
+where $\mathbf n^I=(n^I_1,\dots,n^I_n)$. The convex hull of vectors is defined
+\[
+	\operatorname{ConvexHull}\bigl(\{\mathbf n^I\,:\, I\in \mathscr A\}\bigr)
+	=\Biggl\{\sum_{I\in\mathscr A}\lambda_I \mathbf n^I\,:\,\text{$\lambda_I>0$ and $\sum_I\lambda_I=1$}\Biggr\}.
+\] 
+
+Mink. Sum: Minkowski sum of two subsets $A$ and $B$ of $\mathbb R^n$ is defined by 
+\[
+	A+B=\{x+y\,:\,x\in A,\, y\in B\}.
+\] 
+
+Blow up: Suppose we consider a family of line $\{l_i: a_ix+b_iy=0\}_{i\in I}$ crossing 
+the original point. When we consider $x$, $y\to 0$, the point $(0,0)$ only contains 
+little information. If one wants know the information of these lines even when $(x,y)\to (0,0)$,
+one could use the projective coordinates $[a_i,b_i]$ to represent a line, or equivalently 
+consider the following change of variables
+\[
+x=ut,\quad y=vt,
+\] 
+where $[u,v]$ is a projective coordinate, so that line equations become 
+\[
+	a_i u + b_i v = 0,
+\]
+and we can solve that $[u,v]=[-b_i,a_i]$. Before we change the variables, every information 
+becomes a point $(0,0)$ in $\mathbb R^2$, but in new variables or in space 
+$\mathbb R\times \mathbb P^1$, lines become $(0,[-b_i,a_i])$ so that we can read the imformation
+even $(x,y)=(0,0)$. The idea described here is called blowing-up in math.  
+The above example is called the blowing-up of the plane along a point. Generally,
+general blowing up must have the form of $x_i=ty_i$ locally althought it may be very difficult
+to construct a blowing-up globally.
+
 In this section we present a proof to the statement:
-\begin{thm}
+\begin{pro}
 For an arbitrary product of M polynomials $P=\prod_{j=1}^M p_j^{\alpha_j}$, $p_j=\sum_{I_j} a_{I_j} x^{I_j}$ with $a_{I_j}\geq 0$ for all $I_j$ and
  \[
-	x^{I_j}=\prod_{i=1}^N x_i^{n^{I_j}_i},
+	x^{I_j}:=\prod_{i=1}^N x_i^{n^{I_j}_i},
 \]
 whose Newton polytope is defined as the Minkowski sum  $N_P=\sum_j \alpha_j N(p_j)$, each $N(p_j)$ being the convex hull of vectors $\{\mathbf{n}^{I_j}=(n^{I_j}_1,\dots,n^{I_j}_N)\}$. Then the scattering map:
 \[
@@ -52,10 +91,13 @@ where $x_i\in (0,\infty)$ for all $i$, is a one-to-one map from $(0,\infty)^N$ t
 \]
 Therefore, one can project $\operatorname{im}(\mathbf X)$ by setting some $x_i=1$ so that there's no more vector $\mathbf s$ such that $\mathbf s\cdot \mathbf n^I=0$ for all $I$. Conversely, one can recover the original image by solving these equations $\mathbf s\cdot\mathbf X=0$}. 
 
-\end{thm}
+\end{pro}
+
+\begin{proof}
+	
 
 The proof is finished in two steps.:
-\paragraph{Step 1: M=1}
+\paragraph{Step 1: $M=1$}
 Consider a unique polynomial $p=\sum_{I} a_I x^I$ with $a_I\geq 0$ for all $I$. The scattering map now reads:
 \[
 	\mathbf X(x)=\frac{\partial \log p}{\partial \log \mathbf x},
@@ -121,14 +163,8 @@ which is direct result from the convexity of $N(p)$: (figure \cite{}) If $\mathb
 \put(160,-90){$L^-$};
 \put(20,0){$\mathbf{n}^I$};
 \end{tikzpicture}
-
-
- 
-
 \end{figure}
 Conversely, if $\mathbf\Lambda \not\in N(p)$, one can find a hyperplain $L$ such that $N(p)\subset L^-$, then the normal vector $\mathbf{y}$ of $L$ gives the wanted direction, making the exponentials all negative. $F(t\mathbf y)\to 0$ when $t\to \infty$. As a positive convex function, $F(\mathbf y)$ has no saddle point in $\mathbb R^N$.
-
-
 
 Therefore, we have proven that $F(\mathbf y)$ has a unique minimal in $\mathbb R^N$ when $\mathbf \Lambda \in (N(p))^\circ$ and no saddle point in $\mathbb R^N$ when $\mathbf \Lambda \not\in N(p)$, which proves the claim. Hence, 
 \[
@@ -136,9 +172,7 @@ Therefore, we have proven that $F(\mathbf y)$ has a unique minimal in $\mathbb R
 \]
 is an one-to-one map from $(0,\infty)^N$ to the interior of $N(p)$, which finishes the first step.
 
-
-
-\paragraph{Step 2: general M}
+\paragraph{Step 2: general $M$}
 Generally, let $\mathbf{\Lambda}$ be a interior point in Minkowski sum $\sum_p \alpha_p N(p)$ corresponding to $P=\prod_p p^{\alpha_p}$ defined by 
 \[
 	\mathbf{\Lambda}
@@ -176,6 +210,8 @@ since $F_p$ are convex functions and $\alpha_p/\alpha_0>1$, $F_p(y)^{\alpha_p/\a
 
 Finally, we claim that $F(y)$ does not take minimum when $\mathbf{y}$ goes to infinity along any direction. It is because that for a given $\mathbf{y}$ and each $p$, $F_p(t\mathbf{y})\to \infty$ when $t\to \infty$, so does $F(t\mathbf{y})=\prod_p F_p(t\mathbf{y})^{\alpha_p}$. Therefore, equation $\mathbf{X}(x)=\mathbf{\Lambda}$ has a unique solution.
 
+\end{proof}
+
 \section{Blow up}
 
 Some review of positive geometry \& canonical form. blabla
@@ -202,8 +238,8 @@ To calculate the integral, we can decompose the integral by
 	\biggl(\int_{0}^\epsilon +\int_\epsilon^{1-\epsilon}+\int_{1-\epsilon}^1\biggr) \frac{dt}{t(1-t)}\, t^{\alpha' a}(1-t)^{\alpha' b}.
 \]
 The middle integral is finite when $\alpha'\to 0$ so that it does not contribute, the other two integrals are
-	\[
-		\int_0^\epsilon  \frac{dt}{t(1-t)}\, t^{\alpha' a}(1-t)^{\alpha' b}
+\[
+	\int_0^\epsilon  \frac{dt}{t(1-t)}\, t^{\alpha' a}(1-t)^{\alpha' b}
 	\sim \int_0^\epsilon \frac{dt}t t^{\alpha' a} 
 	= \frac{\epsilon^{\alpha' a}}{\alpha'a} \sim \frac{1}{\alpha'a},
 	\]
@@ -220,30 +256,32 @@ One important lesson from the above trivial integral is that the leading terms o
 
 Now let's come to the two-dimensional example,
 \[
-	I=\int_{\mathbb R_1+^2} \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(1+x+y)^{-\alpha' c}.
+	I=\int_{\mathbb R_+^2} \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y+x y)^{-\alpha' c}.
 \]
 The leading terms come form the neighbourhoods of four vertices $(0,0)$, $(0,\infty)$, $(\infty,0)$ and $(\infty,\infty)$. Let's consider the simplest vertex first, 
 \[
-	I(0,\infty)=\int_{0}^\epsilon\int_{1/\epsilon}^\infty \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(1+x+y)^{-\alpha' c}\sim \int_{0}^\epsilon\int_{1/\epsilon}^\infty \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' (b-c)}\sim 
+	I(0,\infty)=\int_{0}^\epsilon\int_{1/\epsilon}^\infty \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y+xy)^{-\alpha' c}\sim \int_{0}^\epsilon\int_{1/\epsilon}^\infty \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' (b-c)}\sim 
 	\frac{1}{{\alpha'}^2}\frac{1}{a} \frac{1}{c-b}
 \]
-similarly, $I(\infty,0)\sim ({\alpha'}^2 b (c-a))^{-1}$. Near the vertex $(0,\infty)$, the integral decouples because the mixed factor $x+y \sim y$ when $y \gg x$.  
+Near the vertex $(0,\infty)$, the integral decouples because the mixed factor $x+y+xy \sim y$ when $y \gg x$.  Similarly, $I(\infty,0)\sim ({\alpha'}^2 b (c-a))^{-1}$. 
 
 Now consider the harder vertex
 \[
-	I(\infty,\infty)=\int_{1/\epsilon}^\infty \int_{1/\epsilon}^\infty \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(1+x+y)^{-\alpha' c}
-=\int_{1/\epsilon}^\infty \int_{1/\epsilon}^\infty \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y)^{-\alpha' c}.
+I(0,0)=\int^{\epsilon}_0 \int^{\epsilon}_0 \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y+xy)^{-\alpha' c}
+%\sim\int^{\epsilon}_0 \int^{\epsilon}_0\frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y)^{-\alpha' c}.
 \]
-When $(x,y)\to (\infty,\infty)$, we cannot decouple $x$ and $y$ in the mixed factor $(x+y)^{-\alpha' c}$ because we don't know which one is dominated. A clever way to calculate it is blowing-up. Let $x = tp$ and $y=t(1-p)$, then
+when $(x,y)\to (0,0)$, we cannot decouple $x$ and $y$ in the mixed factor $(x+y+xy)^{-\alpha' c}$ 
+because we don't know which one is dominated. However, we can drop the term $xy$ because $xy\ll x$, $y$. 
+For the other terms $x+y$, we can introduce new variables $x = tp$ and $y=t(1-p)$, such that then
 \begin{equation}\label{canonicalformunderblowup}
 	\frac{dxdy}{xy} = \frac{dp}{p(1-p)}\frac{dt}{t},
 \end{equation}
 and
 \begin{equation*}
-	I(0,0)=\int_{1/\epsilon}^\infty\frac{dt}{t} t^{\alpha'(a+b-c)}\int_0^{1}\frac{dp}{p(1-p)}p^{\alpha' a}(1-p)^{\alpha' b}%\sim \frac{1}{\alpha'}\frac{1}{a+b-c}\int_0^{1}\frac{dp}{p(1-p)}p^{\alpha' a}(1-p)^{\alpha' b}
+	i(0,0)=\int_{1/\epsilon}^\infty\frac{dt}{t} t^{\alpha'(a+b-c)}\int_0^{1}\frac{dp}{p(1-p)}p^{\alpha' a}(1-p)^{\alpha' b}%\sim \frac{1}{\alpha'}\frac{1}{a+b-c}\int_0^{1}\frac{dp}{p(1-p)}p^{\alpha' a}(1-p)^{\alpha' b}
 	\sim \frac{1}{{\alpha'}^2}\frac{1}{c-a-b}\biggl(\frac 1a+\frac 1b\biggr).
 \end{equation*}
-In this example, whether $x$ or $y$ is dominated in the integration is characterized by $p$, and both vertices $p\sim 0$ ($x\ll y$) and $p\sim 1$ ($y\ll x$) contribute.
+in this example, whether $x$ or $y$ is dominated in the integration is characterized by $p$, and both vertices $p\sim 0$ ($x\ll y$) and $p\sim 1$ ($y\ll x$) contribute.
 \begin{center}
 \begin{tikzpicture}
 \fill[gray!30,opacity=0.4] (-6.9,1.4) -- (-3.9,1.4) -- (-3.9,4.4) -- (-6.9,4.4);
@@ -274,13 +312,13 @@ In this example, whether $x$ or $y$ is dominated in the integration is character
 \node at (2.8,-3.6) {\small $1-p$};
 \end{tikzpicture}
 \end{center}
-%Similarly, 
+%similarly, 
 %\[
-%	I(\infty,\infty)\sim \frac{1}{{\alpha'}^2}\frac{1}{c-a-b}\biggl(\frac 1{c-a}+\frac 1{c-b}\biggr),
+%	i(\infty,\infty)\sim \frac{1}{{\alpha'}^2}\frac{1}{c-a-b}\biggl(\frac 1{c-a}+\frac 1{c-b}\biggr),
 %\]
 %so the leading terms of original integral is 
 %\[
-%	I\sim I(0,0)+I(0,\infty)+I(\infty,0)+I(\infty,\infty).
+%	i\sim i(0,0)+i(0,\infty)+i(\infty,0)+i(\infty,\infty).
 %\]
 
 Now let's consider the general story. Generally, the integral near a vertex need not to be decoupled as $I(0,\infty)$ above, so blowing-up is necessary. Suppose we come to the vertex defined locally by $x_1=\cdots=x_D=0$, 
