@@ -2,7 +2,10 @@
 \usepackage[a4paper, top=16mm, text={170mm, 248mm}, includehead, includefoot, hmarginratio=1:1, heightrounded]{geometry}
 \usepackage{amsmath,amssymb,mathrsfs,amsthm,tikz,shuffle}
 \usepackage{dsfont}
-
+\usepackage{color}
+\usepackage{ccfonts}
+\usepackage[T1]{fontenc}
+\renewcommand{\baselinestretch}{1.1}
 
 \theoremstyle{definition}
 	\newtheorem{para}{}[section]
@@ -28,10 +31,16 @@
  \newcommand{\uppi}{\piup}
 
 \pagestyle{plain}
+\definecolor{shadecolor}{RGB}{32,32,32}
+%\definecolor{textcolor}{RGB}{204,204,255}
+%\definecolor{textcolor}{RGB}{224,224,224}
+\definecolor{textcolor}{RGB}{204,255,204}
+%\pagecolor{shadecolor}
+%\color{textcolor}
 
 \begin{document}
 
-\section{Intro}
+\section{Introduction}
 
 Consider the integral 
 \[
@@ -46,9 +55,10 @@ canonical form makes the integral diverge as $(\alpha')^{-\dim \mathcal P}$.
 In this article, we will not consider the so general integral above, we only consider the 
 following integrals 
 \begin{equation}\label{int1}
-	\int_{\mathbb R_+^D}\prod_{i=1}^D\frac{\dif x_i}{x_i}\prod_{a} p_a^{-\alpha' c_a}
+	\int_{\mathbb R_+^D}\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i}
+	\prod_{I} p_I^{-\alpha' c_I}
 	\quad\text{or}\quad
-	\int_{[0,1]^D}\prod_{i=1}^D\frac{\dif x_i}{x_i(1-x_i)}\prod_{a} q_a^{-\alpha' c_a},
+	\int_{[0,1]^D}\prod_{i=1}^D\frac{\dif x_i}{x_i(1-x_i)}\prod_{I} q_I^{-\alpha' c_I},
 \end{equation}
 where $p_a$ and $q_a$ are all Laurent polynomial of $x$. These two integral can be related
 by the change of variables $x_i\mapsto x_i/(1+x_i)$. In fact, a wide class of general integrals 
@@ -59,7 +69,37 @@ the integral eq.\eqref{int1} with respect to $\alpha'$,
 and given a theorem to relate the structure of this leading terms with the Laurent polynomials
 $p_a$s.
 
-Let's show a glance what we have done 
+Let's make a glance what we have done in this article.
+
+%Consider a vertex $V$ of $\mathcal P$, locally it's defined by $x_1=\cdots = x_D=0$ so that 
+%near the vertex, the integral reads
+Here we first consider the simplest case where all $p_I=1$ in the integral eq.\eqref{int1}.
+Near the vertex $x_1=x_2=\cdots=x_D=0$, the integral becomes
+\[
+	\int_{[0,\epsilon]^D}\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i}
+	=\prod_{i=1}^D\frac{\epsilon^{\alpha' X_i}}{\alpha' X_i}
+	\sim \frac{1}{(\alpha')^D}\frac{1}{X_1\cdots X_D}.
+\] 
+Geometrically, it's so simple because it's only $x_1=\cdots=x_D=0$ that defines the vertices. 
+Therefore,
+if a vertex of $\mathcal P$ is defined by minimal set of polynomial, the contribution of
+the vertex will be as simple s the above one.
+However, if some $p_I$ also vanishes on $(0,\dots,0)$, then the integral will not be so
+simple. Geometrically, it means that $(0,\dots,0)$ is a singularity, so one need to resolve
+it. For example, for the integral 
+\[
+	\int_0^\infty \int_0^\infty \frac{\dif x}{x}\frac{\dif y}{y}x^{\alpha' X}
+	y^{\alpha' Y}(x+y+ xy)^{-\alpha' c},
+\] 
+the vertex $(0,0)$ is the common zero set of three polynomials $x$, $y$ and $x+y+xy$. 
+\begin{center}
+\begin{tikzpicture}
+	\fill[gray!25] (0,2.5) -- (0,0) -- (2.5,0) -- (2.5,2.5);
+	\draw[thick,->] (0,-1.5) -- (0,2.55);
+	\draw[thick,->] (-2,0) -- (2.55,0);
+	\draw[thick,domain=-0.7:2.5] plot(\x,{((-\x)/(1+\x))});
+\end{tikzpicture}
+\end{center}
 
 \section{Map}
 
