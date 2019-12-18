@@ -33,6 +33,34 @@
 
 \section{Intro}
 
+Consider the integral 
+\[
+	I(\alpha')=\int_{x\in \mathcal P} \Omega_{\mathcal P} F(x)^{-\alpha'},
+\] 
+where $\mathcal P$ is a positive geometry, $\Omega_{\mathcal P}$ is its canonical form
+and $F(x)$ is a function defined on $\mathcal P$. In order to make $I(\alpha')$ a 
+well-behaved function of $\alpha'$, we usually further require that $F(x)$ has no pole
+and zero in the interior of $\mathcal P$. When $\alpha'\to 0$, the pole structure of 
+canonical form makes the integral diverge as $(\alpha')^{-\dim \mathcal P}$. 
+
+In this article, we will not consider the so general integral above, we only consider the 
+following integrals 
+\begin{equation}\label{int1}
+	\int_{\mathbb R_+^D}\prod_{i=1}^D\frac{\dif x_i}{x_i}\prod_{a} p_a^{-\alpha' c_a}
+	\quad\text{or}\quad
+	\int_{[0,1]^D}\prod_{i=1}^D\frac{\dif x_i}{x_i(1-x_i)}\prod_{a} q_a^{-\alpha' c_a},
+\end{equation}
+where $p_a$ and $q_a$ are all Laurent polynomial of $x$. These two integral can be related
+by the change of variables $x_i\mapsto x_i/(1+x_i)$. In fact, a wide class of general integrals 
+will have this form after finding a positive parameterization.
+
+The main purpose of this article is give a method to calculate the leading terms of 
+the integral eq.\eqref{int1} with respect to $\alpha'$, 
+and given a theorem to relate the structure of this leading terms with the Laurent polynomials
+$p_a$s.
+
+Let's show a glance what we have done 
+
 \section{Map}
 
 Newton Polytope: For a substraction free Laurent polynomial 
@@ -49,20 +77,31 @@ where $\mathbf n^I=(n^I_1,\dots,n^I_n)$. The convex hull of vectors is defined
 	=\Biggl\{\sum_{I\in\mathscr A}\lambda_I \mathbf n^I\,:\,\text{$\lambda_I>0$ and $\sum_I\lambda_I=1$}\Biggr\}.
 \] 
 
+(Some examples)
+
 Mink. Sum: Minkowski sum of two subsets $A$ and $B$ of $\mathbb R^n$ is defined by 
 \[
 	A+B=\{x+y\,:\,x\in A,\, y\in B\}.
 \] 
 
-Blow up: Suppose we consider a family of line $\{l_i: a_ix+b_iy=0\}_{i\in I}$ crossing 
-the original point. When we consider $x$, $y\to 0$, the point $(0,0)$ only contains 
-little information. If one wants know the information of these lines even when $(x,y)\to (0,0)$,
-one could use the projective coordinates $[a_i,b_i]$ to represent a line, or equivalently 
-consider the following change of variables
+Blow up: One main purpose of blow-up in math is to resolve singularities. Let's first 
+consider a simple example. 
+Suppose there's a family of line $\{l_i: a_ix+b_iy=0\}_{i=1,\dots,n}$ crossing 
+the original point. The point $(0,0)$ is the common zero set of these lines,
+however it only contains little information of these lines. In another viewpoint,
+$(0,0)$ is a `singularity' because generally $n$ lines cannot cross each other 
+at a common point on the plane. 
+
+If one wants know the information of these lines even when $(x,y)\to (0,0)$, 
+or equivalently to resolve the singularity at $(0,0)$, one can introduce the 
+change of variabes: 
+%one could use the projective coordinates $[a_i,b_i]$ to represent a line, or equivalently 
+%consider the following change of variables
 \[
 x=ut,\quad y=vt,
 \] 
-where $[u,v]$ is a projective coordinate, so that line equations become 
+where $[u,v]$ is a projective coordinate, otherwise any common factor of $u$ and $v$ can be 
+absorbed into the definition of $t$, so that line equations become 
 \[
 	a_i u + b_i v = 0,
 \]
@@ -70,9 +109,19 @@ and we can solve that $[u,v]=[-b_i,a_i]$. Before we change the variables, every 
 becomes a point $(0,0)$ in $\mathbb R^2$, but in new variables or in space 
 $\mathbb R\times \mathbb P^1$, lines become $(0,[-b_i,a_i])$ so that we can read the imformation
 even $(x,y)=(0,0)$. The idea described here is called blowing-up in math.  
-The above example is called the blowing-up of the plane along a point. Generally,
-general blowing up must have the form of $x_i=ty_i$ locally althought it may be very difficult
-to construct a blowing-up globally.
+The above example is called the blowing-up of the plane along the original point, which 
+resolves the singularity at $(0,0)$. 
+
+Generally, let $X=\operatorname{Spec} A$ be an affine scheme, and let $V(f_1,\dots,f_n)\subset X$
+is a closed subscheme of $X$. The blow-up of $Y$ in X is the closure in
+$X\times_A \mathbb P_A^{n-1}=\mathbb P_A^{n-1}$ of the graph of the morphism 
+\[
+\alpha_{(f_1,\dots,f_n)}:X-Y\to \mathbb P_A^{n-1}.
+\] 
+
+% Generally,
+% general blowing up must have the form of $x_i=ty_i$ locally althought it may be very difficult
+% to construct a blowing-up globally.
 
 In this section we present a proof to the statement:
 \begin{pro}
