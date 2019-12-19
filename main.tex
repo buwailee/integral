@@ -42,38 +42,54 @@
 
 \section{Introduction}
 
-Consider the integral 
+In string theory, the tree level $n$-pt open superstring amplitudes
+\[
+	I=\int_{\mathcal M_{0,n}^+}\frac{\dif^{n-3}z}{(z_1-z_2)\cdots (z_n-z_1)}\prod_{i<j}
+	|z_i-z_j|^{\alpha' s_{ab}}
+\]
+is defined on a component $\mathcal M_{0,n}^+$ of real points of moduli space of $n$ punctures 
+on the sphere. In the language of positive geometry \cite{}, $\mathcal M_{0,n}^+$ is a positive
+geometry and $\frac{\dif^{n-3}z}{(z_1-z_2)\cdots (z_n-z_1)}$ is its canonical form. Therefore,
+we can consider the generalized integral 
 \[
 	I(\alpha')=\int_{x\in \mathcal P} \Omega_{\mathcal P} F(x)^{-\alpha'},
 \] 
 where $\mathcal P$ is a positive geometry, $\Omega_{\mathcal P}$ is its canonical form
 and $F(x)$ is a function defined on $\mathcal P$. In order to make $I(\alpha')$ a 
 well-behaved function of $\alpha'$, we usually further require that $F(x)$ has no pole
-and zero in the interior of $\mathcal P$. When $\alpha'\to 0$, the pole structure of 
-canonical form makes the integral diverge as $(\alpha')^{-\dim \mathcal P}$. 
+and zero in the interior of $\mathcal P$. 
 
 In this article, we will not consider the so general integral above, we only consider the 
-following integrals 
+following integrals, that is called stringy integrals, 
 \begin{equation}\label{int1}
-	\int_{\mathbb R_+^D}\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i}
+	I(\mathbf X,\{c_I\}):=\int_{\mathbb R_+^D}\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i}
 	\prod_{I} p_I^{-\alpha' c_I}
-	\quad\text{or}\quad
-	\int_{[0,1]^D}\prod_{i=1}^D\frac{\dif x_i}{x_i(1-x_i)}\prod_{I} q_I^{-\alpha' c_I},
+%	\quad\text{or}\quad
+%	\int_{[0,1]^D}\prod_{i=1}^D\frac{\dif x_i}{x_i(1-x_i)}\prod_{I} q_I^{-\alpha' c_I},
 \end{equation}
-where $p_a$ and $q_a$ are all Laurent polynomial of $x$. These two integral can be related
-by the change of variables $x_i\mapsto x_i/(1+x_i)$. In fact, a wide class of general integrals 
-will have this form after finding a positive parameterization.
+where $p_a$ are all Laurent polynomial of $x$ with non-nagetive coefficients. 
+%These two integral can be related by the change of variables $x_i\mapsto x_i/(1+x_i)$.
+In fact, a wide class of general integrals 
+will turn into this form after finding a positive parameterization. 
 
-The main purpose of this article is give a method to calculate the leading terms of 
+In \cite{}, many important properties of stringy integrals are well studied, especially the 
+relation between its field theory limit and the polytope given by $\{p_I\}$.
+As in the original superstring amplitude, the field theory limit of a stringy integral is 
+its leading order as $\alpha'\to 0$.
+
+The main purpose of this article is to show a method to calculate the leading order of 
 the integral eq.\eqref{int1} with respect to $\alpha'$, 
-and given a theorem to relate the structure of this leading terms with the Laurent polynomials
-$p_a$s.
-
-Let's make a glance what we have done in this article.
+and give a direct proof of the proposition, first given in \cite{}, about scattering map.
+Finally, we give some examples and applications of these two method.
+%Let's make a glance what we have done in this article.
 
 %Consider a vertex $V$ of $\mathcal P$, locally it's defined by $x_1=\cdots = x_D=0$ so that 
 %near the vertex, the integral reads
-Here we first consider the simplest case where all $p_I=1$ in the integral eq.\eqref{int1}.
+
+For the first part, when $\alpha'\to 0$, the pole structure of 
+canonical form leads that the contribution of the integral near a codimension $k$ face
+diverges as $(\alpha')^{-k}$, so the leading terms come from vertices.
+Let's first consider the simplest case where all $p_I=1$ in the integral eq.\eqref{int1}.
 Near the vertex $x_1=x_2=\cdots=x_D=0$, the integral becomes
 \[
 	\int_{[0,\epsilon]^D}\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i}
@@ -81,25 +97,19 @@ Near the vertex $x_1=x_2=\cdots=x_D=0$, the integral becomes
 	\sim \frac{1}{(\alpha')^D}\frac{1}{X_1\cdots X_D}.
 \] 
 Geometrically, it's so simple because it's only $x_1=\cdots=x_D=0$ that defines the vertices. 
-Therefore,
-if a vertex of $\mathcal P$ is defined by minimal set of polynomial, the contribution of
-the vertex will be as simple s the above one.
-However, if some $p_I$ also vanishes on $(0,\dots,0)$, then the integral will not be so
-simple. Geometrically, it means that $(0,\dots,0)$ is a singularity, so one need to resolve
-it. For example, for the integral 
-\[
-	\int_0^\infty \int_0^\infty \frac{\dif x}{x}\frac{\dif y}{y}x^{\alpha' X}
-	y^{\alpha' Y}(x+y+ xy)^{-\alpha' c},
-\] 
-the vertex $(0,0)$ is the common zero set of three polynomials $x$, $y$ and $x+y+xy$. 
-\begin{center}
-\begin{tikzpicture}
-	\fill[gray!25] (0,2.5) -- (0,0) -- (2.5,0) -- (2.5,2.5);
-	\draw[thick,->] (0,-1.5) -- (0,2.55);
-	\draw[thick,->] (-2,0) -- (2.55,0);
-	\draw[thick,domain=-0.7:2.5] plot(\x,{((-\x)/(1+\x))});
-\end{tikzpicture}
-\end{center}
+For general cases, there're two main difficulties to work out the leading terms
+\begin{itemize}
+	\item There're some polynomials $p_I$ vanishing at a vertex.
+	\item Furthermore, the vertex is a singularity of $p_I$.
+\end{itemize}
+However, they can be overcome by a series of blowing up. 
+
+In the second part, we give a direct proof of a proposition firstly given in \cite{} that 
+the scattering map from the saddle point equations of the integral eq.\eqref{int1} 
+is a one-to-one map from the interior of $\mathbb R_+^D$ to the interior of Minkowski sum of 
+Newton polytopes of $p_I$. ...
+
+Finally, ...
 
 \section{Map}
 
@@ -114,7 +124,8 @@ we define the Newton polytope of $f$ by
 where $\mathbf n^I=(n^I_1,\dots,n^I_n)$. The convex hull of vectors is defined
 \[
 	\operatorname{ConvexHull}\bigl(\{\mathbf n^I\,:\, I\in \mathscr A\}\bigr)
-	=\Biggl\{\sum_{I\in\mathscr A}\lambda_I \mathbf n^I\,:\,\text{$\lambda_I>0$ and $\sum_I\lambda_I=1$}\Biggr\}.
+	=\Biggl\{\sum_{I\in\mathscr A}\lambda_I \mathbf n^I\,:\,
+	\text{$\lambda_I>0$ and $\sum_I\lambda_I=1$}\Biggr\}.
 \] 
 
 (Some examples)
@@ -152,12 +163,12 @@ even $(x,y)=(0,0)$. The idea described here is called blowing-up in math.
 The above example is called the blowing-up of the plane along the original point, which 
 resolves the singularity at $(0,0)$. 
 
-Generally, let $X=\operatorname{Spec} A$ be an affine scheme, and let $V(f_1,\dots,f_n)\subset X$
-is a closed subscheme of $X$. The blow-up of $Y$ in X is the closure in
-$X\times_A \mathbb P_A^{n-1}=\mathbb P_A^{n-1}$ of the graph of the morphism 
-\[
-\alpha_{(f_1,\dots,f_n)}:X-Y\to \mathbb P_A^{n-1}.
-\] 
+%Generally, let $X=\operatorname{Spec} A$ be an affine scheme, and let $V(f_1,\dots,f_n)\subset X$
+%is a closed subscheme of $X$. The blow-up of $Y$ in X is the closure in
+%$X\times_A \mathbb P_A^{n-1}=\mathbb P_A^{n-1}$ of the graph of the morphism 
+%\[
+%\alpha_{(f_1,\dots,f_n)}:X-Y\to \mathbb P_A^{n-1}.
+%\] 
 
 % Generally,
 % general blowing up must have the form of $x_i=ty_i$ locally althought it may be very difficult
@@ -311,6 +322,31 @@ Finally, we claim that $F(y)$ does not take minimum when $\mathbf{y}$ goes to in
 \section{Blow up}
 
 Some review of positive geometry \& canonical form. blabla
+
+
+For example, for the integral 
+\[
+	\int_0^\infty \int_0^\infty \frac{\dif x}{x}\frac{\dif y}{y}x^{\alpha' X}
+	y^{\alpha' Y}(x+y+ xy)^{-\alpha' c},
+\] 
+the vertex $(0,0)$ is the common zero set of three polynomials $x$, $y$ and $x+y+xy$. 
+Further, for the integral 
+\[
+	\int_0^\infty \int_0^\infty \frac{\dif x}{x}\frac{\dif y}{y}x^{\alpha' X}
+	y^{\alpha' Y}(x^3+y^3+ xy)^{-\alpha' c},
+\] 
+the vertex $(0,0)$ is a singularity of the curve $x^3+y^3+xy=0$. 
+\begin{center}
+\includegraphics[scale=0.75]{fig_1.pdf}
+\end{center}
+\vspace{-3ex}
+Left: $p=x+y+xy$, Right: $p=x^3+y^3+xy$. 
+
+In the blowing up, the above two example becomes 
+\[
+	p=t(u+v+tuv) \quad\text{and}\quad p=t^2(tu^3+tv^3+uv)
+\]
+respectively.
 
 Consider the integration
 \begin{equation}\label{int}
