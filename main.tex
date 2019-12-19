@@ -113,9 +113,9 @@ For general cases, there're two main difficulties to work out the leading terms
 	\item There're some polynomials $p_I$ other than $x_i$ vanishing at a vertex.
 	\item Furthermore, the vertex is usually a singularity of $p_I$.
 \end{itemize}
-However, they can be both overcome by a series of blowing up. After these blow-ups, the 
+They can be both overcome by a series of blowing up. After these blow-ups, the 
 stringy integral becomes many integrals like eq.\eqref{int2}, and then the leading order
-is given by the summations of these integrals.
+is given by their summation.
 
 In the second part, we give a direct proof of a proposition firstly given in \cite{} that 
 the scattering map from the saddle point equations of the integral eq.\eqref{int1} 
@@ -123,6 +123,449 @@ is a one-to-one map from the interior of $\mathbb R_+^D$ to the interior of Mink
 Newton polytopes of $p_I$. ...
 
 Finally, ...
+
+\section{Blow up}
+
+\begin{figure}[t]
+\begin{center}
+\includegraphics[scale=0.75]{fig_1.pdf}
+\end{center}
+\vspace{-5ex}
+\caption{Left: $p=x+y+xy$, Right: $p=x^3+y^3+xy$}
+\end{figure}
+
+(Some review of positive geometry \& canonical form. ...)
+
+As mentioned in the introduction, leading order of the integral eq.\eqref{int1} comes from the vertex
+of the integral region. 
+At each vertex, generally there're two main difficulties to work out the leading terms
+\begin{itemize}
+	\item There're some polynomials $p_I$ other than $x_i$ vanishing at a vertex.
+	\item Furthermore, the vertex is usually a singularity of $p_I$.
+\end{itemize}
+For example, for the integral 
+\[
+	\int_0^\infty \int_0^\infty \frac{\dif x}{x}\frac{\dif y}{y}x^{\alpha' X}
+	y^{\alpha' Y}(x+y+ xy)^{-\alpha' c},
+\] 
+the vertex $(0,0)$ is the common zero set of three polynomials $x$, $y$ and $x+y+xy$. 
+Further, for the integral 
+\[
+	\int_0^\infty \int_0^\infty \frac{\dif x}{x}\frac{\dif y}{y}x^{\alpha' X}
+	y^{\alpha' Y}(x^3+y^3+ xy)^{-\alpha' c},
+\] 
+the vertex $(0,0)$ is a singularity of the curve $x^3+y^3+xy=0$. 
+
+% In the blowing up, the above two example becomes 
+% \[
+% 	p=t(u+v+tuv) \quad\text{and}\quad p=t^2(tu^3+tv^3+uv)
+% \]
+% respectively.
+
+%Consider the integration
+%\begin{equation}\label{int}
+%	I(\alpha')=\int_{\mathcal P} \Omega_{\mathcal P}(x)\prod_i(p_i(x))^{\alpha' s_i},
+%\end{equation}
+%where $\Omega$ is the canonical form of the $D$-dimensional positive geometry $\mathcal P$, and we suppose $I(\alpha')$ is finite when $\alpha'>0$.
+%It's clear that $I(\alpha')$ diverge when $\alpha'\to 0$ because the simple pole of canonical form on the boundary of $\mathcal P$. We want to calculate the leading order of its Laurent series with respect to $\alpha'$ at $\alpha'=0$. % It's a rational function of $s_i$ since $p_i$ are all polynomials.
+%
+% Consider the following integral
+% \[
+% 	\int_{\mathbb R_+^d}\frac{d x_1}{x_1} \cdots \frac{d x_d}{x_d} x_1^{n_1}\cdots x_d^{\alpha' n_d} P(x_1,\dots,x_d)^{-\alpha' c}, 
+% \]
+% where $P$ is a polynomial, here we can further assume that $P(0,\dots,0)\neq 0$. When $\alpha'\to 0$, the integral diverge, we want to calculate the leading term of $(\alpha')^{-1}$ of this integral. blabla
+
+% Let's first consider the one-dimensional example, the Beta function 
+% \[
+% 	B(\alpha' a,\alpha' b)=\int_0^1 \frac{dt}{t(1-t)}\, t^{\alpha' a}(1-t)^{\alpha' b}.
+% \]
+% To calculate the integral, we can decompose the integral by 
+% \[
+% 	\biggl(\int_{0}^\epsilon +\int_\epsilon^{1-\epsilon}+\int_{1-\epsilon}^1\biggr) \frac{dt}{t(1-t)}\, t^{\alpha' a}(1-t)^{\alpha' b}.
+% \]
+% The middle integral is finite when $\alpha'\to 0$ so that it does not contribute, the other two integrals are
+% \[
+% 	\int_0^\epsilon  \frac{dt}{t(1-t)}\, t^{\alpha' a}(1-t)^{\alpha' b}
+% 	\sim \int_0^\epsilon \frac{dt}t t^{\alpha' a} 
+% 	= \frac{\epsilon^{\alpha' a}}{\alpha'a} \sim \frac{1}{\alpha'a},
+% 	\]
+% \[
+% 	\int_{1-\epsilon}^1  \frac{dt}{t(1-t)}\, t^{\alpha' a}(1-t)^{\alpha' b}
+% 	\sim \int_0^\epsilon \frac{dt}{t}\, t^{\alpha' b} \sim \frac{1}{\alpha' b},
+% \]
+% so the leading term of this integral is 
+% \[
+% 	B(\alpha' a,\alpha' b)\sim\frac 1{\alpha'}\biggl(\frac 1a+\frac 1b\biggr).
+% \]
+% 
+% One important lesson from the above trivial integral is that the leading terms of the integral come from the vertices of the positive geometry. 
+
+Now let's carefully consider the first example,
+\[
+	I=\int_0^\infty \int_0^\infty\frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y+x y)^{-\alpha' c}.
+\]
+The leading terms come form the neighbourhoods of four vertices $(0,0)$, $(0,\infty)$, $(\infty,0)$ and $(\infty,\infty)$. Let's consider the simplest vertex first, 
+\[
+	I(0,\infty)=\int_{0}^\epsilon\int_{1/\epsilon}^\infty \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y+xy)^{-\alpha' c}\sim \int_{0}^\epsilon\int_{1/\epsilon}^\infty \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' (b-c)}\sim 
+	\frac{1}{{\alpha'}^2}\frac{1}{a} \frac{1}{c-b}
+\]
+Near the vertex $(0,\infty)$, the integral decouples because the mixed factor $x+y+xy \sim y$ when $y \gg x$.  Similarly, $I(\infty,0)\sim ({\alpha'}^2 b (c-a))^{-1}$. 
+
+For the harder vertex
+\[
+I(0,0)=\int^{\epsilon}_0 \int^{\epsilon}_0 \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y+xy)^{-\alpha' c}
+%\sim\int^{\epsilon}_0 \int^{\epsilon}_0\frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y)^{-\alpha' c}.
+\]
+when $(x,y)\to (0,0)$, we cannot decouple $x$ and $y$ in the mixed factor $(x+y+xy)^{-\alpha' c}$ 
+because we don't know which one is dominated. However, we can drop the term $xy$ because $xy\ll x$, $y$. 
+For the remaining terms $x+y$, we can introduce new variables $x = tp$ and $y=t(1-p)$, then
+\begin{equation}\label{canonicalformunderblowup}
+	\frac{dxdy}{xy} = \frac{dp}{p(1-p)}\frac{dt}{t},
+\end{equation}
+and
+\begin{equation*}
+	i(0,0)=\int_{1/\epsilon}^\infty\frac{dt}{t} t^{\alpha'(a+b-c)}\int_0^{1}\frac{dp}{p(1-p)}p^{\alpha' a}(1-p)^{\alpha' b}%\sim \frac{1}{\alpha'}\frac{1}{a+b-c}\int_0^{1}\frac{dp}{p(1-p)}p^{\alpha' a}(1-p)^{\alpha' b}
+	\sim \frac{1}{{\alpha'}^2}\frac{1}{c-a-b}\biggl(\frac 1a+\frac 1b\biggr).
+\end{equation*}
+in this example, whether $x$ or $y$ is dominated in the integration is characterized by $p$, 
+and both vertices $p\sim 0$ ($x\ll y$) and $p\sim 1$ ($y\ll x$) contribute.
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+\fill[gray!30,opacity=0.4] (-6.9,1.4) -- (-3.9,1.4) -- (-3.9,4.4) -- (-6.9,4.4);
+\draw[->] (-7,1.4) -- (-3.9,1.4);
+\draw[->] (-6.9,1.3) -- (-6.9,4.4);
+\draw[densely dotted]  (-6.9,1.4) ellipse (0.5 and 0.5);
+\draw[->] (-6.9,1.2) .. controls (-6.9,0.4) and (-6.7,0) .. (-4.7,0);
+\fill[gray!30,opacity=0.4] (-3.5,-0.8) -- (-1.5,-0.8) -- (-1.5,2.2) -- (-4.5,2.2) -- (-4.5,0.2);
+\draw[->] (-4.6,-0.8) -- (-1.5,-0.8);
+\draw[->] (-4.5,-0.9) -- (-4.5,2.2);
+\draw (-3.5,-0.8) -- (-4.5,0.2);
+\draw[densely dashed,->] (-4.5,0.2) -- (-3.2,-1.1)node[right]{$p$};
+\draw[->]  plot[smooth, tension=.7] coordinates {(-4.4,0.3) (-2.7,1.7) (-0.6,2)};
+\draw[->]  plot[smooth, tension=.7] coordinates {(-3.5,-0.9) (-2.4,-2.4) (-0.6,-2.6)};
+\fill[gray!30,opacity=0.4] (0.8,-3.4) -- (2.8,-3.4) -- (2.8,-0.4) -- (-0.2,-0.4) -- (-0.2,-3.4);
+\draw[->] (-0.3,-3.4) -- (2.8,-3.4);
+\draw[->] (-0.2,-3.5) -- (-0.2,-0.4);
+\fill[gray!30,opacity=0.4] (0.8,1) -- (2.8,1) -- (2.8,4) -- (-0.2,4) -- (-0.2,1);
+\draw[->] (-0.3,1) -- (2.8,1);
+\draw[->] (-0.2,0.9) -- (-0.2,4);
+\node at (-2.8,2) {\small $p\sim 0$};
+\node at (-2.2,-2) {\small $p\sim 1$};
+\node at (-4,-1) {\small $t$};
+\node at (-4.6,-0.4) {\small $t$};
+\node at (2.8,0.8) {\small $p$};
+\node at (-0.4,4) {\small $t$};
+\node at (-0.4,-0.4) {\small $t$};
+\node at (2.8,-3.6) {\small $1-p$};
+\end{tikzpicture}
+\end{center}
+Similarly, one can work out $I(\infty,\infty)$, and the finally
+\[
+	I\sim I(0,0)+I(0,\infty)+I(\infty,0)+I(\infty,\infty).
+\] 
+%similarly, 
+%\[
+%	I(\infty,\infty)\sim \frac{1}{{\alpha'}^2}\frac{1}{c-a-b}\biggl(\frac 1{c-a}+\frac 1{c-b}\biggr),
+%\]
+%so the leading terms of original integral is 
+%\[
+%	I\sim I(0,0)+I(0,\infty)+I(\infty,0)+I(\infty,\infty).
+%\]
+
+Now for the second example, near $(0,0)$, blow up $p=x^3+y^3+x y$ by letting
+$x=tu$ and $y=tv$, then when $u\sim 1$, 
+$p=t^2(t +t v^3+ v)\sim t^2(t+v)=t(x^2+y)$. 
+Similarly, if $v=1$, we will get $p\sim t(x+y^2)$. 
+If we draw new curves $x^2+y=0$ and $x+y^2=0$ and the old curve $x^3+y^3+xy$, 
+we can see that the original curve
+decomposes into two curves generated by blowing up in the above diagram, so that 
+the contribution of integral is also decomposed.
+\begin{center}
+	\includegraphics[scale=0.7]{fig_2.pdf}	
+\end{center}
+where the blue curve is $x^3+y^3+xy=0$, the green curve is $y+x^2=0$ and
+the orange curve $x+y^2=0$.
+
+In other words, in the expansion 
+\[
+	(y+x^2)(x+y^2)=xy+x^3+y^3+xy^2+x^2y+x^2y^2\sim x^3+y^3+xy,
+\]
+$xy^2$, $x^2y$, $x^2y^2\ll xy$ so that they don't contribute in the integral near $(0,0)$.
+Next we will carefully consider which terms we can throw away.
+
+% Generally, we want to decompose a polynomial into
+% \[
+% 	p\sim \prod_{i\leq j} \prod_k (x_i^{a^k_{ij}}+x_j^{b^k_{ij}})
+% \]
+
+Now let's consider the general story. Generally, the integral near a vertex need not to be decoupled as $I(0,\infty)$ above, so blowing-up is necessary. Suppose we come to the vertex defined locally by $x_1=\cdots=x_D=0$, 
+\[
+	I(0,\dots,0)\sim \int_{[0,\epsilon]^D} \frac{d x_1}{x_1}\cdots \frac{d x_D}{x_D} \prod_i(p_i(x))^{\alpha' s_i}.
+\]
+In each polynomial $p_i$, 
+\[
+	p_i(x)=\sum_{I} a_{iI} x^{n^I},
+\]
+we need to worry about which $x^{n^I}$ is dominated in the integration, however not all terms can dominate 
+the integral. For example, if we find that $x^{n^J}=x^{n^I}x^{v}$ or equivalently $n^J=n^I+v$ for some 
+non-zero positive vector $v$, there's no need to consider $x^{n^J}$ anymore because it goes to zero faster 
+than $x^{n^I}$. Geometrically, one can assign each term with a cone $C_{I}=(n^I+\mathbb R^D_{+})$, the above
+claim is equivalently that other terms in this cone can be throw away.
+
+Furthermore, we can consider the convex hull of these cones $\{C_I\}$. It's usually larger than
+the union of these cones $\bigcup_I C_I$, but terms other than vertices in $C$ are also not dominated!
+Here let's consider an example $p(x)=x^6+y^6+x^2y^2$. 
+\begin{center}
+	\begin{tikzpicture}
+		\fill[gray,opacity=0.2] (0,4) -- (0,3) -- (4,3) -- (4,4);
+		\fill[gray,opacity=0.2] (1,4) -- (1,1) -- (4,1) -- (4,4);
+		\fill[gray,opacity=0.2] (3,4) -- (3,0) -- (4,0) -- (4,4); 
+		\fill[green,opacity=0.2] (0,3) -- (1,3) -- (1,1); 
+		\fill[green,opacity=0.2] (3,0) -- (3,1) -- (1,1); 
+		\draw[thick] (0,4) -- (0,3) -- (1,1) -- (3,0) -- (4,0);
+		\draw[->](-0.1,0) -- (4.1,0);
+		\draw[->](0,-0.1) -- (0,4.1);
+		\node[inner sep=1.5pt,circle,fill=blue] at (0,3) {};
+		\node[inner sep=1.5pt,circle,fill=blue] at (1,1) {};
+		\node[inner sep=1.5pt,circle,fill=blue] at (3,0) {};
+	\end{tikzpicture}
+\end{center}
+In the above diagram, besides gray cones, the convex hull contains two green regions. 
+If we add terms like $x^5y^2$ in the interior of green regions to the polynomial, 
+we will show that the leading terms of the integral from this vertices $x_1=x_2=\cdots=x_D=0$
+do not change.
+
+\begin{lem}
+Suppose $p$ is a polynomial $p(x)=\sum_{I\in \mathscr A}a_I x^{n^I}$, and $C[p]$ is the convex hull
+of $\{C_{I}=(n^I+\mathbb R^D_{+})\}$. When we consider the integral near the vertices $x_1=\cdots=x_D=0$, 
+then we can replace $p(x)$ by a new polynomial $\bar p(x)=\sum_{J\in \mathscr B}a_J x^{n^J}$ such that
+the leading terms will not change.
+\end{lem}
+
+In the following proof, we define $|v|=\sum_{i=1}^D v_i$ for any vector $v\in \mathbb R^D$.
+
+\begin{proof}
+We have seen that terms other than vertices in $\bigcup_I C_I$ do not contribute. Suppose a term $x^v$ 
+is in the interior of $C[p]-\bigcup_I C_I$,  
+then there exist non-negative numbers $\{c_J\}$ such that it can be written as 
+\[
+	v = \sum_{J\in \mathscr B}c_J n^J,\quad \sum_{J\in \mathscr B} c_J>1.
+\]
+Therefore, after setting $x_i=t y_i$,  
+\[
+	x^{v}=\prod_J (x^{n^J})^{c_J}=x^{\sum_J c_J n^J} = t^{\sum_J c_J |n^J|}y^{\sum_J c_J n^J},
+\]
+where there always exists a $K\in \mathscr B$ such that $|n^K|<\sum_J c_J |n^J|$, otherwise
+\[
+	\sum_{K\in \mathscr B} c_K|n^K|\geq \left(\sum_{K\in \mathscr B} c_K\right)
+	\sum_{J\in \mathscr B} c_J |n^J|>\sum_{J\in \mathscr B} c_J |n^J|,
+\]
+so there's a contradiction. Hence, this term goes to zero faster than a vertex of the convex hull.
+
+Finally, if $v$ is on the boundary of $C[p]$, then it can be written as 
+\[
+	v = \sum_{J\in \mathscr B}c_J n^J,\quad \sum_{J\in \mathscr B} c_J=1,
+\]
+we follow the similar logic above and then find that $|n^K|=\sum_{J\in\mathscr B} c_J |n^J|=|v|$ for
+all $K\in\mathscr B$, so that all vertices are on the plane $\sum_i x_i=|v|$. 
+In this case, we could assume that $p$ is a homogeneous polynomial. After blowing-up, near the vertex
+$y_i=1$, the polynomial becomes $p'=t^{|v|}\sum_{I}a_I y^{n^I}|_{y_i=1}$. 
+If $v$ is not a vertex, it should be in the interior of the cone of this new polynomial or 
+on the boundary of the cone (for all $i$), and then by 
+the proven part of lemma and induction on codimension, it doesn't contribute the integral.
+\end{proof}
+
+In other words, we have proven the following proposition. 
+
+\begin{pro}
+The leading order of integrals
+\[
+	I=\int_{[0,\epsilon]^D} \left(\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i}\right)
+	p_1^{-\alpha' c} \prod_I q_I^{-\alpha' c_I}
+	\quad \text{and} \quad 
+	I'=\int_{[0,\epsilon]^D} \left(\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i}\right)
+	p_2^{-\alpha' c} \prod_I q_I^{-\alpha' c_I}
+\]
+are the same if and only if $C[p_1]=C[p_2]$.
+\end{pro}
+
+From the theorem in \cite{}, the leading order of the integral eq.\eqref{int1} 
+only depands on the Minkowski sum of Newton polytopes of polynomials $p_I$, 
+the above proposition is just like the local version of this theorem, so that 
+it seems trivial. However, it's more free to use the local version because 
+the cone is not as rigid as the Newton polytopem, and it looks  
+like a `corner' of the Newton polytope.
+
+% Geometrically, if we consider the cone $C$ spanned by all $\{n^I\}$, then the basis can be choosen as the vertices on the boundary of $C$, and terms corresponding to points inside $C$ can be dropped.
+% For example, suppose that $p(x,y)=x^3+y^3+xy+x^3y^2+xy^3$, we draw each $n^I$ in the following diagram,
+% \begin{center}
+% 	\begin{tikzpicture}
+% 		\fill[gray!20] (0,4) -- (0,3) -- (1,1) -- (3,0) -- (4,0) -- (4,4);
+% 		\draw[thick] (0,4) -- (0,3) -- (1,1) -- (3,0) -- (4,0);
+% 		\draw[->](-0.1,0) -- (4,0);
+% 		\draw[->](0,-0.1) -- (0,4);
+% 		\node at (3,2) {$\times$};
+% 		\node at (3,1.5) {$x^3y^2$};
+% 		\node at (1,3) {$\times$};
+% 		\node at (1,2.5) {$xy^2$};
+% 		\node[inner sep=1.5pt,circle,fill=blue] at (0,3) {};
+% 		\node[inner sep=1.5pt,circle,fill=blue] at (1,1) {};
+% 		\node[inner sep=1.5pt,circle,fill=blue] at (3,0) {};
+% 	\end{tikzpicture}
+% \end{center}
+% where $x^3y^2\leftrightarrow (3,2)$ and $xy^3\leftrightarrow (1,3)$ are represented by $\times$ in the diagram and other terms are represented by blue points. The basis is given by blue points $\{x^3\leftrightarrow (3,0),y^3\leftrightarrow (0,3),xy\leftrightarrow (1,1)\}$, and the gray region is the set of all vectors $v=\sum_{J\in \mathscr B}c^I_J n^J$ where $\sum_J c^I_J>1$, therefore we throw away terms in the gray region and then get that $\bar p(x)=x^3+y^3+xy$. 
+
+Now, after drawing the cone of a polynomial $p$, if one get
+\begin{center}
+\begin{tikzpicture}[scale=0.75,baseline={([yshift=-.5ex]current bounding box.center)}]
+\fill[gray!20] (2,3) -- (0,3) -- (0,0) -- (3,0) -- (3,1) -- (3,3);
+\draw[->](-1.1,-0.5) -- (3,-0.5);
+\draw[->](-1,-0.6) -- (-1,3);
+\draw[->] (-1,-0.5) -- (0,0);
+\node at (-0.5,0) {$v$};
+\end{tikzpicture}
+\end{center}
+then we call that $p(x)\sim x^v$ is decoupled. 
+In other words, $p$ has the form of 
+\[
+p(x)=x^v(c+q(x)),
+\] 
+where $q(0)=0$ and $v$ is a vector. 
+Our next aim is to find a series of blow-ups to make all polynoimals 
+decouple in this way.
+
+Now we start to consider how to blow up. 
+As has seen from eq.\eqref{canonicalformunderblowup}, one important feature of $\Omega_{\mathcal P}$
+is `invariant' under the blowing-up because the residue of the canonical form on the boundary is
+the canonical form of the boundary.
+
+Suppose we blow up near the boundary defined locally by $x_1=\cdots=x_n=0$ in integral eq.\eqref{int1}. 
+It's already the most general cases. In fact, if in the definition of a boundary $x_i=\infty$, we can
+change the variable $x_i\mapsto 1/x_i$ and then $x_i=0$.
+Let $x_i=ty_i$, where $[y_1,\dots,y_n]$ are positive projective coordinates. 
+Near the boundary, the canonical form of $\Omega$ performs as 
+\[
+	\Omega=\frac{dx_1}{x_1}\wedge \cdots\wedge\frac{dx_n}{x_n}
+	\wedge \Phi(x'),
+\]
+where $x'$ are other coordinates. In new coordinates, it can be written as 
+\[
+	\Omega=\frac{1}{y_n}\frac{dt}{t}\wedge \frac{dy_1}{y_1}\wedge \cdots
+	\wedge\frac{dy_{n-1}}{y_{n-1}}\wedge \Phi(x')+O(t^0),
+\]
+where $y_n=1-(y_1+\cdots+y_{n-1})$ and $\Phi$ is the canonical form of the boundary of $\mathcal P$ given by $x_1=\cdots=x_n=0$. Therefore,
+\[
+	\operatorname{Res}_{t=0}(\Omega)=\frac{1}{y_n}\frac{dy_1}{y_1}\wedge \cdots\wedge\frac{dy_{n-1}}{y_{n-1}}\wedge \Phi(x')=\Omega_{n-1}(y)\wedge \Phi(x'),
+\]
+$\Omega_{n-1}(y)$ the canonical form of a standard $(n-1)$-dimensional simplex $\Delta_{n-1}$ defined by
+$
+	\sum_{i=1}^n y_i=1
+$ and $y_i\geq 0$. 
+% If we rewrite it in new coordinates $\{z_i\}$ such that
+% \[
+% 	z_0=0,\quad y_i=z_i-z_{i-1},\quad z_{n}=1,
+% \]
+% then 
+% \[
+% 	\Omega_{n-1}(z)=\frac{dz_1\wedge\cdots\wedge dz_n}{(z_1-z_0)\cdots (z_n-z_{n-1})}.
+% \]
+% It's the more familiar form.
+
+% Consider a set of irreducible polynomials $\{p_i\}$, let $Z(p_i)$ be the zero point set of $p_i$ in $\mathbb{R}^n$. Suppose a curved polytope $\mathcal P$ is bounded by $\bigcup_i Z(p_i)$, if $F_k$ is a codimension $k$ face of $\mathcal P$ where $\#\{i\,:\,F_k\subset Z(p_i)\}>k$, then we call it a degenerated face.
+
+% Now Consider the integration
+% \[
+% 	I(\alpha')=\int_{\mathcal P} \Omega_{\mathcal P}(x)\prod_i(p_i(x))^{\alpha' s_i},
+% \]
+% where $\Omega$ is the canonical form of $\mathcal P$, and we suppose $I(\alpha')$ is finite when $\alpha'>0$.
+% It's clear that $I(\alpha')$ diverge when $\alpha'\to 0$. We want to find all possible poles in the leading order of its Laurent series with respect to $\alpha$ at $\alpha=0$. It's a rational function of $s_i$ since $p_i$ are all polynomials.
+
+% If $F$ is a facet of $\mathcal P$. Locally, if $F$ is defined by $x=0$, then near $F$, the integration is 
+% \[
+% 	\int_0^\epsilon \frac{d x}{x} x^{\alpha' a} \int_{x'}\Psi(x')
+% 	\sim \frac{1}{\alpha' a}\int_{x'}\Psi(x'),
+% \]
+% where $x'$ are other coordinates and $\Psi(x')$ is the left part of $\Omega_{\mathcal P}(x)\prod_i(p_i(x))^{\alpha' s_i}$.
+
+For polynomials, suppose that 
+$p_I(x) = t^{k_I}q_I(x',y,t)$.
+Then the integral eq.\eqref{int1}, near this boundary and when $\alpha'$ is small, becomes
+\[
+\begin{aligned}
+\int_{x'} \int_{x\in [0,\epsilon]^n} \Omega(x,x')\,\prod_ix_i^{\alpha' X_i}&
+\prod_I(p_I(x))^{-\alpha' c_I}=
+\int_0^\epsilon \, \frac{dt}{t} t^{\alpha'\sum_{i=1}^n X_i-\alpha' \sum_I k_Is_I}\\
+	  &\int_{y\in\Delta_{n-1}}\Omega_{n-1}(y)
+\prod_{j=1}^n y_j^{\alpha' X_j}
+\int_{x'}\Phi(x')\prod_{k=n+1}^D(x'_k)^{\alpha' X_k}
+\prod_I(q_I(x',y,t))^{-\alpha' c_I},
+\end{aligned}
+\]
+however we still need to worry about the blowing-up of $t$, $y$ and $x'$ in $q_I$ because
+it's still unknown that which one is dominated.
+
+Blowing up produces new vertices 
+$
+	\{v_i:x'=0,t=0,y_i=1\}
+$.
+Note that $y_i=1$ means that $y_j=0$ for $j\neq i$ because $\sum_i y_i=1$. Therefore, it's equivalent to 
+do such change of variables
+\[
+	x'\to x',\quad x_j\to tx_j\quad \text{for $j\neq i$},\quad x_i\to t,
+\]
+or just reuse the name of $x_i$ for $t$ to save the namespace,
+\[
+	x'\to x',\quad x_j\to x_ix_j\quad \text{for $j\neq i$},\quad x_i\to x_i,
+\]
+% which is related to the sector decompostion. 
+% We will use this change of variable from now on.
+
+Now, when will we finish?
+Consider the vertices generated in blowing-up, after the change of variables (to a vertex)
+\[
+	x'\to x',\quad x_j\to x_ix_j\quad \text{for $j\neq i$},\quad x_i\to x_i,
+\]
+the polynomial $p=\sum_I a_I x^{n^I}$ becomes $p'=\sum_I a_I x^{(n^I)'}$, where
+\[
+	(n^I)'_i\longrightarrow \sum_j n^I_j.
+\]
+For example, for $p(x)=x^3+xy+y^3$, the gray cone, we first get the green cone, but it's not the wanted cone, so we blow up it again and we get the red cone.
+\begin{center}
+\begin{tikzpicture}[scale=0.75]
+	\fill[gray!20] (0,4) -- (0,3) -- (1,1) -- (3,0) -- (4,0) -- (7.5,4);
+	\fill[green!20] (3.5,4) -- (2,1) -- (3,0) -- (4,0) -- (7.5,4) --cycle;
+	\fill[red!20] (3,1) -- (6,3) -- (7.5,4) -- (7.5,0) -- (3,0)-- cycle;
+	\draw[thick] (0,4) -- (0,3) -- (1,1) -- (3,0) -- (7.5,0);
+	\draw[->](-0.1,0) -- (7.5,0);
+	\draw[->](0,-0.1) -- (0,4);
+	\node[inner sep=1.5pt,circle,fill=blue] at (0,3) {};
+	\node[inner sep=1.5pt,circle,fill=blue] at (1,1) {};
+	\node[inner sep=1.5pt,circle,fill=blue] at (3,0) {};
+	\node[inner sep=1.5pt,circle,fill=blue] at (2,1) {};
+	\node[inner sep=1.5pt,circle,fill=blue] at (3,3) {};
+	\node[inner sep=1.5pt,circle,fill=blue] at (3,1) {};
+	\node[inner sep=1.5pt,circle,fill=blue] at (6,3) {};
+	\draw[dashed,->] (0.2,3) -- (2.8,3);
+	\draw[dashed,->] (1.2,1) -- (1.8,1);
+	\draw[dashed,->] (3.2,3) -- (5.8,3);
+	\draw[dashed,->] (2.2,1) -- (2.8,1);
+\end{tikzpicture}
+\end{center}
+Note that we still need to work out other vertices generated by blowing-up. 
+
+
+**Question: For a given polynomial $p$, can we terminate after finte steps 
+such that near each generated vertex, $p$ nearly becomes a monoimal?
+
+**Answer: Yes! [Hironake 67] However, sequences of blowing-up of a given polynomial
+need not to be unique.
+
+**The possible method: [Spivakovsky 83], [Encinas \& Hauser 02], [Zeillinger 05], \dots
+
+**However they are not so efficient. In our computation, we choose the minimal set of
+variables such that $p=0$ after setting these variables to be zero. Usually, it's more 
+efficient than the above methods, but it's not clear whether it can terminate. If not,
+we can use any above method.
 
 \section{Map}
 
@@ -337,439 +780,30 @@ since $F_p$ are convex functions and $\alpha_p/\alpha_0>1$, $F_p(y)^{\alpha_p/\a
 Finally, we claim that $F(y)$ does not take minimum when $\mathbf{y}$ goes to infinity along any direction. It is because that for a given $\mathbf{y}$ and each $p$, $F_p(t\mathbf{y})\to \infty$ when $t\to \infty$, so does $F(t\mathbf{y})=\prod_p F_p(t\mathbf{y})^{\alpha_p}$. Therefore, equation $\mathbf{X}(x)=\mathbf{\Lambda}$ has a unique solution.
 \end{proof}
 
-\section{Blow up}
 
-(Some review of positive geometry \& canonical form. ...)
-
-As mentioned in the introduction, leading order of the integral eq.\eqref{int1} comes from the vertex
-of the integral region. 
-At each vertex, generally there're two main difficulties to work out the leading terms
-\begin{itemize}
-	\item There're some polynomials $p_I$ other than $x_i$ vanishing at a vertex.
-	\item Furthermore, the vertex is usually a singularity of $p_I$.
-\end{itemize}
-For example, for the integral 
-\[
-	\int_0^\infty \int_0^\infty \frac{\dif x}{x}\frac{\dif y}{y}x^{\alpha' X}
-	y^{\alpha' Y}(x+y+ xy)^{-\alpha' c},
-\] 
-the vertex $(0,0)$ is the common zero set of three polynomials $x$, $y$ and $x+y+xy$. 
-Further, for the integral 
-\[
-	\int_0^\infty \int_0^\infty \frac{\dif x}{x}\frac{\dif y}{y}x^{\alpha' X}
-	y^{\alpha' Y}(x^3+y^3+ xy)^{-\alpha' c},
-\] 
-the vertex $(0,0)$ is a singularity of the curve $x^3+y^3+xy=0$. 
-
-\begin{figure}[t]
-\begin{center}
-\includegraphics[scale=0.75]{fig_1.pdf}
-\end{center}
-\vspace{-5ex}
-\caption{Left: $p=x+y+xy$, Right: $p=x^3+y^3+xy$}
-\end{figure}
-
-% In the blowing up, the above two example becomes 
-% \[
-% 	p=t(u+v+tuv) \quad\text{and}\quad p=t^2(tu^3+tv^3+uv)
-% \]
-% respectively.
-
-%Consider the integration
-%\begin{equation}\label{int}
-%	I(\alpha')=\int_{\mathcal P} \Omega_{\mathcal P}(x)\prod_i(p_i(x))^{\alpha' s_i},
-%\end{equation}
-%where $\Omega$ is the canonical form of the $D$-dimensional positive geometry $\mathcal P$, and we suppose $I(\alpha')$ is finite when $\alpha'>0$.
-%It's clear that $I(\alpha')$ diverge when $\alpha'\to 0$ because the simple pole of canonical form on the boundary of $\mathcal P$. We want to calculate the leading order of its Laurent series with respect to $\alpha'$ at $\alpha'=0$. % It's a rational function of $s_i$ since $p_i$ are all polynomials.
-%
-% Consider the following integral
-% \[
-% 	\int_{\mathbb R_+^d}\frac{d x_1}{x_1} \cdots \frac{d x_d}{x_d} x_1^{n_1}\cdots x_d^{\alpha' n_d} P(x_1,\dots,x_d)^{-\alpha' c}, 
-% \]
-% where $P$ is a polynomial, here we can further assume that $P(0,\dots,0)\neq 0$. When $\alpha'\to 0$, the integral diverge, we want to calculate the leading term of $(\alpha')^{-1}$ of this integral. blabla
-
-% Let's first consider the one-dimensional example, the Beta function 
-% \[
-% 	B(\alpha' a,\alpha' b)=\int_0^1 \frac{dt}{t(1-t)}\, t^{\alpha' a}(1-t)^{\alpha' b}.
-% \]
-% To calculate the integral, we can decompose the integral by 
-% \[
-% 	\biggl(\int_{0}^\epsilon +\int_\epsilon^{1-\epsilon}+\int_{1-\epsilon}^1\biggr) \frac{dt}{t(1-t)}\, t^{\alpha' a}(1-t)^{\alpha' b}.
-% \]
-% The middle integral is finite when $\alpha'\to 0$ so that it does not contribute, the other two integrals are
-% \[
-% 	\int_0^\epsilon  \frac{dt}{t(1-t)}\, t^{\alpha' a}(1-t)^{\alpha' b}
-% 	\sim \int_0^\epsilon \frac{dt}t t^{\alpha' a} 
-% 	= \frac{\epsilon^{\alpha' a}}{\alpha'a} \sim \frac{1}{\alpha'a},
-% 	\]
-% \[
-% 	\int_{1-\epsilon}^1  \frac{dt}{t(1-t)}\, t^{\alpha' a}(1-t)^{\alpha' b}
-% 	\sim \int_0^\epsilon \frac{dt}{t}\, t^{\alpha' b} \sim \frac{1}{\alpha' b},
-% \]
-% so the leading term of this integral is 
-% \[
-% 	B(\alpha' a,\alpha' b)\sim\frac 1{\alpha'}\biggl(\frac 1a+\frac 1b\biggr).
-% \]
-% 
-% One important lesson from the above trivial integral is that the leading terms of the integral come from the vertices of the positive geometry. 
-
-Now let's carefully consider the first example,
-\[
-	I=\int_{\mathbb R_+^2} \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y+x y)^{-\alpha' c}.
-\]
-The leading terms come form the neighbourhoods of four vertices $(0,0)$, $(0,\infty)$, $(\infty,0)$ and $(\infty,\infty)$. Let's consider the simplest vertex first, 
-\[
-	I(0,\infty)=\int_{0}^\epsilon\int_{1/\epsilon}^\infty \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y+xy)^{-\alpha' c}\sim \int_{0}^\epsilon\int_{1/\epsilon}^\infty \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' (b-c)}\sim 
-	\frac{1}{{\alpha'}^2}\frac{1}{a} \frac{1}{c-b}
-\]
-Near the vertex $(0,\infty)$, the integral decouples because the mixed factor $x+y+xy \sim y$ when $y \gg x$.  Similarly, $I(\infty,0)\sim ({\alpha'}^2 b (c-a))^{-1}$. 
-
-Now consider the harder vertex
-\[
-I(0,0)=\int^{\epsilon}_0 \int^{\epsilon}_0 \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y+xy)^{-\alpha' c}
-%\sim\int^{\epsilon}_0 \int^{\epsilon}_0\frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y)^{-\alpha' c}.
-\]
-when $(x,y)\to (0,0)$, we cannot decouple $x$ and $y$ in the mixed factor $(x+y+xy)^{-\alpha' c}$ 
-because we don't know which one is dominated. However, we can drop the term $xy$ because $xy\ll x$, $y$. 
-For the other terms $x+y$, we can introduce new variables $x = tp$ and $y=t(1-p)$, such that then
-\begin{equation}\label{canonicalformunderblowup}
-	\frac{dxdy}{xy} = \frac{dp}{p(1-p)}\frac{dt}{t},
-\end{equation}
-and
-\begin{equation*}
-	i(0,0)=\int_{1/\epsilon}^\infty\frac{dt}{t} t^{\alpha'(a+b-c)}\int_0^{1}\frac{dp}{p(1-p)}p^{\alpha' a}(1-p)^{\alpha' b}%\sim \frac{1}{\alpha'}\frac{1}{a+b-c}\int_0^{1}\frac{dp}{p(1-p)}p^{\alpha' a}(1-p)^{\alpha' b}
-	\sim \frac{1}{{\alpha'}^2}\frac{1}{c-a-b}\biggl(\frac 1a+\frac 1b\biggr).
-\end{equation*}
-in this example, whether $x$ or $y$ is dominated in the integration is characterized by $p$, and both vertices $p\sim 0$ ($x\ll y$) and $p\sim 1$ ($y\ll x$) contribute.
-\begin{center}
-\begin{tikzpicture}
-\fill[gray!30,opacity=0.4] (-6.9,1.4) -- (-3.9,1.4) -- (-3.9,4.4) -- (-6.9,4.4);
-\draw[->] (-7,1.4) -- (-3.9,1.4);
-\draw[->] (-6.9,1.3) -- (-6.9,4.4);
-\draw[densely dotted]  (-6.9,1.4) ellipse (0.5 and 0.5);
-\draw[->] (-6.9,1.2) .. controls (-6.9,0.4) and (-6.7,0) .. (-4.7,0);
-\fill[gray!30,opacity=0.4] (-3.5,-0.8) -- (-1.5,-0.8) -- (-1.5,2.2) -- (-4.5,2.2) -- (-4.5,0.2);
-\draw[->] (-4.6,-0.8) -- (-1.5,-0.8);
-\draw[->] (-4.5,-0.9) -- (-4.5,2.2);
-\draw (-3.5,-0.8) -- (-4.5,0.2);
-\draw[densely dashed,->] (-4.5,0.2) -- (-3.2,-1.1)node[right]{$p$};
-\draw[->]  plot[smooth, tension=.7] coordinates {(-4.4,0.3) (-2.7,1.7) (-0.6,2)};
-\draw[->]  plot[smooth, tension=.7] coordinates {(-3.5,-0.9) (-2.4,-2.4) (-0.6,-2.6)};
-\fill[gray!30,opacity=0.4] (0.8,-3.4) -- (2.8,-3.4) -- (2.8,-0.4) -- (-0.2,-0.4) -- (-0.2,-3.4);
-\draw[->] (-0.3,-3.4) -- (2.8,-3.4);
-\draw[->] (-0.2,-3.5) -- (-0.2,-0.4);
-\fill[gray!30,opacity=0.4] (0.8,1) -- (2.8,1) -- (2.8,4) -- (-0.2,4) -- (-0.2,1);
-\draw[->] (-0.3,1) -- (2.8,1);
-\draw[->] (-0.2,0.9) -- (-0.2,4);
-\node at (-2.8,2) {\small $p\sim 0$};
-\node at (-2.2,-2) {\small $p\sim 1$};
-\node at (-4,-1) {\small $t$};
-\node at (-4.6,-0.4) {\small $t$};
-\node at (2.8,0.8) {\small $p$};
-\node at (-0.4,4) {\small $t$};
-\node at (-0.4,-0.4) {\small $t$};
-\node at (2.8,-3.6) {\small $1-p$};
-\end{tikzpicture}
-\end{center}
-%similarly, 
-%\[
-%	i(\infty,\infty)\sim \frac{1}{{\alpha'}^2}\frac{1}{c-a-b}\biggl(\frac 1{c-a}+\frac 1{c-b}\biggr),
-%\]
-%so the leading terms of original integral is 
-%\[
-%	i\sim i(0,0)+i(0,\infty)+i(\infty,0)+i(\infty,\infty).
-%\]
-
-Now let's consider the general story. Generally, the integral near a vertex need not to be decoupled as $I(0,\infty)$ above, so blowing-up is necessary. Suppose we come to the vertex defined locally by $x_1=\cdots=x_D=0$, 
-\[
-	I(0,\dots,0)\sim \int_{[0,\epsilon]^D} \frac{d x_1}{x_1}\cdots \frac{d x_D}{x_D} \prod_i(p_i(x))^{\alpha' s_i}.
-\]
-In each polynomial $p_i$, 
-\[
-	p_i(x)=\sum_{I} a_{iI} x^{n^I},
-\]
-we need to worry about which $x^{n^I}$ is dominated in the integration, however not all terms can dominate 
-the integral. For example, if we find that $x^{n^J}=x^{n^I}x^{v}$ or equivalently $n^J=n^I+v$ for some 
-non-zero positive vector $v$, there's no need to consider $x^{n^J}$ anymore because it goes to zero faster 
-than $x^{n^I}$. Geometrically, one can assign each term with a cone $C_{I}=(n^I+\mathbb R^D_{+})$, the above
-claim is equivalently that other terms in this cone can be throw away.
-
-Furthermore, we can consider the convex hull of these cones $\{C_I\}$. It's usually larger than
-the union of these cones $\bigcup_I C_I$, but terms other than vertices in $C$ are also not dominated!
-Here let's consider an example $p(x)=x^6+y^6+x^2y^2$. 
-\begin{center}
-	\begin{tikzpicture}
-		\fill[gray,opacity=0.2] (0,4) -- (0,3) -- (4,3) -- (4,4);
-		\fill[gray,opacity=0.2] (1,4) -- (1,1) -- (4,1) -- (4,4);
-		\fill[gray,opacity=0.2] (3,4) -- (3,0) -- (4,0) -- (4,4); 
-		\fill[green,opacity=0.2] (0,3) -- (1,3) -- (1,1); 
-		\fill[green,opacity=0.2] (3,0) -- (3,1) -- (1,1); 
-		\draw[thick] (0,4) -- (0,3) -- (1,1) -- (3,0) -- (4,0);
-		\draw[->](-0.1,0) -- (4.1,0);
-		\draw[->](0,-0.1) -- (0,4.1);
-		\node[inner sep=1.5pt,circle,fill=blue] at (0,3) {};
-		\node[inner sep=1.5pt,circle,fill=blue] at (1,1) {};
-		\node[inner sep=1.5pt,circle,fill=blue] at (3,0) {};
-	\end{tikzpicture}
-\end{center}
-In the above diagram, besides gray cones, the convex hull contains two green regions. 
-If we add terms like $x^5y^2$ in the interior of green regions to the polynomial, 
-we will show that the leading terms of the integral from this vertices $x_1=x_2=\cdots=x_D=0$
-do not change.
-
-\begin{lem}
-Suppose $p$ is a polynomial $p(x)=\sum_{I\in \mathscr A}a_I x^{n^I}$, and $C[p]$ is the convex hull
-of $\{C_{I}=(n^I+\mathbb R^D_{+})\}$. When we consider the integral near the vertices $x_1=\cdots=x_D=0$, 
-then we can replace $p(x)$ by a new polynomial $\bar p(x)=\sum_{J\in \mathscr B}a_J x^{n^J}$ such that
-the leading terms will not change.
-\end{lem}
-
-In the following proof, we define $|v|=\sum_{i=1}^D v_i$ for any vector $v\in \mathbb R^D$.
-
-\begin{proof}
-We have seen that terms other than vertices in $\bigcup_I C_I$ do not contribute. Suppose a term $x^v$ 
-is in the interior of $C[p]-\bigcup_I C_I$,  
-then there exist non-negative numbers $\{c_J\}$ such that it can be written as 
-\[
-	v = \sum_{J\in \mathscr B}c_J n^J,\quad \sum_{J\in \mathscr B} c_J>1.
-\]
-Therefore, after setting $x_i=t y_i$,  
-\[
-	x^{v}=\prod_J (x^{n^J})^{c_J}=x^{\sum_J c_J n^J} = t^{\sum_J c_J |n^J|}y^{\sum_J c_J n^J},
-\]
-where there always exists a $K\in \mathscr B$ such that $|n^K|<\sum_J c_J |n^J|$, otherwise
-\[
-	\sum_{K\in \mathscr B} c_K|n^K|\geq \left(\sum_{K\in \mathscr B} c_K\right)
-	\sum_{J\in \mathscr B} c_J |n^J|>\sum_{J\in \mathscr B} c_J |n^J|,
-\]
-so there's a contradiction. Hence, this term goes to zero faster than a vertex of the convex hull.
-
-Finally, if $v$ is on the boundary of $C[p]$, then it can be written as 
-\[
-	v = \sum_{J\in \mathscr B}c_J n^J,\quad \sum_{J\in \mathscr B} c_J=1,
-\]
-we follow the similar logic above and then find that $|n^K|=\sum_{J\in\mathscr B} c_J |n^J|=|v|$ for
-all $K\in\mathscr B$, so that all vertices are on the plane $\sum_i x_i=|v|$. 
-In this case, we could assume that $p$ is a homogeneous polynomial. After blowing-up, near the vertex
-$y_i=1$, the polynomial becomes $p'=t^{|v|}\sum_{I}a_I y^{n^I}|_{y_i=1}$. 
-If $v$ is not a vertex, it should be in the interior of the cone of this new polynomial or 
-on the boundary of the cone (for all $i$), and then by 
-the proven part of lemma and induction on codimension, it doesn't contribute the integral.
-\end{proof}
-
-In other words, we have proven the following proposition. 
-
-\begin{pro}
-The leading order of integrals
-\[
-	I=\int_{[0,\epsilon]^D} \left(\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i}\right)
-	p_1^{-\alpha' c} \prod_I q_I^{-\alpha' c_I}
-	\quad \text{and} \quad 
-	I'=\int_{[0,\epsilon]^D} \left(\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i}\right)
-	p_2^{-\alpha' c} \prod_I q_I^{-\alpha' c_I}
-\]
-are the same if and only if $C[p_1]=C[p_2]$.
-\end{pro}
-
-From the theorem in \cite{}, the leading order of the integral \ref{int1} 
-only depands on the Minkowski sum of Newton polytopes of polynomials $p_I$, 
-the above proposition is just like the local version of this theorem, so that 
-it seems trivial. However, it's more free to use the local version because 
-the cone is not as rigid as the Newton polytopem, and it looks  
-like a `corner' of the Newton polytope.
-
-% Geometrically, if we consider the cone $C$ spanned by all $\{n^I\}$, then the basis can be choosen as the vertices on the boundary of $C$, and terms corresponding to points inside $C$ can be dropped.
-% For example, suppose that $p(x,y)=x^3+y^3+xy+x^3y^2+xy^3$, we draw each $n^I$ in the following diagram,
-% \begin{center}
-% 	\begin{tikzpicture}
-% 		\fill[gray!20] (0,4) -- (0,3) -- (1,1) -- (3,0) -- (4,0) -- (4,4);
-% 		\draw[thick] (0,4) -- (0,3) -- (1,1) -- (3,0) -- (4,0);
-% 		\draw[->](-0.1,0) -- (4,0);
-% 		\draw[->](0,-0.1) -- (0,4);
-% 		\node at (3,2) {$\times$};
-% 		\node at (3,1.5) {$x^3y^2$};
-% 		\node at (1,3) {$\times$};
-% 		\node at (1,2.5) {$xy^2$};
-% 		\node[inner sep=1.5pt,circle,fill=blue] at (0,3) {};
-% 		\node[inner sep=1.5pt,circle,fill=blue] at (1,1) {};
-% 		\node[inner sep=1.5pt,circle,fill=blue] at (3,0) {};
-% 	\end{tikzpicture}
-% \end{center}
-% where $x^3y^2\leftrightarrow (3,2)$ and $xy^3\leftrightarrow (1,3)$ are represented by $\times$ in the diagram and other terms are represented by blue points. The basis is given by blue points $\{x^3\leftrightarrow (3,0),y^3\leftrightarrow (0,3),xy\leftrightarrow (1,1)\}$, and the gray region is the set of all vectors $v=\sum_{J\in \mathscr B}c^I_J n^J$ where $\sum_J c^I_J>1$, therefore we throw away terms in the gray region and then get that $\bar p(x)=x^3+y^3+xy$. 
-
-Now we start to consider how to blow up. As has seen from eq.\eqref{canonicalformunderblowup}, one important feature of $\Omega_{\mathcal P}$ is `invariant' under the blowing-up because the residue of the canonical form on the boundary is the canonical form of the boundary.
-
-Suppose we blow up near the boundary defined locally by $x_1=\cdots=x_n=0$ in integral eq.\eqref{int}. Now let $x_i=ty_i$, where $[y_1,\dots,y_n]$ are positive projective coordinates. Near the boundary, the canonical form of $\Omega$ performs as 
-\[
-	\Omega=\frac{dx_1}{x_1}\wedge \cdots\wedge\frac{dx_n}{x_n}
-	\wedge \Phi(x')+O(t^0),
-\]
-where $x'$ are other coordinates. In new coordinates, it can be written as 
-\[
-	\Omega=\frac{1}{y_n}\frac{dt}{t}\wedge \frac{dy_1}{y_1}\wedge \cdots\wedge\frac{dy_{n-1}}{y_{n-1}}\wedge \Phi(x')+O(t^0),
-\]
-where $y_n=1-(y_1+\cdots+y_{n-1})$ and $\Phi$ is the canonical form of the boundary of $\mathcal P$ given by $x_1=\cdots=x_n=0$. Therefore,
-\[
-	\operatorname{Res}_{t=0}(\Omega)=\frac{1}{y_n}\frac{dy_1}{y_1}\wedge \cdots\wedge\frac{dy_{n-1}}{y_{n-1}}\wedge \Phi(x')=\Omega_{n-1}(y)\wedge \Phi(x'),
-\]
-$\Omega_{n-1}(y)$ the canonical form of a standard $(n-1)$-dimensional simplex $\Delta_{n-1}$. 
-% If we rewrite it in new coordinates $\{z_i\}$ such that
-% \[
-% 	z_0=0,\quad y_i=z_i-z_{i-1},\quad z_{n}=1,
-% \]
-% then 
-% \[
-% 	\Omega_{n-1}(z)=\frac{dz_1\wedge\cdots\wedge dz_n}{(z_1-z_0)\cdots (z_n-z_{n-1})}.
-% \]
-% It's the more familiar form.
-
-% Consider a set of irreducible polynomials $\{p_i\}$, let $Z(p_i)$ be the zero point set of $p_i$ in $\mathbb{R}^n$. Suppose a curved polytope $\mathcal P$ is bounded by $\bigcup_i Z(p_i)$, if $F_k$ is a codimension $k$ face of $\mathcal P$ where $\#\{i\,:\,F_k\subset Z(p_i)\}>k$, then we call it a degenerated face.
-
-% Now Consider the integration
-% \[
-% 	I(\alpha')=\int_{\mathcal P} \Omega_{\mathcal P}(x)\prod_i(p_i(x))^{\alpha' s_i},
-% \]
-% where $\Omega$ is the canonical form of $\mathcal P$, and we suppose $I(\alpha')$ is finite when $\alpha'>0$.
-% It's clear that $I(\alpha')$ diverge when $\alpha'\to 0$. We want to find all possible poles in the leading order of its Laurent series with respect to $\alpha$ at $\alpha=0$. It's a rational function of $s_i$ since $p_i$ are all polynomials.
-
-% If $F$ is a facet of $\mathcal P$. Locally, if $F$ is defined by $x=0$, then near $F$, the integration is 
-% \[
-% 	\int_0^\epsilon \frac{d x}{x} x^{\alpha' a} \int_{x'}\Psi(x')
-% 	\sim \frac{1}{\alpha' a}\int_{x'}\Psi(x'),
-% \]
-% where $x'$ are other coordinates and $\Psi(x')$ is the left part of $\Omega_{\mathcal P}(x)\prod_i(p_i(x))^{\alpha' s_i}$.
-
-What's more, suppose polynomials are factorized into
-\[
-	p_i(x) = t^{k_i}q_i(x',y,t).
-\]
-Therefore, the integral, near this boundary and when $\alpha'$ is small, becomes
-\[
-	\begin{aligned}
-		\int_{x'} \int_{x\in [0,\epsilon]^n} \Omega(x,x')\, \prod_i(p_i(x))^{\alpha' s_i}
-		&=
-		\int_0^\epsilon \, \frac{dt}{t} t^{\alpha' \sum_i k_is_i}\int_{y\in\Delta_{n-1}}\int_{x'}\Omega_{n-1}(y)
-		\Phi(x')\prod_i
-		(q_i(x',y,t))^{\alpha' s_i},
-	\end{aligned}
-\]
-however we still need to worry about the blowing-up of $t$, $y$ and $x'$.
-
-Blowing up produces new vertices: 
-\[
-	\{v_i:\quad x'=0,\quad t=0,\quad y_i=1\}.
-\]
-Note that $y_i=1$ means that $y_j=0$ for $j\neq i$ because $\sum_i y_i=1$. Therefore, it's equivalent to 
-do such change of variables
-\[
-	x'\to x',\quad x_j\to tx_j\quad \text{for $j\neq i$},\quad x_i\to t,
-\]
-or change the name of $t$ to $x_i$,
-\[
-	x'\to x',\quad x_j\to x_ix_j\quad \text{for $j\neq i$},\quad x_i\to x_i,
-\]
-which is related to the sector decompostion. We will use this change of variable from
-now on.
-
-Now, when will we finish? Naively, if we are dealing with polynomial 
-\[
-p(x)=x^v(c+q(x)),
-\] 
-where $q(0)=0$ and $v$ is a vector. If in the language of the cone, its cone looks like 
-\begin{center}
-\begin{tikzpicture}[scale=0.75,baseline={([yshift=-.5ex]current bounding box.center)}]
-\fill[gray!20] (2,4) -- (0.5,1) -- (0,0) -- (3,0.5) -- (3,0.5) -- (3,4);
-\draw[->](-1.1,-0.5) -- (3,-0.5);
-\draw[->](-1,-0.6) -- (-1,4);
-\draw[->] (-1,-0.5) -- (0,0);
-\node at (-0.5,0) {$v$};
-\end{tikzpicture}
-\quad or \quad 
-\begin{tikzpicture}[scale=0.75,baseline={([yshift=-.5ex]current bounding box.center)}]
-\fill[gray!20] (2,4) -- (0,1.5) -- (0,0) -- (3,0) -- (3,1) -- (3,4);
-\draw[->](-1.1,-0.5) -- (3,-0.5);
-\draw[->](-1,-0.6) -- (-1,4);
-\draw[->] (-1,-0.5) -- (0,0);
-\node at (-0.5,0) {$v$};
-\end{tikzpicture}
-\end{center}
-so $p(x)\sim x^v$ is decoupled. Our aim is to find some blowing-up to make all polynoimals 
-decouple in this way.
-
-Now consider the vertices generated in blowing-up, after the change of variables (to a vertex)
-\[
-	x'\to x',\quad x_j\to x_ix_j\quad \text{for $j\neq i$},\quad x_i\to x_i,
-\]
-the polynomial $p=\sum_I a_I x^{n^I}$ becomes $p'=\sum_I a_I x^{(n^I)'}$, where
-\[
-	(n^I)'_i\longrightarrow \sum_j n^I_j.
-\]
-For example, for $p(x)=x^3+xy+y^3$, the gray cone, we first get the green cone, but it's not the wanted cone, so we blow up it again and we get the red cone.
-\begin{center}
-\begin{tikzpicture}[scale=0.75]
-	\fill[gray!20] (0,4) -- (0,3) -- (1,1) -- (3,0) -- (4,0) -- (7.5,4);
-	\fill[green!20] (3.5,4) -- (2,1) -- (3,0) -- (4,0) -- (7.5,4) --cycle;
-	\fill[red!20] (3,1) -- (6,3) -- (7.5,4) -- (7.5,0) -- (3,0)-- cycle;
-	\draw[thick] (0,4) -- (0,3) -- (1,1) -- (3,0) -- (7.5,0);
-	\draw[->](-0.1,0) -- (7.5,0);
-	\draw[->](0,-0.1) -- (0,4);
-	\node[inner sep=1.5pt,circle,fill=blue] at (0,3) {};
-	\node[inner sep=1.5pt,circle,fill=blue] at (1,1) {};
-	\node[inner sep=1.5pt,circle,fill=blue] at (3,0) {};
-	\node[inner sep=1.5pt,circle,fill=blue] at (2,1) {};
-	\node[inner sep=1.5pt,circle,fill=blue] at (3,3) {};
-	\node[inner sep=1.5pt,circle,fill=blue] at (3,1) {};
-	\node[inner sep=1.5pt,circle,fill=blue] at (6,3) {};
-	\draw[dashed,->] (0.2,3) -- (2.8,3);
-	\draw[dashed,->] (1.2,1) -- (1.8,1);
-	\draw[dashed,->] (3.2,3) -- (5.8,3);
-	\draw[dashed,->] (2.2,1) -- (2.8,1);
-\end{tikzpicture}
-\end{center}
-Note that we still need to work out other vertices generated by blowing-up. 
-
-
-**Question: For a given polynomial $p$, can we terminate after finte steps 
-such that near each generated vertex, $p$ nearly becomes a monoimal?
-
-**Answer: Yes! [Hironake 67] However, sequences of blowing-up of a given polynomial
-need not to be unique.
-
-**The possible method: [Spivakovsky 83], [Encinas \& Hauser 02], [Zeillinger 05], \dots
-
-**However they are not so efficient. In our computation, we choose the minimal set of
-variables such that $p=0$ after setting these variables to be zero. Usually, it's more 
-efficient than the above methods, but it's not clear whether it can terminate. If not,
-we can use any above method.
-
-\begin{center}
-	\includegraphics[scale=0.8]{fig_2.pdf}	
-\end{center}
-where the blue curve is $x^3+y^3+xy=0$, the green curve is $y+x^2=0$ and
-the orange curve $x+y^2=0$.
-
-Blow up $x^3+y^3+x y=0$ by 
-\[
-	t u^3+ t v^3+ uv=0
-\]
-for $u=1$, it's $t +t v^3+ v\sim t+v=0$, or equivalently $x^2+y=0$. 
-Similarly, if $v=1$, we will get $x+y^2=0$. We can see that the original curve
-decomposes into two curves generated by blowing up in the above diagram, so that 
-the contribution of integral is also decomposed.
-
-In other words, in the viewpoint of Minkowski sum
-\[
-	(y+x^2)(x+y^2)=xy+x^3+y^3+xy^2+x^2y+x^2y^2\sim x^3+y^3+xy,
-\]
-so they contribute the same leading terms in the integral.
-
-Generally, we want to decompose a polynomial into
-\[
-	p\sim \prod_{i\leq j} \prod_k (x_i^{a^k_{ij}}+x_j^{b^k_{ij}})
-\] 
 
 \section{Application and Example}
 
 % string Z integral, Cn, Gkn ...
+
+$A_2$
+
+\[
+\int
+\] 
+
+$A_3$
+
+\[
+\int
+\] 
+
+$C_2$
+
+\[
+\int
+\] 
+
+others
 
 \end{document}
