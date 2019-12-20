@@ -44,7 +44,7 @@
 
 In string theory, the tree level $n$-pt open superstring amplitudes
 \[
-	I=\int_{\mathcal M_{0,n}^+}\frac{\dif^{n-3}z}{(z_1-z_2)\cdots (z_n-z_1)}\prod_{i<j}
+	I=\int_{\mathcal M_{0,n}^+}\frac{\dif^{n}z/\operatorname{SL}(2,\mathbb C)}{(z_1-z_2)\cdots (z_n-z_1)}\prod_{i<j}
 	|z_i-z_j|^{\alpha' s_{ab}}
 \]
 is defined on a component $\mathcal M_{0,n}^+$ defined by $z_1<z_2<\cdots < z_n$ 
@@ -199,6 +199,49 @@ the vertex $(0,0)$ is a singularity of the curve $x^3+y^3+xy=0$.
 % \]
 % 
 % One important lesson from the above trivial integral is that the leading terms of the integral come from the vertices of the positive geometry. 
+
+Let's give a short review of blow up. 
+One main purpose of blowing-up in math is to resolve singularities. 
+Let's first consider a simple example. 
+Suppose there's a family of line $\{l_i: a_ix+b_iy=0\}_{i=1,\dots,n}$ crossing 
+the original point. The point $(0,0)$ is the common zero set of these lines,
+however it only contains little information of these lines. In another viewpoint,
+$(0,0)$ is a `singularity' because generally $n$ lines cannot cross each other 
+at a common point on the plane. 
+
+If one wants know the information of these lines even when $(x,y)\to (0,0)$, 
+or equivalently to resolve the singularity at $(0,0)$, one can introduce the 
+change of variabes:
+\[
+	x=ut,\quad y=vt,
+\] 
+where $[u,v]$ is a projective coordinate, otherwise any common factor of $u$ and $v$ can be 
+absorbed into the definition of $t$, so that line equations become 
+\[
+	a_i u + b_i v = 0,
+\]
+and the solution is $[u,v]=[-b_i,a_i]$. In terms of old variables, every information 
+becomes a point $(0,0)$ in $\mathbb R^2$, but in new variables or in space 
+$\mathbb R\times \mathbb P^1$, lines become $(0,[-b_i,a_i])$ so that 
+we can read the imformation even $(x,y)=(0,0)$. 
+The idea described here is called blowing-up in math.  
+The above example is called the blowing-up of the plane along the original point, which 
+resolves the singularity at $(0,0)$. We will consider the blowing-up of $\mathbb R^D$
+along subspace $\mathbb R^n$ defined by $x_{i_1}=\cdots=x_{i_n}=0$. 
+The blow-up is the surface defined by $x_{i_j}y_k=x_{i_k}y_j$ in space 
+$\mathbb R^{N}\times \mathbb P^{n-1}$,
+where $[y_1,\dots,y_n]$ is the projective coordinate. These equation can be easily
+solved by $y_j=tx_{i_j}$ for $t\neq 0$.
+%Generally, let $X=\operatorname{Spec} A$ be an affine scheme, and let $V(f_1,\dots,f_n)\subset X$
+%is a closed subscheme of $X$. The blow-up of $Y$ in X is the closure in
+%$X\times_A \mathbb P_A^{n-1}=\mathbb P_A^{n-1}$ of the graph of the morphism 
+%\[
+%\alpha_{(f_1,\dots,f_n)}:X-Y\to \mathbb P_A^{n-1}.
+%\] 
+
+% Generally,
+% general blowing up must have the form of $x_i=ty_i$ locally althought it may be very difficult
+% to construct a blowing-up globally.
 
 Now let's carefully consider the first example,
 \[
@@ -590,48 +633,6 @@ Mink. Sum: Minkowski sum of two subsets $A$ and $B$ of $\mathbb R^n$ is defined 
 \] 
 
 (Some examples?)
-
-Blow up: One main purpose of blowing-up in math is to resolve singularities. 
-Let's first consider a simple example. 
-Suppose there's a family of line $\{l_i: a_ix+b_iy=0\}_{i=1,\dots,n}$ crossing 
-the original point. The point $(0,0)$ is the common zero set of these lines,
-however it only contains little information of these lines. In another viewpoint,
-$(0,0)$ is a `singularity' because generally $n$ lines cannot cross each other 
-at a common point on the plane. 
-
-If one wants know the information of these lines even when $(x,y)\to (0,0)$, 
-or equivalently to resolve the singularity at $(0,0)$, one can introduce the 
-change of variabes: 
-%one could use the projective coordinates $[a_i,b_i]$ to represent a line, or equivalently 
-%consider the following change of variables
-\[
-x=ut,\quad y=vt,
-\] 
-where $[u,v]$ is a projective coordinate, otherwise any common factor of $u$ and $v$ can be 
-absorbed into the definition of $t$, so that line equations become 
-\[
-	a_i u + b_i v = 0,
-\]
-and the solution is $[u,v]=[-b_i,a_i]$. In terms of old variables, every information 
-becomes a point $(0,0)$ in $\mathbb R^2$, but in new variables or in space 
-$\mathbb R\times \mathbb P^1$, lines become $(0,[-b_i,a_i])$ so that we can read the imformation
-even $(x,y)=(0,0)$. The idea described here is called blowing-up in math.  
-The above example is called the blowing-up of the plane along the original point, which 
-resolves the singularity at $(0,0)$. We will consider the blowing-up of $\mathbb R^D$
-along subspace $\mathbb R^n$ defined by $x_{i_1}=\cdots=x_{i_n}=0$. 
-The blow-up is the surface defined by $x_{i_j}y_k=x_{i_k}y_j$ in space $\mathbb R^{N}\times \mathbb P^{n-1}$,
-where $[y_1,\dots,y_n]$ is the projective coordinate. These equation can be easily
-solved by $y_j=tx_{i_j}$ for $t\neq 0$.
-%Generally, let $X=\operatorname{Spec} A$ be an affine scheme, and let $V(f_1,\dots,f_n)\subset X$
-%is a closed subscheme of $X$. The blow-up of $Y$ in X is the closure in
-%$X\times_A \mathbb P_A^{n-1}=\mathbb P_A^{n-1}$ of the graph of the morphism 
-%\[
-%\alpha_{(f_1,\dots,f_n)}:X-Y\to \mathbb P_A^{n-1}.
-%\] 
-
-% Generally,
-% general blowing up must have the form of $x_i=ty_i$ locally althought it may be very difficult
-% to construct a blowing-up globally.
 
 ...
 
