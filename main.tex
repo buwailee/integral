@@ -46,7 +46,7 @@ Very recently, a vast generalization of tree level strings integrals has been pr
 \[
 	\mathsf{PT}(n):=\frac{\dif^{n}z}{\mathrm{SL}(2,\mathds{R})} \prod_{i=1}^{n}\frac{1}{z_{i}-z_{i+1}}
 \]
-as the canonical form of the moduli space $\mathfrak{M}_{0,n}^{+}$ and the Koba-Nielson factor as a regulator of the divergent integral $\int \mathsf{PT}(n)$. With a positive parameterization  $\mathbf{x}:= \{x_{1},\cdots, x_{n-3}\}$  of $\mathcal{M}_{0,n}^{+}$, $\mathsf{PT}(n)$ becomes the canonical form $\prod_{i=1}^{n-3} \dif \log x_{i}$ of $\mathds{R}_{+}^{n-3}$ and the Koba-Nielson factor $\prod_{i<j} (z_{i}-z_{j})^{s_{ij}}$ becomes a product of powers of some Laurent polynomials $p_{I}(\mathbf{x})$, then string integrals end up with the form of
+as the canonical form of the moduli space $\mathcal{M}_{0,n}^{+}$ and the Koba-Nielson factor as a regulator of the divergent integral $\int \mathsf{PT}(n)$. With a positive parameterization  $\mathbf{x}:= \{x_{1},\cdots, x_{n-3}\}$  of $\mathcal{M}_{0,n}^{+}$, $\mathsf{PT}(n)$ becomes the canonical form $\prod_{i=1}^{n-3} \dif \log x_{i}$ of $\mathds{R}_{+}^{n-3}$ and the Koba-Nielson factor $\prod_{i<j} (z_{i}-z_{j})^{s_{ij}}$ becomes a product of powers of some Laurent polynomials $p_{I}(\mathbf{x})$, then string integrals end up with the form of
 \begin{equation} 
 	\int_{\mathds{R}_{+}^{n-3}} \prod_{i=1}^{n-3}\frac{\dif x_{i}}{x_{i}}x_{i}^{\alpha' X_{i}}\prod_{I}p_{I}(\mathbf{x})^{-\alpha'c_{I}}	\:, \label{int1}
 \end{equation}
@@ -93,9 +93,9 @@ In general, however, it's difficult to calculate the leading order of stringy in
 On the one hand, performing Minkowski sum for polytopes analyticly is nearly impossible. On the other hand, to obtain the canonical form $\Omega(N_{P})$ from the pushforward $\Phi_{\ast}\bigl(\bigwedge_{i=1}^{n-3} \dif \log x_{i}\bigr)$ requires to solve highly non-linear equations, just like the case in CHY formalism.
 
 
-The main purpose of this article is to show an efficient method, {\it{blowing up}} (\textcolor{red}{C: or blowing-up map?}), to calculate the leading order of the integral eq.\eqref{int1} with respect to $\alpha'$. This is a general method which is closely related to the {\it sector decomposition} prescription \cite{} used in Feynman integrals. We will see that the situation is easier when this method is applied in stringy integrals due to some features of canonical forms (\textcolor{red}{C: Is this sentence proper?}).
+The main purpose of this article is to show an efficient method, {\it{blowing up}} (\textcolor{red}{C: or blowing-up map?}), to calculate the leading order of the integral eq.\eqref{int1} with respect to $\alpha'$. This is a general method which also is closely related to the {\it sector decomposition} prescription \cite{} used in Feynman integrals. We will see that the situation is easier when this method is applied in stringy integrals due to some features of canonical forms (\textcolor{red}{C: Is this sentence proper?\& How to introduce the proof about scattering-equation map?}).
 
-
+(\textcolor{red}{C: Cohesiveness is needed.})
 %give a direct proof of the second property, first given in \cite{}. 
 %Finally, we give some examples and applications of these two method.
 %Let's make a glance what we have done in this article.
@@ -103,25 +103,24 @@ The main purpose of this article is to show an efficient method, {\it{blowing up
 %Consider a vertex $V$ of $\mathcal P$, locally it's defined by $x_1=\cdots = x_D=0$ so that 
 %near the vertex, the integral reads
 
-For the first part, we first note that when $\alpha'\to 0$, the pole structure of 
-canonical form leads that the contribution of the integral near a codimension $k$ face
-diverges as $(\alpha')^{-k}$, so the leading terms come from vertices.
-Now let's consider the simplest case where all $p_I=1$ in the integral eq.\eqref{int1}.
-Near the vertex $x_1=x_2=\cdots=x_D=0$, the integral becomes
+% For the first part, we first note that when $\alpha'\to 0$, the pole structure of 
+% canonical form leads that the contribution of the integral near a codimension $k$ face
+% diverges as $(\alpha')^{-k}$, so the leading terms come from vertices.
+
+It is obvious that the leading order contribution in $\alpha'$-expansion of stringy integrals arise from each vertex of the integration reigon $\mathds{R}_{+}^{D}$. Since every vertex can be brought to the origin by replacing $x_{i}$ with $x_{i}^{-1}$, it is sufficient to work out the contribution from the origin only. Now, suppose that all $p_I(0)\neq 0$ in the integral eq.\eqref{int1}, then the integral at the neighbourhood of the origin becomes 
 \begin{equation}\label{int2}
-	\int_{[0,\epsilon]^D}\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i}
-	=\prod_{i=1}^D\frac{\epsilon^{\alpha' X_i}}{\alpha' X_i}
-	\sim \frac{1}{(\alpha')^D}\frac{1}{X_1\cdots X_D}.
+	\int_{[0,\epsilon]^D}\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i} \prod_{I}p_{I}(0)^{-\alpha' c_{I}}
+	=\prod_{i=1}^D\frac{\epsilon^{\alpha' X_i}p_{I}(0)^{-\alpha' c_{I}}}{\alpha' X_i}
+	\sim \frac{1}{(\alpha')^D}\frac{1}{X_1\cdots X_D}+O(\alpha'^{-D+1}).
 \end{equation}
-Geometrically, it's so simple because it's only $x_1=\cdots=x_D=0$ that defines the vertices. 
-For general cases, there're two main difficulties to work out the leading terms
+%Geometrically, it's so simple because it's only $x_1=\cdots=x_D=0$ that defines the vertices. 
+Generally, it would not be such simple case, there woule be two obstacles
 \begin{itemize}
-	\item There're some polynomials $p_I$ other than $x_i$ vanishing at a vertex.
-	\item Furthermore, the vertex is usually a singularity of $p_I$.
+	\item Some polynomials $p_I$ other than $x_{i}$ vanishing at the origin (or a vertex).
+	\item Furthermore, some $p_I$ may own the origin (or a vertex) as their singular point\footnote{A point $Q$ is a singular point of the surface defined by $p(\mathrm{x})$=0 if $p(Q)=0$ and $\partial p(Q)/\partial x_{i} =0$ for all $i$}.
 \end{itemize}
 They can be both overcome by a series of blowing up. After these blow-ups, the 
-stringy integral becomes many integrals like eq.\eqref{int2}, and then the leading order
-is given by their summation.
+stringy integral is decomposed into many integrals like eq.\eqref{int2}, then the leading order is given by summation.
 
 In the second part, we give a direct proof of a proposition firstly given in \cite{} that 
 the scattering map from the saddle point equations of the integral eq.\eqref{int1} 
