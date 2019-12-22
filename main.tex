@@ -46,62 +46,58 @@ Very recently, a vast generalization of tree level strings integrals has been pr
 \[
 	\mathsf{PT}(n):=\frac{\dif^{n}z}{\mathrm{SL}(2,\mathds{R})} \prod_{i=1}^{n}\frac{1}{z_{i}-z_{i+1}}
 \]
-as the canonical form of the moduli space $\mathfrak{M}_{0,n}^{+}$ and the Koba-Nielson factor as a regulator of the divergent integral $\int \mathsf{PT}(n)$. With a positive parameterization of $\mathcal{M}_{0,n}^{+}$, $\mathsf{PT}(n)$ becomes the canonical form of $\mathds{R}_{+}^{n-3}$ and the Koba-Nielson factor $\prod_{i<j} (z_{i}-z_{j})^{s_{ij}}$ becomes a product of powers of some Laurent polynomials, then string integrals end up with the form of
-\[
-   \int_{\mathds{R}_{+}^{n-3}} \prod_{i=1}^{n-3}\frac{\dif x_{i}}{x_{i}}x_{i}^{\alpha' X_{i}}\prod_{I}p_{I}(\mathbf{x})^{-\alpha'c_{I}}	
-\]
-where $\mathbf{x}:= \{x_{1},\cdots, x_{n-3}\}$ is a positive parameterization of $\mathcal{M}_{0,n}^{+}$.
-
-In string theory, the tree level $n$-pt open superstring amplitudes
-\[
-	I=\int_{\mathcal M_{0,n}^+}\frac{\dif^{n}z/\operatorname{SL}(2,\mathbb C)}{(z_1-z_2)\cdots (z_n-z_1)}\prod_{i<j}
-	|z_i-z_j|^{\alpha' s_{ab}}
-\]
-is defined on a component $\mathcal M_{0,n}^+$ defined by $z_1<z_2<\cdots < z_n$ 
-of real points of moduli space of $n$ punctures on the Riemann sphere. 
-In the language of positive geometry \cite{}, $\mathcal M_{0,n}^+$ is a positive
-geometry and $\frac{\dif^{n-3}z}{(z_1-z_2)\cdots (z_n-z_1)}$ is its canonical form. Therefore,
-we can consider the generalized integral 
-\[
-	I(\alpha')=\int_{x\in \mathcal P} \Omega_{\mathcal P} F(x)^{-\alpha'},
-\] 
-where $\mathcal P$ is a positive geometry, $\Omega_{\mathcal P}$ is its canonical form
-and $F(x)$ is a function defined on $\mathcal P$. In order to make $I(\alpha')$ a 
-well-behaved function of $\alpha'$, we usually further require that $F(x)$ has no pole
-and zero in the interior of $\mathcal P$. 
-
-In this article, we will not consider the so general integral above, we only consider the 
-following integrals, that is called stringy integrals, 
-\begin{equation}\label{int1}
-	I(\mathbf X,\{c_I\}):=\int_{\mathbb R_+^D}\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i}
-	\prod_{I} p_I^{-\alpha' c_I}
-%	\quad\text{or}\quad
-%	\int_{[0,1]^D}\prod_{i=1}^D\frac{\dif x_i}{x_i(1-x_i)}\prod_{I} q_I^{-\alpha' c_I},
+as the canonical form of the moduli space $\mathfrak{M}_{0,n}^{+}$ and the Koba-Nielson factor as a regulator of the divergent integral $\int \mathsf{PT}(n)$. With a positive parameterization  $\mathbf{x}:= \{x_{1},\cdots, x_{n-3}\}$  of $\mathcal{M}_{0,n}^{+}$, $\mathsf{PT}(n)$ becomes the canonical form $\prod_{i=1}^{n-3} \dif \log x_{i}$ of $\mathds{R}_{+}^{n-3}$ and the Koba-Nielson factor $\prod_{i<j} (z_{i}-z_{j})^{s_{ij}}$ becomes a product of powers of some Laurent polynomials $p_{I}(\mathbf{x})$, then string integrals end up with the form of
+\begin{equation} 
+	\int_{\mathds{R}_{+}^{n-3}} \prod_{i=1}^{n-3}\frac{\dif x_{i}}{x_{i}}x_{i}^{\alpha' X_{i}}\prod_{I}p_{I}(\mathbf{x})^{-\alpha'c_{I}}	\:, \label{int1}
 \end{equation}
-where $p_a$ are all Laurent polynomial of $x$ with non-nagetive coefficients. 
-%These two integral can be related by the change of variables $x_i\mapsto x_i/(1+x_i)$.
-In fact, a wide class of general integrals 
-will turn into this form after finding a positive parameterization. 
+where $\mathbf{X}:=\{X_{1},\cdots,X_{i-3}\}$ and $c_{I}$ are linear combinations of Mandelstam variables $s_{ij}$'s. A \emph{stringy} integral is a integral of form eq.(\ref{int1}) but with arbitrary substraction-free polynoimals $p_{I}$. 
 
-In \cite{}, many important properties of stringy integrals are well studied, especially the 
-relation between its field theory limit and the Minkowski sum of Newton polytopes of $\{p_I\}$.
-As in the original superstring amplitude, the field theory limit of a stringy integral is 
-its leading order as $\alpha'\to 0$. 
+% In string theory, the tree level $n$-pt open superstring amplitudes
+% \[
+% 	I=\int_{\mathcal M_{0,n}^+}\frac{\dif^{n}z/\operatorname{SL}(2,\mathbb C)}{(z_1-z_2)\cdots (z_n-z_1)}\prod_{i<j}
+% 	|z_i-z_j|^{\alpha' s_{ab}}
+% \]
+% is defined on a component $\mathcal M_{0,n}^+$ defined by $z_1<z_2<\cdots < z_n$ 
+% of real points of moduli space of $n$ punctures on the Riemann sphere. 
+% In the language of positive geometry \cite{}, $\mathcal M_{0,n}^+$ is a positive
+% geometry and $\frac{\dif^{n-3}z}{(z_1-z_2)\cdots (z_n-z_1)}$ is its canonical form. Therefore,
+% we can consider the generalized integral 
+% \[
+% 	I(\alpha')=\int_{x\in \mathcal P} \Omega_{\mathcal P} F(x)^{-\alpha'},
+% \] 
+% where $\mathcal P$ is a positive geometry, $\Omega_{\mathcal P}$ is its canonical form
+% and $F(x)$ is a function defined on $\mathcal P$. In order to make $I(\alpha')$ a 
+% well-behaved function of $\alpha'$, we usually further require that $F(x)$ has no pole
+% and zero in the interior of $\mathcal P$. 
 
-(short review of two main result, mink. sum and scattering map... \cite{})
+% In this article, we will not consider the so general integral above, we only consider the 
+% following integrals, that is called stringy integrals, 
+% \begin{equation}\label{int1}
+% 	I(\mathbf X,\{c_I\}):=\int_{\mathbb R_+^D}\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i}
+% 	\prod_{I} p_I^{-\alpha' c_I}
+% %	\quad\text{or}\quad
+% %	\int_{[0,1]^D}\prod_{i=1}^D\frac{\dif x_i}{x_i(1-x_i)}\prod_{I} q_I^{-\alpha' c_I},
+% \end{equation}
+% where $p_a$ are all Laurent polynomial of $x$ with non-nagetive coefficients. 
+% %These two integral can be related by the change of variables $x_i\mapsto x_i/(1+x_i)$.
+% In fact, a wide class of general integrals 
+% will turn into this form after finding a positive parameterization. 
 
-However, it's really difficult to calculate 
-the leading order of stringy integrals directly from above two general propositions 
-in \cite{}.
-On the one hand, one needs to solve highly non-linear equations when using scattering map
-just like using any CHY formula to calculate amplitudes.
-On the other hand, it's nearly impossible to analyticly calculate the Minkowski sum of
-Newton polytopes.
+In \cite{}, many important properties of stringy integrals are well studied, especially the relation between their field theory limit, {\it{i.e}}. the limit of $\alpha'\to 0$, and the Minkowski sum $N_{P}$ of Newton polytopes of $\{p_I\}$.
+%As in the original superstring amplitude, the field theory limit of a stringy integral is  its leading order as $\alpha'\to 0$. 
+More concretely, {\it{ i) the leading order of a stringy integral is given by the volume of the dual polytope, or the canonical function $\underline{\Omega}(N_{P})$, of $N_{P}$, and ii) a bijection between $\mathds{R}_{+}^{n-3}$ and $N_{P}$ is given by the siddle point equation of the regulator, that is the so-called scattering-equation map $\Phi$,}}
+\begin{equation*}
+	X_{i}= \sum_{I}c_{I}\frac{\partial \log p_{I}}{\partial \log x_{i}}\:, \qquad  \text{for }i=1,\cdots,n{-}3.
+\end{equation*}	
+In general, however, it's difficult to calculate the leading order of stringy integrals directly from the above two properties.
+On the one hand, performing Minkowski sum for polytopes analyticly is nearly impossible. On the other hand, to obtain the canonical form $\Omega(N_{P})$ from the pushforward $\Phi_{\ast}\bigl(\bigwedge_{i=1}^{n-3} \dif \log x_{i}\bigr)$ requires to solve highly non-linear equations, just like the case in CHY formalism.
 
-The main purpose of this article is to show an efficient method to 
-calculate the leading order of the integral eq.\eqref{int1} with respect to $\alpha'$, 
-and give a direct proof of the proposition, first given in \cite{}, about scattering map.
-Finally, we give some examples and applications of these two method.
+
+The main purpose of this article is to show an efficient method, {\it{blowing up}} (\textcolor{red}{C: or blowing-up map?}), to calculate the leading order of the integral eq.\eqref{int1} with respect to $\alpha'$. This is a general method which is closely related to the {\it sector decomposition} prescription \cite{} used in Feynman integrals. We will see that the situation is easier when this method is applied in stringy integrals due to some features of canonical forms (\textcolor{red}{C: Is this sentence proper?}).
+
+
+%give a direct proof of the second property, first given in \cite{}. 
+%Finally, we give some examples and applications of these two method.
 %Let's make a glance what we have done in this article.
 
 %Consider a vertex $V$ of $\mathcal P$, locally it's defined by $x_1=\cdots = x_D=0$ so that 
@@ -136,13 +132,13 @@ Finally, ...
 
 \section{Blow up}
 
-\begin{figure}[t]
-\begin{center}
-\includegraphics[scale=0.75]{fig_1.pdf}
-\end{center}
-\vspace{-5ex}
-\caption{Left: $p=x+y+xy$, Right: $p=x^3+y^3+xy$}
-\end{figure}
+% \begin{figure}[t]
+% \begin{center}
+% \includegraphics[scale=0.75]{fig_1.pdf}
+% \end{center}
+% \vspace{-5ex}
+% \caption{Left: $p=x+y+xy$, Right: $p=x^3+y^3+xy$}
+% \end{figure}
 
 (Some review of positive geometry \& canonical form. ...)
 
@@ -333,9 +329,9 @@ If we draw new curves $x^2+y=0$ and $x+y^2=0$ and the old curve $x^3+y^3+xy$,
 we can see that the original curve
 decomposes into two curves generated by blowing up in the above diagram, so that 
 the contribution of integral is also decomposed.
-\begin{center}
-	\includegraphics[scale=0.7]{fig_2.pdf}	
-\end{center}
+% \begin{center}
+% 	\includegraphics[scale=0.7]{fig_2.pdf}	
+% \end{center}
 where the blue curve is $x^3+y^3+xy=0$, the green curve is $y+x^2=0$ and
 the orange curve $x+y^2=0$.
 
