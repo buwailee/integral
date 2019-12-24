@@ -48,9 +48,9 @@ Very recently, a vast generalization of tree level strings integrals has been pr
 \]
 as the canonical form of the moduli space $\mathcal{M}_{0,n}^{+}$ and the Koba-Nielson factor as a regulator of the divergent integral $\int \mathsf{PT}(n)$. With a positive parameterization  $\mathbf{x}:= \{x_{1},\cdots, x_{n-3}\}$  of $\mathcal{M}_{0,n}^{+}$, $\mathsf{PT}(n)$ becomes the canonical form $\prod_{i=1}^{n-3} \dif \log x_{i}$ of $\mathds{R}_{+}^{n-3}$ and the Koba-Nielson factor $\prod_{i<j} (z_{i}-z_{j})^{s_{ij}}$ becomes a product of powers of some Laurent polynomials $p_{I}(\mathbf{x})$, then string integrals end up with the form of
 \begin{equation} 
-	\int_{\mathds{R}_{+}^{n-3}} \prod_{i=1}^{n-3}\frac{\dif x_{i}}{x_{i}}x_{i}^{\alpha' X_{i}}\prod_{I}p_{I}(\mathbf{x})^{-\alpha'c_{I}}	\:, \label{int1}
+	\int_{\mathds{R}_{+}^{D}} \prod_{i=1}^{D}\frac{\dif x_{i}}{x_{i}}x_{i}^{\alpha' X_{i}}\prod_{I}p_{I}(\mathbf{x})^{-\alpha'c_{I}}	\:, \label{int1}
 \end{equation}
-where $\mathbf{X}:=\{X_{1},\cdots,X_{i-3}\}$ and $c_{I}$ are linear combinations of Mandelstam variables $s_{ij}$'s. A \emph{stringy} integral is a integral of form eq.(\ref{int1}) but with arbitrary substraction-free polynoimals $p_{I}$. 
+where $D=n{-}3$, $X_{i}$ and $c_{I}$ are linear combinations of Mandelstam variables $s_{ij}$'s. A \emph{stringy} integral is a integral of form eq.(\ref{int1}) but with arbitrary substraction-free polynoimals $p_{I}$. 
 
 % In string theory, the tree level $n$-pt open superstring amplitudes
 % \[
@@ -86,11 +86,11 @@ where $\mathbf{X}:=\{X_{1},\cdots,X_{i-3}\}$ and $c_{I}$ are linear combinations
 In \cite{}, many important properties of stringy integrals are well studied, especially the relation between their field theory limit, {\it{i.e}}. the limit of $\alpha'\to 0$, and the Minkowski sum $N_{P}$ of Newton polytopes of $\{p_I\}$.
 %As in the original superstring amplitude, the field theory limit of a stringy integral is  its leading order as $\alpha'\to 0$. 
 More concretely, {\it{ i) the leading order of a stringy integral is given by the volume of the dual polytope, or the canonical function $\underline{\Omega}(N_{P})$, of $N_{P}$, and ii) a bijection between $\mathds{R}_{+}^{n-3}$ and $N_{P}$ is given by the siddle point equation of the regulator, that is the so-called scattering-equation map $\Phi$,}}
-\begin{equation*}
+\begin{equation} \label{SEmap}
 	X_{i}= \sum_{I}c_{I}\frac{\partial \log p_{I}}{\partial \log x_{i}}\:, \qquad  \text{for }i=1,\cdots,n{-}3.
-\end{equation*}	
+\end{equation}	
 In general, however, it's difficult to calculate the leading order of stringy integrals directly from the above two properties.
-On the one hand, performing Minkowski sum for polytopes analyticly is nearly impossible. On the other hand, to obtain the canonical form $\Omega(N_{P})$ from the pushforward $\Phi_{\ast}\bigl(\bigwedge_{i=1}^{n-3} \dif \log x_{i}\bigr)$ requires to solve highly non-linear equations, just like the case in CHY formalism.
+On the one hand, performing Minkowski sum for polytopes analyticly is nearly impossible. On the other hand, to obtain the canonical form $\Omega(N_{P})$ from the pushforward $\Phi_{\ast}\bigl(\bigwedge_{i=1}^{D} \dif \log x_{i}\bigr)$ requires to solve highly non-linear equations, just like the case in CHY formalism.
 
 
 The main purpose of this article is to show an efficient method, {\it{blowing up}} (\textcolor{red}{C: or blowing-up map?}), to calculate the leading order of the integral eq.\eqref{int1} with respect to $\alpha'$. This is a general method which also is closely related to the {\it sector decomposition} prescription \cite{} used in Feynman integrals. We will see that the situation is easier when this method is applied in stringy integrals due to some features of canonical forms (\textcolor{red}{C: Is this sentence proper?\& How to introduce the proof about scattering-equation map?}).
@@ -116,14 +116,14 @@ It is obvious that the leading order contribution in $\alpha'$-expansion of stri
 %Geometrically, it's so simple because it's only $x_1=\cdots=x_D=0$ that defines the vertices. 
 Generally, it would not be such simple case, there woule be two obstacles
 \begin{itemize}
-	\item Some polynomials $p_I$ other than $x_{i}$ vanishing at the origin (or a vertex).
+	\item Some polynomials $p_I$ may vanish at the origin (or a vertex).
 	\item Furthermore, some $p_I$ may own the origin (or a vertex) as their singular point\footnote{A point $Q$ is a singular point of the surface defined by $p(\mathrm{x})$=0 if $p(Q)=0$ and $\partial p(Q)/\partial x_{i} =0$ for all $i$}.
 \end{itemize}
-They can be both overcome by a series of blowing up. After these blow-ups, the 
+They can be overcome by a series of blowing up. After these blow-ups, the 
 stringy integral is decomposed into many integrals like eq.\eqref{int2}, then the leading order is given by summation.
 
 In the second part, we give a direct proof of a proposition firstly given in \cite{} that 
-the scattering map from the saddle point equations of the integral eq.\eqref{int1} 
+the scattering-equation map \eqref{SEmap} from the saddle point equations of the integral eq.\eqref{int1} 
 is a one-to-one map from the interior of $\mathbb R_+^D$ to the interior of Minkowski sum of 
 Newton polytopes of $p_I$. ...
 
@@ -206,7 +206,7 @@ the vertex $(0,0)$ is a singularity of the curve $x^3+y^3+xy=0$.
 % One important lesson from the above trivial integral is that the leading terms of the integral come from the vertices of the positive geometry. 
 
 Let's give a short review of blow up. 
-One main purpose of blowing-up in math is to resolve singularities. 
+One main purpose of blowing-up in math is to resolve singularities. (\textcolor{red}{C:This short review, especially this example, is a bit confusing and misleading, at least I don't get the point, maybe some pictures or other example can help to clarify it.})
 Let's first consider a simple example. 
 Suppose there's a family of line $\{l_i: a_ix+b_iy=0\}_{i=1,\dots,n}$ crossing 
 the original point. The point $(0,0)$ is the common zero set of these lines,
