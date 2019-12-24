@@ -390,7 +390,7 @@ then we can replace $p(x)$ by a new polynomial $\bar p(x)=\sum_{J\in \mathscr B}
 the leading terms will not change.
 \end{lem}
 
-In the following proof, we define $|v|=\sum_{i=1}^D v_i$ for any vector $v\in \mathbb R^D$.
+% In the following proof, we define $|v|=\sum_{i=1}^D v_i$ for any vector $v\in \mathbb R^D$.
 
 \begin{proof}
 We have seen that terms other than vertices in $\bigcup_I C_I$ do not contribute. Suppose a term $x^v$ 
@@ -399,26 +399,28 @@ then there exist non-negative numbers $\{c_J\}$ such that it can be written as
 \[
 	v = \sum_{J\in \mathscr B}c_J n^J,\quad \sum_{J\in \mathscr B} c_J>1.
 \]
-Therefore, after setting $x_i=t y_i$,  
+If $x^{n^L}$ dominates some limit process, 
+then for other $J\in \mathscr B$, there exists a non-negative number $r_J$ such that
+$x^{w^J}:=x^{n^L-n^J}\leq r_J$, then 
 \[
-	x^{v}=\prod_J (x^{n^J})^{c_J}=x^{\sum_J c_J n^J} = t^{\sum_J c_J |n^J|}y^{\sum_J c_J n^J},
-\]
-where there always exists a $K\in \mathscr B$ such that $|n^K|<\sum_J c_J |n^J|$, otherwise
-\[
-	\sum_{K\in \mathscr B} c_K|n^K|\geq \left(\sum_{K\in \mathscr B} c_K\right)
-	\sum_{J\in \mathscr B} c_J |n^J|>\sum_{J\in \mathscr B} c_J |n^J|,
-\]
-so there's a contradiction. Hence, this term goes to zero faster than a vertex of the convex hull.
+	x^v = \prod_{J\in\mathscr B} (x^{n_J})^{c_J} = 
+	(x^{n_L})^{\sum_J c_J}\prod_{J\in \mathscr B} 
+	(x^{w_J})^{c_J}\leq R\,(x^{n_L})^{\sum_J c_J}
+\] 
+where $R$ is a non-negative number and $\sum_J c_J>1$, so $x^v$ goes to 
+zero faster than $x^{n_L}$. Since $L\in \mathscr B$ is arbitrary, $x^v$ can be throw away.
 
-Finally, if $v$ is on the boundary of $C[p]$, then it can be written as 
-\[
-	v = \sum_{J\in \mathscr B}c_J n^J,\quad \sum_{J\in \mathscr B} c_J=1,
-\]
-we follow the similar logic above and then find that $|n^K|=\sum_{J\in\mathscr B} c_J |n^J|=|v|$ for
-all $K\in\mathscr B$, so that all vertices are on the plane $\sum_i x_i=|v|$. 
-In this case, we could assume that $p$ is a homogeneous polynomial. After blowing-up, near the vertex
-$y_i=1$, the polynomial becomes $p'=t^{|v|}\sum_{I}a_I y^{n^I}|_{y_i=1}$. 
-If $v$ is not a vertex, it should be in the interior of the cone of this new polynomial or 
+Finally, suppose that $v$ is on the boundary of $C[p]$ but it's not a vertex.
+% then it can be written as 
+% \[
+% 	v = \sum_{J\in \mathscr C}c_J n^J,\quad \sum_{J\in \mathscr C} c_J=1,
+% \]
+% where $\mathscr C$ is the set of vertices on the same boundary as $v$.
+We can prove the result by showing this terms goes to zero faster than some vertices on the 
+same boundary, so we can further assume that $p$ is a homogeneous polynomial.
+After blowing-up, near the new vertex
+$y_i=1$, the polynomial becomes $p'=t^{\sum_i v_i}\sum_{I}a_I y^{n^I}|_{y_i=1}$. 
+Since $v$ is not a vertex, it should be in the interior of the cone of this new polynomial or 
 on the boundary of the cone (for all $i$), and then by 
 the proven part of lemma and induction on codimension, it doesn't contribute the integral.
 \end{proof}
