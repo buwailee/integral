@@ -48,9 +48,9 @@ Very recently, a vast generalization of tree level strings integrals has been pr
 \]
 as the canonical form of the moduli space $\mathcal{M}_{0,n}^{+}$ and the Koba-Nielson factor as a regulator of the divergent integral $\int \mathsf{PT}(n)$. With a positive parameterization  $\mathbf{x}:= \{x_{1},\cdots, x_{n-3}\}$  of $\mathcal{M}_{0,n}^{+}$, $\mathsf{PT}(n)$ becomes the canonical form $\prod_{i=1}^{n-3} \dif \log x_{i}$ of $\mathds{R}_{+}^{n-3}$ and the Koba-Nielson factor $\prod_{i<j} (z_{i}-z_{j})^{s_{ij}}$ becomes a product of powers of some Laurent polynomials $p_{I}(\mathbf{x})$, then string integrals end up with the form of
 \begin{equation} 
-	\int_{\mathds{R}_{+}^{n-3}} \prod_{i=1}^{n-3}\frac{\dif x_{i}}{x_{i}}x_{i}^{\alpha' X_{i}}\prod_{I}p_{I}(\mathbf{x})^{-\alpha'c_{I}}	\:, \label{int1}
+	\int_{\mathds{R}_{+}^{D}} \prod_{i=1}^{D}\frac{\dif x_{i}}{x_{i}}x_{i}^{\alpha' X_{i}}\prod_{I}p_{I}(\mathbf{x})^{-\alpha'c_{I}}	\:, \label{int1}
 \end{equation}
-where $\mathbf{X}:=\{X_{1},\cdots,X_{i-3}\}$ and $c_{I}$ are linear combinations of Mandelstam variables $s_{ij}$'s. A \emph{stringy} integral is a integral of form eq.(\ref{int1}) but with arbitrary substraction-free polynoimals $p_{I}$. 
+where $D=n{-}3$, $X_{i}$ and $c_{I}$ are linear combinations of Mandelstam variables $s_{ij}$'s. A \emph{stringy} integral is a integral of form eq.(\ref{int1}) but with arbitrary substraction-free polynoimals $p_{I}$. 
 
 % In string theory, the tree level $n$-pt open superstring amplitudes
 % \[
@@ -90,7 +90,7 @@ More concretely, {\it{ i) the leading order of a stringy integral is given by th
 	X_{i}= \sum_{I}c_{I}\frac{\partial \log p_{I}}{\partial \log x_{i}}\:, \qquad  \text{for }i=1,\cdots,n{-}3.
 \end{equation}	
 In general, however, it's difficult to calculate the leading order of stringy integrals directly from the above two properties.
-On the one hand, performing Minkowski sum for polytopes analyticly is nearly impossible. On the other hand, to obtain the canonical form $\Omega(N_{P})$ from the pushforward $\Phi_{\ast}\bigl(\bigwedge_{i=1}^{n-3} \dif \log x_{i}\bigr)$ requires to solve highly non-linear equations, just like the case in CHY formalism.
+On the one hand, performing Minkowski sum for polytopes analyticly is nearly impossible. On the other hand, to obtain the canonical form $\Omega(N_{P})$ from the pushforward $\Phi_{\ast}\bigl(\bigwedge_{i=1}^{D} \dif \log x_{i}\bigr)$ requires to solve highly non-linear equations, just like the case in CHY formalism.
 
 
 The main purpose of this article is to show an efficient method, {\it{blowing up}} (\textcolor{red}{C: or blowing-up map?}), to calculate the leading order of the integral eq.\eqref{int1} with respect to $\alpha'$. This is a general method which also is closely related to the {\it sector decomposition} prescription \cite{} used in Feynman integrals. We will see that the situation is easier when this method is applied in stringy integrals due to some features of canonical forms (\textcolor{red}{C: Is this sentence proper?\& How to introduce the proof about scattering-equation map?}).
