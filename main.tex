@@ -205,8 +205,14 @@ the vertex $(0,0)$ is a singularity of the curve $x^3+y^3+xy=0$.
 % 
 % One important lesson from the above trivial integral is that the leading terms of the integral come from the vertices of the positive geometry. 
 
+(\textcolor{blue}{Z: I still don't know how to put there reviews (Newton polytopes, blow up, Mink. sum, postive
+geometry, canonical forms, ...) properly}.)
+
 Let's give a short review of blow up. 
 One main purpose of blowing-up in math is to resolve singularities. (\textcolor{red}{C:This short review, especially this example, is a bit confusing and misleading, at least I don't get the point, maybe some pictures or other example can help to clarify it.})
+(\textcolor{blue}{Z: the example is somehow standard, but the short review is first written 
+in other place so it's not clear. I will rewrite it.})
+
 Let's first consider a simple example. 
 Suppose there's a family of line $\{l_i: a_ix+b_iy=0\}_{i=1,\dots,n}$ crossing 
 the original point. The point $(0,0)$ is the common zero set of these lines,
@@ -878,20 +884,42 @@ $\mathbf{X}(x)=\mathbf{\Lambda}$ has a unique solution.
 $A_2$
 
 \[
-\int
+	\int_{\mathbb R_+^2} \frac{\dif x_1}{x_1}\frac{\dif x_2}{x_2}x_1^{\alpha' X}x_2^{\alpha' Y}
+	(1+x_1)^{-\alpha' a}(1+x_2)^{-\alpha' b}(1+x_1+x_1x_2)^{-\alpha' c}
+\] 
+
+\[
+\frac{1}{(a+c-X) (b+c-Y)}+\frac{1}{Y (a+c-X)}+\frac{1}{(b+c-Y) (b+X-Y)}+\frac{1}{X (b+X-Y)}+\frac{1}{X Y}
 \] 
 
 $A_3$
 
-\[
-\int
-\] 
+
+\begin{align*}
+	\int_{\mathbb R_+^2} \frac{\dif x_1}{x_1}\frac{\dif x_2}{x_2}\frac{\dif x_3}{x_3}
+	x_1^{\alpha' X}x_2^{\alpha' Y}x_3^{\alpha' Z}
+	&(x_1 + 1)^{-\alpha' a_1}
+	(x_2 + 1)^{-\alpha'a_2}
+	(x_3 + 1)^{-\alpha'a_3}
+	(x_1x_2 + x_1 + 1)^{-\alpha'a_4}\\
+	&(x_2x_3 + x_3 + 1)^{-\alpha'a_5}
+	(x_1x_2x_3 + x_1x_3 + x_1 + x_3 + 1)^{-\alpha'a_6}
+\end{align*}
 
 $C_2$
 
-\[
-\int
-\] 
+\begin{align*}
+\int_{\mathbb R_+^2} \frac{\dif x_1}{x_1}\frac{\dif x_2}{x_2}x_1^{\alpha' X}x_2^{\alpha' Y}
+&(x_1 + 1)^{-\alpha' a} 
+(x_2 + 1)^{-\alpha' b}\\
+&(x_1x_2 + x_1 + 1)^{-\alpha' c}
+(x_1^2x_2 + x_1^2 + 2x_1 + 1)^{-\alpha' d} 
+\end{align*}
+
+\begin{align*}
+	&\frac{1}{(a+c+2 d-X) (b+c+d-Y)}+\frac{1}{Y (a+c+2 d-X)}+\frac{1}{(b+c+d-Y) (2 b+c+X-2 Y)}\\
+&+\frac{1}{(b+X-Y) (2 b+c+X-2 Y)}+\frac{1}{X (b+X-Y)}+\frac{1}{X Y}
+\end{align*}
 
 others
 
