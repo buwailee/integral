@@ -10,7 +10,7 @@
 \theoremstyle{definition}
 	\newtheorem{para}{}[section]
 		\renewcommand{\thepara}{\thesection.\arabic{para}}
-	\newtheorem{exa}[para]{Example}
+	\newtheorem{defi}[para]{Definition}
 \theoremstyle{plain}
 	\newtheorem{lem}[para]{Lemma}
 	\newtheorem{thm}[para]{Theorem}
@@ -99,7 +99,7 @@ The main purpose of this article is to show an efficient method, {\it{blowing up
 	=\prod_{i=1}^D\frac{\epsilon^{\alpha' X_i}p_{I}(0)^{-\alpha' c_{I}}}{\alpha' X_i}
 	= \frac{1}{(\alpha')^D}\frac{1}{X_1\cdots X_D}+O(\alpha'^{-D+1}).
 \end{equation}
-Generally, it would not be such simple case, some polynomials $p_{I}$ may vanish or even is singular\footnote{A point $Q$ is a singular point of the surface defined by $p(x_{1},\cdots,x_{n})$=0 if $p(Q)=0$ and $\partial p(Q)/\partial x_{i} =0$ for all $i$} at the origin (or a vertex).
+Generally, it would not be such simple case, some polynomials $p_{I}$ may vanish or even is singular\footnote{A point $Q$ is a singular point of the surface defined by $p(x_{1},\cdots,x_{n})$=0 if $p(Q)=0$ and $\partial p(Q)/\partial x_{i} =0$ for all $i$. {\color{blue} Z: It seems that it's not general enough.}} at the origin (or a vertex).
 % \begin{itemize}
 % 	\item Some polynomials $p_I$ may vanish at the origin (or a vertex).
 % 	\item Furthermore, some $p_I$ may own the origin (or a vertex) as their singular point\footnote{A point $Q$ is a singular point of the surface defined by $p(\mathrm{x})$=0 if $p(Q)=0$ and $\partial p(Q)/\partial x_{i} =0$ for all $i$}.
@@ -135,14 +135,6 @@ Finally, ...
 %Geometrically, it's so simple because it's only $x_1=\cdots=x_D=0$ that defines the vertices. 
 
 \section{Blow up}
-
-% \begin{figure}[t]
-% \begin{center}
-% \includegraphics[scale=0.75]{fig_1.pdf}
-% \end{center}
-% \vspace{-5ex}
-% \caption{Left: $p=x+y+xy$, Right: $p=x^3+y^3+xy$}
-% \end{figure}
 
 % (Some review of positive geometry \& canonical form. ...)
 
@@ -210,13 +202,14 @@ Finally, ...
 % 
 % One important lesson from the above trivial integral is that the leading terms of the integral come from the vertices of the positive geometry. 
 
+
 Before going into the detail of blowing up, let us clarify the problem mentioned in introduction. To this end, it is useful to recover a more general form of string integrals
 \begin{equation*}
   \mathcal{I}(\alpha';W_{I})=\int_{\mathcal{P}} \Omega_{\mathcal{P}}(\mathbf{x}) \prod_{I}p_{I}(\mathbf{x})^{\alpha'W_{I}}\,,
 \end{equation*}
 where $\mathcal{P}$ is some positive geometry (in our case, it is some simple polytope) of dimenson $D$ parameterized by $\mathbf{x}:= \{x_{1},\ldots,x_{D}\}$, $\Omega_{\mathcal{P}}$ is its associated canonical form, and $p_{I}(\mathbf{x})$ are polynoimals vanishing at boundaries of $\mathcal{P}$ and hence regualte the logarithm divergence of $\Omega_{\mathcal{P}}$ at boundaries. For $p_{I}(x)^{\alpha' W_{I}}$ to be single valued in $\mathcal{P}$, we require that $p_{I}(\mathbf{x})$ is nonnegetaive in the interior of $\mathcal{P}$. %which is equivalent to say that $p_{I}$ is substraction-free under a positive parameterization. 
 
-The leading order contribution of $\mathcal{I}$ with respect to $\alpha'$ arise from the integral over the neighbourhood of each vertex of $\mathcal{P}$. For any vertex, the leading order contribution can be trivially obtained if there are just $D$ polynoimals $p_{I}$ vanishing and regular(non-singular) at this vertex as in \eqref{int2}, and such vertex is called {\it{normal crossing}} since this vertex has been crossed $D$ times geometrically. All troubles are caused by vertices which are {\it not} normal crossing. For example, for the integral 
+The leading order contribution of $\mathcal{I}$ with respect to $\alpha'$ arise from the integral over the neighbourhood of each vertex of $\mathcal{P}$. For any vertex, the leading order contribution can be trivially obtained if there are just $D$ polynoimals $p_{I}$ vanishing and regular(non-singular) at this vertex as in \eqref{int2}, and such vertex is called {\it{normal crossing}} since this vertex has been crossed $D$ times geometrically. All troubles are caused by vertices which are {\it not} normal crossing. For example (see Fig. \ref{fig_1}), for the integral 
 \[
 	\int_0^\infty \int_0^\infty \frac{\dif x}{x}\frac{\dif y}{y}x^{\alpha' X}
 	y^{\alpha' Y}(x+y+ xy)^{-\alpha' c},
@@ -229,10 +222,20 @@ For the integral
 \] 
 the vertex $(0,0)$ is crossed by $x=0$ and $y=0$ once, by $x^3+y^3+xy=0$ twice. 
 
+\begin{figure}[h]\label{fig_1}
+\begin{center}
+\includegraphics[scale=0.75]{fig_1.pdf}
+\end{center}
+\vspace{-5ex}
+\caption{Left: $p=x+y+xy$, Right: $p=x^3+y^3+xy$}
+\end{figure}
+
 (\textcolor{blue}{Z: I still don't know how to put there reviews (Newton polytopes, blow up, Mink. sum, postive
 geometry, canonical forms, ...) properly}.)
 
-Let's give a short review of blow up. 
+Let's give a short review of blowing up. 
+% In mathematics, blowing up or blowup is a type of geometric transformation which replaces 
+% a subspace of a given space with all the directions pointing out of that subspace.
 One main purpose of blowing-up in math is to resolve singularities. (\textcolor{red}{C:This short review, especially this example, is a bit confusing and misleading, at least I don't get the point, maybe some pictures or other example can help to clarify it.})
 (\textcolor{blue}{Z: the example is somehow standard, but the short review is first written 
 in other place so it's not clear. I will rewrite it.})
@@ -388,7 +391,8 @@ The similar method used above can be generalized. We now carefully consider whic
 % so blowing-up is necessary. 
 Suppose we come to the vertex defined locally by $x_1=\cdots=x_D=0$, 
 \[
-	I(0,\dots,0)\sim \int_{[0,\epsilon]^D} \frac{d x_1}{x_1}\cdots \frac{d x_D}{x_D} \prod_i(p_i(x))^{\alpha' s_i}.
+	I(0,\dots,0)=\int_{[0,\epsilon]^D} \frac{d x_1}{x_1}\cdots \frac{d x_D}{x_D} 
+	\prod_i(p_i(x))^{\alpha' s_i}.
 \]
 In each polynomial $p_i$, 
 \[
@@ -401,9 +405,10 @@ non-zero positive vector $v$, there's no need to consider $x^{n^J}$ anymore beca
 than $x^{n^I}$. Geometrically, one can assign each term with a cone $C_{I}=(n^I+\mathbb R^D_{+})$, the above
 claim is equivalently that other terms in this cone can be thrown away.
 
-Furthermore, we can consider the convex hull of these cones $\{C_I\}$. It's usually larger than
-the union of these cones $\bigcup_I C_I$, but terms other than vertices in $C$ are also not dominated!
-Here let's consider an example $p(x)=x^6+y^6+x^2y^2$. 
+Furthermore, we can consider the convex hull of these cones $\{C_I\}$, which is a polyhedron. 
+It's usually larger than
+the union of these cones $\bigcup_I C_I$, but terms other than vertices in this polyhedron 
+are also not dominated! Here let's consider an example $p(x)=x^6+y^6+x^2y^2$. 
 \begin{center}
 	\begin{tikzpicture}
 		\fill[gray,opacity=0.2] (0,4) -- (0,3) -- (4,3) -- (4,4);
@@ -419,16 +424,16 @@ Here let's consider an example $p(x)=x^6+y^6+x^2y^2$.
 		\node[inner sep=1.5pt,circle,fill=blue] at (3,0) {};
 	\end{tikzpicture}
 \end{center}
-In the above diagram, besides gray cones, the convex hull contains two green regions. 
+In the above diagram, besides gray cones, the polyhedron contains two green regions. 
 If we add terms like $x^5y^2$ in the interior of green regions to the polynomial, 
-we will show that the leading terms of the integral from this vertices $x_1=x_2=\cdots=x_D=0$
-do not change.
+we will show in the next lemma that the leading terms of the integral 
+from this vertices $x_1=x_2=\cdots=x_D=0$ do not change.
 
 \begin{lem}
 Suppose $p$ is a polynomial $p(x)=\sum_{I\in \mathscr A}a_I x^{n^I}$, and $C[p]$ is the convex hull
 of $\{C_{I}=(n^I+\mathbb R^D_{+})\}$. When we consider the integral near the vertices $x_1=\cdots=x_D=0$, 
 then we can replace $p(x)$ by a new polynomial $\bar p(x)=\sum_{J\in \mathscr B}a_J x^{n^J}$ such that
-the leading order of the integral will not change.
+the leading order of the integral does not change.
 \end{lem}
 
 % In the following proof, we define $|v|=\sum_{i=1}^D v_i$ for any vector $v\in \mathbb R^D$.
@@ -506,8 +511,8 @@ like a `corner' of the Newton polytope.
 % \end{center}
 % where $x^3y^2\leftrightarrow (3,2)$ and $xy^3\leftrightarrow (1,3)$ are represented by $\times$ in the diagram and other terms are represented by blue points. The basis is given by blue points $\{x^3\leftrightarrow (3,0),y^3\leftrightarrow (0,3),xy\leftrightarrow (1,1)\}$, and the gray region is the set of all vectors $v=\sum_{J\in \mathscr B}c^I_J n^J$ where $\sum_J c^I_J>1$, therefore we throw away terms in the gray region and then get that $\bar p(x)=x^3+y^3+xy$. 
 
-By using the language cone of a polynomial $p$, the goal of blowing-up is clear.
-If one gets cones of a polynomial $p$ like
+By using the language of the polyhedron of a polynomial $p$, the goal of blowing-up is clear.
+If one gets polyhedron of a polynomial $p$ like
 \begin{center}
 \begin{tikzpicture}[scale=0.75,baseline={([yshift=-.5ex]current bounding box.center)}]
 \fill[gray!20] (2,3) -- (0,3) -- (0,0) -- (3,0) -- (3,1) -- (3,3);
@@ -624,9 +629,9 @@ $p'=\sum_I a_I x^{(n^I)'}$, where
 \[
 	(n^I)'_i\longrightarrow \sum_j n^I_j,
 \]
-and it can be visualized by the cone.
-For example, for $p(x)=x^3+xy+y^3$, the gray cone, we first get the green cone, 
-but it's not the wanted (decoupled) cone, so we blow up it again and we get the red cone.
+and it can be visualized by the polyhedron.
+For example, for $p(x)=x^3+xy+y^3$, the gray polyhedron, we first get the green polyhedron, 
+but it's not the wanted (decoupled) polyhedron, so we blow up it again and we get the red polyhedron.
 \begin{center}
 \begin{tikzpicture}[scale=0.75]
 	\fill[gray!20] (0,4) -- (0,3) -- (1,1) -- (3,0) -- (4,0) -- (7.5,4);
@@ -670,13 +675,13 @@ There are many known winning strategies for player A. \cite{}
 
 We mainly use the Zeillinger's method in the calculation. 
 It's not the most efficient one, but it can be understood well by the picture of 
-cones. Let's give a quick review here.
+polyhedron. Let's give a quick review here.
 
-Let's start from a cone $C[p]$. The vertices set of $C[p]$ is denoted by $M_p$. After
+Let's start from a polyhedron $C[p]$. The vertices set of $C[p]$ is denoted by $M_p$. After
 blowing-up, they becomes $C[p']$ and $M'_p$. First note that $|M'_p|\leq |M_p|$ because
 the shift (blowing-up) can only keep a vertex or move it into the convex hull. Next note
-that if $|M_p|=1$, then $p$ is decoupled. Therefore, a possible winning strategy for A is
-to find a set of variables to blow up at each turn such that $|M_p|$ strictly decreases.
+that if $|M_p|=1$, then $p$ is decoupled. Therefore, a possible winning strategy for player
+A is to find a set of variables to blow up at each turn such that $|M_p|$ strictly decreases.
 However, it's usually too far for a winning strategy to satisfy this condition. Therefore,
 we need to add more elaborate conditions, \textit{e.g.} 
 the number of variables of non-decoupled part of polynomial. At each turn, we only need 
@@ -720,7 +725,21 @@ The triple designed by Zeillinger is $(|M_p|,G,L)$. We will not go into details 
 
 \section{Map}
 
-Newton Polytope: For a subtraction free Laurent polynomial 
+In this section, we give the direct proof of ...
+
+\begin{defi}[Convex Hull]
+The convex hull of a set of vectors $\{\mathbf n^I\,:\, I\in \mathscr A\}$ is defined by
+\[
+	\operatorname{ConvexHull}\bigl(\{\mathbf n^I\,:\, I\in \mathscr A\}\bigr)
+	:=\Biggl\{\sum_{I\in\mathscr A}\lambda_I \mathbf n^I\,:\,
+	\text{$\lambda_I\geq 0$ and $\sum_I\lambda_I=1$}\Biggr\},
+\]
+if $\mathscr A$ is a infinite set, we further require that in each summation, 
+only finite $\lambda_I$ don't vanish.
+\end{defi}
+
+\begin{defi}[Newton Polytope]
+For a subtraction free Laurent polynomial 
 \[
 	f = \sum_{I\in \mathscr A} a_I \prod_{i=1}^n x_i^{n^I_i},
 \]
@@ -728,26 +747,20 @@ we define the Newton polytope of $f$ by
 \[
 	N(f)=\operatorname{ConvexHull}\bigl(\{\mathbf n^I\,:\, I\in \mathscr A\}\bigr),
 \]
-where $\mathbf n^I=(n^I_1,\dots,n^I_n)$. The convex hull of vectors is defined
-\[
-	\operatorname{ConvexHull}\bigl(\{\mathbf n^I\,:\, I\in \mathscr A\}\bigr)
-	=\Biggl\{\sum_{I\in\mathscr A}\lambda_I \mathbf n^I\,:\,
-	\text{$\lambda_I>0$ and $\sum_I\lambda_I=1$}\Biggr\}.
-\] 
+where $\mathbf n^I=(n^I_1,\dots,n^I_n)$. 
+\end{defi}
 
-Mink. Sum: Minkowski sum of two subsets $A$ and $B$ of $\mathbb R^n$ is defined by 
+\begin{defi}[Minkowski Sum]
+Minkowski sum of two subsets $A$ and $B$ of $\mathbb R^n$ is defined by 
 \[
 	A+B=\{x+y\,:\,x\in A,\, y\in B\}.
 \] 
+\end{defi}
 
-(Some examples?)
-
-...
-
-In this section we present a proof to the statement:
 \begin{pro}
-For an arbitrary product of $M$ polynomials $P=\prod_{j=1}^M p_j^{\alpha_j}$, 
-where $p_j=\sum_{I_j} a_{I_j} x^{I_j}$ with $a_{I_j}\geq 0$ for all $I_j$ and
+For a product of $M$ polynomials $P=\prod_{j=1}^M p_j^{\alpha_j}$, 
+where $\alpha_j>0$, 
+$p_j=\sum_{I_j} a_{I_j} x^{I_j}$ are polynomials with non-negative coefficients $a_{I_j}$ and
 \[
 	x^{n^{I_j}}:=\prod_{i=1}^D x_i^{n^{I_j}_i},
 \]
@@ -776,7 +789,8 @@ where $x_i\in (0,\infty)$ for all $i$, is a one-to-one map from $(0,\infty)^D$ t
 \begin{proof}
 The proof is finished in two steps.:
 \paragraph{Step 1: $M=1$}
-Consider a polynomial $p=\sum_{I} a_I x^I$ with $a_I\geq 0$ for all $I$. The scattering map now becomes
+Consider a polynomial $p=\sum_{I} a_I x^{\mathbf n^I}$ with $a_I\geq 0$ for all $I$. 
+The scattering map now becomes
 \[
 	\mathbf X(x)=\frac{\partial \log p}{\partial \log \mathbf x},
 \]
@@ -784,16 +798,16 @@ where $x_i\in (0,\infty)$. The proposition is equivalent to the claim
 that the equation $\mathbf X(x)=\mathbf\Lambda$ has a unique solution in $\mathbb R^D$ 
 if and only if $\mathbf\Lambda\in (N(p))^\circ$. 
 
-To prove it, let $\mathbf{\Lambda}$ be an interior point in $N(p)$ defined by 
+Let $\mathbf{\Lambda}$ be an interior point in $N(p)$ defined by 
 \[
 	\mathbf \Lambda=\sum_{I}\lambda_I\mathbf n^I
-	=\frac{\partial}{\partial \log \mathbf x}\sum_{I}\lambda_I \log x^I
+	=\frac{\partial}{\partial \log \mathbf x}\sum_{I}\lambda_I \log x^{\mathbf n^I}
 \]
 where $\sum_I \lambda_I=1$ and $\lambda_I > 0$. The equation $\mathbf X(x)=\mathbf \Lambda$ becomes
 \[
 \begin{aligned}
 	0=\frac{\partial }{\partial \log \mathbf x}\left(
-	\log p-\sum_{I}\lambda_I \log x^I
+		\log p-\sum_{I}\lambda_I \log x^{\mathbf n^I}
 	\right)=\frac{\partial }{\partial \log \mathbf x}\left(
 	\log F(\mathbf x)
 	\right)=\frac{1}{F(\mathbf x)}\frac{\partial F(\mathbf x)}{\partial \log \mathbf x}
@@ -801,7 +815,7 @@ where $\sum_I \lambda_I=1$ and $\lambda_I > 0$. The equation $\mathbf X(x)=\math
 \]
 where
 \[
-	F(\mathbf x)=\sum_I a_I x^I\prod_J (x^{-J})^{\lambda_J}.
+	F(\mathbf x)=\sum_I a_I x^I\prod_J (x^{-\mathbf n^J})^{\lambda_J}.
 \]
 or in terms of $\mathbf y=\log \mathbf x$, 
 \[
@@ -865,13 +879,13 @@ Generally, let $\mathbf{\Lambda}$ be a interior point in Minkowski sum $\sum_p \
 	\mathbf{\Lambda}
 	=\sum_p \alpha_p \mathbf{\Lambda}_p
 	=\sum_p \alpha_p \sum_{I_p}\lambda_{I_p}\mathbf{n}^{I_p}
-	=\frac{\partial}{\partial \log \mathbf{x}}\sum_{p}\alpha_p\sum_{I_p}\lambda_{I_p} \log x^{I_p}
+	=\frac{\partial}{\partial \log \mathbf{x}}\sum_{p}\alpha_p\sum_{I_p}\lambda_{I_p} \log x^{\mathbf n^{I_p}}
 \]
 where $\sum_{I_p} \lambda_{I_p}=1$ and $\lambda_{I_p} > 0$. Equations $\mathbf{X}(x)=\mathbf{\Lambda}$ are 
 \[
 \begin{aligned}
 	0=\frac{\partial }{\partial \log \mathbf{x}}\left(
-	\log P-\sum_{p}\alpha_p\sum_{I_p}\lambda_{I_p} \log x^{I_p}
+		\log P-\sum_{p}\alpha_p\sum_{I_p}\lambda_{I_p} \log x^{\mathbf n^{I_p}}
 	\right)&=\frac{\partial }{\partial \log \mathbf{x}}\left(
 	\log \left(\prod_p F_p^{\alpha_p}\right)
 	\right),
@@ -889,7 +903,7 @@ Write
 \]
 we only need to show that $F(y)$ has a unique saddle point in $\mathbb R^D$.
 
-We assume that $\alpha_p>0$ for all $p$. Here, $F(\mathbf y)$ no longer needs to be
+Here, $F(\mathbf y)$ no longer needs to be
 a strict convex function. However, take a positive number $\alpha_0$ such that 
 $\alpha_0< \alpha_p$ for all $p$, consider a new function
 \[
