@@ -215,8 +215,20 @@ Before going into the detail of blowing up, let us clarify the problem mentioned
 \begin{equation*}
   \mathcal{I}(\alpha';W_{I})=\int_{\mathcal{P}} \Omega_{\mathcal{P}}(\mathbf{x}) \prod_{I}p_{I}(\mathbf{x})^{\alpha'W_{I}}\,,
 \end{equation*}
-where $\mathcal{P}$ is some positive geometry (in our case, it is some simple polytope) of dimenson $D$ parameterized by $\mathbf{x}:= \{x_{1},\ldots,x_{D}\}$, $\Omega_{\mathcal{P}}$ is its associated canonical form, and $p_{I}(\mathbf{x})$ are polynoimals vanishing at all boundaries of $\mathcal{P}$ and hence regualte the logarithm divergence of $\Omega_{\mathcal{P}}$ at boundaries. For $p_{I}(x)^{\alpha' W_{I}}$ to be single valued in $\mathcal{P}$, we require that $p_{I}(\mathbf{x})$ is positive in the interior of $\mathcal{P}$. %which is equivalent to say that $p_{I}$ is substraction-free under a positive parameterization. 
-The leading order contribution of $\mathcal{I}$ with respect to $\alpha'$ arise from the integral over the neighbourhood of each vertex of $\mathcal{P}$. For any vertex, If there are just $D$ polynoimals $p_{I}$ vanishing and regular(non-singular) at this vertex as in \eqref{int2}    
+where $\mathcal{P}$ is some positive geometry (in our case, it is some simple polytope) of dimenson $D$ parameterized by $\mathbf{x}:= \{x_{1},\ldots,x_{D}\}$, $\Omega_{\mathcal{P}}$ is its associated canonical form, and $p_{I}(\mathbf{x})$ are polynoimals vanishing at boundaries of $\mathcal{P}$ and hence regualte the logarithm divergence of $\Omega_{\mathcal{P}}$ at boundaries. For $p_{I}(x)^{\alpha' W_{I}}$ to be single valued in $\mathcal{P}$, we require that $p_{I}(\mathbf{x})$ is nonnegetaive in the interior of $\mathcal{P}$. %which is equivalent to say that $p_{I}$ is substraction-free under a positive parameterization. 
+
+The leading order contribution of $\mathcal{I}$ with respect to $\alpha'$ arise from the integral over the neighbourhood of each vertex of $\mathcal{P}$. For any vertex, the leading order contribution can be trivially obtained if there are just $D$ polynoimals $p_{I}$ vanishing and regular(non-singular) at this vertex as in \eqref{int2}, and such vertex is called {\it{normal crossing}} since this vertex has been crossed $D$ times geometrically. All troubles are caused by vertices which are {\it not} normal crossing. For example, for the integral 
+\[
+	\int_0^\infty \int_0^\infty \frac{\dif x}{x}\frac{\dif y}{y}x^{\alpha' X}
+	y^{\alpha' Y}(x+y+ xy)^{-\alpha' c},
+\] 
+the vertex $(0,0)$ is crossed by $x=0$, $y=0$ and $x+y+xy=0$ once. 
+For the integral
+\[
+	\int_0^\infty \int_0^\infty \frac{\dif x}{x}\frac{\dif y}{y}x^{\alpha' X}
+	y^{\alpha' Y}(x^3+y^3+ xy)^{-\alpha' c},
+\] 
+the vertex $(0,0)$ is crossed by $x=0$ and $y=0$ once, by $x^3+y^3+xy=0$ twice. 
 
 Let's give a short review of blow up. 
 One main purpose of blowing-up in math is to resolve singularities. (\textcolor{red}{C:This short review, especially this example, is a bit confusing and misleading, at least I don't get the point, maybe some pictures or other example can help to clarify it.})
