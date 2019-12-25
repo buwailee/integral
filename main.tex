@@ -702,7 +702,7 @@ Furthermore, we define the gap function for any $v\in W[p]$
 \]
 to be the difference of maximum and minimum of $v$, and
 \[
-	l(v)=\#\{i\,:\, v_j=\max_i v_i\}+\#\{i\,:\, v_j=\min_i v_i\},
+	l(v)=\#\{j\,:\, v_j=\max_i v_i\}+\#\{j\,:\, v_j=\min_i v_i\},
 \] 
 which counts how many times do components of $v$ take the minimum or maximum. 
 
@@ -720,6 +720,21 @@ The triple designed by Zeillinger is $(|M_p|,G,L)$. We will not go into details 
 % variables such that $p=0$ after setting these variables to be zero. Usually, it's more 
 % efficient than the above methods, but it's not clear whether it can terminate. If not,
 % we can use any above method.
+
+...
+
+In our code, We consider the following choice:
+
+Write down the matrix $(n^I_i)$, and find the minimal set $S$ such that
+\[
+	\sum_{i\in S} n^I_i>0
+\]
+and 
+\[
+	g(S)=\max_I \biggl(\sum_{i\in S} n^I_i\biggr) - 
+	\min_I \biggl(\sum_{i\in S} n^I_i\biggr)
+\]
+takes its minimum.
 
 ...
 
