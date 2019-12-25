@@ -145,27 +145,27 @@ Finally, ...
 % \caption{Left: $p=x+y+xy$, Right: $p=x^3+y^3+xy$}
 % \end{figure}
 
-(Some review of positive geometry \& canonical form. ...)
+% (Some review of positive geometry \& canonical form. ...)
 
-As mentioned in the introduction, leading order of the integral eq.\eqref{int1} comes from the vertex
-of the integral region. 
-At each vertex, generally there're two main difficulties to work out the leading terms
-\begin{itemize}
-	\item There're some polynomials $p_I$ other than $x_i$ vanishing at a vertex.
-	\item Furthermore, the vertex is usually a singularity of $p_I$.
-\end{itemize}
-For example, for the integral 
-\[
-	\int_0^\infty \int_0^\infty \frac{\dif x}{x}\frac{\dif y}{y}x^{\alpha' X}
-	y^{\alpha' Y}(x+y+ xy)^{-\alpha' c},
-\] 
-the vertex $(0,0)$ is the common zero set of three polynomials $x$, $y$ and $x+y+xy$. 
-Further, for the integral 
-\[
-	\int_0^\infty \int_0^\infty \frac{\dif x}{x}\frac{\dif y}{y}x^{\alpha' X}
-	y^{\alpha' Y}(x^3+y^3+ xy)^{-\alpha' c},
-\] 
-the vertex $(0,0)$ is a singularity of the curve $x^3+y^3+xy=0$. 
+% As mentioned in the introduction, leading order of the integral eq.\eqref{int1} comes from the vertex
+% of the integral region. 
+% At each vertex, generally there're two main difficulties to work out the leading terms
+% \begin{itemize}
+% 	\item There're some polynomials $p_I$ other than $x_i$ vanishing at a vertex.
+% 	\item Furthermore, the vertex is usually a singularity of $p_I$.
+% \end{itemize}
+% For example, for the integral 
+% \[
+% 	\int_0^\infty \int_0^\infty \frac{\dif x}{x}\frac{\dif y}{y}x^{\alpha' X}
+% 	y^{\alpha' Y}(x+y+ xy)^{-\alpha' c},
+% \] 
+% the vertex $(0,0)$ is the common zero set of three polynomials $x$, $y$ and $x+y+xy$. 
+% Further, for the integral 
+% \[
+% 	\int_0^\infty \int_0^\infty \frac{\dif x}{x}\frac{\dif y}{y}x^{\alpha' X}
+% 	y^{\alpha' Y}(x^3+y^3+ xy)^{-\alpha' c},
+% \] 
+% the vertex $(0,0)$ is a singularity of the curve $x^3+y^3+xy=0$. 
 
 % In the blowing up, the above two example becomes 
 % \[
@@ -210,6 +210,13 @@ the vertex $(0,0)$ is a singularity of the curve $x^3+y^3+xy=0$.
 % \]
 % 
 % One important lesson from the above trivial integral is that the leading terms of the integral come from the vertices of the positive geometry. 
+
+Before going into the detail of blowing up, let us clarify the problem mentioned in introduction. To this end, it is useful to recover a more general form of string integrals
+\begin{equation*}
+  \mathcal{I}(\alpha';W_{I})=\int_{\mathcal{P}} \Omega_{\mathcal{P}}(\mathbf{x}) \prod_{I}p_{I}(\mathbf{x})^{\alpha'W_{I}}\,,
+\end{equation*}
+where $\mathcal{P}$ is some positive geometry (in our case, it is some simple polytope) of dimenson $D$ parameterized by $\mathbf{x}:= \{x_{1},\ldots,x_{D}\}$, $\Omega_{\mathcal{P}}$ is its associated canonical form, and $p_{I}(\mathbf{x})$ are polynoimals vanishing at all boundaries of $\mathcal{P}$ and hence regualte the logarithm divergence of $\Omega_{\mathcal{P}}$ at boundaries. For $p_{I}(x)^{\alpha' W_{I}}$ to be single valued in $\mathcal{P}$, we require that $p_{I}(\mathbf{x})$ is positive in the interior of $\mathcal{P}$. %which is equivalent to say that $p_{I}$ is substraction-free under a positive parameterization. 
+The leading order contribution of $\mathcal{I}$ with respect to $\alpha'$ arise from the integral over the neighbourhood of each vertex of $\mathcal{P}$. For any vertex, If there are just $D$ polynoimals $p_{I}$ vanishing and regular(non-singular) at this vertex as in \eqref{int2}    
 
 Let's give a short review of blow up. 
 One main purpose of blowing-up in math is to resolve singularities. (\textcolor{red}{C:This short review, especially this example, is a bit confusing and misleading, at least I don't get the point, maybe some pictures or other example can help to clarify it.})
