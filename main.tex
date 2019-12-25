@@ -302,8 +302,8 @@ For the remaining terms $x+y$, we can introduce new variables $x = tp$ and $y=t(
 \end{equation}
 and
 \begin{equation*}
-	i(0,0)=\int_{1/\epsilon}^\infty\frac{dt}{t} t^{\alpha'(a+b-c)}\int_0^{1}\frac{dp}{p(1-p)}p^{\alpha' a}(1-p)^{\alpha' b}%\sim \frac{1}{\alpha'}\frac{1}{a+b-c}\int_0^{1}\frac{dp}{p(1-p)}p^{\alpha' a}(1-p)^{\alpha' b}
-	\sim \frac{1}{{\alpha'}^2}\frac{1}{c-a-b}\biggl(\frac 1a+\frac 1b\biggr).
+	I(0,0)=\int_0^\epsilon\frac{dt}{t} t^{\alpha'(a+b-c)}\int_0^{1}\frac{dp}{p(1-p)}p^{\alpha' a}(1-p)^{\alpha' b}%\sim \frac{1}{\alpha'}\frac{1}{a+b-c}\int_0^{1}\frac{dp}{p(1-p)}p^{\alpha' a}(1-p)^{\alpha' b}
+	\sim \frac{1}{{\alpha'}^2}\frac{1}{a+b-c}\biggl(\frac 1a+\frac 1b\biggr).
 \end{equation*}
 in this example, whether $x$ or $y$ is dominated in the integration is characterized by $p$, 
 and both vertices $p\sim 0$ ($x\ll y$) and $p\sim 1$ ($y\ll x$) contribute.
@@ -337,10 +337,18 @@ and both vertices $p\sim 0$ ($x\ll y$) and $p\sim 1$ ($y\ll x$) contribute.
 \node at (2.8,-3.6) {\small $1-p$};
 \end{tikzpicture}
 \end{center}
-Similarly, one can work out $I(\infty,\infty)$, and the finally
+Similarly, one can work out 
 \[
-	I\sim I(0,0)+I(0,\infty)+I(\infty,0)+I(\infty,\infty).
-\] 
+	I(\infty,\infty)\sim \frac{1}{{\alpha'}^2}\frac{1}{(c-a) (c-b)} 
+\]
+and finally
+\begin{align*}
+	I&\sim I(0,0)+I(0,\infty)+I(\infty,0)+I(\infty,\infty)\\
+	 &\sim \frac{1}{{\alpha'}^2}
+	 \biggl(
+\frac{1}{b (a+b-c)}+\frac{1}{b (c-a)}+\frac{1}{a (c-b)}+\frac{1}{(c-a) (c-b)}+\frac{1}{a (a+b-c)}
+	 \biggr)
+\end{align*}
 %similarly, 
 %\[
 %	I(\infty,\infty)\sim \frac{1}{{\alpha'}^2}\frac{1}{c-a-b}\biggl(\frac 1{c-a}+\frac 1{c-b}\biggr),
@@ -708,6 +716,8 @@ The triple designed by Zeillinger is $(|M_p|,G,L)$. We will not go into details 
 % efficient than the above methods, but it's not clear whether it can terminate. If not,
 % we can use any above method.
 
+...
+
 \section{Map}
 
 Newton Polytope: For a subtraction free Laurent polynomial 
@@ -736,47 +746,50 @@ Mink. Sum: Minkowski sum of two subsets $A$ and $B$ of $\mathbb R^n$ is defined 
 
 In this section we present a proof to the statement:
 \begin{pro}
-For an arbitrary product of M polynomials $P=\prod_{j=1}^M p_j^{\alpha_j}$, $p_j=\sum_{I_j} a_{I_j} x^{I_j}$ with $a_{I_j}\geq 0$ for all $I_j$ and
- \[
-	x^{I_j}:=\prod_{i=1}^D x_i^{n^{I_j}_i},
+For an arbitrary product of $M$ polynomials $P=\prod_{j=1}^M p_j^{\alpha_j}$, 
+where $p_j=\sum_{I_j} a_{I_j} x^{I_j}$ with $a_{I_j}\geq 0$ for all $I_j$ and
+\[
+	x^{n^{I_j}}:=\prod_{i=1}^D x_i^{n^{I_j}_i},
 \]
-whose Newton polytope is defined as the Minkowski sum  $N_P=\sum_j \alpha_j N(p_j)$, 
-each $N(p_j)$ being the convex hull of vectors 
-$\{\mathbf{n}^{I_j}=(n^{I_j}_1,\dots,n^{I_j}_D)\}$. Then the scattering map:
+we define a polytope $N_P$ in $\mathbb R^D$ as the Minkowski sum $N_P=\sum_j \alpha_j N(p_j)$
+of Newton polytopes $N(p_j)$.
+Then the scattering map:
 \[
 	\mathbf X(x)=\frac{\partial \log P}{\partial \log \mathbf x},
 \]
-where $x_i\in (0,\infty)$ for all $i$, is a one-to-one map from $(0,\infty)^D$ to the interior of $N_P$ when matrix $(n_i^I)$ has full rank
+where $x_i\in (0,\infty)$ for all $i$, is a one-to-one map from $(0,\infty)^D$ to the interior of $N_P$ when matrix $(n_i^I)$ has full rank%
 \footnote{When matrix $(n_i^I)$ doesn't have full rank, the map is not one-to-one. 
-	But in fact, we can always assume it has full rank, thus $\dim (N(p))=D$. 
-	If not, there exists $\mathbf s\neq 0$ such that $\mathbf s \cdot \mathbf n^I=0$ for all $I$. 
+	But in fact, we only care about the cast that it has full rank, so that $\dim (N(p))=D$. 
+	If not, there exist some $\mathbf s\neq 0$ such that $\mathbf s \cdot \mathbf n^I=0$ for all $I$. 
 	In this case,
-\[
+	\[
 	\mathbf s\cdot\mathbf X=\mathbf s\cdot\frac{\partial \log p}{\partial \log \mathbf x}=0.
-\]
-Therefore, one can project $\operatorname{im}(\mathbf X)$ by setting some $x_i=1$ so that 
-there's no more vector $\mathbf s$ such that $\mathbf s\cdot \mathbf n^I=0$ for all $I$. 
-Conversely, one can recover the original image by solving these equations $\mathbf s\cdot\mathbf X=0$}. 
+	\]
+	Therefore, one can project $\operatorname{im}(\mathbf X)$ 
+	by setting some $x_i=1$ so that the new matrix $(n^I_i)$ has full rank.	
+	In this case, one can recover the original image by solving these equations $\mathbf s\cdot\mathbf X=0$
+	after working out the image in lower dimenson.
+	}%
+	. 
 \end{pro}
 
 \begin{proof}
 The proof is finished in two steps.:
 \paragraph{Step 1: $M=1$}
-Consider a unique polynomial $p=\sum_{I} a_I x^I$ with $a_I\geq 0$ for all $I$. The scattering map now reads:
+Consider a polynomial $p=\sum_{I} a_I x^I$ with $a_I\geq 0$ for all $I$. The scattering map now becomes
 \[
 	\mathbf X(x)=\frac{\partial \log p}{\partial \log \mathbf x},
 \]
-where $x_i\in (0,\infty)$ for all $i$. Then the proposition is equivalent to the claim 
-that the equations $\mathbf X(x)=\mathbf\Lambda$ have a solution in $\mathbb R^D$ 
-if and only if $\mathbf\Lambda\in (N(p))^\circ$. Moreover, the solution is always unique for 
-each interior point.
+where $x_i\in (0,\infty)$. The proposition is equivalent to the claim 
+that the equation $\mathbf X(x)=\mathbf\Lambda$ has a unique solution in $\mathbb R^D$ 
+if and only if $\mathbf\Lambda\in (N(p))^\circ$. 
 
-To prove the claim, let $\mathbf{\Lambda}$ be an interior point in $N(p)$ defined by 
+To prove it, let $\mathbf{\Lambda}$ be an interior point in $N(p)$ defined by 
 \[
 	\mathbf \Lambda=\sum_{I}\lambda_I\mathbf n^I
 	=\frac{\partial}{\partial \log \mathbf x}\sum_{I}\lambda_I \log x^I
 \]
-where $\sum_I \lambda_I=1$ and $\lambda_I > 0$. Equations $\mathbf X(x)=\mathbf \Lambda$ are 
+where $\sum_I \lambda_I=1$ and $\lambda_I > 0$. The equation $\mathbf X(x)=\mathbf \Lambda$ becomes
 \[
 \begin{aligned}
 	0=\frac{\partial }{\partial \log \mathbf x}\left(
@@ -790,17 +803,15 @@ where
 \[
 	F(\mathbf x)=\sum_I a_I x^I\prod_J (x^{-J})^{\lambda_J}.
 \]
-Let $\mathbf y=\log \mathbf x$, and then
+or in terms of $\mathbf y=\log \mathbf x$, 
 \[
-	\begin{aligned}
-		F(\mathbf y)
-		&=\sum_I a_I \exp\left(\mathbf{y}\cdot \left(\mathbf{n}^I-\mathbf{\Lambda}\right)\right)
-	\end{aligned}
+	F(\mathbf y)
+	=\sum_I a_I \exp\left(\mathbf{y}\cdot \left(\mathbf{n}^I-\mathbf{\Lambda}\right)\right).
 \]
-so we only need to show that $F(\mathbf y)$ has a unique saddle points in $\mathbb R^D$ 
+Therefore we only need to show that $F(\mathbf y)$ has a unique saddle points in $\mathbb R^D$ 
 because $F>0$ for all $\mathbf y$.
 
-To see it, we firstly notice that $F(\mathbf y)$ is a strict convex function of $\mathbf y$. In fact, the Hessian of $F(\mathbf y)$ is 
+To see it, we first notice that $F(\mathbf y)$ is a strict convex function of $\mathbf y$. In fact, the Hessian of $F(\mathbf y)$ is 
 \[
 	H_{ij}(\mathbf y)=\frac{\partial^2}{\partial y_i\partial y_j}F(\mathbf y)=\sum_I a_I \exp\left(\mathbf{y}\cdot \left(\mathbf{n}^I-\mathbf{\Lambda}\right)\right)\left(\mathbf{n}^I-\mathbf{\Lambda}\right)_i\left(\mathbf{n}^I-\mathbf{\Lambda}\right)_j.
 \]
@@ -809,52 +820,46 @@ For any $\mathbf v\neq 0$,
 	\sum_{i,j}v_iv_jH_{ij}=\sum_I a_I \exp\left(\mathbf{y}\cdot \left(\mathbf{n}^I-\mathbf{\Lambda}\right)\right) \left(\mathbf v\cdot (\mathbf{n}^I-\mathbf{\Lambda})\right)^2 >0.
 \]
 It cannot vanish because that it only happens when $\mathbf v\cdot (\mathbf{n}^I-\mathbf{\Lambda})=0$ 
-for all $I$. However, we have assumed $\{\mathbf n^I\}$ has full rank, {\it i.e. $\dim(N(p))=D$}. 
-Following the convexity of $N(p)$, vectors $\mathbf{n}^I-\mathbf{\Lambda}$ span the whole space 
-$\mathbb R^D$. Thus a nonzero $\mathbf v$  making $\mathbf v\cdot (\mathbf{n}^I-\mathbf{\Lambda})=0$
-for all $I$ cannot exist.
+for all $I$. However, we have assumed $\{\mathbf n^I\}$ has full rank, so
+vectors $\{\mathbf{n}^I-\mathbf{\Lambda}\}$ span the whole space 
+$\mathbb R^D$. 
 
 For a strict convex function $F(\mathbf y)$ on $\mathbb R^D$, it has a unique minimal in $\mathbb R^D$ 
 if and only if it does not take its minimal when $\mathbf{y}$ goes to infinity along any direction. 
 In our case, we only need that for any $\mathbf{y}\neq 0$ and $\mathbf\Lambda \in (N(p))^\circ $, 
 there exist some $I$ such that  
-\[
+\(
 	\mathbf{y}\cdot (\mathbf{n}^I-\mathbf{\Lambda})>0,
-\]
-which is direct result from the convexity of $N(p)$: (figure \cite{}) If $\mathbf\Lambda \in (N(p))^\circ$,
+\)
+which is direct from the convexity of $N(p)$: If $\mathbf\Lambda \in (N(p))^\circ$,
 for a given $\mathbf y\neq 0$, the hyperplain $L$ with normal vector $\mathbf y$ crossing $\mathbf \Lambda$ 
-divides the space $\mathbb R^D$ into semi-spaces $L^+$ and $L^-$, then $\mathbf{n}^I$ in $L^+$ are what we 
-are looking for.
+divides the space $\mathbb R^D$ into semi-spaces $L^+$ and $L^-$, then any $\mathbf{n}^I$ 
+in $L^+$ are what we are looking for.
 
-\begin{figure}[htbp]
-\centering
-\begin{tikzpicture}
-\draw[black,thick](3,0)--(1,0)--(0,-3)--(2,-4)--(4,-4)--(5,-1)--cycle;
-\draw[black,dashed](-2,-2)--(6,-2);
-\draw[->,black,thick](2,-2)--(2,-1);
-\draw[->,black,thick](2,-2)--(1.01,-0.02);
-\put(55,-72){$\mathbf{\Lambda}$};
-\put(61,-35){$\mathbf{y}$};
-\put(180,-60){$L$};
-\put(160,-30){$L^+$};
-\put(160,-90){$L^-$};
-\put(20,0){$\mathbf{n}^I$};
-\end{tikzpicture}
-\end{figure}
+\begin{center}
+	\begin{tikzpicture}
+	\draw[black,thick](3.5,0.5)--(1,0)--(0,-3)--(1.5,-4.5)--(4.5,-3.5)--(5,-1)--cycle;
+	\draw[black,dashed](-1.4,-2)--(6,-2);
+	\draw[->,black,thick](2,-2)--(2,-1);
+	\draw[->,black,thick](2,-2)--(1,0);
+	\node at (2,-2.2) {$\mathbf{\Lambda}$};
+	\node at (2.2,-0.8) {$\mathbf{y}$};
+	\node at (6.4,-2) {$L$};
+	\node at (5.6,-1.6) {$L^+$};
+	\node at (5.6,-2.4) {$L^-$};
+	\node at (0.6,0) {$\mathbf{n}^I$};
+	\end{tikzpicture}
+\end{center}
 Conversely, if $\mathbf\Lambda \not\in N(p)$, one can find a hyperplain $L$ such that $N(p)\subset L^-$, 
-then the normal vector $\mathbf{y}$ of $L$ gives the wanted direction, making the exponentials all negative. 
-$F(t\mathbf y)\to 0$ when $t\to \infty$. As a positive convex function, $F(\mathbf y)$ has no saddle point 
-in $\mathbb R^D$.
+then the normal vector $\mathbf{y}$ of $L$ gives the wanted direction, making the exponentials all negative
+such that $F(t\mathbf y)\to 0$ when $t\to \infty$. 
+As a positive convex function, $F(\mathbf y)$ has no saddle point in $\mathbb R^D$.
 
 Therefore, we have proven that $F(\mathbf y)$ has a unique minimal in $\mathbb R^D$ when 
 $\mathbf \Lambda \in (N(p))^\circ$ and no saddle point in $\mathbb R^D$ when 
-$\mathbf \Lambda \not\in N(p)$, which proves the claim. Hence, 
-\[
-	\mathbf X(x)=\frac{\partial \log p}{\partial \log \mathbf x},
-\]
-is an one-to-one map from $(0,\infty)^D$ to the interior of $N(p)$, which finishes the first step.
+$\mathbf \Lambda \not\in N(p)$, which proves the first part.
 
-\paragraph{Step 2: general $M$}
+\paragraph{Step 2: General $M$}
 Generally, let $\mathbf{\Lambda}$ be a interior point in Minkowski sum $\sum_p \alpha_p N(p)$ corresponding to $P=\prod_p p^{\alpha_p}$ defined by 
 \[
 	\mathbf{\Lambda}
@@ -884,18 +889,20 @@ Write
 \]
 we only need to show that $F(y)$ has a unique saddle point in $\mathbb R^D$.
 
-We assume that $\alpha_p>0$ for all $p$. Here, $F(\mathbf y)$ is no longer a strict convex function. However,
-take a positive number $\alpha_0$ such that $\alpha_0< \alpha_p$ for all $p$, consider a new function
+We assume that $\alpha_p>0$ for all $p$. Here, $F(\mathbf y)$ no longer needs to be
+a strict convex function. However, take a positive number $\alpha_0$ such that 
+$\alpha_0< \alpha_p$ for all $p$, consider a new function
 \[
-	F(y)^{1/\alpha_0}=\prod_p F_p(y)^{\alpha_p/\alpha_0},
+	F(\mathbf y)^{1/\alpha_0}=\prod_p F_p(\mathbf y)^{\alpha_p/\alpha_0},
 \]
 since $F_p$ are convex functions and $\alpha_p/\alpha_0>1$, $F_p(y)^{\alpha_p/\alpha_0}$ are convex functions,
-so is their product. Since $F(y)^{1/\alpha_0}$ has the same minimums as $F(y)$, so we can further assume that 
-$\alpha_p>1$ for all $p$.
+so is their product. Since $F(\mathbf y)^{1/\alpha_0}$ takes its minimum at same points as as $F(\mathbf y)$, 
+we can further assume that $F(\mathbf y)$ is a strict convex function. 
 
-Finally, we claim that $F(y)$ does not take minimum when $\mathbf{y}$ goes to infinity along any direction. 
+Finally, we claim that $F(\mathbf y)$ does not take minimum when $\mathbf{y}$ goes to infinity 
+along any direction. 
 It is because that for a given $\mathbf{y}$ and each $p$, $F_p(t\mathbf{y})\to \infty$ when $t\to \infty$,
-so does $F(t\mathbf{y})=\prod_p F_p(t\mathbf{y})^{\alpha_p}$. Therefore, equation 
+so does $F(t\mathbf{y})=\prod_p F_p(t\mathbf{y})^{\alpha_p}$. Therefore, the equation 
 $\mathbf{X}(x)=\mathbf{\Lambda}$ has a unique solution.
 \end{proof}
 
