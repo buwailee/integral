@@ -38,7 +38,15 @@
 %\pagecolor{shadecolor}
 %\color{textcolor}
 
+\date{\today}
+\title{Blowing up Stringy Integrals}
+
+\author{Zhenjie Li,\and Qinglin Yang,\and Chi Zhang}
+
+
 \begin{document}
+
+\maketitle
 
 \section{Introduction}
 
@@ -971,23 +979,46 @@ $\mathbf{X}(x)=\mathbf{\Lambda}$ has a unique solution.
 \section{Application and Example}
 
 % string Z integral, Cn, Gkn ...
+In this section, we will give several examples to illustate this blow up algorithm, most of examples comes from the so-called cluster stringy integrals~\cite{} which are closely realted to the origin string integrals.
 
-$A_2$
-
+\subsubsection*{Cluster string integral: $A_{2}$}
+This integral is equivalent to the $Z$-integral $Z_{12345}(1,2,3,4,5)$~\cite{}, which in a postive parameterization takes the form of 
 \[
-	\int_{\mathbb R_+^2} \frac{\dif x_1}{x_1}\frac{\dif x_2}{x_2}x_1^{\alpha' X}x_2^{\alpha' Y}
+	\mathcal{I}_{A_{2}}=\int_{\mathbb R_+^2} \frac{\dif x_1}{x_1}\frac{\dif x_2}{x_2}x_1^{\alpha' X}x_2^{\alpha' Y}
 	(1+x_1)^{-\alpha' a}(1+x_2)^{-\alpha' b}(1+x_1+x_1x_2)^{-\alpha' c}
 \] 
-
+where $1+x_{1}$, $1+x_{2}$ and $1+x_{1}+x_{1}x_{2}$ are $F$-polynoimals with the initial seed $A_{2}$ quiver. With variable substituions
 \[
-\frac{1}{(a+c-X) (b+c-Y)}+\frac{1}{Y (a+c-X)}+\frac{1}{(b+c-Y) (b+X-Y)}+\frac{1}{X (b+X-Y)}+\frac{1}{X Y}
-\] 
-
-$A_3$
-
-
+	x_{1}=\frac{1-z_{3}}{z_{3}}\,,\qquad x_{2}=\frac{z_{3}-z_{2}}{z_{2}(1-z_{3})}
+\]
+and 
+\[
+	X=s_{12},\quad Y=s_{45},\quad a=-s_{24},\quad b=-s_{35},\quad c=-s_{25} \:,
+	\] 
+the integral $\mathcal{I}_{A_{2}}$ becomes $Z_{12345}(12345)$ under the usual gauge fixing $\{z_{1},z_{4},z_{5}\}\to\{0,1,\infty\}$. It is easy to see that vertices $(0,0)$, $(0,\infty)$ and $(\infty,0)$ are all normal crossing, then no blow up is needed and their contributions to leading order simply are
 \begin{align*}
-	\int_{\mathbb R_+^2} \frac{\dif x_1}{x_1}\frac{\dif x_2}{x_2}\frac{\dif x_3}{x_3}
+	&\mathcal{I}_{A_{2}}(0,0)=\frac{1}{\alpha'^{2}}\frac{1}{XY}+O(\alpha'^{-1}) \:, \\
+	%&\mathcal{I}_{A_{2}}(0,\infty)=\frac{1}{\alpha'^{2}}\frac{1}{(a+c-X)Y}+O(\alpha'^{-1}) \:, 
+	&\mathcal{I}_{A_{2}}(\infty,0)=\frac{1}{\alpha'^{2}}\frac{1}{(a+c-X)Y}+O(\alpha'^{-1}) \:, \\
+	&\mathcal{I}_{A_{2}}(\infty,\infty)=\frac{1}{\alpha'^{2}}\frac{1}{(a+c-X)(b+c-Y)}+O(\alpha'^{-1}) \:.
+\end{align*}
+The vertex $(0,\infty)$ is not normal crossing, we bring this vertex to the origin by taking $x_{2}\to x_{2}^{-1}$, then the integral over the neighbourhood of this vertex reads
+\[
+    \mathcal{I}_{A_{2}}(0,\infty) \approx \int_{[0,\epsilon]^{2}} \frac{\dif x_{1}\,\dif x_{2}}{x_{1} x_{2}} x_{1}^{\alpha'X}x_{2}^{\alpha'(b+c-Y)}(x_{1}+x_{2}+x_{1}x_{2})^{-\alpha'c}
+\]
+where some irrelevant power functions of the form $(1+\cdots)$ have beend dropped. This is exactly the example we used in section 2, then the leading order contribution of $\mathcal{I}_{A_{2}}$ is simply
+\begin{align*}
+   \mathcal{I}_{A_2}&=\frac{1}{\alpha'^{-2}}\biggl(\frac{1}{(a+c-X) (b+c-Y)}+\frac{1}{X (b+X-Y)} \\
+   &\quad +\frac{1}{(b+c-Y) (b+X-Y)}+\frac{1}{Y (a+c-X)}+\frac{1}{X Y}\biggr) + O(\alpha'^{-1}) 
+\end{align*}
+
+
+
+\subsubsection*{Cluster stringy integrl: $A_3$}
+
+This integral is equivalent to the $Z$-integral $Z_{123456}(1,2,3,4,5,6)$, which in a postive parameterization takes the form of 
+\begin{align*}
+	\int_{\mathbb R_+^3} \frac{\dif x_1}{x_1}\frac{\dif x_2}{x_2}\frac{\dif x_3}{x_3}
 	x_1^{\alpha' X}x_2^{\alpha' Y}x_3^{\alpha' Z}
 	&(x_1 + 1)^{-\alpha' a_1}
 	(x_2 + 1)^{-\alpha'a_2}
@@ -996,8 +1027,37 @@ $A_3$
 	&(x_2x_3 + x_3 + 1)^{-\alpha'a_5}
 	(x_1x_2x_3 + x_1x_3 + x_1 + x_3 + 1)^{-\alpha'a_6}
 \end{align*}
-
-$C_2$
+where 6 polynoimals with constant term 1 are $F$-polynoimals with the initial seed $A_{3}$ quiver. With variable substituions
+\[
+x_{1}=\frac{(z_{2}-z_{3})(1-z_{4})}{(1-z_{2})(z_{3}-z_{4})}\:,\quad x_{2}=\frac{z_{4}-z_{2}}{z_{2}(1-z_{4})}\:, \quad
+x_{3}=\frac{z_{2}}{1-z_{2}}
+\]
+and
+\begin{gather*}
+	X=s_{12},\quad Y=s_{123},\quad Z=s_{45} \\
+	a_{1}=-s_{24},\quad a_{2}=-s_{36},\quad a_{3}=-s_{15},\quad a_{4}=-s_{26},\quad a_{5}=-s_{35},\quad a_{6}=-s_{25}	
+\end{gather*}
+the integral $\mathcal{I}_{A_{3}}$ becomes $Z_{123456}(1,2,3,4,5,6)$ under the usual gauge fixing $\{z_{1},z_{5},z_{6}\}\to\{0,1,\infty\}$. Of the 8 vertices, $(0,0,0)$, $(0,0,\infty)$, $(\infty,0,0)$, $(\infty,0,\infty)$ and $(\infty,\infty,\infty)$ are normal crossing ones, and their contributions to leading order is 
+\begin{align*}
+	\mathcal{I}_{A_{3}}^{(1)}&=\frac{1}{\alpha'^{2}}\biggl(\frac{1}{XYZ}+\frac{1}{F_{1}XY} +\frac{1}{F_{2}YZ}+\frac{1}{F_{1}F_{2}Y} 
+	+\frac{1}{F_{1}F_{2}F_{3}}\biggr) +O(\alpha'^{-1})
+\end{align*}	
+where
+\begin{align*}
+	F_{1} &= a_{3}+a_{5}+a_{6}-Z \\
+	F_{2} &= a_{1}+a_{4}+a_{6}-X \\
+	F_{3} &= a_{2}+a_{4}+a_{5}+a_{6}-Y
+\end{align*}
+For the remaining vertices, we bring them to the origin by setting $x_{i}\to x_{i}^{-1}$,
+\begin{align*}
+	\mathcal{I}_{A_{3}}(0,\infty,0)&\approx\int_{[0,\epsilon]^{3}}\prod_{i=1}^{3}\frac{\dif x_{i}}{x_{i}} x_{1}^{\alpha' X}
+	x_{2}^{\alpha' F_{3}}x_{3}^{\alpha' Z}(x_{1}+x_{2})^{-\alpha' a_{4}}(x_{2}+x_{3})^{-\alpha' a_{5}}
+	\biggl(x_{2}+\sum_{i<j} x_{i}x_{j}\biggr)^{-\alpha' a_{6}} \\
+	\mathcal{I}_{A_{3}}(\infty,\infty,0)&\approx \int_{[0,\epsilon]^{3}}\frac{\dif x_{i}}{x_{i}}x_{1}^{\alpha' F_{2}}x_{2}^{\alpha' F_{3}}x_{3}^{\alpha'Z} (x_{2}+x_{3})^{-\alpha'(a_{5}+a_{6})} \\
+	\mathcal{I}_{A_{3}}(0,\infty,\infty)&\approx \int_{[0,\epsilon]^{3}}\frac{\dif x_{i}}{x_{i}}x_{1}^{\alpha' X}x_{2}^{\alpha' F_{3}}x_{3}^{\alpha' F_{1}} (x_{1}+x_{2})^{-\alpha'(a_{4}+a_{6})}
+\end{align*}
+where we have dropped some irrelevant terms according to our algorithm.
+\subsubsection*{Cluster stringy integrl: $C_2$}
 
 \begin{align*}
 \int_{\mathbb R_+^2} \frac{\dif x_1}{x_1}\frac{\dif x_2}{x_2}x_1^{\alpha' X}x_2^{\alpha' Y}
