@@ -673,55 +673,55 @@ a construction of resolution by a series of blowing-up.
 There are many known winning strategies for player A. \cite{}
 % [Spivakovsky 83], [Encinas \& Hauser 02], [Zeillinger 05], \dots.
 
-We mainly use the Zeillinger's method in the calculation. 
-It's not the most efficient one, but it can be understood well by the picture of 
-polyhedron. Let's give a quick review here.
-
-Let's start from a polyhedron $C[p]$. The vertices set of $C[p]$ is denoted by $M_p$. After
-blowing-up, they becomes $C[p']$ and $M'_p$. First note that $|M'_p|\leq |M_p|$ because
-the shift (blowing-up) can only keep a vertex or move it into the convex hull. Next note
-that if $|M_p|=1$, then $p$ is decoupled. Therefore, a possible winning strategy for player
-A is to find a set of variables to blow up at each round such that $|M_p|$ strictly decreases.
-However, it's usually too far for a winning strategy to satisfy this condition. Therefore,
-we need to add more elaborate conditions, \textit{e.g.} 
-the number of variables of non-decoupled part of polynomial. At each round, we only need 
-that one of these numbers strictly decreases. Zeillinger designed a triple of such numbers
-in the following way.
-
-For a polynomial $p$, define the set
-\[
-	W[p]=\{n^I-n^J\,:\, I,J\in \mathscr B\},
-\]
-where $\mathscr B$ is the set of vertices of $C[p]$. After blowing-up, $(n^I)'$ doesn't 
-need to be a vertex, but we still can talk about the image of $W[p]$ of blowing-up.
-Note that $p'$ is decoupled if and only if for any $v$ in the image of $W[p]$, 
-$v\in \mathbb Z_{\geq 0}^D$ or $v\in \mathbb Z_{\leq 0}^D$.
-Furthermore, we define the gap function for any $v\in W[p]$
-\[
-	g(v)=\max_i v_i-\min_i v_i 
-\]
-to be the difference of maximum and minimum of $v$, and
-\[
-	l(v)=\#\{j\,:\, v_j=\max_i v_i\}+\#\{j\,:\, v_j=\min_i v_i\},
-\] 
-which counts how many times do components of $v$ take the minimum or maximum. 
-
-Now for a polynomial $p$,
-find the minimal element $v\in W[p]$ with respect of the lexicographical ordering of
-tuple $(g(v),l(v))$, then player A chooses variables $\{x_r,x_s\}$, where $r$ and $s$ are 
-defined by
-\[
-	v_r=\min_i v_i\quad \text{and}\quad v_s=\max_i v_i.
-\]
-Denote the minimal element by $(G,L)=(g(v),l(v))$. 
-The triple designed by Zeillinger is $(|M_p|,G,L)$. We will not go into details of the proof. 
+% We mainly use the Zeillinger's method in the calculation. 
+% It's not the most efficient one, but it can be understood well by the picture of 
+% polyhedron. Let's give a quick review here.
+% 
+% Let's start from a polyhedron $C[p]$. The vertices set of $C[p]$ is denoted by $M_p$. After
+% blowing-up, they becomes $C[p']$ and $M'_p$. First note that $|M'_p|\leq |M_p|$ because
+% the shift (blowing-up) can only keep a vertex or move it into the convex hull. Next note
+% that if $|M_p|=1$, then $p$ is decoupled. Therefore, a possible winning strategy for player
+% A is to find a set of variables to blow up at each round such that $|M_p|$ strictly decreases.
+% However, it's usually too far for a winning strategy to satisfy this condition. Therefore,
+% we need to add more elaborate conditions, \textit{e.g.} 
+% the number of variables of non-decoupled part of polynomial. At each round, we only need 
+% that one of these numbers strictly decreases. Zeillinger designed a triple of such numbers
+% in the following way.
+% 
+% For a polynomial $p$, define the set
+% \[
+% 	W[p]=\{n^I-n^J\,:\, I,J\in \mathscr B\},
+% \]
+% where $\mathscr B$ is the set of vertices of $C[p]$. After blowing-up, $(n^I)'$ doesn't 
+% need to be a vertex, but we still can talk about the image of $W[p]$ of blowing-up.
+% Note that $p'$ is decoupled if and only if for any $v$ in the image of $W[p]$, 
+% $v\in \mathbb Z_{\geq 0}^D$ or $v\in \mathbb Z_{\leq 0}^D$.
+% Furthermore, we define the gap function for any $v\in W[p]$
+% \[
+% 	g(v)=\max_i v_i-\min_i v_i 
+% \]
+% to be the difference of maximum and minimum of $v$, and
+% \[
+% 	l(v)=\#\{j\,:\, v_j=\max_i v_i\}+\#\{j\,:\, v_j=\min_i v_i\},
+% \] 
+% which counts how many times do components of $v$ take the minimum or maximum. 
+% 
+% Now for a polynomial $p$,
+% find the minimal element $v\in W[p]$ with respect of the lexicographical ordering of
+% tuple $(g(v),l(v))$, then player A chooses variables $\{x_r,x_s\}$, where $r$ and $s$ are 
+% defined by
+% \[
+% 	v_r=\min_i v_i\quad \text{and}\quad v_s=\max_i v_i.
+% \]
+% Denote the minimal element by $(G,L)=(g(v),l(v))$. 
+% The triple designed by Zeillinger is $(|M_p|,G,L)$. We will not go into details of the proof. 
 
 However they are not so efficient. In our code, we use another method to win the game.
 It's not clear now whether it is a winning strategy for player A, but it's more efficient than
 Zeillinger's winning strategy for almost all cases. If not, we can go back to Zeillinger's 
 winning strategy or any other winning strategy. 
 
-For the polynomial $\sum_I a_I x^{n^I}$, write down the matrix $(n^I_i)$, 
+For the polynomial $p=\sum_I a_I x^{n^I}$, write down the matrix $(n^I_i)$, 
 \[
 \begin{pmatrix}
 	n_1^1 & n_1^2 & \cdots & n_1^N\\
@@ -741,19 +741,22 @@ vectors\footnote{Here a constant vector is a vector with identical components.},
 denoted by $A\cong B$. If $(n^I_i)\cong ((n')^I_i)$, then there exists a vector $v$ such that
 $\sum_I a_I x^{n^I}=x^v\sum_I a_I x^{{n'}^I}$, which will not bother player A to win the game.
 Furthermore, we can delete zero row vectors in the matrix $(n^I_i)$, which means that the
-$p=\sum_I a_I x^{n^I}$ doesn't depend on the corresponding variables. 
-We also think that they are equivalent.
+$p=\sum_I a_I x^{n^I}$ doesn't depend on the corresponding variables, and 
+we can delete some column vectors corresponding the points in the interior of polyhedron of $p$.
+We also think that they are equivalent. It's easy to see that it's a equivalence relation.
 
 Let's define a function $R(A)$ for a matrix $A$ as the minimal number of rows of matrix in the 
-equivalence class of $A$. Note that if $R((n^I_i))=0$, player A wins. Therefore, if we can 
-design a winning strategy for player A such that $R$ decreases when the number of rounds
+equivalence class of $A$ and a function $C(A)$ as the minimal number of columns of matrix in the 
+equivalence class of $A$. 
+Note that if $R((n^I_i))=0$ or $C((n^I_i))=0$, player A wins. Therefore, if we can 
+design a winning strategy for player A such that $R$ or $C$ decreases when the number of rounds
 increases. 
 
 Note that if we can find a set of row vectors $S$ such that the summation of them is
 a constant vector, then all matrix generated by blowing up have this constant row vector so that
 their $R$ decreases. In other words, if we define the function
 \[
-	g((n^I_i),T)=|M_p|-\#\biggl\{J\,:\, \sum_{i\in T} n^J_j=
+	g((n^I_i),T)=C((n^I_i))-\#\biggl\{J\,:\, \sum_{i\in T} n^J_j=
 	\min_I \biggl(\sum_{i\in T} n^I_i\biggr)\biggr\}
 \]
 for the matrix $(n^I_i)$ and a set of row indexes $T$. Then for such $S$, $g((n^I_i),S)=0$.
