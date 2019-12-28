@@ -238,7 +238,7 @@ the vertex $(0,0)$ is crossed by $x=0$ and $y=0$ once, by $x^3+y^3+xy=0$ twice.
 \caption{Left: $p=x+y+xy$, Right: $p=x^3+y^3+xy$}
 \end{figure}
 
-(\textcolor{blue}{Z: I still don't know how to put there reviews (Newton polytopes, blow up, Mink. sum, postive
+(\textcolor{blue}{Z: I still don't know how to put these reviews (Newton polytopes, blow up, Mink. sum, postive
 geometry, canonical forms, ...) properly}.)
 
 Let's give a short review of blowing up. 
@@ -295,10 +295,10 @@ Now let's carefully consider the first example,
 \]
 The leading terms come form the neighbourhoods of four vertices $(0,0)$, $(0,\infty)$, $(\infty,0)$ and $(\infty,\infty)$. Let's consider the simplest vertex first, 
 \[
-	I(0,\infty)=\int_{0}^\epsilon\int_{1/\epsilon}^\infty \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y+xy)^{-\alpha' c}\sim \int_{0}^\epsilon\int_{1/\epsilon}^\infty \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' (b-c)}\sim 
-	\frac{1}{{\alpha'}^2}\frac{1}{a} \frac{1}{c-b}
+	I(0,\infty)=\int_{0}^\epsilon\int_{1/\epsilon}^\infty \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y+xy)^{-\alpha' c}\approx \int_{0}^\epsilon\int_{1/\epsilon}^\infty \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' (b-c)}= 
+	\frac{1}{{\alpha'}^2}\frac{1}{a} \frac{1}{c-b}+O({\alpha'}^{-1})
 \]
-Near the vertex $(0,\infty)$, the integral decouples because the mixed factor $x+y+xy \sim y$ when $y \gg x$.  Similarly, $I(\infty,0)\sim ({\alpha'}^2 b (c-a))^{-1}$. 
+Near the vertex $(0,\infty)$, the integral decouples because the mixed factor $x+y+xy \approx y$ when $y \gg x$.  Similarly, $I(\infty,0)\approx ({\alpha'}^2 b (c-a))^{-1}$. 
 
 For the harder vertex
 \[
@@ -314,10 +314,11 @@ For the remaining terms $x+y$, we can introduce new variables $x = tp$ and $y=t(
 and
 \begin{equation*}
 	I(0,0)=\int_0^\epsilon\frac{dt}{t} t^{\alpha'(a+b-c)}\int_0^{1}\frac{dp}{p(1-p)}p^{\alpha' a}(1-p)^{\alpha' b}%\sim \frac{1}{\alpha'}\frac{1}{a+b-c}\int_0^{1}\frac{dp}{p(1-p)}p^{\alpha' a}(1-p)^{\alpha' b}
-	\sim \frac{1}{{\alpha'}^2}\frac{1}{a+b-c}\biggl(\frac 1a+\frac 1b\biggr).
+	= \frac{1}{{\alpha'}^2}\frac{1}{a+b-c}\biggl(\frac 1a+\frac 1b\biggr)
+	+O({\alpha'}^{-1})l
 \end{equation*}
-in this example, whether $x$ or $y$ is dominated in the integration is characterized by $p$, 
-and both vertices $p\sim 0$ ($x\ll y$) and $p\sim 1$ ($y\ll x$) contribute.
+In this example, whether $x$ or $y$ is dominated in the integration is characterized by $p$, 
+and both vertices $p\approx 0$ ($x\ll y$) and $p\approx 1$ ($y\ll x$) contribute.
 \begin{center}
 \begin{tikzpicture}[scale=0.8]
 \fill[gray!30,opacity=0.4] (-6.9,1.4) -- (-3.9,1.4) -- (-3.9,4.4) -- (-6.9,4.4);
@@ -350,12 +351,12 @@ and both vertices $p\sim 0$ ($x\ll y$) and $p\sim 1$ ($y\ll x$) contribute.
 \end{center}
 Similarly, one can work out 
 \[
-	I(\infty,\infty)\sim \frac{1}{{\alpha'}^2}\frac{1}{(c-a) (c-b)} 
+	I(\infty,\infty)\approx \frac{1}{{\alpha'}^2}\frac{1}{(c-a) (c-b)} 
 \]
 and finally
 \begin{align*}
-	I&\sim I(0,0)+I(0,\infty)+I(\infty,0)+I(\infty,\infty)\\
-	 &\sim \frac{1}{{\alpha'}^2}
+	I&\approx I(0,0)+I(0,\infty)+I(\infty,0)+I(\infty,\infty)\\
+	 &\approx \frac{1}{{\alpha'}^2}
 	 \biggl(
 \frac{1}{b (a+b-c)}+\frac{1}{b (c-a)}+\frac{1}{a (c-b)}+\frac{1}{(c-a) (c-b)}+\frac{1}{a (a+b-c)}
 	 \biggr)
