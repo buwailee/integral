@@ -547,8 +547,8 @@ can be reduced to a new integral with less polynomials. Since the blowing-up nev
 number of the polynomial in the integral, we only need to consider the integrals with only one 
 polynomial
 \[
-I=\int_{[0,\epsilon]^D} \left(\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i}\right)
-	p^{-\alpha' c} 
+	I=\int_{[0,\epsilon]^D} \left(\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i}\right)
+	p^{-\alpha' c}.
 \] 
 Our aim is to find a series of blow-ups to make this polynomial $p$ decouple in this way at
 each generated vertices.
@@ -622,6 +622,24 @@ $ and $y_i\geq 0$.
 % \]
 % however we still need to worry about the blowing-up of $t$, $y$ and $x'$ in $q_I$ because
 % it's still unknown that which one is dominated.
+
+Another important feature of the canonical form is about the rescale of powers of variables.
+If we change the variables by
+\(
+	x_i\mapsto x_i^{c_i}
+\)
+for $i\in S$, where $c_i$ is a positive rational number, then integral becomes
+\[
+	\frac{1}{\prod_{i\in S}c_i} \int
+	\prod_{j\not\in S}\frac{\dif x_j}{x_j}x_j^{\alpha' X_j}
+	\prod_{i\in S}\frac{\dif x_i}{x_i}x_i^{\alpha' c_iX_i}
+	p(\{x_i^{c_i}\,:\, i\in S\};\{x_j\,:\, j\not\in S\})^{-\alpha' c}.
+\]
+Note that the rescale of the integral region doesn't change the leading order of the integral
+because $\epsilon^{\alpha'}$ and $(\epsilon^{1/c_i})^{\alpha'}$ both behave as $1+O(\alpha')$
+when $\alpha'\to 0$. Therefore, it only introduces a prefactor $1/\prod_{i\in S}c_i$ 
+for the integral thanks to $\dif \log$ singularities of the canonical form, 
+which will not bother us. 
 
 Blowing up produces new vertices 
 $
@@ -767,20 +785,10 @@ Our algorithm is based on the following observations:
 	\begin{equation}\label{linearprog}
 		\sum_{i\in S} c_i n^I_i = k
 	\end{equation}	
-	for all $I$, where $k$ is a positive integer, we can first change of the variables 
-	\(
-		x_i\mapsto x_i^{c_i},
-	\)
-	and the integral becomes
-	\[
-		\frac{1}{\prod_{i\in S}c_i} \int 
-		\prod_{j\not\in S}\frac{\dif x_j}{x_j}x_j^{\alpha' X_j}
-		\prod_{i\in S}\frac{\dif x_i}{x_i}x_i^{\alpha' c_iX_i}
-		p(\{x_i^{c_i}\,:\, i\in S\};\{x_j\,:\, j\not\in S\})^{-\alpha' a}.
-	\]
-	It only introduces a prefactor $1/\prod_{i\in S}c_i$ for the integral thanks to the
-	property of the canonical form, which will not bother us.
-	Then by blowing up variables $\{x_i\,:\, i\in S\}$, the polynomial $p$ becomes
+	for all $I$, where $k$ is a positive integer. 
+	We can first assume that $c_i=1$ because $n^I_i\mapsto c_i n^I_i$ after the 
+	change of variables $x_i\mapsto x_i^{c_i}$ for $i\in S$.
+	Now by blowing up variables $\{x_i\,:\, i\in S\}$, the polynomial $p$ becomes
 	\[
 		p\mapsto x_i^k q
 	\]
