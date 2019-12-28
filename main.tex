@@ -769,7 +769,7 @@ then the change of variables used by blowing up
 \] 
 is just replacing the $i$-th row by $\sum_{i\in S} n_i^I$.
 
-We say that two matrix $A$ and $B$ are equivalent if all row vectors of $A-B$ are constant 
+We say that two matrices $A$ and $B$ are equivalent if all row vectors of $A-B$ are constant 
 vectors\footnote{Here a constant vector is a vector with identical components.},
 denoted by $A\cong B$. If $(n^I_i)\cong (m^I_i)$, then there exists a vector $v$ such that
 $\sum_I a_I x^{n^I}=x^v\sum_I a_I x^{m^I}$, which will not bother player A to win the game.
@@ -782,18 +782,24 @@ in this class to represent it.
 
 Our algorithm is based on the following observations:
 \begin{enumerate}
-	\item[0.](Notation). We mainly consider the space of row vectors whose index are capital letters,
-		\textit{e.g.} $I$, $J$, .... The coordinate variables of this space are $\{z^I\}$.
-		The dimension of this space is $N$ by default, and the dimension of the space
-		of column vectors is $D$ by default.
+	\item[0.](Notation). We mainly consider the space of row vectors whose index are 
+	capital letters, \textit{e.g.} $I$, $J$, .... 
+	The coordinate variables of this space are $\{z^I\}$.
+	The dimension of this space is $N$ by default, and the dimension of the space
+	of column vectors is $D$ by default. For a given $i$, $n_i$ is the vector
+	$(n_i^1,\dots,n_i^N)$.
+	
 	\item If $(n^I_i)$ is equivalent to a $1\times N$ or $D\times 1$ matrix, player A wins. 
+	Therefore, if we can choose a set $S$ for a given matrix such that $N$ or $D$ 
+	decreases strictly in generated matrices, then it's a winning strategy.
+
 	\item If there's exist a set of positive integers $\{c_i\,:\,i\in S\}$ and a 
 	positive integer $k$ such that
 	\begin{equation}\label{linearprog}
-		\sum_{i\in S} c_i n^I_i = k
+		\sum_{i\in S} c_i n_i = (k,k,\dots,k)
 	\end{equation}	
 	for all $I$, where $k$ is a positive integer. 
-	We can first assume that $c_i=1$ because $n^I_i\mapsto c_i n^I_i$ after the 
+	We can first assume that $c_i=1$ because $n_i\mapsto c_i n_i$ after the 
 	change of variables $x_i\mapsto x_i^{c_i}$ for $i\in S$.
 	Now by blowing up variables $\{x_i\,:\, i\in S\}$, the polynomial $p$ becomes
 	\[
@@ -801,29 +807,33 @@ Our algorithm is based on the following observations:
 	\]
 	after $x_j\mapsto x_ix_j$ for $j\in S$ but $j\neq i$, where $q$ doesn't depend on $x_i$.
 	It's equivalent to the transformation $X_i\mapsto X_i-ck$ and $p\mapsto q$ 
-	in the integral. The new generated matrix for each $i\in S$ is just the matrix
+	in the integral. The new generated matrices for each $i\in S$ is just the matrix
 	obtained by deleting the $i$-th row of the old matrix.
 	
 	Therefore, we can reduce the number of variables of the polynomial or equivalently 
 	the number of rows of the matrix in this case.
 
 	\item Geometrically, eq.\eqref{linearprog} means that the constant vector $(1,\dots,1)$ 
-	is in the cone spanned by row vectors $\{n_i^I\,:\,i\in S\}$, which is a standard linear 
+	is in the cone spanned by row vectors $\{n_i\,:\,i\in S\}$, which is a standard linear 
 	programming problem. 
 
 	\item If $n^J_i \geq n^I_i$ for all $i$, we can drop column vector $n^J$. Geometrically, 
-	it means that the cone spanned by $\{n^I_i\}$ is the semi-space defined by $z^J\geq z^I$.
+	it means that the cone spanned by $\{n_i\}$ is in the semi-space defined by $z^J\geq z^I$.
 	In this case, we can reduce the number of columns of the matrix.
 	
-	\item In the view of the cone in the space of row vectors, 
-		the blowing up is a subdivision of the cone by the 
-		vector $\sum_{i\in S} c_i n^I_i$.
+	\item In the viewpoint of cones in the space of row vectors, 
+	the blowing up is nearly a subdivision of the cone.
+	If $\{n_i\,:\, 1\leq i\leq D\}$ are exactly vectors of edges of the cone, 
+	it's a subdivision. 
+	If the blowing up produces a vector $\sum_{i\in S} c_i n_i$ in the cone 
+	or on a boundary of the cone, then each generated cone is spanned by $D-1$ edges 
+	and the new vector $\sum_{i\in S} c_i n_i$. They divides the original cone. For example,
 	\begin{center}
 	\begin{tikzpicture}
 	\draw (1.7,2.6) -- (-2,-0.5);
-	\draw (-2,-0.5) -- (3.7,-0.5);
+	\draw (-2,-0.5) -- (3.5,-0.5);
 	\draw (-2,-0.5) -- (4.2,1.7);
-	\draw (1.1,2.1) -- (3.6,1.5) -- (2.8,-0.5) --  cycle ;
+	\draw (1.1,2.1) -- (3.6,1.5) -- (2.8,-0.5) -- cycle ;
 	\draw[dashed] (-2,-0.5) -- (3.5,0.9);
 
 	\draw[dashed] (1.1,2.1) -- (2.7,0.7);
@@ -836,13 +846,9 @@ Our algorithm is based on the following observations:
 	\fill[opacity=0.1,red] (-2,-0.5) -- (2.7,0.7) -- (3.6,1.5);
 	\end{tikzpicture}	
 	\end{center}
-	In the above 3-dimensional example, the cone spanned by three vectors is divided into 
-	three cones.
-\end{enumerate}
 
-Therefore, if we can 
-design a winning strategy for player A such that $R$ or $C$ decreases when the number of rounds
-increases. 
+	However, if $n_j$ is not the vector of a edge of the cone, every 
+\end{enumerate}
 
 
 Usually, $(1,\dots,1)$ is not in the cone spanned by row vectors $\{n_i^I\,:\,i\in S\}$. What's more,
