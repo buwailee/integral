@@ -753,6 +753,7 @@ It's not clear now whether it is a winning strategy for player A, but it's more 
 any known winning strategies for almost all cases. If not, we can go back to 
 any other winning strategy. 
 
+Let's first introduce the language of the matrix for the future use.
 For the polynomial $p=\sum_I a_I x^{n^I}$, write down the matrix $(n^I_i)$, 
 \[
 \begin{pmatrix}
@@ -766,7 +767,7 @@ then the change of variables used by blowing up
 \[
 	x_j\to x_ix_j \quad \text{for $j\neq i$ and $j\in S$}
 \] 
-is just adding the other rows in $S$ to the $i$-th row.
+is just replacing the $i$-th row by $\sum_{i\in S} n_i^I$.
 
 We say that two matrix $A$ and $B$ are equivalent if all row vectors of $A-B$ are constant 
 vectors\footnote{Here a constant vector is a vector with identical components.},
@@ -779,9 +780,9 @@ We also think that they are equivalent. It's easy to see that it's a equivalence
 
 Our algorithm is based on the following observations:
 \begin{enumerate}
-	\item If the matrix is equivalent to $1\times 1$ matrix $(0)$, then play $A$ wins.
+	\item If the matrix is equivalent to $1\times 1$ matrix $(0)$, then player $A$ wins.
 	\item If there's exist a set of positive integers $\{c_i\,:\,i\in S\}$ and a 
-	positive integerr $k$ such that
+	positive integer $k$ such that
 	\begin{equation}\label{linearprog}
 		\sum_{i\in S} c_i n^I_i = k
 	\end{equation}	
@@ -794,11 +795,15 @@ Our algorithm is based on the following observations:
 	\]
 	after $x_j\mapsto x_ix_j$ for $j\in S$ but $j\neq i$, where $q$ doesn't depend on $x_i$.
 	It's equivalent to the transformation $X_i\mapsto X_i-ak$ and $p\mapsto q$ 
-	in the modified integral.
-
-	Therefore, we can reduce the number of variables of the polynomial or the number of rows
-	of the matrix in this way. 
+	in the modified integral. The new generated matrix for each $i\in S$ is just the matrix
+	obtained by deleting the $i$-th row of the old matrix.
+	
+	Therefore, we can reduce the number of variables of the polynomial or equivalently 
+	the number of rows of the matrix.
 \end{enumerate}
+Geometrically, eq.\eqref{linearprog} means that the constant vector $(1,\dots,1)$ 
+is in the cone spanned by row vectors $\{n_i^I\,:\,i\in S\}$. However, $(1,\dots,1)$ is usually not
+in this cone.
 
 Let's define a function $R(A)$ for a matrix $A$ as the minimal number of rows of matrix in the 
 equivalence class of $A$ and a function $C(A)$ as the minimal number of columns of matrix in the 
@@ -887,7 +892,7 @@ where $x_i\in (0,\infty)$ for all $i$, is a one-to-one map from $(0,\infty)^D$ t
 \end{pro}
 
 \begin{proof}
-The proof is finished in two steps.:
+The proof is finished in two steps:
 \paragraph{Step 1: $M=1$}
 Consider a polynomial $p=\sum_{I} a_I x^{\mathbf n^I}$ with $a_I\geq 0$ for all $I$. 
 The scattering map now becomes
