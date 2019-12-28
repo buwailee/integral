@@ -1017,7 +1017,7 @@ It can be easily checked that all $F$'s are planar and remaining poles, although
 
 
 \subsubsection*{Cluster stringy integrl: $C_2$}
-
+This integral is equivalent to the $Z$-integral $Z(1^{+}2^{+})$ defined on the moduli space of paired punctures~\cite{}, which in a postive parameterization is 
 \begin{align*}
 \int_{\mathbb R_+^2} \frac{\dif x_1}{x_1}\frac{\dif x_2}{x_2}x_1^{\alpha' X}x_2^{\alpha' Y}
 &(x_1 + 1)^{-\alpha' a} 
@@ -1025,12 +1025,52 @@ It can be easily checked that all $F$'s are planar and remaining poles, although
 &(x_1x_2 + x_1 + 1)^{-\alpha' c}
 (x_1^2x_2 + x_1^2 + 2x_1 + 1)^{-\alpha' d} 
 \end{align*}
-
+where 4 polynoimals with constant term 1 are $F$-polynoimals with a $C_{2}$ quiver as the initial seed.
+This integral are related to $Z(1^{+}2^{+})$ (with gauge fixing $z_{0}=1$) by 
+\begin{equation*}
+	x_{1}=\frac{(1-z_{1})(z_{2}-z_{1})}{2z_{1}(1+z_{2})} \:,\qquad x_{2}=-\frac{(1+z_{1})^{2}}{(1-z_{1})^{2}}
+\end{equation*}
+and
 \begin{align*}
-	&\frac{1}{(a+c+2 d-X) (b+c+d-Y)}+\frac{1}{Y (a+c+2 d-X)}+\frac{1}{(b+c+d-Y) (2 b+c+X-2 Y)}\\
-&+\frac{1}{(b+X-Y) (2 b+c+X-2 Y)}+\frac{1}{X (b+X-Y)}+\frac{1}{X Y}
+	X=2s_{01}\:,\quad Y=s_{012}\:,\quad a=-2s_{1\tilde{2}}\:,\quad b=-s_{2\tilde{2}}\:,\quad 
+	c=-2s_{02}\:,\quad d=-s_{0\tilde{0}}
 \end{align*}
+with the Mandelstam variabes defined therein. In this case, only vertex $(0,\infty)$ is not normal crossing, we tranform this vertex to the origin as before, then we have
+\begin{align*}
+	\mathcal{I}_{C_{2}}(0,\infty)\approx \int_{[0,\epsilon]^{2}} \frac{\dif x_{1}\dif x_{2}}{x_{1}x_{2}} x_{1}^{\alpha' X}x_{2}^{\alpha' G_{1}}
+	(x_{1}+x_{2})^{-\alpha' c} (x_{1}^{2}+x_{2})^{-\alpha' d}
+\end{align*}
+where we have dropped irrelevant terms and introduced $G_{1}=b+c+d-Y$. This vertex can be decomposed into 3 normal crossing piece by the following blow ups
+\begin{align*}
+	\mathcal{I}_{C_{2}}(0,\infty)\approx\left\{
+	\begin{aligned}
+		&\int_{0<x_{1}<x_{2}}\frac{\dif y_{1}\dif y_{2}}{y_{1}y_{2}} y_{1}^{\alpha' X}y_{2}^{\alpha' G_{2}} \\
+		&\int_{0<x_{2}<x_{1}}\frac{\dif y_{1}\dif y_{2}}{y_{1}y_{2}} y_{1}^{\alpha' G_{1}}y_{2}^{\alpha' G_{2}}(y_{1}+y_{2})^{-\alpha'd} \approx
+		\left\{\begin{aligned}
+			\int_{0<y_{1}<y_{2}}\frac{\dif z_{1} \dif z_{2}}{z_{1}z_{2}}z_{1}^{\alpha' G_{1}}
+			z_{2}^{\alpha'(G_{1}+G_{2}-d)} \\
+			\int_{0<y_{2}<y_{1}}\frac{\dif z_{1}\dif z_{2}}{z_{1}z_{2}} z_{2}^{\alpha' G_{2}}
+			z_{1}^{\alpha'(G_{1}+G_{2}-d)}
+		\end{aligned} \right. 
+	\end{aligned} \right.
+\end{align*}
+where $G_{2}=G_{1}+X-c-d$, and the integration reigon for integration variables should be understood as $[0,\epsilon]^{2}$ while the subscript of integrals indicate the integration region before blow ups.
 
-others
 
+
+
+
+
+
+
+
+
+
+
+
+
+% \begin{align*}
+% 	&\frac{1}{(a+c+2 d-X) (b+c+d-Y)}+\frac{1}{Y (a+c+2 d-X)}+\frac{1}{(b+c+d-Y) (2 b+c+X-2 Y)}\\
+% &+\frac{1}{(b+X-Y) (2 b+c+X-2 Y)}+\frac{1}{X (b+X-Y)}+\frac{1}{X Y}
+% \end{align*}
 \end{document}
