@@ -782,7 +782,7 @@ denoted by $A\cong B$. If $(n^I_i)\cong (m^I_i)$, then there exists a vector $v$
 $\sum_I a_I x^{n^I}=x^v\sum_I a_I x^{m^I}$, which will not bother player A to win the game.
 Furthermore, we can delete zero row vectors in the matrix $(n^I_i)$, which means that the
 $p=\sum_I a_I x^{n^I}$ doesn't depend on the corresponding variables, and 
-we can delete some column vectors corresponding the points in the interior of polyhedron of $p$.
+we can delete some column vectors corresponding to the points in the interior of polyhedron of $p$.
 We also think that they are equivalent. It's easy to see that it's a equivalence relation.
 For a given equivalence class, we always use the matrix with minimal number of rows and columns 
 in this class to represent it, and call it reduced one.
@@ -967,7 +967,7 @@ by blowing up, and these matrices can be reduced to
 	\end{pmatrix}
 \biggr\}
 \]
-because the first one is contained in the semi-sapce $z^3\leq z^2$
+because the first one is contained in the semi-space $z^3\leq z^2$
 and the second one is contained in the semi-space $z^3\leq z^1$.
 It's easy to see that all new cones contain $(1,1)$, so we goto step (1) 
 and get
@@ -1028,7 +1028,7 @@ and get
 \end{align*}
 Now the algorithm stops. If we go back to the integral of the polynomial $p=y^2z+x^3z^2+xy$
 corresponding to $M$, we should carefully add factors $c_i$
-corresponding to the change of variabes $x_i\mapsto x_i^{1/c_i}$ and we will get $5$ terms 
+corresponding to the change of variables $x_i\mapsto x_i^{1/c_i}$ and we will get $5$ terms 
 in above example.
 \begin{align*}
 	\int_{[0,\epsilon]^3}\frac{\dif x}{x}&\frac{\dif y}{y}\frac{\dif z}{z}
@@ -1100,15 +1100,15 @@ Minkowski sum of two subsets $A$ and $B$ of $\mathbb R^n$ is defined by
 \section{Application and Example}
 
 % string Z integral, Cn, Gkn ...
-In this section, we will give several examples to illustate this blow up algorithm, most of examples comes from the so-called cluster stringy integrals~\cite{} which are closely realted to the origin string integrals.
+In this section, we will give several examples to illustrate this blow up algorithm, most of examples comes from the so-called cluster stringy integrals~\cite{} which are closely related to the origin string integrals.
 
 \subsubsection*{Cluster string integral: $A_{2}$}
-This integral is equivalent to the $Z$-integral $Z_{12345}(1,2,3,4,5)$~\cite{}, which in a postive parameterization takes the form of 
+This integral is equivalent to the $Z$-integral $Z_{12345}(1,2,3,4,5)$~\cite{}, which in a positive parameterization takes the form of 
 \[
 	\mathcal{I}_{A_{2}}=\int_{\mathbb R_+^2} \frac{\dif x_1}{x_1}\frac{\dif x_2}{x_2}x_1^{\alpha' X}x_2^{\alpha' Y}
 	(1+x_1)^{-\alpha' a}(1+x_2)^{-\alpha' b}(1+x_1+x_1x_2)^{-\alpha' c}
 \] 
-where $1+x_{1}$, $1+x_{2}$ and $1+x_{1}+x_{1}x_{2}$ are $F$-polynoimals with the initial seed $A_{2}$ quiver. With variable substituions
+where $1+x_{1}$, $1+x_{2}$ and $1+x_{1}+x_{1}x_{2}$ are $F$-polynomials with the initial seed $A_{2}$ quiver. With variable substitutions
 \[
 	x_{1}=\frac{1-z_{3}}{z_{3}}\,,\qquad x_{2}=\frac{z_{3}-z_{2}}{z_{2}(1-z_{3})}
 \]
@@ -1127,7 +1127,7 @@ The vertex $(0,\infty)$ is not normal crossing, we bring this vertex to the orig
 \[
     \mathcal{I}_{A_{2}}(0,\infty) \approx \int_{[0,\epsilon]^{2}} \frac{\dif x_{1}\,\dif x_{2}}{x_{1} x_{2}} x_{1}^{\alpha'X}x_{2}^{\alpha'(b+c-Y)}(x_{1}+x_{2}+x_{1}x_{2})^{-\alpha'c}
 \]
-where some irrelevant power functions of the form $(1+\cdots)$ have beend dropped. This is exactly the example we used in section 2, then the leading order contribution of $\mathcal{I}_{A_{2}}$ is simply
+where some irrelevant power functions of the form $(1+\cdots)$ have been dropped. This is exactly the example we used in section 2, then the leading order contribution of $\mathcal{I}_{A_{2}}$ is simply
 \begin{align*}
    \mathcal{I}_{A_2}&=\frac{1}{\alpha'^{-2}}\biggl(\frac{1}{(a+c-X) (b+c-Y)}+\frac{1}{X (b+X-Y)} \\
    &\quad +\frac{1}{(b+c-Y) (b+X-Y)}+\frac{1}{Y (a+c-X)}+\frac{1}{X Y}\biggr) + O(\alpha'^{-1}) 
@@ -1135,9 +1135,9 @@ where some irrelevant power functions of the form $(1+\cdots)$ have beend droppe
 
 
 
-\subsubsection*{Cluster stringy integrl: $A_3$}
+\subsubsection*{Cluster stringy integral: $A_3$}
 
-This integral is equivalent to the $Z$-integral $Z_{123456}(1,2,3,4,5,6)$, which in a postive parameterization takes the form of 
+This integral is equivalent to the $Z$-integral $Z_{123456}(1,2,3,4,5,6)$, which in a positive parameterization takes the form of 
 \begin{align*}
 	\int_{\mathbb R_+^3} \frac{\dif x_1}{x_1}\frac{\dif x_2}{x_2}\frac{\dif x_3}{x_3}
 	x_1^{\alpha' X}x_2^{\alpha' Y}x_3^{\alpha' Z}
@@ -1148,7 +1148,7 @@ This integral is equivalent to the $Z$-integral $Z_{123456}(1,2,3,4,5,6)$, which
 	&(x_2x_3 + x_3 + 1)^{-\alpha'a_5}
 	(x_1x_2x_3 + x_1x_3 + x_1 + x_3 + 1)^{-\alpha'a_6}
 \end{align*}
-where 6 polynoimals with constant term 1 are $F$-polynoimals with the initial seed $A_{3}$ quiver. With variable substituions
+where 6 polynomials with constant term 1 are $F$-polynomials with the initial seed $A_{3}$ quiver. With variable substitutions
 \[
 x_{1}=\frac{(z_{2}-z_{3})(1-z_{4})}{(1-z_{2})(z_{3}-z_{4})}\:,\quad x_{2}=\frac{z_{4}-z_{2}}{z_{2}(1-z_{4})}\:, \quad
 x_{3}=\frac{z_{2}}{1-z_{2}}
@@ -1201,11 +1201,11 @@ where each piece correspond to a simplex $0<x_{i}<x_{j}<x_{k}$, irrelevant terms
 	&F_{5}=F_{3}+X+Z-a_{4}-a_{5}-a_{6} \:, \\
 	&F_{6}=F_{3}+Z-a_{5}-a_{6} \:.
 \end{align*}
-It can be easily checked that all $F$'s are planar and remaining poles, although the spuious pole $X+Z$ appears in the process, and the result for leading order is exactly the 6 point amplitude for bi-adjoint $\phi^{3}$ theory.
+It can be easily checked that all $F$'s are planar and remaining poles, although the spurious pole $X+Z$ appears in the process, and the result for leading order is exactly the 6 point amplitude for bi-adjoint $\phi^{3}$ theory.
 
 
-\subsubsection*{Cluster stringy integrl: $C_2$}
-This integral is equivalent to the $Z$-integral $Z(1^{+}2^{+})$ defined on the moduli space of paired punctures~\cite{}, which in a postive parameterization is 
+\subsubsection*{Cluster stringy integral: $C_2$}
+This integral is equivalent to the $Z$-integral $Z(1^{+}2^{+})$ defined on the moduli space of paired punctures~\cite{}, which in a positive parameterization is 
 \begin{align*}
 \int_{\mathbb R_+^2} \frac{\dif x_1}{x_1}\frac{\dif x_2}{x_2}x_1^{\alpha' X}x_2^{\alpha' Y}
 &(x_1 + 1)^{-\alpha' a} 
@@ -1213,7 +1213,7 @@ This integral is equivalent to the $Z$-integral $Z(1^{+}2^{+})$ defined on the m
 &(x_1x_2 + x_1 + 1)^{-\alpha' c}
 (x_1^2x_2 + x_1^2 + 2x_1 + 1)^{-\alpha' d} 
 \end{align*}
-where 4 polynoimals with constant term 1 are $F$-polynoimals with a $C_{2}$ quiver as the initial seed.
+where 4 polynomials with constant term 1 are $F$-polynomials with a $C_{2}$ quiver as the initial seed.
 This integral are related to $Z(1^{+}2^{+})$ (with gauge fixing $z_{0}=1$) by 
 \begin{equation*}
 	x_{1}=\frac{(1-z_{1})(z_{2}-z_{1})}{2z_{1}(1+z_{2})} \:,\qquad x_{2}=-\frac{(1+z_{1})^{2}}{(1-z_{1})^{2}}
@@ -1223,7 +1223,7 @@ and
 	X=2s_{01}\:,\quad Y=s_{012}\:,\quad a=-2s_{1\tilde{2}}\:,\quad b=-s_{2\tilde{2}}\:,\quad 
 	c=-2s_{02}\:,\quad d=-s_{0\tilde{0}}
 \end{align*}
-with the Mandelstam variabes defined therein. In this case, only vertex $(0,\infty)$ is not normal crossing, we tranform this vertex to the origin as before, then we have
+with the Mandelstam variables defined therein. In this case, only vertex $(0,\infty)$ is not normal crossing, we transform this vertex to the origin as before, then we have
 \begin{align*}
 	\mathcal{I}_{C_{2}}(0,\infty)\approx \int_{[0,\epsilon]^{2}} \frac{\dif x_{1}\dif x_{2}}{x_{1}x_{2}} x_{1}^{\alpha' X}x_{2}^{\alpha' G_{1}}
 	(x_{1}+x_{2})^{-\alpha' c} (x_{1}^{2}+x_{2})^{-\alpha' d}
@@ -1242,7 +1242,7 @@ where we have dropped irrelevant terms and introduced $G_{1}=b+c+d-Y$. This vert
 		\end{aligned} \right. 
 	\end{aligned} \right.
 \end{align*}
-where $G_{2}=G_{1}+X-c-d$, and the integration reigon for integration variables should be understood as $[0,\epsilon]^{2}$ while the subscript of integrals indicate the integration region before blow ups.
+where $G_{2}=G_{1}+X-c-d$, and the integration region for integration variables should be understood as $[0,\epsilon]^{2}$ while the subscript of integrals indicate the integration region before blow ups.
 
 
 \section{Discussion and Outlook}
@@ -1390,7 +1390,7 @@ In section 2, we find that the blowing up procedure is simplified by the fact th
 	\[
 		F(\mathbf y)^{1/\alpha_0}=\prod_j F_j(\mathbf y)^{\alpha_j/\alpha_0},
 	\]
-	where $\alpha_0$ is a postive number such that $\alpha_0< \alpha_p$ for all $p$, which is a convex function 
+	where $\alpha_0$ is a positive number such that $\alpha_0< \alpha_p$ for all $p$, which is a convex function 
 	since each factor $F_{j}^{\alpha_{j}/\alpha_{0}}$ is a convex function. Since $F(\mathbf y)^{1/\alpha_0}$ takes its minimum at same points as $F(\mathbf y)$, 
 	we can further assume that $F(\mathbf y)$ is a strict convex function (\textcolor{red}{C: Why?}). 
 	
