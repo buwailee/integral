@@ -96,13 +96,13 @@ In \cite{}, many important properties of stringy integrals are well studied, esp
 %As in the original superstring amplitude, the field theory limit of a stringy integral is  its leading order as $\alpha'\to 0$. 
 More concretely, {\it{ i) the leading order of a stringy integral is given by the volume of the dual polytope, or the canonical function $\underline{\Omega}(N_{P})$, of $N_{P}$, and ii) a bijection between $\mathds{R}_{+}^{D}$ and $N_{P}$ is given by the siddle point equation of the regulator, that is the so-called scattering-equation map $\Phi$,}}
 \begin{equation} \label{SEmap}
-	X_{i}= \sum_{I}c_{I}\frac{\partial \log p_{I}}{\partial \log x_{i}}\:, \qquad  \text{for }i=1,\cdots,n{-}3.
+	X_{i}= \sum_{I}c_{I}\frac{\partial \log p_{I}}{\partial \log x_{i}}\:, \qquad  \text{for }i=1,\cdots,D.
 \end{equation}	
 In general, however, it's difficult to calculate the leading order of stringy integrals directly from the above two properties.
 On the one hand, performing Minkowski sum for polytopes analyticly is nearly impossible. On the other hand, to obtain the canonical form $\Omega(N_{P})$ from the pushforward $\Phi_{\ast}\bigl(\bigwedge_{i=1}^{D} \dif \log x_{i}\bigr)$ requires to solve highly non-linear equations, just like the case in CHY formalism.
 
 
-The main purpose of this article is to show an efficient method, {\it{blowing up}} (\textcolor{red}{C: or blowing-up map?}), to calculate the leading order of the integral eq.\eqref{int1} with respect to $\alpha'$. This is a general method which also is closely related to the {\it sector decomposition} prescription \cite{} used in Feynman integrals. We will see that the situation is easier when this method is applied in stringy integrals due to some features of canonical forms, and especially its closed relation to the polytope $N_{P}$.  (\textcolor{red}{C: Is this sentence proper?}). This method is based on two simple observations: i) the leading order contribution in $\alpha'$-expansion of stringy integrals arises from each vertex of the integration reigon $\mathds{R}_{+}^{D}$, ii) suppose that all $p_I(0)\neq 0$ in the integral eq.\eqref{int1}, then the integral at the neighbourhood of the origin becomes 
+The main purpose of this article is to show an efficient method, {\it{blowing up}} (\textcolor{red}{C: or blowing-up map?}), to calculate the leading order of the integral eq.\eqref{int1} with respect to $\alpha'$. This is a general method which also is closely related to the {\it sector decomposition} prescription \cite{} used in Feynman integrals. We will see that the situation is easier when this method is applied in stringy integrals due to some features of canonical forms, and especially its closed relation to the polytope $N_{P}$. This method is based on two simple observations: i) the leading order contribution in $\alpha'$-expansion of stringy integrals arises from each vertex of the integration reigon $\mathds{R}_{+}^{D}$, ii) suppose that all $p_I(0)\neq 0$ in the integral eq.\eqref{int1}, then the integral at the neighbourhood of the origin becomes 
 \begin{equation}\label{int2}
 	\int_{[0,\epsilon]^D}\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i} \prod_{I}p_{I}(0)^{-\alpha' c_{I}}
 	=\prod_{i=1}^D\frac{\epsilon^{\alpha' X_i}p_{I}(0)^{-\alpha' c_{I}}}{\alpha' X_i}
@@ -114,12 +114,11 @@ Generally, it would not be such simple case, some polynomials $p_{I}$ may vanish
 % 	\item Furthermore, some $p_I$ may own the origin (or a vertex) as their singular point\footnote{A point $Q$ is a singular point of the surface defined by $p(\mathrm{x})$=0 if $p(Q)=0$ and $\partial p(Q)/\partial x_{i} =0$ for all $i$}.
 % \end{itemize}
 They can be overcome by a series of blowing up. After these blow-ups, the 
-stringy integral is decomposed into many integrals like eq.\eqref{int2}, then the leading order is given by summation.
+stringy integral is decomposed into many integrals like eq.\eqref{int2}, then the leading order is given by a summation.
 
 
-In section 2, we review the defination of blow up and elaborate . In section 3, we. Section 4 contains . Finally, in appendix, we will give another proof of the proposition firstly given in \cite{} that the scattering-equation map \eqref{SEmap} from the saddle point equations of the integral eq.\eqref{int1} 
-is a one-to-one map from the interior of $\mathbb R_+^D$ to the interior of Minkowski sum of 
-Newton polytopes of $p_I$. 
+In section 2, we review the defination of blowing up and elaborate the principle and procedures of the blowing up algorithm. Section 3 uses several examples arising form cluster stringy integrals to illustate this algorithm. Section 4 contains discussion and outlook. Finally, in the appendix, we will give another proof for the proposition firstly given in \cite{} that the scattering-equation map \eqref{SEmap} is a bijection. 
+%from the interior of $\mathbb R_+^D$ to the interior of Minkowski sum of Newton polytopes of $p_I$. 
 
 % (\textcolor{red}{C: How to introduce scattering-equation map? Should we talk about its relation with blow up?})
 % In the second part, we give a direct proof of a proposition firstly given in \cite{} that 
@@ -321,7 +320,7 @@ and
 \begin{equation*}
 	I(0,0)=\int_0^\epsilon\frac{dt}{t} t^{\alpha'(a+b-c)}\int_0^{1}\frac{dp}{p(1-p)}p^{\alpha' a}(1-p)^{\alpha' b}%\sim \frac{1}{\alpha'}\frac{1}{a+b-c}\int_0^{1}\frac{dp}{p(1-p)}p^{\alpha' a}(1-p)^{\alpha' b}
 	= \frac{1}{{\alpha'}^2}\frac{1}{a+b-c}\biggl(\frac 1a+\frac 1b\biggr)
-	+O({\alpha'}^{-1})l
+	+O({\alpha'}^{-1})
 \end{equation*}
 In this example, whether $x$ or $y$ is dominated in the integration is characterized by $p$, 
 and both vertices $p\approx 0$ ($x\ll y$) and $p\approx 1$ ($y\ll x$) contribute.
@@ -1161,33 +1160,34 @@ where $G_{2}=G_{1}+X-c-d$, and the integration reigon for integration variables 
 
 \appendix
 
-\section*{Proof of bijectivity of the scattering equation map}
+\section*{Proof of bijectivity of the scattering-equation map}
+
+In this appendix, we give another proof that the scattering-equation map is a bijection.
 
 \begin{pro*}
 	For a product of $M$ polynomials $P=\prod_{j=1}^M p_j^{\alpha_j}$, 
 	where $\alpha_j>0$, 
-	$p_j=\sum_{I_j} a_{I_j} x^{I_j}$ are polynomials with non-negative coefficients $a_{I_j}$ and
+	$p_j=\sum_{I_{j}} a_{{I_j}} x^{\mathbf{n}^{I_j}}$ are polynomials with non-negative coefficients $a_{I_j}$ and
 	\[
-		x^{n^{I_j}}:=\prod_{i=1}^D x_i^{n^{I_j}_i},
+		x^{\mathbf{n}^{I_j}}:=\prod_{i=1}^D x_i^{n^{I_j}_i},
 	\]
-	we define a polytope $N_P$ in $\mathbb R^D$ as the Minkowski sum $N_P=\sum_j \alpha_j N(p_j)$
-	of Newton polytopes $N(p_j)$.
+	we define a polytope $N_P$ in $\mathbb R^D$ as the Minkowski sum $N_P=\sum_j \alpha_j N(p_j)$ of Newton polytopes $N(p_j)$.
 	Then the scattering map:
 	\[
-		\mathbf X(x)=\frac{\partial \log P}{\partial \log \mathbf x},
+		\mathbf{X}=\frac{\partial \log P}{\partial \log \mathbf{x}},
 	\]
-	where $x_i\in (0,\infty)$ for all $i$, is a one-to-one map from $(0,\infty)^D$ to the interior of $N_P$ when matrix $(n_i^I)$ has full rank%
+	where $\mathbf{X}=(X_{1},\ldots,X_{D})$ and $\mathbf{x}=(x_{1},\ldots,x_{D})$, is a one-to-one map from $(0,\infty)^D$ to the interior of $N_P$ when matrix $(n_i^I)$ has full rank%
 	\footnote{When matrix $(n_i^I)$ doesn't have full rank, the map is not one-to-one. 
-		But in fact, we only care about the cast that it has full rank, so that $\dim (N(p))=D$. 
-		If not, there exist some $\mathbf s\neq 0$ such that $\mathbf s \cdot \mathbf n^I=0$ for all $I$. 
-		In this case,
-		\[
-		\mathbf s\cdot\mathbf X=\mathbf s\cdot\frac{\partial \log p}{\partial \log \mathbf x}=0.
-		\]
-		Therefore, one can project $\operatorname{im}(\mathbf X)$ 
-		by setting some $x_i=1$ so that the new matrix $(n^I_i)$ has full rank.	
-		In this case, one can recover the original image by solving these equations $\mathbf s\cdot\mathbf X=0$
-		after working out the image in lower dimension.
+		But in fact, we only care about the case that it has full rank, so that $\dim (N(p))=D$. 
+		% If not, there exist some $\mathbf s\neq 0$ such that $\mathbf s \cdot \mathbf n^I=0$ for all $I$. 
+		% In this case,
+		% \[
+		% \mathbf s\cdot\mathbf X=\mathbf s\cdot\frac{\partial \log p}{\partial \log \mathbf x}=0.
+		% \]
+		% Therefore, one can project $\operatorname{im}(\mathbf X)$ 
+		% by setting some $x_i=1$ so that the new matrix $(n^I_i)$ has full rank.	
+		% In this case, one can recover the original image by solving these equations $\mathbf s\cdot\mathbf X=0$
+		% after working out the image in lower dimension.
 		}%
 		. 
 	\end{pro*}
@@ -1198,13 +1198,12 @@ where $G_{2}=G_{1}+X-c-d$, and the integration reigon for integration variables 
 	Consider a polynomial $p=\sum_{I} a_I x^{\mathbf n^I}$ with $a_I\geq 0$ for all $I$. 
 	The scattering map now becomes
 	\[
-		\mathbf X(x)=\frac{\partial \log p}{\partial \log \mathbf x},
+		\mathbf X(\mathbf{x})=\frac{\partial \log p}{\partial \log \mathbf x}.
 	\]
-	where $x_i\in (0,\infty)$. The proposition is equivalent to the claim 
-	that the equation $\mathbf X(x)=\mathbf\Lambda$ has a unique solution in $\mathbb R^D$ 
+	The proposition is equivalent to the claim that the equation $\mathbf X(\mathbf{x})=\mathbf\Lambda$ has a unique solution in $\mathbb R^D$ 
 	if and only if $\mathbf\Lambda\in (N(p))^\circ$. 
 	
-	Let $\mathbf{\Lambda}$ be an interior point in $N(p)$ defined by 
+	Let $\mathbf{\Lambda}$ be an interior point in $N(p)$ given by 
 	\[
 		\mathbf \Lambda=\sum_{I}\lambda_I\mathbf n^I
 		=\frac{\partial}{\partial \log \mathbf x}\sum_{I}\lambda_I \log x^{\mathbf n^I}
@@ -1221,7 +1220,7 @@ where $G_{2}=G_{1}+X-c-d$, and the integration reigon for integration variables 
 	\]
 	where
 	\[
-		F(\mathbf x)=\sum_I a_I x^I\prod_J (x^{-\mathbf n^J})^{\lambda_J}.
+		F(\mathbf x)=\biggl(\sum_I a_I x^{\mathbf{n}^I}\biggr)\prod_J (x^{-\mathbf n^J})^{\lambda_J}.
 	\]
 	or in terms of $\mathbf y=\log \mathbf x$, 
 	\[
@@ -1245,16 +1244,10 @@ where $G_{2}=G_{1}+X-c-d$, and the integration reigon for integration variables 
 	$\mathbb R^D$. 
 	
 	For a strict convex function $F(\mathbf y)$ on $\mathbb R^D$, it has a unique minimal in $\mathbb R^D$ 
-	if and only if it does not take its minimal when $\mathbf{y}$ goes to infinity along any direction. 
-	In our case, we only need that for any $\mathbf{y}\neq 0$ and $\mathbf\Lambda \in (N(p))^\circ $, 
-	there exist some $I$ such that  
-	\(
-		\mathbf{y}\cdot (\mathbf{n}^I-\mathbf{\Lambda})>0,
-	\)
-	which is direct from the convexity of $N(p)$: If $\mathbf\Lambda \in (N(p))^\circ$,
-	for a given $\mathbf y\neq 0$, the hyperplain $L$ with normal vector $\mathbf y$ crossing $\mathbf \Lambda$ 
-	divides the space $\mathbb R^D$ into semi-spaces $L^+$ and $L^-$, then any $\mathbf{n}^I$ 
-	in $L^+$ are what we are looking for.
+	if and only if it does not take the minima when $\mathbf{y}$ goes to infinity along any direction. 
+	To this end, we only need to show that there exist some $I$ such that $\mathbf{y}'\cdot (\mathbf{n}^I-\mathbf{\Lambda})>0$ for any $\mathbf{y}'\neq 0$ and $\mathbf\Lambda \in (N(p))^\circ $, which is directly followed from the convexity of $N(p)$: If $\mathbf\Lambda \in (N(p))^\circ$, for a given $\mathbf{y}'\neq 0$, the hyperplain $L$ with normal vector $\mathbf{y}'$ crossing $\mathbf \Lambda$ 
+	divides the space $\mathds{R}^{D}$ into semi-spaces $L^+$ and $L^-$, then any $\mathbf{n}^I$ 
+	in $L^+$ are desired.
 	
 	\begin{center}
 		\begin{tikzpicture}
@@ -1263,7 +1256,7 @@ where $G_{2}=G_{1}+X-c-d$, and the integration reigon for integration variables 
 		\draw[->,black,thick](2,-2)--(2,-1);
 		\draw[->,black,thick](2,-2)--(1,0);
 		\node at (2,-2.2) {$\mathbf{\Lambda}$};
-		\node at (2.2,-0.8) {$\mathbf{y}$};
+		\node at (2.2,-0.8) {$\mathbf{y}'$};
 		\node at (6.4,-2) {$L$};
 		\node at (5.6,-1.6) {$L^+$};
 		\node at (5.6,-2.4) {$L^-$};
@@ -1271,53 +1264,46 @@ where $G_{2}=G_{1}+X-c-d$, and the integration reigon for integration variables 
 		\end{tikzpicture}
 	\end{center}
 	Conversely, if $\mathbf\Lambda \not\in N(p)$, one can find a hyperplain $L$ such that $N(p)\subset L^-$, 
-	then the normal vector $\mathbf{y}$ of $L$ gives the wanted direction, making the exponentials all negative
-	such that $F(t\mathbf y)\to 0$ when $t\to \infty$. 
-	As a positive convex function, $F(\mathbf y)$ has no saddle point in $\mathbb R^D$.
+	then the normal vector $\mathbf{y}'$ of $L$ belonging to $L^{+}$ gives the wanted direction since such that $F(t\mathbf{y}')\to 0$ as $t\to \infty$. Hence, $F(\mathbf y)$ has no saddle point in $\mathds{R}^D$ as a positive convex function.
 	
 	Therefore, we have proven that $F(\mathbf y)$ has a unique minimal in $\mathbb R^D$ when 
 	$\mathbf \Lambda \in (N(p))^\circ$ and no saddle point in $\mathbb R^D$ when 
 	$\mathbf \Lambda \not\in N(p)$, which proves the first part.
 	
-	\paragraph{Step 2: General $M$}
-	Generally, let $\mathbf{\Lambda}$ be a interior point in Minkowski sum $\sum_p \alpha_p N(p)$ corresponding to $P=\prod_p p^{\alpha_p}$ defined by 
+	\paragraph{Step 2: Generic $M$} Let $\mathbf{\Lambda}$ be a interior point in Minkowski sum $\sum_j \alpha_j N(p_{j})$ corresponding to $P=\prod_j p_{j}^{\alpha_{j}}$ given by 
 	\[
 		\mathbf{\Lambda}
-		=\sum_p \alpha_p \mathbf{\Lambda}_p
-		=\sum_p \alpha_p \sum_{I_p}\lambda_{I_p}\mathbf{n}^{I_p}
-		=\frac{\partial}{\partial \log \mathbf{x}}\sum_{p}\alpha_p\sum_{I_p}\lambda_{I_p} \log x^{\mathbf n^{I_p}}
+		=\sum_j \alpha_j \mathbf{\Lambda}_j
+		=\sum_j \alpha_{j} \biggl(\sum_{I_j}\lambda_{I_j}\mathbf{n}^{I_j}\biggr)
+		=\frac{\partial}{\partial \log \mathbf{x}}\sum_{j}\alpha_j\biggl( \sum_{I_j}\lambda_{I_j} \log x^{\mathbf n^{I_j}}\biggr)
 	\]
-	where $\sum_{I_p} \lambda_{I_p}=1$ and $\lambda_{I_p} > 0$. Equations $\mathbf{X}(x)=\mathbf{\Lambda}$ are 
+	where $\sum_{I_j} \lambda_{I_j}=1$ and $\lambda_{I_j} > 0$. Then the equation $\mathbf{X}(\mathbf{x})=\mathbf{\Lambda}$ is 
 	\[
-	\begin{aligned}
 		0=\frac{\partial }{\partial \log \mathbf{x}}\left(
-			\log P-\sum_{p}\alpha_p\sum_{I_p}\lambda_{I_p} \log x^{\mathbf n^{I_p}}
-		\right)&=\frac{\partial }{\partial \log \mathbf{x}}\left(
-		\log \left(\prod_p F_p^{\alpha_p}\right)
+			\log P-\sum_{j}\alpha_j\sum_{I_j}\lambda_{I_j} \log x^{\mathbf n^{I_j}}
+		\right)=\frac{\partial }{\partial \log \mathbf{x}}\left(
+		\log \left(\prod_j F_{j}^{\alpha_{j}}\right)
 		\right),
-	\end{aligned}
 	\]
 	where
 	\[
 		\begin{aligned}
-			F_p(\mathbf y)&=\sum_{I_p} a_{I_p} \exp\left(\mathbf{y}\cdot \left(\mathbf{n}^{I_p}-\mathbf{\Lambda}_p\right)\right).
+			F_j(\mathbf y)&=\sum_{j} a_{I_{j}} \exp\left(\mathbf{y}\cdot \left(\mathbf{n}^{I_j}-\mathbf{\Lambda}_j\right)\right).
 		\end{aligned}
-	\]
-	Write
+	\]	
+	We only need to show that
 	\[
-		F(\mathbf y)=\prod_p F_p(y)^{\alpha_p},
+		F(\mathbf y)=\prod_j F_j(\mathbf{y})^{\alpha_j}	
 	\]
-	we only need to show that $F(y)$ has a unique saddle point in $\mathbb R^D$.
+	has a unique saddle point in $\mathds{R}^D$.
 	
-	Here, $F(\mathbf y)$ no longer needs to be
-	a strict convex function. However, take a positive number $\alpha_0$ such that 
-	$\alpha_0< \alpha_p$ for all $p$, consider a new function
+	Here $F(\mathbf y)$ is not necessarily a strict convex function.(\textcolor{red}{C: Why?}) However, consider a new function
 	\[
-		F(\mathbf y)^{1/\alpha_0}=\prod_p F_p(\mathbf y)^{\alpha_p/\alpha_0},
+		F(\mathbf y)^{1/\alpha_0}=\prod_j F_j(\mathbf y)^{\alpha_j/\alpha_0},
 	\]
-	since $F_p$ are convex functions and $\alpha_p/\alpha_0>1$, $F_p(y)^{\alpha_p/\alpha_0}$ are convex functions,
-	so is their product. Since $F(\mathbf y)^{1/\alpha_0}$ takes its minimum at same points as $F(\mathbf y)$, 
-	we can further assume that $F(\mathbf y)$ is a strict convex function. 
+	where $\alpha_0$ is a postive number such that $\alpha_0< \alpha_p$ for all $p$, which is a convex function 
+	since each factor $F_{j}^{\alpha_{j}/\alpha_{0}}$ is a convex function. Since $F(\mathbf y)^{1/\alpha_0}$ takes its minimum at same points as $F(\mathbf y)$, 
+	we can further assume that $F(\mathbf y)$ is a strict convex function (\textcolor{red}{C: Why?}). 
 	
 	Finally, we claim that $F(\mathbf y)$ does not take minimum when $\mathbf{y}$ goes to infinity 
 	along any direction. 
