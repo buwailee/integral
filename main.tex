@@ -702,7 +702,8 @@ new generated polynomial. If player A cannot win in finite steps, player B wins.
 The game is used by Hironaka to prove the existence of resolution of singularities
 by blowing-up, and any winning strategy for player A is equivalent to 
 a construction of resolution by a series of blowing-up. 
-There are many known winning strategies for player A. \cite{}
+There are many known winning strategies for player A. 
+\cite{spivakovsky1983solution,zeillinger2006short,hauser2003hironaka}
 % [Spivakovsky 83], [Encinas \& Hauser 02], [Zeillinger 05], \dots.
 
 % We mainly use the Zeillinger's method in the calculation. 
@@ -885,9 +886,16 @@ Let's give a example. Consider the matrix
 \[
 M=\left(
 \begin{array}{ccc}
+ n^1 \\
+ n^2 \\
+ n^3
+\end{array}
+\right)
+=\left(
+\begin{array}{ccc}
  0 & 3 & 1 \\
  2 & 0 & 1 \\
- 1 & 2 & 0 \\
+ 1 & 2 & 0
 \end{array}
 \right),
 \]
@@ -895,63 +903,133 @@ we can represent the cone by the projection of its intersection with the hyperpl
 on the $z^1$-$z^2$ plane.
 \begin{center}
 \begin{tikzpicture}
+\fill[opacity=0.2,gray] (0,4.5) -- (4,0) -- (2,4) -- cycle ;
 \draw[thick] (0,4.5) -- (4,0) -- (2,4) -- cycle ;
 \draw[->] (-0.1,0) -- (5,0) node[below] {$z^1$};
 \draw[->] (0,-0.1) -- (0,5) node[left] {$z^2$};
 \draw[densely dotted] (0,0) -- (4,4) node[right] {$z^1=z^2$};
-\draw[thick,dashed] (0,4.5) -- (2.667,2.667) node[circle, fill=red, inner sep=1pt] {}
-	-- (2.12,2.12) node[circle, fill=red, inner sep=1pt] {};
-\node[red] at (3,2.6) {$p_1$};
-\node[red] at (2.1,1.8) {$p_2$};
-\end{tikzpicture}	
+\draw[densely dotted] (4.2,0.9)  node[right] {$z^2=z^3$} -- (0.6,2.7);
+\draw[densely dotted] (0.7,4.6)  -- (2.7,0.6)  node[below] {$z^1=z^3$};
+\draw[thick,dashed] (2,4) -- (1.7,2.6) node[circle, fill=red, inner sep=1pt] {};
+\node[red] at (1.6,2.4) {$q$};
+\node at (2.2,4.3) {$n^3$};
+\node at (4.1,-0.3) {$n^2$};
+\node at (-0.3,4.5) {$n^1$};
+\end{tikzpicture}
 \end{center}
-We can ...
-
+We first find a red point according to the hyperplain $z^1=z^3$
 \[
-	p_1=n_2+2n_3,\quad p_2=2 n_1+3 n_2,
-\] 
-so ... 
+	q=n_1+n_2,
+\]
+here we may need to rescale them such that coefficients are integers. 
+Therefore, the old cone is decomposed into three new cones 
 \[
 	M\mapsto \biggl\{
 	\begin{pmatrix}
 		0&3&1\\
-		4&4&1\\
+		2&3&2\\
 		1&2&0
 	\end{pmatrix},
 	\begin{pmatrix}
-		6&6&5\\
+		2&3&2\\
 		2&0&1\\
-		4&4&1
-	\end{pmatrix},
-	\begin{pmatrix}
-		0&3&1\\
-		6&6&5\\
-		4&4&1
+		1&2&0
 	\end{pmatrix}
 \biggr\}
 \] 
-they reduces to
+by blowing up. These matrices can be reduced to
 \[
 	M\mapsto \biggl\{
 	\begin{pmatrix}
 		0&1\\
-		4&1\\
+		2&2\\
+		1&0
+	\end{pmatrix}\cong
+	\begin{pmatrix}
+		0&1\\
 		1&0
 	\end{pmatrix},
 	\begin{pmatrix}
-		6&5\\
+		3&2\\
 		0&1\\
-		4&1
+		2&0
+	\end{pmatrix}
+\biggr\}
+\]
+because the first one is contained in the semi-sapce $z^3\leq z^2$
+and the second one is contained in the semi-space $z^3\leq z^1$.
+It's easy to see that all new cones contain $(1,1)$, so we can blow up them repeatly 
+and get
+\begin{align*}
+	M&\mapsto 
+	\biggl\{
+	\begin{pmatrix}
+		0&1\\
+	\end{pmatrix},
+	\begin{pmatrix}
+		1&0\\
 	\end{pmatrix},
 	\begin{pmatrix}
 		0&1\\
-		6&5\\
-		4&1
+		2&0
+	\end{pmatrix},
+	\begin{pmatrix}
+		3&2\\
+		2&0
 	\end{pmatrix}
-\biggr\}
-\] 
-
-
+	\biggr\}\\
+	 &\cong
+	\biggl\{
+	\begin{pmatrix}
+		0\\
+	\end{pmatrix},
+	\begin{pmatrix}
+		0\\
+	\end{pmatrix},
+	\begin{pmatrix}
+		0&1\\
+		2&0
+	\end{pmatrix},
+	\begin{pmatrix}
+		2\\
+		0
+	\end{pmatrix}
+	\biggr\}\\
+	&\mapsto
+	\biggl\{
+	\begin{pmatrix}
+		0\\
+	\end{pmatrix},
+	\begin{pmatrix}
+		0\\
+	\end{pmatrix},
+	\begin{pmatrix}
+		2&0
+	\end{pmatrix},
+	\begin{pmatrix}
+		0&2\\
+	\end{pmatrix},
+	\begin{pmatrix}
+		2\\
+		0
+	\end{pmatrix}
+	\biggr\}
+\end{align*}
+Now the algorithm stops. If we go back to the integral of the polynomial $p=y^2z+x^3z^2+xy$
+corresponding to $M$, we should carefully add factors $1/c_i$
+corresponding to the change of variabes $x_i\mapsto x_i^{c_i}$ and we will get $5$ terms 
+in above example.
+\begin{align*}
+	\int_{[0,\epsilon]^3}\frac{\dif x}{x}&\frac{\dif y}{y}\frac{\dif z}{z}
+	x^{\alpha' X}y^{\alpha' Y}z^{\alpha' Z}(y^2z+x^3z^2+xy)^{-\alpha' c}\\
+	=\,&\frac{1}{{\alpha'}^3}\biggl(
+\frac{1}{X (-2 c+X+Y) (-c+X+Z)}+\frac{1}{Z (-2 c+X+Y) (-c+X+Z)}\\
+	&+\frac{1}{Z (-2 c+X+Y) (-3 c+X+2 Y)}+2\biggl(
+\frac{1}{Z (-3 c+X+2 Y) (-2 c+2 Y+Z)}\\
+	&+\frac{1}{2 Y (-3 c+X+2 Y) (-2 c+2 Y+Z)}
+\biggr)\biggr)
++O({\alpha'}^{-2}).
+\end{align*}
 
 Empirically, we have another way to choose $S$ for player A, which is inspired by 
 above algorithm.
@@ -1329,4 +1407,8 @@ where $G_{2}=G_{1}+X-c-d$, and the integration reigon for integration variables 
 % 	&\frac{1}{(a+c+2 d-X) (b+c+d-Y)}+\frac{1}{Y (a+c+2 d-X)}+\frac{1}{(b+c+d-Y) (2 b+c+X-2 Y)}\\
 % &+\frac{1}{(b+X-Y) (2 b+c+X-2 Y)}+\frac{1}{X (b+X-Y)}+\frac{1}{X Y}
 % \end{align*}
+
+\bibliographystyle{plain}
+\bibliography{main}
+
 \end{document}
