@@ -1031,17 +1031,24 @@ in above example.
 	\biggr) +O({\alpha'}^{-2}).
 \end{align*}
 
-Empirically, we have another way to choose $S$ for player A, which is inspired by 
-above algorithm.
+Empirically, we can use a simplified version of this algorithm to choose $S$ for player A.
 For a given matrix, if player A chooses $S$ such that 
-\begin{compactenum}[\quad\, (1)]
+\begin{compactenum}[\quad\, 1)]
 \item $\sum_{i\in S} n_i^I>0$ for all $I$;
-\item $\sum_{i\in S} n_i^I$ has maximal number of minimals;
+\item $\sum_{i\in S} n_i$ has maximal number of minimals;
 \item $\#S$ is minimal,
 \end{compactenum}
 then he/she can still win in all cases we have tested. 
-It's not clear now whether it is a 
-winning strategy, but it's more efficient than any well-known winning strategy, and it's 
+This strategy doesn't contain any transformation like $x_i\mapsto x_i^{1/c_i}$. The first 
+condition means that the polynomial goes to zero when $x_i\to 0$ for $i\in S$, and
+the last is used to avoid too many vertices. These two condition is first
+introduced in \cite{Binoth:2000ps}, and called strategy X in \cite{bogner2009mathematical}.
+Here, we introduce one more condition $2)$, which may be the key condition to avoid 
+infinite iteration. It's used to make sure the vector $\sum_{i\in S} n_i$
+is choosen on some hyperplains $z^I=z^J$.
+
+It's not clear now whether the simplified version is a winning strategy,
+but it's more efficient than lots of well-known winning strategies, and it's 
 very easy to code.
 
 \section{Scattering-Equation Map}
