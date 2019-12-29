@@ -15,6 +15,7 @@
 	\newtheorem{lem}[para]{Lemma}
 	\newtheorem{thm}[para]{Theorem}
 	\newtheorem{pro}[para]{Proposition}
+	\newtheorem*{pro*}{Proposition}
 \renewcommand{\proofname}{Proof}
 
 
@@ -101,7 +102,7 @@ In general, however, it's difficult to calculate the leading order of stringy in
 On the one hand, performing Minkowski sum for polytopes analyticly is nearly impossible. On the other hand, to obtain the canonical form $\Omega(N_{P})$ from the pushforward $\Phi_{\ast}\bigl(\bigwedge_{i=1}^{D} \dif \log x_{i}\bigr)$ requires to solve highly non-linear equations, just like the case in CHY formalism.
 
 
-The main purpose of this article is to show an efficient method, {\it{blowing up}} (\textcolor{red}{C: or blowing-up map?}), to calculate the leading order of the integral eq.\eqref{int1} with respect to $\alpha'$. This is a general method which also is closely related to the {\it sector decomposition} prescription \cite{} used in Feynman integrals. We will see that the situation is easier when this method is applied in stringy integrals due to some features of canonical forms (\textcolor{red}{C: Is this sentence proper?\& How to introduce the proof about scattering-equation map?}). This method is based on two simple observations: i) the leading order contribution in $\alpha'$-expansion of stringy integrals arises from each vertex of the integration reigon $\mathds{R}_{+}^{D}$, ii) suppose that all $p_I(0)\neq 0$ in the integral eq.\eqref{int1}, then the integral at the neighbourhood of the origin becomes 
+The main purpose of this article is to show an efficient method, {\it{blowing up}} (\textcolor{red}{C: or blowing-up map?}), to calculate the leading order of the integral eq.\eqref{int1} with respect to $\alpha'$. This is a general method which also is closely related to the {\it sector decomposition} prescription \cite{} used in Feynman integrals. We will see that the situation is easier when this method is applied in stringy integrals due to some features of canonical forms, and especially its closed relation to the polytope $N_{P}$.  (\textcolor{red}{C: Is this sentence proper?}). This method is based on two simple observations: i) the leading order contribution in $\alpha'$-expansion of stringy integrals arises from each vertex of the integration reigon $\mathds{R}_{+}^{D}$, ii) suppose that all $p_I(0)\neq 0$ in the integral eq.\eqref{int1}, then the integral at the neighbourhood of the origin becomes 
 \begin{equation}\label{int2}
 	\int_{[0,\epsilon]^D}\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i} \prod_{I}p_{I}(0)^{-\alpha' c_{I}}
 	=\prod_{i=1}^D\frac{\epsilon^{\alpha' X_i}p_{I}(0)^{-\alpha' c_{I}}}{\alpha' X_i}
@@ -115,13 +116,18 @@ Generally, it would not be such simple case, some polynomials $p_{I}$ may vanish
 They can be overcome by a series of blowing up. After these blow-ups, the 
 stringy integral is decomposed into many integrals like eq.\eqref{int2}, then the leading order is given by summation.
 
-(\textcolor{red}{C: How to introduce scattering-equation map? Should we talk about its relation with blow up?})
-In the second part, we give a direct proof of a proposition firstly given in \cite{} that 
-the scattering-equation map \eqref{SEmap} from the saddle point equations of the integral eq.\eqref{int1} 
-is a one-to-one map from the interior of $\mathbb R_+^D$ to the interior of Minkowski sum of 
-Newton polytopes of $p_I$. ...
 
-Finally, ...
+In section 2, we review the defination of blow up and elaborate . In section 3, we. Section 4 contains . Finally, in appendix, we will give another proof of the proposition firstly given in \cite{} that the scattering-equation map \eqref{SEmap} from the saddle point equations of the integral eq.\eqref{int1} 
+is a one-to-one map from the interior of $\mathbb R_+^D$ to the interior of Minkowski sum of 
+Newton polytopes of $p_I$. 
+
+% (\textcolor{red}{C: How to introduce scattering-equation map? Should we talk about its relation with blow up?})
+% In the second part, we give a direct proof of a proposition firstly given in \cite{} that 
+% the scattering-equation map \eqref{SEmap} from the saddle point equations of the integral eq.\eqref{int1} 
+% is a one-to-one map from the interior of $\mathbb R_+^D$ to the interior of Minkowski sum of 
+% Newton polytopes of $p_I$. ...
+
+% Finally, ...
 
 %give a direct proof of the second property, first given in \cite{}. 
 %Finally, we give some examples and applications of these two method.
@@ -1085,169 +1091,6 @@ Minkowski sum of two subsets $A$ and $B$ of $\mathbb R^n$ is defined by
 \] 
 \end{defi}
 
-\begin{pro}
-For a product of $M$ polynomials $P=\prod_{j=1}^M p_j^{\alpha_j}$, 
-where $\alpha_j>0$, 
-$p_j=\sum_{I_j} a_{I_j} x^{I_j}$ are polynomials with non-negative coefficients $a_{I_j}$ and
-\[
-	x^{n^{I_j}}:=\prod_{i=1}^D x_i^{n^{I_j}_i},
-\]
-we define a polytope $N_P$ in $\mathbb R^D$ as the Minkowski sum $N_P=\sum_j \alpha_j N(p_j)$
-of Newton polytopes $N(p_j)$.
-Then the scattering map:
-\[
-	\mathbf X(x)=\frac{\partial \log P}{\partial \log \mathbf x},
-\]
-where $x_i\in (0,\infty)$ for all $i$, is a one-to-one map from $(0,\infty)^D$ to the interior of $N_P$ when matrix $(n_i^I)$ has full rank%
-\footnote{When matrix $(n_i^I)$ doesn't have full rank, the map is not one-to-one. 
-	But in fact, we only care about the cast that it has full rank, so that $\dim (N(p))=D$. 
-	If not, there exist some $\mathbf s\neq 0$ such that $\mathbf s \cdot \mathbf n^I=0$ for all $I$. 
-	In this case,
-	\[
-	\mathbf s\cdot\mathbf X=\mathbf s\cdot\frac{\partial \log p}{\partial \log \mathbf x}=0.
-	\]
-	Therefore, one can project $\operatorname{im}(\mathbf X)$ 
-	by setting some $x_i=1$ so that the new matrix $(n^I_i)$ has full rank.	
-	In this case, one can recover the original image by solving these equations $\mathbf s\cdot\mathbf X=0$
-	after working out the image in lower dimension.
-	}%
-	. 
-\end{pro}
-
-\begin{proof}
-The proof is finished in two steps:
-\paragraph{Step 1: $M=1$}
-Consider a polynomial $p=\sum_{I} a_I x^{\mathbf n^I}$ with $a_I\geq 0$ for all $I$. 
-The scattering map now becomes
-\[
-	\mathbf X(x)=\frac{\partial \log p}{\partial \log \mathbf x},
-\]
-where $x_i\in (0,\infty)$. The proposition is equivalent to the claim 
-that the equation $\mathbf X(x)=\mathbf\Lambda$ has a unique solution in $\mathbb R^D$ 
-if and only if $\mathbf\Lambda\in (N(p))^\circ$. 
-
-Let $\mathbf{\Lambda}$ be an interior point in $N(p)$ defined by 
-\[
-	\mathbf \Lambda=\sum_{I}\lambda_I\mathbf n^I
-	=\frac{\partial}{\partial \log \mathbf x}\sum_{I}\lambda_I \log x^{\mathbf n^I}
-\]
-where $\sum_I \lambda_I=1$ and $\lambda_I > 0$. The equation $\mathbf X(x)=\mathbf \Lambda$ becomes
-\[
-\begin{aligned}
-	0=\frac{\partial }{\partial \log \mathbf x}\left(
-		\log p-\sum_{I}\lambda_I \log x^{\mathbf n^I}
-	\right)=\frac{\partial }{\partial \log \mathbf x}\left(
-	\log F(\mathbf x)
-	\right)=\frac{1}{F(\mathbf x)}\frac{\partial F(\mathbf x)}{\partial \log \mathbf x}
-\end{aligned}
-\]
-where
-\[
-	F(\mathbf x)=\sum_I a_I x^I\prod_J (x^{-\mathbf n^J})^{\lambda_J}.
-\]
-or in terms of $\mathbf y=\log \mathbf x$, 
-\[
-	F(\mathbf y)
-	=\sum_I a_I \exp\left(\mathbf{y}\cdot \left(\mathbf{n}^I-\mathbf{\Lambda}\right)\right).
-\]
-Therefore we only need to show that $F(\mathbf y)$ has a unique saddle points in $\mathbb R^D$ 
-because $F>0$ for all $\mathbf y$.
-
-To see it, we first notice that $F(\mathbf y)$ is a strict convex function of $\mathbf y$. In fact, the Hessian of $F(\mathbf y)$ is 
-\[
-	H_{ij}(\mathbf y)=\frac{\partial^2}{\partial y_i\partial y_j}F(\mathbf y)=\sum_I a_I \exp\left(\mathbf{y}\cdot \left(\mathbf{n}^I-\mathbf{\Lambda}\right)\right)\left(\mathbf{n}^I-\mathbf{\Lambda}\right)_i\left(\mathbf{n}^I-\mathbf{\Lambda}\right)_j.
-\]
-For any $\mathbf v\neq 0$, 
-\[
-	\sum_{i,j}v_iv_jH_{ij}=\sum_I a_I \exp\left(\mathbf{y}\cdot \left(\mathbf{n}^I-\mathbf{\Lambda}\right)\right) \left(\mathbf v\cdot (\mathbf{n}^I-\mathbf{\Lambda})\right)^2 >0.
-\]
-It cannot vanish because that it only happens when $\mathbf v\cdot (\mathbf{n}^I-\mathbf{\Lambda})=0$ 
-for all $I$. However, we have assumed $\{\mathbf n^I\}$ has full rank, so
-vectors $\{\mathbf{n}^I-\mathbf{\Lambda}\}$ span the whole space 
-$\mathbb R^D$. 
-
-For a strict convex function $F(\mathbf y)$ on $\mathbb R^D$, it has a unique minimal in $\mathbb R^D$ 
-if and only if it does not take its minimal when $\mathbf{y}$ goes to infinity along any direction. 
-In our case, we only need that for any $\mathbf{y}\neq 0$ and $\mathbf\Lambda \in (N(p))^\circ $, 
-there exist some $I$ such that  
-\(
-	\mathbf{y}\cdot (\mathbf{n}^I-\mathbf{\Lambda})>0,
-\)
-which is direct from the convexity of $N(p)$: If $\mathbf\Lambda \in (N(p))^\circ$,
-for a given $\mathbf y\neq 0$, the hyperplain $L$ with normal vector $\mathbf y$ crossing $\mathbf \Lambda$ 
-divides the space $\mathbb R^D$ into semi-spaces $L^+$ and $L^-$, then any $\mathbf{n}^I$ 
-in $L^+$ are what we are looking for.
-
-\begin{center}
-	\begin{tikzpicture}
-	\draw[black,thick](3.5,0.5)--(1,0)--(0,-3)--(1.5,-4.5)--(4.5,-3.5)--(5,-1)--cycle;
-	\draw[black,dashed](-1.4,-2)--(6,-2);
-	\draw[->,black,thick](2,-2)--(2,-1);
-	\draw[->,black,thick](2,-2)--(1,0);
-	\node at (2,-2.2) {$\mathbf{\Lambda}$};
-	\node at (2.2,-0.8) {$\mathbf{y}$};
-	\node at (6.4,-2) {$L$};
-	\node at (5.6,-1.6) {$L^+$};
-	\node at (5.6,-2.4) {$L^-$};
-	\node at (0.6,0) {$\mathbf{n}^I$};
-	\end{tikzpicture}
-\end{center}
-Conversely, if $\mathbf\Lambda \not\in N(p)$, one can find a hyperplain $L$ such that $N(p)\subset L^-$, 
-then the normal vector $\mathbf{y}$ of $L$ gives the wanted direction, making the exponentials all negative
-such that $F(t\mathbf y)\to 0$ when $t\to \infty$. 
-As a positive convex function, $F(\mathbf y)$ has no saddle point in $\mathbb R^D$.
-
-Therefore, we have proven that $F(\mathbf y)$ has a unique minimal in $\mathbb R^D$ when 
-$\mathbf \Lambda \in (N(p))^\circ$ and no saddle point in $\mathbb R^D$ when 
-$\mathbf \Lambda \not\in N(p)$, which proves the first part.
-
-\paragraph{Step 2: General $M$}
-Generally, let $\mathbf{\Lambda}$ be a interior point in Minkowski sum $\sum_p \alpha_p N(p)$ corresponding to $P=\prod_p p^{\alpha_p}$ defined by 
-\[
-	\mathbf{\Lambda}
-	=\sum_p \alpha_p \mathbf{\Lambda}_p
-	=\sum_p \alpha_p \sum_{I_p}\lambda_{I_p}\mathbf{n}^{I_p}
-	=\frac{\partial}{\partial \log \mathbf{x}}\sum_{p}\alpha_p\sum_{I_p}\lambda_{I_p} \log x^{\mathbf n^{I_p}}
-\]
-where $\sum_{I_p} \lambda_{I_p}=1$ and $\lambda_{I_p} > 0$. Equations $\mathbf{X}(x)=\mathbf{\Lambda}$ are 
-\[
-\begin{aligned}
-	0=\frac{\partial }{\partial \log \mathbf{x}}\left(
-		\log P-\sum_{p}\alpha_p\sum_{I_p}\lambda_{I_p} \log x^{\mathbf n^{I_p}}
-	\right)&=\frac{\partial }{\partial \log \mathbf{x}}\left(
-	\log \left(\prod_p F_p^{\alpha_p}\right)
-	\right),
-\end{aligned}
-\]
-where
-\[
-	\begin{aligned}
-		F_p(\mathbf y)&=\sum_{I_p} a_{I_p} \exp\left(\mathbf{y}\cdot \left(\mathbf{n}^{I_p}-\mathbf{\Lambda}_p\right)\right).
-	\end{aligned}
-\]
-Write
-\[
-	F(\mathbf y)=\prod_p F_p(y)^{\alpha_p},
-\]
-we only need to show that $F(y)$ has a unique saddle point in $\mathbb R^D$.
-
-Here, $F(\mathbf y)$ no longer needs to be
-a strict convex function. However, take a positive number $\alpha_0$ such that 
-$\alpha_0< \alpha_p$ for all $p$, consider a new function
-\[
-	F(\mathbf y)^{1/\alpha_0}=\prod_p F_p(\mathbf y)^{\alpha_p/\alpha_0},
-\]
-since $F_p$ are convex functions and $\alpha_p/\alpha_0>1$, $F_p(y)^{\alpha_p/\alpha_0}$ are convex functions,
-so is their product. Since $F(\mathbf y)^{1/\alpha_0}$ takes its minimum at same points as $F(\mathbf y)$, 
-we can further assume that $F(\mathbf y)$ is a strict convex function. 
-
-Finally, we claim that $F(\mathbf y)$ does not take minimum when $\mathbf{y}$ goes to infinity 
-along any direction. 
-It is because that for a given $\mathbf{y}$ and each $p$, $F_p(t\mathbf{y})\to \infty$ when $t\to \infty$,
-so does $F(t\mathbf{y})=\prod_p F_p(t\mathbf{y})^{\alpha_p}$. Therefore, the equation 
-$\mathbf{X}(x)=\mathbf{\Lambda}$ has a unique solution.
-\end{proof}
-
 
 
 \section{Application and Example}
@@ -1398,9 +1241,176 @@ where we have dropped irrelevant terms and introduced $G_{1}=b+c+d-Y$. This vert
 where $G_{2}=G_{1}+X-c-d$, and the integration reigon for integration variables should be understood as $[0,\epsilon]^{2}$ while the subscript of integrals indicate the integration region before blow ups.
 
 
+\section{Discussion and Outlook}
 
 
+\appendix
 
+\section*{Proof of bijectivity of the scattering equation map}
+
+\begin{pro*}
+	For a product of $M$ polynomials $P=\prod_{j=1}^M p_j^{\alpha_j}$, 
+	where $\alpha_j>0$, 
+	$p_j=\sum_{I_j} a_{I_j} x^{I_j}$ are polynomials with non-negative coefficients $a_{I_j}$ and
+	\[
+		x^{n^{I_j}}:=\prod_{i=1}^D x_i^{n^{I_j}_i},
+	\]
+	we define a polytope $N_P$ in $\mathbb R^D$ as the Minkowski sum $N_P=\sum_j \alpha_j N(p_j)$
+	of Newton polytopes $N(p_j)$.
+	Then the scattering map:
+	\[
+		\mathbf X(x)=\frac{\partial \log P}{\partial \log \mathbf x},
+	\]
+	where $x_i\in (0,\infty)$ for all $i$, is a one-to-one map from $(0,\infty)^D$ to the interior of $N_P$ when matrix $(n_i^I)$ has full rank%
+	\footnote{When matrix $(n_i^I)$ doesn't have full rank, the map is not one-to-one. 
+		But in fact, we only care about the cast that it has full rank, so that $\dim (N(p))=D$. 
+		If not, there exist some $\mathbf s\neq 0$ such that $\mathbf s \cdot \mathbf n^I=0$ for all $I$. 
+		In this case,
+		\[
+		\mathbf s\cdot\mathbf X=\mathbf s\cdot\frac{\partial \log p}{\partial \log \mathbf x}=0.
+		\]
+		Therefore, one can project $\operatorname{im}(\mathbf X)$ 
+		by setting some $x_i=1$ so that the new matrix $(n^I_i)$ has full rank.	
+		In this case, one can recover the original image by solving these equations $\mathbf s\cdot\mathbf X=0$
+		after working out the image in lower dimension.
+		}%
+		. 
+	\end{pro*}
+	
+	\begin{proof}
+	The proof is finished in two steps:
+	\paragraph{Step 1: $M=1$}
+	Consider a polynomial $p=\sum_{I} a_I x^{\mathbf n^I}$ with $a_I\geq 0$ for all $I$. 
+	The scattering map now becomes
+	\[
+		\mathbf X(x)=\frac{\partial \log p}{\partial \log \mathbf x},
+	\]
+	where $x_i\in (0,\infty)$. The proposition is equivalent to the claim 
+	that the equation $\mathbf X(x)=\mathbf\Lambda$ has a unique solution in $\mathbb R^D$ 
+	if and only if $\mathbf\Lambda\in (N(p))^\circ$. 
+	
+	Let $\mathbf{\Lambda}$ be an interior point in $N(p)$ defined by 
+	\[
+		\mathbf \Lambda=\sum_{I}\lambda_I\mathbf n^I
+		=\frac{\partial}{\partial \log \mathbf x}\sum_{I}\lambda_I \log x^{\mathbf n^I}
+	\]
+	where $\sum_I \lambda_I=1$ and $\lambda_I > 0$. The equation $\mathbf X(x)=\mathbf \Lambda$ becomes
+	\[
+	\begin{aligned}
+		0=\frac{\partial }{\partial \log \mathbf x}\left(
+			\log p-\sum_{I}\lambda_I \log x^{\mathbf n^I}
+		\right)=\frac{\partial }{\partial \log \mathbf x}\left(
+		\log F(\mathbf x)
+		\right)=\frac{1}{F(\mathbf x)}\frac{\partial F(\mathbf x)}{\partial \log \mathbf x}
+	\end{aligned}
+	\]
+	where
+	\[
+		F(\mathbf x)=\sum_I a_I x^I\prod_J (x^{-\mathbf n^J})^{\lambda_J}.
+	\]
+	or in terms of $\mathbf y=\log \mathbf x$, 
+	\[
+		F(\mathbf y)
+		=\sum_I a_I \exp\left(\mathbf{y}\cdot \left(\mathbf{n}^I-\mathbf{\Lambda}\right)\right).
+	\]
+	Therefore we only need to show that $F(\mathbf y)$ has a unique saddle points in $\mathbb R^D$ 
+	because $F>0$ for all $\mathbf y$.
+	
+	To see it, we first notice that $F(\mathbf y)$ is a strict convex function of $\mathbf y$. In fact, the Hessian of $F(\mathbf y)$ is 
+	\[
+		H_{ij}(\mathbf y)=\frac{\partial^2}{\partial y_i\partial y_j}F(\mathbf y)=\sum_I a_I \exp\left(\mathbf{y}\cdot \left(\mathbf{n}^I-\mathbf{\Lambda}\right)\right)\left(\mathbf{n}^I-\mathbf{\Lambda}\right)_i\left(\mathbf{n}^I-\mathbf{\Lambda}\right)_j.
+	\]
+	For any $\mathbf v\neq 0$, 
+	\[
+		\sum_{i,j}v_iv_jH_{ij}=\sum_I a_I \exp\left(\mathbf{y}\cdot \left(\mathbf{n}^I-\mathbf{\Lambda}\right)\right) \left(\mathbf v\cdot (\mathbf{n}^I-\mathbf{\Lambda})\right)^2 >0.
+	\]
+	It cannot vanish because that it only happens when $\mathbf v\cdot (\mathbf{n}^I-\mathbf{\Lambda})=0$ 
+	for all $I$. However, we have assumed $\{\mathbf n^I\}$ has full rank, so
+	vectors $\{\mathbf{n}^I-\mathbf{\Lambda}\}$ span the whole space 
+	$\mathbb R^D$. 
+	
+	For a strict convex function $F(\mathbf y)$ on $\mathbb R^D$, it has a unique minimal in $\mathbb R^D$ 
+	if and only if it does not take its minimal when $\mathbf{y}$ goes to infinity along any direction. 
+	In our case, we only need that for any $\mathbf{y}\neq 0$ and $\mathbf\Lambda \in (N(p))^\circ $, 
+	there exist some $I$ such that  
+	\(
+		\mathbf{y}\cdot (\mathbf{n}^I-\mathbf{\Lambda})>0,
+	\)
+	which is direct from the convexity of $N(p)$: If $\mathbf\Lambda \in (N(p))^\circ$,
+	for a given $\mathbf y\neq 0$, the hyperplain $L$ with normal vector $\mathbf y$ crossing $\mathbf \Lambda$ 
+	divides the space $\mathbb R^D$ into semi-spaces $L^+$ and $L^-$, then any $\mathbf{n}^I$ 
+	in $L^+$ are what we are looking for.
+	
+	\begin{center}
+		\begin{tikzpicture}
+		\draw[black,thick](3.5,0.5)--(1,0)--(0,-3)--(1.5,-4.5)--(4.5,-3.5)--(5,-1)--cycle;
+		\draw[black,dashed](-1.4,-2)--(6,-2);
+		\draw[->,black,thick](2,-2)--(2,-1);
+		\draw[->,black,thick](2,-2)--(1,0);
+		\node at (2,-2.2) {$\mathbf{\Lambda}$};
+		\node at (2.2,-0.8) {$\mathbf{y}$};
+		\node at (6.4,-2) {$L$};
+		\node at (5.6,-1.6) {$L^+$};
+		\node at (5.6,-2.4) {$L^-$};
+		\node at (0.6,0) {$\mathbf{n}^I$};
+		\end{tikzpicture}
+	\end{center}
+	Conversely, if $\mathbf\Lambda \not\in N(p)$, one can find a hyperplain $L$ such that $N(p)\subset L^-$, 
+	then the normal vector $\mathbf{y}$ of $L$ gives the wanted direction, making the exponentials all negative
+	such that $F(t\mathbf y)\to 0$ when $t\to \infty$. 
+	As a positive convex function, $F(\mathbf y)$ has no saddle point in $\mathbb R^D$.
+	
+	Therefore, we have proven that $F(\mathbf y)$ has a unique minimal in $\mathbb R^D$ when 
+	$\mathbf \Lambda \in (N(p))^\circ$ and no saddle point in $\mathbb R^D$ when 
+	$\mathbf \Lambda \not\in N(p)$, which proves the first part.
+	
+	\paragraph{Step 2: General $M$}
+	Generally, let $\mathbf{\Lambda}$ be a interior point in Minkowski sum $\sum_p \alpha_p N(p)$ corresponding to $P=\prod_p p^{\alpha_p}$ defined by 
+	\[
+		\mathbf{\Lambda}
+		=\sum_p \alpha_p \mathbf{\Lambda}_p
+		=\sum_p \alpha_p \sum_{I_p}\lambda_{I_p}\mathbf{n}^{I_p}
+		=\frac{\partial}{\partial \log \mathbf{x}}\sum_{p}\alpha_p\sum_{I_p}\lambda_{I_p} \log x^{\mathbf n^{I_p}}
+	\]
+	where $\sum_{I_p} \lambda_{I_p}=1$ and $\lambda_{I_p} > 0$. Equations $\mathbf{X}(x)=\mathbf{\Lambda}$ are 
+	\[
+	\begin{aligned}
+		0=\frac{\partial }{\partial \log \mathbf{x}}\left(
+			\log P-\sum_{p}\alpha_p\sum_{I_p}\lambda_{I_p} \log x^{\mathbf n^{I_p}}
+		\right)&=\frac{\partial }{\partial \log \mathbf{x}}\left(
+		\log \left(\prod_p F_p^{\alpha_p}\right)
+		\right),
+	\end{aligned}
+	\]
+	where
+	\[
+		\begin{aligned}
+			F_p(\mathbf y)&=\sum_{I_p} a_{I_p} \exp\left(\mathbf{y}\cdot \left(\mathbf{n}^{I_p}-\mathbf{\Lambda}_p\right)\right).
+		\end{aligned}
+	\]
+	Write
+	\[
+		F(\mathbf y)=\prod_p F_p(y)^{\alpha_p},
+	\]
+	we only need to show that $F(y)$ has a unique saddle point in $\mathbb R^D$.
+	
+	Here, $F(\mathbf y)$ no longer needs to be
+	a strict convex function. However, take a positive number $\alpha_0$ such that 
+	$\alpha_0< \alpha_p$ for all $p$, consider a new function
+	\[
+		F(\mathbf y)^{1/\alpha_0}=\prod_p F_p(\mathbf y)^{\alpha_p/\alpha_0},
+	\]
+	since $F_p$ are convex functions and $\alpha_p/\alpha_0>1$, $F_p(y)^{\alpha_p/\alpha_0}$ are convex functions,
+	so is their product. Since $F(\mathbf y)^{1/\alpha_0}$ takes its minimum at same points as $F(\mathbf y)$, 
+	we can further assume that $F(\mathbf y)$ is a strict convex function. 
+	
+	Finally, we claim that $F(\mathbf y)$ does not take minimum when $\mathbf{y}$ goes to infinity 
+	along any direction. 
+	It is because that for a given $\mathbf{y}$ and each $p$, $F_p(t\mathbf{y})\to \infty$ when $t\to \infty$,
+	so does $F(t\mathbf{y})=\prod_p F_p(t\mathbf{y})^{\alpha_p}$. Therefore, the equation 
+	$\mathbf{X}(x)=\mathbf{\Lambda}$ has a unique solution.
+	\end{proof}
+	
 
 
 
