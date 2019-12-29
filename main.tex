@@ -51,7 +51,7 @@
 
 \section{Introduction}
 
-Very recently, a vast generalization of tree level strings integrals has been proposed in \cite{}. This generalization is realized by identifying the Parke-Taylor form 
+Very recently, a vast generalization of tree level strings integrals has been proposed in \cite{Arkani-Hamed:2019mrd}. This generalization is realized by identifying the Parke-Taylor form 
 \[
 	\mathsf{PT}(n):=\frac{\dif^{n}z}{\mathrm{SL}(2,\mathds{R})} \prod_{i=1}^{n}\frac{1}{z_{i}-z_{i+1}}
 \]
@@ -117,7 +117,7 @@ They can be overcome by a series of blowing up. After these blow-ups, the
 stringy integral is decomposed into many integrals like eq.\eqref{int2}, then the leading order is given by a summation.
 
 
-In section 2, we review the defination of blowing up and elaborate the principle and procedures of the blowing up algorithm. Section 3 uses several examples arising form cluster stringy integrals to illustate this algorithm. Section 4 contains discussion and outlook. Finally, in the appendix, we will give another proof for the proposition firstly given in \cite{} that the scattering-equation map \eqref{SEmap} is a bijection. 
+In section 2, we review the defination of blowing up and elaborate the principle and procedures of the blowing up algorithm. Section 3 uses several examples arising form cluster stringy integrals to illustate this algorithm. Section 4 contains discussion and outlook. Finally, in the appendix, we will give another proof for the proposition firstly given in \cite{Arkani-Hamed:2017tmz} that the scattering-equation map \eqref{SEmap} is a bijection. 
 %from the interior of $\mathbb R_+^D$ to the interior of Minkowski sum of Newton polytopes of $p_I$. 
 
 % (\textcolor{red}{C: How to introduce scattering-equation map? Should we talk about its relation with blow up?})
@@ -415,15 +415,16 @@ In each polynomial $p_i$,
 \[
 	p_i(x)=\sum_{I} a_{iI} x^{n^I},
 \]
-we need to worry about which $x^{n^I}$ is dominated (by blowing-up) in the integration,
+we need to worry about which $x^{n^I}$ is dominated (by blowing up) in the integration,
 however not all terms can dominate 
 the integral. For example, if we find that $x^{n^J}=x^{n^I}x^{v}$ or equivalently $n^J=n^I+v$ for some 
 non-zero positive vector $v$, there's no need to consider $x^{n^J}$ anymore because it goes to zero faster 
 than $x^{n^I}$. Geometrically, one can assign each term with a cone $C_{I}=(n^I+\mathbb R^D_{+})$, the above
 claim is equivalently that other terms in this cone can be thrown away.
 
-Furthermore, we can consider the convex hull of these cones $\{C_I\}$, which is a polyhedron. 
-It's usually larger than
+Furthermore, we can consider the \textit{convex hull} of these cones $\{C_I\}$, 
+\textit{i.e.} the smallest convex set contains these cones,
+which is a polyhedron. It's usually larger than
 the union of these cones $\bigcup_I C_I$, but terms other than vertices in this polyhedron 
 are also not dominated! Here let's consider an example $p(x)=x^6+y^6+x^2y^2$. 
 \begin{center}
@@ -447,7 +448,7 @@ we will show in the next lemma that the leading terms of the integral
 from this vertices $x_1=x_2=\cdots=x_D=0$ do not change.
 
 \begin{lem}
-Suppose $p$ is a polynomial $p(x)=\sum_{I\in \mathscr A}a_I x^{n^I}$, and $C[p]$ is the convex hull
+Suppose $p(x)=\sum_{I\in \mathscr A}a_I x^{n^I}$ is a polynomial, and $C[p]$ is the convex hull
 of $\{C_{I}=(n^I+\mathbb R^D_{+})\}$. When we consider the integral near the vertices $x_1=\cdots=x_D=0$, 
 then we can replace $p(x)$ by a new polynomial $\bar p(x)=\sum_{J\in \mathscr B}a_J x^{n^J}$ such that
 the leading order of the integral does not change.
@@ -528,7 +529,7 @@ like a `corner' of the Newton polytope.
 % \end{center}
 % where $x^3y^2\leftrightarrow (3,2)$ and $xy^3\leftrightarrow (1,3)$ are represented by $\times$ in the diagram and other terms are represented by blue points. The basis is given by blue points $\{x^3\leftrightarrow (3,0),y^3\leftrightarrow (0,3),xy\leftrightarrow (1,1)\}$, and the gray region is the set of all vectors $v=\sum_{J\in \mathscr B}c^I_J n^J$ where $\sum_J c^I_J>1$, therefore we throw away terms in the gray region and then get that $\bar p(x)=x^3+y^3+xy$. 
 
-By using the language of the polyhedron of a polynomial $p$, the goal of blowing-up is clear.
+By using the language of the polyhedron of a polynomial $p$, the goal of blowing up is clear.
 If one gets polyhedron of a polynomial $p$ like
 \begin{center}
 \begin{tikzpicture}[scale=0.75,baseline={([yshift=-.5ex]current bounding box.center)}]
@@ -539,19 +540,20 @@ If one gets polyhedron of a polynomial $p$ like
 \node at (-0.5,0) {$v$};
 \end{tikzpicture}
 \end{center}
-then we call that $p\sim x^v$ is decoupled. In other words, $p$ has the form of 
+then we call that $p\approx x^v$ is decoupled. In other words, $p$ has the form of 
 \(
 p(x)=x^v(c+q(x))
 \) for a vector $v$ and polynomial $q$ with $q(0)=0$. 
-Suppose $p\sim x^v$ is a decoupled polynomial, then
+Suppose $p\approx x^v$ is a decoupled polynomial, then
 the integral
 \[
 	I=\int_{[0,\epsilon]^D} \left(\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i}\right)
 	p^{-\alpha' c} \prod_I q_I^{-\alpha' c_I}
-	=\int_{[0,\epsilon]^D} \left(\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' (X_i-cv_i)}\right)
+	\approx\int_{[0,\epsilon]^D} \left(\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' (X_i-cv_i)}\right)
 	\prod_I q_I^{-\alpha' c_I},
 \] 
-can be reduced to a new integral with less polynomials. Since the blowing-up never increases the 
+can be reduced to a new integral with less polynomials but with the same leading order of $\alpha'$. 
+Since the blowing-up never increases the 
 number of the polynomial in the integral, we only need to consider the integrals with only one 
 polynomial
 \[
@@ -697,7 +699,7 @@ Note that we still need to work out other vertices generated by blowing-up.
 
 Now, a natural question arises. For a given polynomial $p$, 
 can we terminate after finite steps such that near each generated vertex, $p$ becomes 
-decoupled? This question is first declared by Hironaka \cite{}. He designed a game, which is 
+decoupled? This question is first declared by Hironaka \cite{hironaka1967}. He designed a game, which is 
 called Hironaka's polyhedra game. Let's recall the game rule in our language.
 
 Suppose $p$ is a given polynomial. There are two players A and B in the game. 
@@ -1385,7 +1387,7 @@ In this appendix, we give another proof that the scattering-equation map is a bi
 	\]
 	has a unique saddle point in $\mathds{R}^D$.
 	
-	Here $F(\mathbf y)$ is not necessarily a strict convex function.(\textcolor{red}{C: Why?}) However, consider a new function
+	Here $F(\mathbf y)$ is not necessarily a strict convex function.(\textcolor{red}{C: Why?} \textcolor{blue}{B: For example, $x^2$ is convex, but $(x^2)^{1/3}$ is not convex.}) However, consider a new function
 	\[
 		F(\mathbf y)^{1/\alpha_0}=\prod_j F_j(\mathbf y)^{\alpha_j/\alpha_0},
 	\]
@@ -1414,7 +1416,7 @@ In this appendix, we give another proof that the scattering-equation map is a bi
 % &+\frac{1}{(b+X-Y) (2 b+c+X-2 Y)}+\frac{1}{X (b+X-Y)}+\frac{1}{X Y}
 % \end{align*}
 
-\bibliographystyle{plain}
+\bibliographystyle{unsrt}
 \bibliography{main}
 
 \end{document}
