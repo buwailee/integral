@@ -3,9 +3,9 @@
 \usepackage{amsmath,amssymb,mathrsfs,amsthm,tikz,shuffle,paralist}
 \usepackage{dsfont}
 \usepackage{color}
-\usepackage{ccfonts}
-\usepackage[T1]{fontenc}
-\renewcommand{\baselinestretch}{1.1}
+% \usepackage{ccfonts}
+% \usepackage[T1]{fontenc}
+% \renewcommand{\baselinestretch}{1.1}
 
 \theoremstyle{definition}
 	\newtheorem{para}{}[section]
@@ -26,10 +26,10 @@
 \newcommand{\cvec}[1]{\!\vec{\,#1}}
 \newcommand{\Ptimes}{\,\overset{\otimes }{,}\,}
 \DeclareSymbolFont{lettersA}{U}{txmia}{m}{it}
- \DeclareMathSymbol{\piup}{\mathord}{lettersA}{25}
- \DeclareMathSymbol{\muup}{\mathord}{lettersA}{22}
- \DeclareMathSymbol{\deltaup}{\mathord}{lettersA}{14}
- \newcommand{\uppi}{\piup}
+\DeclareMathSymbol{\piup}{\mathord}{lettersA}{25}
+\DeclareMathSymbol{\muup}{\mathord}{lettersA}{22}
+\DeclareMathSymbol{\deltaup}{\mathord}{lettersA}{14}
+\newcommand{\uppi}{\piup}
 
 \pagestyle{plain}
 \definecolor{shadecolor}{RGB}{32,32,32}
@@ -281,7 +281,7 @@ It crosses the original point twice in different
 directions. Therefore, after blowing up, the uplifted curve intersects $\mathbb P^1$ with two 
 different points so that it has no self-intersection. 
 
-The above example is called the blowing-up of the plane along the original point.
+The above example is called the blow-up of the plane along the original point.
 In this article, we will consider the blow-up of $\mathbb R^D$
 along subspace $\mathbb R^n$ defined by $x_{i_1}=\cdots=x_{i_n}=0$. 
 The blow-up is the surface defined by $x_{i_j}y_k=x_{i_k}y_j$ in space 
@@ -449,7 +449,8 @@ from this vertices $x_1=x_2=\cdots=x_D=0$ do not change.
 
 \begin{lem}
 Suppose $p(x)=\sum_{I\in \mathscr A}a_I x^{n^I}$ is a polynomial, and $C[p]$ is the convex hull
-of $\{C_{I}=(n^I+\mathbb R^D_{+})\}$. When we consider the integral near the vertices $x_1=\cdots=x_D=0$, 
+of cones $\{C_{I}=(n^I+\mathbb R^D_{+})\}$. 
+When we consider the integral near the vertices $x_1=\cdots=x_D=0$, 
 then we can replace $p(x)$ by a new polynomial $\bar p(x)=\sum_{J\in \mathscr B}a_J x^{n^J}$ such that
 the leading order of the integral does not change.
 \end{lem}
@@ -504,8 +505,13 @@ are the same if and only if $C[p_1]=C[p_2]$.
 \end{pro}
 
 From the theorem in \cite{Arkani-Hamed:2019mrd}, the leading order of the integral eq.\eqref{int1} 
-only depends on the Minkowski sum of Newton polytopes of polynomials $p_I$, 
-the above proposition is just like the local version of this theorem, so that 
+only depends on the Minkowski sum of Newton polytopes of polynomials $p_I$.
+The \textit{Newton polytope} of a polynomial is very like the polyhedron of a polynomial defined above.
+For a polynomial $q=\sum_I a_I x^{n^I}$, it's the convex hull of vectors $\{n^I\}$. The
+\textit{Minkowski sum} (or vector sum) of two set $A$ and $B$ is the set $\{x+y\,:\,x\in A,\,y\in B\}$. 
+Note that the polyhedron of a polynomial is just the Minkowski sum of Newton polytope and $\mathbb R_+^D$.
+
+Therefore, the above proposition is like the local version of this theorem, so that 
 it seems trivial. However, it's more free to use the local version because 
 the cone is not as rigid as the Newton polytope, and it just looks  
 like a `corner' of the Newton polytope.
@@ -552,22 +558,22 @@ the integral
 	\approx\int_{[0,\epsilon]^D} \left(\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' (X_i-cv_i)}\right)
 	\prod_I q_I^{-\alpha' c_I},
 \] 
-can be reduced to a new integral with less polynomials but with the same leading order of $\alpha'$. 
-Since the blowing-up never increases the 
+can be reduced to a new integral with less polynomials but with the same leading order. 
+Since blow-ups never increase the 
 number of the polynomial in the integral, we only need to consider the integrals with only one 
 polynomial
 \[
 	I=\int_{[0,\epsilon]^D} \left(\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i}\right)
 	p^{-\alpha' c}.
 \] 
-Our aim is to find a series of blow-ups to make this polynomial $p$ decouple in this way at
+Our aim is to find a series of blow-ups to make this polynomial $p$ decoupled at
 each generated vertices.
 
-Now we start to consider how to blow up. 
+Now it's a good time to consider general blow-ups, and see what they do on integrals and polyhedrons.
+
 As hinted by eq.\eqref{canonicalformunderblowup}, one important feature of $\Omega_{\mathcal P}$
 is `invariant' under the blowing-up because the residue of the canonical form on the boundary is
 the canonical form of the boundary.
-
 Suppose we blow up near the boundary defined locally by $x_1=\cdots=x_n=0$ in integral eq.\eqref{int1}. 
 It's already the most general cases. In fact, if in the definition of a boundary $x_i=\infty$, we can
 change the variable $x_i\mapsto 1/x_i$ and then $x_i=0$.
@@ -648,8 +654,8 @@ for $i\in S$, where $c_i$ is a positive rational number, then integral becomes
 Note that the rescale of the integral region doesn't change the leading order of the integral
 because $\epsilon^{\alpha'}$ and $(\epsilon^{1/c_i})^{\alpha'}$ both behave as $1+O(\alpha')$
 when $\alpha'\to 0$. Therefore, it only introduces a prefactor $\prod_{i\in S}c_i$ 
-for the integral thanks to $\dif \log$ singularities of the canonical form, 
-which will not bother us. 
+for the integral and doesn't break the form of the integral 
+thanks to $\dif \log$ singularities of the canonical form.
 
 Blowing up produces new vertices 
 $
@@ -695,23 +701,24 @@ but it's not the wanted (decoupled) polyhedron, so we blow up it again and we ge
 	\draw[dashed,->] (2.2,1) -- (2.8,1);
 \end{tikzpicture}
 \end{center}
-Note that we still need to work out other vertices generated by blowing-up. 
+Note that we still need to work out other vertices generated by blowing up. 
 
 Now, a natural question arises. For a given polynomial $p$, 
 can we terminate after finite steps such that near each generated vertex, $p$ becomes 
-decoupled? This question is first declared by Hironaka \cite{hironaka1967}. He designed a game, which is 
+decoupled? This question is first declared by Hironaka \cite{hironaka1967}. 
+He designed a game to describe this question, which is 
 called Hironaka's polyhedra game. Let's recall the game rule in our language.
 
 Suppose $p$ is a given polynomial. There are two players A and B in the game. 
 At each round, first A choose a set of variables $\{x_{i_1},\dots,x_{i_n}\}$, then
-B choose one variable $x_{i_k}$ out of them and make the change of variables 
+B choose one variable $x_{i_k}$ out of them and make variable substitutions
 $x_{i_j} \to x_{i_k}x_{i_j}$ for $j\neq k$.
 If $p$ becomes decoupled, then player A wins, otherwise they start a new round by using the 
 new generated polynomial. If player A cannot win in finite steps, player B wins.
 
-The game is used by Hironaka to prove the existence of resolution of singularities
-by blowing-up, and any winning strategy for player A is equivalent to 
-a construction of resolution by a series of blowing-up. 
+How to win this game is equivalent to how to resolve singularities
+by a series of blow-ups, \textit{i.e.}
+a winning strategy for player A is a construction of resolution of singularities. 
 There are many known winning strategies for player A. 
 \cite{spivakovsky1983solution,zeillinger2006short,hauser2003hironaka}
 % [Spivakovsky 83], [Encinas \& Hauser 02], [Zeillinger 05], \dots.
@@ -759,8 +766,8 @@ There are many known winning strategies for player A.
 % Denote the minimal element by $(G,L)=(g(v),l(v))$. 
 % The triple designed by Zeillinger is $(|M_p|,G,L)$. We will not go into details of the proof. 
 
-However they are not so efficient. In this article, we use another method to win the game.
-Let's first introduce the language of the matrix for the future use.
+In this article, we design another strategy to win the game.
+Let's first introduce the language of the matrix for future use.
 For the polynomial $p=\sum_I a_I x^{n^I}$, write down the matrix $(n^I_i)$, 
 \[
 \begin{pmatrix}
@@ -770,7 +777,7 @@ For the polynomial $p=\sum_I a_I x^{n^I}$, write down the matrix $(n^I_i)$,
 	n_D^1 & n_D^2 & \cdots & n_D^N
 \end{pmatrix},
 \]
-then the change of variables used by blowing up  
+then variable substitutions used by blowing up
 \[
 	x_j\to x_ix_j \quad \text{for $j\neq i$ and $j\in S$}
 \] 
@@ -873,15 +880,14 @@ Our algorithm is based on the following observations:
 	% Even $(1,\dots,1)$ is in the cone, after blowing up, we delete some vectors, and usually the cone becomes
 	% smaller so that $(1,\dots,1)$ may run out of the cone. 
 \end{enumerate}
-Now the algorithm is clear:
+Now the algorithm is simple:
 \begin{enumerate}
 	\item[(0).] During the algorithm, we always use reduced matrices.
-	\item[(1).] Find the minimal cone contains $(1,\dots,1)$, blow up according to
+	\item[(1).] Find the minimal cone containing $(1,\dots,1)$, blow up according to
 		the set of variables corresponding to its edges. Repeat it until no cone 
 		contains $(1,\dots,1)$.
 	\item[(2).] For a given matrix, find all edges of its cone, and 
-		divide the cone along the other vectors which are not corresponding to edges
-		by blowing up.
+		divide the cone along the other vectors in the cone by blowing up.
 	\item[(3).] After the above step, there's no extra vector in the cone, though we could have 
 		different vectors representing the same edge in the matrix.
 		Generally, hyperplains $h^{IJ}=\{z\,:\, z^I=z^J\}$ cross the cone, so we can 
@@ -1061,40 +1067,38 @@ It's not clear now whether the simplified version is a winning strategy,
 but it's more efficient than lots of well-known winning strategies, and it's 
 very easy to code.
 
-\section{Scattering-Equation Map}
+% \section{Scattering-Equation Map}
+ 
+% \begin{defi}[Convex Hull]
+% The convex hull of a set of vectors $\{\mathbf n^I\,:\, I\in \mathscr A\}$ is defined by
+% \[
+% 	\operatorname{ConvexHull}\bigl(\{\mathbf n^I\,:\, I\in \mathscr A\}\bigr)
+% 	:=\Biggl\{\sum_{I\in\mathscr A}\lambda_I \mathbf n^I\,:\,
+% 	\text{$\lambda_I\geq 0$ and $\sum_I\lambda_I=1$}\Biggr\},
+% \]
+% if $\mathscr A$ is a infinite set, we further require that in each summation, 
+% only finite $\lambda_I$ don't vanish.
+% \end{defi}
 
-In this section, we give the direct proof of ...
-
-\begin{defi}[Convex Hull]
-The convex hull of a set of vectors $\{\mathbf n^I\,:\, I\in \mathscr A\}$ is defined by
-\[
-	\operatorname{ConvexHull}\bigl(\{\mathbf n^I\,:\, I\in \mathscr A\}\bigr)
-	:=\Biggl\{\sum_{I\in\mathscr A}\lambda_I \mathbf n^I\,:\,
-	\text{$\lambda_I\geq 0$ and $\sum_I\lambda_I=1$}\Biggr\},
-\]
-if $\mathscr A$ is a infinite set, we further require that in each summation, 
-only finite $\lambda_I$ don't vanish.
-\end{defi}
-
-\begin{defi}[Newton Polytope]
-For a subtraction free Laurent polynomial 
-\[
-	f = \sum_{I\in \mathscr A} a_I \prod_{i=1}^n x_i^{n^I_i},
-\]
-we define the Newton polytope of $f$ by
-\[
-	N(f)=\operatorname{ConvexHull}\bigl(\{\mathbf n^I\,:\, I\in \mathscr A\}\bigr),
-\]
-where $\mathbf n^I=(n^I_1,\dots,n^I_n)$. 
-\end{defi}
-
-\begin{defi}[Minkowski Sum]
-Minkowski sum of two subsets $A$ and $B$ of $\mathbb R^n$ is defined by 
-\[
-	A+B=\{x+y\,:\,x\in A,\, y\in B\}.
-\] 
-\end{defi}
-
+% \begin{defi}[Newton Polytope]
+% For a subtraction free Laurent polynomial 
+% \[
+% 	f = \sum_{I\in \mathscr A} a_I \prod_{i=1}^n x_i^{n^I_i},
+% \]
+% we define the Newton polytope of $f$ by
+% \[
+% 	N(f)=\operatorname{ConvexHull}\bigl(\{\mathbf n^I\,:\, I\in \mathscr A\}\bigr),
+% \]
+% where $\mathbf n^I=(n^I_1,\dots,n^I_n)$. 
+% \end{defi}
+% 
+% \begin{defi}[Minkowski Sum]
+% Minkowski sum of two subsets $A$ and $B$ of $\mathbb R^n$ is defined by 
+% \[
+% 	A+B=\{x+y\,:\,x\in A,\, y\in B\}.
+% \] 
+% \end{defi}
+% 
 
 
 \section{Application and Example}
