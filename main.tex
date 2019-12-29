@@ -880,9 +880,81 @@ Now the algorithm is clear:
 		Now for each matrix, goto step 1.
 \end{enumerate}
 
-Therefore, we have answer how to terminate by design a winning strategy. 
+Therefore, we have answer how to terminate by designing a new winning strategy. 
+Let's give a example. Consider the matrix 
+\[
+M=\left(
+\begin{array}{ccc}
+ 0 & 3 & 1 \\
+ 2 & 0 & 1 \\
+ 1 & 2 & 0 \\
+\end{array}
+\right),
+\]
+we can represent the cone by the projection of its intersection with the hyperplain $z^1+z^2+z^3=12$
+on the $z^1$-$z^2$ plane.
+\begin{center}
+\begin{tikzpicture}
+\draw[thick] (0,4.5) -- (4,0) -- (2,4) -- cycle ;
+\draw[->] (-0.1,0) -- (5,0) node[below] {$z^1$};
+\draw[->] (0,-0.1) -- (0,5) node[left] {$z^2$};
+\draw[densely dotted] (0,0) -- (4,4) node[right] {$z^1=z^2$};
+\draw[thick,dashed] (0,4.5) -- (2.667,2.667) node[circle, fill=red, inner sep=1pt] {}
+	-- (2.12,2.12) node[circle, fill=red, inner sep=1pt] {};
+\node[red] at (3,2.6) {$p_1$};
+\node[red] at (2.1,1.8) {$p_2$};
+\end{tikzpicture}	
+\end{center}
+We can ...
+
+\[
+	p_1=n_2+2n_3,\quad p_2=2 n_1+3 n_2,
+\] 
+so ... 
+\[
+	M\mapsto \biggl\{
+	\begin{pmatrix}
+		0&3&1\\
+		4&4&1\\
+		1&2&0
+	\end{pmatrix},
+	\begin{pmatrix}
+		6&6&5\\
+		2&0&1\\
+		4&4&1
+	\end{pmatrix},
+	\begin{pmatrix}
+		0&3&1\\
+		6&6&5\\
+		4&4&1
+	\end{pmatrix}
+\biggr\}
+\] 
+they reduces to
+\[
+	M\mapsto \biggl\{
+	\begin{pmatrix}
+		0&1\\
+		4&1\\
+		1&0
+	\end{pmatrix},
+	\begin{pmatrix}
+		6&5\\
+		0&1\\
+		4&1
+	\end{pmatrix},
+	\begin{pmatrix}
+		0&1\\
+		6&5\\
+		4&1
+	\end{pmatrix}
+\biggr\}
+\] 
+
+
+
 Empirically, we have another way to choose $S$ for player A, which is inspired by 
-the method described above to reduce the number of rows.
+above algorithm.
 For a given matrix, if player A chooses $S$ such that 
 \begin{compactenum}[\quad\, (1)]
 \item $\sum_{i\in S} n_i^I>0$ for all $I$;
