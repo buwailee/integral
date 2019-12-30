@@ -866,14 +866,12 @@ Our algorithm is based on the following observations:
 	column vectors.
 	
 	\item In the viewpoint of cones, the blowing up is nearly a subdivision of the cone.
-	If $\{n_i\,:\, 1\leq i\leq D\}$ are exactly vectors of edges of the cone, 
-	it's a subdivision. 
 	If a blow-up produces a vector $\sum_{i\in S} c_i n_i$ in the cone 
 	or on a boundary of the cone, then the $j$-th generated cone for $j\in S$ is spanned by 
-	vectors $\{n_i\,:\,i\neq j\}$ and the vector $\sum_{i\in S} c_i n_i$. 
-	It's a proper sub-cone of the original cone. The union of these cones is the original cone,
-	but they usually intersect with each other, so it's not a subdivision. However, 
-	it is a subdivision when $D\leq N$. For example, consider a cone with $D=N=3$,
+	vectors $\{n_i\,:\,i\neq j\}$ and the vector $\sum_{i\in S} c_i n_i$,
+	which is a proper sub-cone of the original cone. The union of these cones is the original cone,
+	but they usually intersect with each other, so it's not a subdivision. 
+	However, it could be a subdivision. For example, consider a cone with $D=N=3$,
 	\begin{center}
 	\begin{tikzpicture}
 	\draw (1.7,2.6) -- (-2,-0.5);
