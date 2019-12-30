@@ -40,7 +40,7 @@
 %\color{textcolor}
 
 \date{\today}
-\title{Blowing up Stringy Integrals}
+\title{Blowing up Stringy Integrals: How to win Hironaka's polyhedra game}
 
 \author{Zhenjie Li,\and Qinglin Yang,\and Chi Zhang}
 
@@ -48,6 +48,12 @@
 \begin{document}
 
 \maketitle
+
+\begin{abstract}
+	abstract here
+\end{abstract}
+
+
 
 \section{Introduction}
 
@@ -92,7 +98,7 @@ where $D=n{-}3$, $X_{i}$ and $c_{I}$ are linear combinations of Mandelstam varia
 % In fact, a wide class of general integrals 
 % will turn into this form after finding a positive parameterization. 
 
-In \cite{}, many important properties of stringy integrals are well studied, especially the relation between their field theory limit, {\it{i.e}}. the limit of $\alpha'\to 0$, and the Minkowski sum $N_{P}$ of Newton polytopes of $\{p_I\}$.
+In \cite{Arkani-Hamed:2019mrd}, many important properties of stringy integrals are well studied, especially the relation between their field theory limit, {\it{i.e}}. the limit of $\alpha'\to 0$, and the Minkowski sum $N_{P}$ of Newton polytopes of $\{p_I\}$.
 %As in the original superstring amplitude, the field theory limit of a stringy integral is  its leading order as $\alpha'\to 0$. 
 More concretely, {\it{ i) the leading order of a stringy integral is given by the volume of the dual polytope, or the canonical function $\underline{\Omega}(N_{P})$, of $N_{P}$, and ii) a bijection between $\mathds{R}_{+}^{D}$ and $N_{P}$ is given by the siddle point equation of the regulator, that is the so-called scattering-equation map $\Phi$,}}
 \begin{equation} \label{SEmap}
@@ -102,13 +108,14 @@ In general, however, it's difficult to calculate the leading order of stringy in
 On the one hand, performing Minkowski sum for polytopes analyticly is nearly impossible. On the other hand, to obtain the canonical form $\Omega(N_{P})$ from the pushforward $\Phi_{\ast}\bigl(\bigwedge_{i=1}^{D} \dif \log x_{i}\bigr)$ requires to solve highly non-linear equations, just like the case in CHY formalism.
 
 
-The main purpose of this article is to show an efficient method, {\it{blowing up}} (\textcolor{red}{C: or blowing-up map?}), to calculate the leading order of the integral eq.\eqref{int1} with respect to $\alpha'$. This is a general method which also is closely related to the {\it sector decomposition} prescription \cite{} used in Feynman integrals. We will see that the situation is easier when this method is applied in stringy integrals due to some features of canonical forms, and especially its closed relation to the polytope $N_{P}$. This method is based on two simple observations: i) the leading order contribution in $\alpha'$-expansion of stringy integrals arises from each vertex of the integration reigon $\mathds{R}_{+}^{D}$, ii) suppose that all $p_I(0)\neq 0$ in the integral eq.\eqref{int1}, then the integral at the neighbourhood of the origin becomes 
+The main purpose of this article is to show an efficient method, {\it{blowing up}}, %(\textcolor{red}{C: or blowing-up map?}),
+to calculate the leading order of the integral eq.\eqref{int1} with respect to $\alpha'$. This is a general method which also is closely related to the {\it sector decomposition} prescription \cite{} used in Feynman integrals. We will see that the situation is easier when this method is applied in stringy integrals due to some features of canonical forms, and especially its closed relation to the polytope $N_{P}$. This method is based on two simple observations: i) the leading order contribution in $\alpha'$-expansion of stringy integrals arises from each vertex of the integration reigon $\mathds{R}_{+}^{D}$, ii) suppose that all $p_I(0)\neq 0$ in the integral eq.\eqref{int1}, then the integral at the neighbourhood of the origin becomes 
 \begin{equation}\label{int2}
 	\int_{[0,\epsilon]^D}\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i} \prod_{I}p_{I}(0)^{-\alpha' c_{I}}
 	=\prod_{i=1}^D\frac{\epsilon^{\alpha' X_i}p_{I}(0)^{-\alpha' c_{I}}}{\alpha' X_i}
 	= \frac{1}{(\alpha')^D}\frac{1}{X_1\cdots X_D}+O(\alpha'^{-D+1}).
 \end{equation}
-Generally, it would not be such simple case, some polynomials $p_{I}$ may vanish or even is singular\footnote{A point $Q$ is a singular point of the surface defined by $p(x_{1},\cdots,x_{n})$=0 if $p(Q)=0$ and $\partial p(Q)/\partial x_{i} =0$ for all $i$. } at the origin (or a vertex).
+Generally, it would not be such simple case, some polynomials $p_{I}$ may vanish or even is singular\footnote{A point $Q$ is a singular point of the surface defined by $p(x_{1},\cdots,x_{n})$=0 if $p(Q)=0$ and $\partial p(Q)/\partial x_{i} =0$ for all $i$~\cite{}. } at the origin (or a vertex).
 % \begin{itemize}
 % 	\item Some polynomials $p_I$ may vanish at the origin (or a vertex).
 % 	\item Furthermore, some $p_I$ may own the origin (or a vertex) as their singular point\footnote{A point $Q$ is a singular point of the surface defined by $p(\mathrm{x})$=0 if $p(Q)=0$ and $\partial p(Q)/\partial x_{i} =0$ for all $i$}.
@@ -301,10 +308,11 @@ Now let's carefully consider the first example of integral \eqref{exam:1},
 	I=\int_0^\infty \int_0^\infty\frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y+x y)^{-\alpha' c}.
 \]
 The leading terms come form the neighbourhoods of four vertices $(0,0)$, $(0,\infty)$, $(\infty,0)$ and $(\infty,\infty)$. Let's consider the simplest vertex first, 
-\[
-	I(0,\infty)=\int_{0}^\epsilon\int_{1/\epsilon}^\infty \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y+xy)^{-\alpha' c}\approx \int_{0}^\epsilon\int_{1/\epsilon}^\infty \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' (b-c)}= 
+\begin{align*}
+	I(0,\infty)&=\int_{0}^\epsilon\int_{1/\epsilon}^\infty \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y+xy)^{-\alpha' c} \\
+	&\approx \int_{0}^\epsilon\int_{1/\epsilon}^\infty \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' (b-c)}= 
 	\frac{1}{{\alpha'}^2}\frac{1}{a} \frac{1}{c-b}+O({\alpha'}^{-1})
-\]
+\end{align*}
 Near the vertex $(0,\infty)$, the integral decouples because the mixed factor $x+y+xy \approx y$ when $y \gg x$.  Similarly, $I(\infty,0)\approx ({\alpha'}^2 b (c-a))^{-1}$. 
 
 For the harder vertex
@@ -1242,7 +1250,7 @@ It can be easily checked that all $F$'s are planar and remaining poles, although
 
 
 \subsubsection*{Cluster stringy integral: $C_2$}
-This integral is equivalent to the $Z$-integral $Z(1^{+}2^{+})$ defined on the moduli space of paired punctures~\cite{}, which in a positive parameterization is 
+This integral is equivalent to the $Z$-integral $Z(1^{+}2^{+})$ defined on the moduli space of paired punctures~\cite{Li:2018mnq}, which in a positive parameterization is 
 \begin{align*}
 \int_{\mathbb R_+^2} \frac{\dif x_1}{x_1}\frac{\dif x_2}{x_2}x_1^{\alpha' X}x_2^{\alpha' Y}
 &(x_1 + 1)^{-\alpha' a} 
@@ -1414,7 +1422,7 @@ In section 2, we find that the blowing up procedure is simplified by the fact th
 	where
 	\[
 		\begin{aligned}
-			F_j(\mathbf y)&=\sum_{j} a_{I_{j}} \exp\left(\mathbf{y}\cdot \left(\mathbf{n}^{I_j}-\mathbf{\Lambda}_j\right)\right).
+			F_j(\mathbf y)&=\sum_{I_{j}} a_{I_{j}} \exp\left(\mathbf{y}\cdot \left(\mathbf{n}^{I_j}-\mathbf{\Lambda}_j\right)\right).
 		\end{aligned}
 	\]	
 	We only need to show that
@@ -1427,15 +1435,13 @@ In section 2, we find that the blowing up procedure is simplified by the fact th
 	\[
 		F(\mathbf y)^{1/\alpha_0}=\prod_j F_j(\mathbf y)^{\alpha_j/\alpha_0},
 	\]
-	where $\alpha_0$ is a positive number such that $\alpha_0< \alpha_p$ for all $p$, which is a convex function 
+	where $\alpha_0$ is a positive number such that $\alpha_0< \alpha_j$ for all $j$, which is a convex function 
 	since each factor $F_{j}^{\alpha_{j}/\alpha_{0}}$ is a convex function. Since $F(\mathbf y)^{1/\alpha_0}$ takes its minimum at same points as $F(\mathbf y)$, 
 	we can further assume that $F(\mathbf y)$ is a strict convex function (\textcolor{red}{C: Why?}). 
 	
 	Finally, we claim that $F(\mathbf y)$ does not take minimum when $\mathbf{y}$ goes to infinity 
-	along any direction. 
-	It is because that for a given $\mathbf{y}$ and each $p$, $F_p(t\mathbf{y})\to \infty$ when $t\to \infty$,
-	so does $F(t\mathbf{y})=\prod_p F_p(t\mathbf{y})^{\alpha_p}$. Therefore, the equation 
-	$\mathbf{X}(x)=\mathbf{\Lambda}$ has a unique solution.
+	along any direction. It is because that for a given $\mathbf{y}$ and each $j$, $F_j(t\mathbf{y})\to \infty$ when $t\to \infty$,
+	so does $F(t\mathbf{y})=\prod_j F_j(t\mathbf{y})^{\alpha_j}$. Therefore, the equation $\mathbf{X}(x)=\mathbf{\Lambda}$ has a unique solution.
 	\end{proof}
 	
 
