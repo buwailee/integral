@@ -109,7 +109,7 @@ On the one hand, performing Minkowski sum for polytopes analyticly is nearly imp
 
 
 The main purpose of this article is to show an efficient method, {\it{blowing up}}, %(\textcolor{red}{C: or blowing-up map?}),
-to calculate the leading order of the integral eq.\eqref{int1} with respect to $\alpha'$. This is a general method which also is closely related to the {\it sector decomposition} prescription \cite{} used in Feynman integrals. We will see that the situation is easier when this method is applied in stringy integrals due to some features of canonical forms, and especially its closed relation to the polytope $N_{P}$. This method is based on two simple observations: i) the leading order contribution in $\alpha'$-expansion of stringy integrals arises from each vertex of the integration reigon $\mathds{R}_{+}^{D}$, ii) suppose that all $p_I(0)\neq 0$ in the integral eq.\eqref{int1}, then the integral at the neighbourhood of the origin becomes 
+to calculate the leading order of the integral eq.\eqref{int1} with respect to $\alpha'$. This is a general method which is closely related to the so-called \emph{Hironaka's polyhedra game}~\cite{}. We will see that the situation is easier when this method is applied in stringy integrals due to some features of canonical forms, and especially its closed relation to the polytope $N_{P}$. This method is based on two simple observations: i) the leading order contribution in $\alpha'$-expansion of stringy integrals arises from each vertex of the integration reigon $\mathds{R}_{+}^{D}$, ii) suppose that all $p_I(0)\neq 0$ in the integral eq.\eqref{int1}, then the integral at the neighbourhood of the origin becomes 
 \begin{equation}\label{int2}
 	\int_{[0,\epsilon]^D}\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i} \prod_{I}p_{I}(0)^{-\alpha' c_{I}}
 	=\prod_{i=1}^D\frac{\epsilon^{\alpha' X_i}p_{I}(0)^{-\alpha' c_{I}}}{\alpha' X_i}
@@ -120,11 +120,11 @@ Generally, it would not be such simple case, some polynomials $p_{I}$ may vanish
 % 	\item Some polynomials $p_I$ may vanish at the origin (or a vertex).
 % 	\item Furthermore, some $p_I$ may own the origin (or a vertex) as their singular point\footnote{A point $Q$ is a singular point of the surface defined by $p(\mathrm{x})$=0 if $p(Q)=0$ and $\partial p(Q)/\partial x_{i} =0$ for all $i$}.
 % \end{itemize}
-They can be overcome by a series of blowing up. After these blow-ups, the 
-stringy integral is decomposed into many integrals like eq.\eqref{int2}, then the leading order is given by a summation.
+They can be overcome by a series of blows-ups, after which the stringy integral is decomposed into many integrals like eq.\eqref{int2}, then the leading order is given by a summation. %
+Essentially, finding such a series of blow-ups is equivalent to give a winning strategy for a (simplified) Hironaka's polyhedra game.
 
 
-In section 2, we review the defination of blowing up and elaborate the principle and procedures of the blowing up algorithm. Section 3 uses several examples arising form cluster stringy integrals to illustate this algorithm. Section 4 contains discussion and outlook. Finally, in the appendix, we will give another proof for the proposition firstly given in \cite{Arkani-Hamed:2017tmz} that the scattering-equation map \eqref{SEmap} is a bijection. 
+In section 2, we review the defination of blows-up and describe its relation to Hironaka's polyhedra game, then elaborate the principle and procedures of the blowing up algorithm. Section 3 uses several examples arising form cluster stringy integrals to illustate this algorithm. Section 4 contains discussion and outlook. Finally, in the appendix, we will give another proof for the proposition firstly given in \cite{Arkani-Hamed:2017tmz} that the scattering-equation map \eqref{SEmap} is a bijection. 
 %from the interior of $\mathbb R_+^D$ to the interior of Minkowski sum of Newton polytopes of $p_I$. 
 
 % (\textcolor{red}{C: How to introduce scattering-equation map? Should we talk about its relation with blow up?})
@@ -1293,6 +1293,8 @@ where $G_{2}=G_{1}+X-c-d$, and the integration region for integration variables 
 \section{Discussion and Outlook}
 
 
+In this article, we have shown how to obtain the leading order contribution of stringy integrals by a blow-up algorithm. These integrals are generations of tree-level scattering of open strings and provide natural $\alpha'$-deformed cannonical forms for general polytopes. Interestingly, the algorithm is equivalent to a winning strategy for a simplified version of Hironaka's polyhedra game since more moves can be taken in our case.
+
 \appendix
 
 \section*{Proof of bijectivity of the scattering-equation map}
@@ -1431,7 +1433,7 @@ In section 2, we find that the blowing up procedure is simplified by the fact th
 	\]
 	has a unique saddle point in $\mathds{R}^D$.
 	
-	Here $F(\mathbf y)$ is not necessarily a strict convex function.(\textcolor{red}{C: Why?} \textcolor{blue}{B: For example, $x^2$ is convex, but $(x^2)^{1/3}$ is not convex.}) However, consider a new function
+	Here $F(\mathbf y)$ is not necessarily a strict convex function. However, consider a new function
 	\[
 		F(\mathbf y)^{1/\alpha_0}=\prod_j F_j(\mathbf y)^{\alpha_j/\alpha_0},
 	\]
