@@ -783,16 +783,45 @@ then variable substitutions used by blowing up
 \] 
 is just replacing the $i$-th row by $\sum_{i\in S} n_i^I$.
 
-We say that two matrices $A$ and $B$ are equivalent if all row vectors of $A-B$ are constant 
-vectors\footnote{Here a constant vector is a vector with identical components.},
-denoted by $A\cong B$. If $(n^I_i)\cong (m^I_i)$, then there exists a vector $v$ such that
-$\sum_I a_I x^{n^I}=x^v\sum_I a_I x^{m^I}$, which will not bother player A to win the game.
-Furthermore, we can delete zero row vectors in the matrix $(n^I_i)$, which means that the
-$p=\sum_I a_I x^{n^I}$ doesn't depend on the corresponding variables, and 
-we can delete some column vectors corresponding to the points in the interior of polyhedron of $p$.
-We also think that they are equivalent. It's easy to see that it's a equivalence relation.
-For a given equivalence class, we always use the matrix with minimal number of rows and columns 
-in this class to represent it, and call it reduced one.
+\begin{defi}
+If a matrix $A=(A^I_i)_{1\leq i\leq D,1\leq I\leq N}$ 
+can be obtained from another matrix $B$ by joining constant row vectors%
+\footnote{Here a constant vector is a vector with identical components.},
+joining column vectors $w$ which are in the cone $A^I+\mathbb R_+^D$ for 
+some $I$ or adding a matrix $C$ whose row vectors are all constant vectors,
+then we say that $A$ and $B$ are equivalent, denoted by $A\cong B$.
+It's a equivalence relation.
+In a given equivalence class, we call matrices with minimal number of rows and columns 
+reduced matrices.
+\end{defi}
+
+For example, 
+\[
+\begin{pmatrix}
+	1&2\\
+	3&2
+\end{pmatrix}\cong 
+\begin{pmatrix}
+	1&2\\
+	3&2\\
+	2&2
+\end{pmatrix}\cong
+\begin{pmatrix}
+	1&2&3\\
+	3&2&4\\
+	2&2&3
+\end{pmatrix}\cong
+\begin{pmatrix}
+	0&1&2\\
+	1&0&2\\
+	0&0&1
+\end{pmatrix}.
+\]
+For two equivalent matrices $(n^I_i)\cong (m^J_k)$, there exists a vector $v$ such that 
+$\sum_I a_I x^{n^I}\approx x^v\sum_J a_J x^{m^J}$, so equivalent matrices give us
+equivalent polynomials.
+
+\vspace{2ex}
 
 Our algorithm is based on the following observations:
 \begin{enumerate}
@@ -839,9 +868,12 @@ Our algorithm is based on the following observations:
 	\item In the viewpoint of cones, the blowing up is nearly a subdivision of the cone.
 	If $\{n_i\,:\, 1\leq i\leq D\}$ are exactly vectors of edges of the cone, 
 	it's a subdivision. 
-	If the blowing up produces a vector $\sum_{i\in S} c_i n_i$ in the cone 
-	or on a boundary of the cone, then each generated cone is spanned by $D-1$ edges 
-	and the new vector $\sum_{i\in S} c_i n_i$. They divide the original cone. For example,
+	If a blow-up produces a vector $\sum_{i\in S} c_i n_i$ in the cone 
+	or on a boundary of the cone, then the $j$-th generated cone for $j\in S$ is spanned by 
+	vectors $\{n_i\,:\,i\neq j\}$ and the vector $\sum_{i\in S} c_i n_i$. 
+	It's a proper sub-cone of the original cone. The union of these cones is the original cone,
+	but they usually intersect with each other, so it's not a subdivision. However, 
+	it is a subdivision when $D\leq N$. For example, consider a cone with $D=N=3$,
 	\begin{center}
 	\begin{tikzpicture}
 	\draw (1.7,2.6) -- (-2,-0.5);
@@ -860,41 +892,42 @@ Our algorithm is based on the following observations:
 	\fill[opacity=0.1,red] (-2,-0.5) -- (2.7,0.7) -- (3.6,1.5);
 	\end{tikzpicture}	
 	\end{center}
+	we blow up the cone according to the middle vector on the above diagram, and
+	three generated cones form a subdivision of the original cone.
 
-	However, if $n_j$ is not the vector of a edge of the cone and $\sum_{i\in S} c_i n_i\neq n_j$,
-	then generated cones may have overlaps with each other. In this case, usually we
-	blow up such that $\sum_{i\in S} c_i n_i\neq n_j$ and $j\not\in S$, and we will get cones 
-	without overlaps. What's more, the generated matrices have two identical rows. 
-	Suppose that $n_j=n_k$ in the matrix, it's equivalent to say that the polynomial is the 
-	function of the product $x_jx_k$.
+	% However, if $n_j$ is not the vector of a edge of the cone and $\sum_{i\in S} c_i n_i\neq n_j$,
+	% then generated cones may have overlaps with each other. In this case, usually we
+	% blow up such that $\sum_{i\in S} c_i n_i\neq n_j$ and $j\not\in S$, and we will get cones 
+	% without overlaps. What's more, the generated matrices have two identical rows. 
+	% Suppose that $n_j=n_k$ in the matrix, it's equivalent to say that the polynomial is the 
+	% function of the product $x_jx_k$.
 	
 	The bonus of this viewpoint is that we can see information of many rounds in only one picture.
 
-	\item If we can divide the old cone by blowing up into small cones such that 
+	\item If we can cut the old cone by blowing up into small cones such that 
 	each of them is totally contained in some semi-spaces $\{H^{IJ}\}$, then
 	the number of columns of generated matrices decreases strictly.
-	
-	% \item Usually, $(1,\dots,1)$ is not in the cone spanned by row vectors $\{n_i\,:\,i\in S\}$. 
-	% What's more, if $(1,\dots,1)$ is not in this cone, then any cone generated
-	% by blowing up also doesn't contain $(1,\dots,1)$ naively.
-	% Even $(1,\dots,1)$ is in the cone, after blowing up, we delete some vectors, and usually the cone becomes
-	% smaller so that $(1,\dots,1)$ may run out of the cone. 
+
+	The only possiblity we can't do this is that 
+	the intersection of all hyperplains $z^I=z^J$, or equivalently the vector $(1,1,\dots,1)$, 
+	is contained in the original cone.
+	In this case, no matter how blow-ups `divide' the cone, there always exists a cone contain
+	$(1,1,\dots,1)$ so that it is not contained in any semi-space $H^{IJ}$.
+
+	Although in this case we cannot reduce the nubmer of columns, we can reduce the number of rows.
 \end{enumerate}
-Now the algorithm is simple:
+Now the algorithm is simple: For a given set $\mathcal M$ of matrix,
 \begin{enumerate}
-	\item[(0).] During the algorithm, we always use reduced matrices.
-	\item[(1).] Find the minimal cone containing $(1,\dots,1)$, blow up according to
-		the set of variables corresponding to its edges. Repeat it until no cone 
-		contains $(1,\dots,1)$.
-	\item[(2).] For a given matrix, find all edges of its cone, and 
-		divide the cone along the other vectors in the cone by blowing up.
-	\item[(3).] After the above step, there's no extra vector in the cone, though we could have 
-		different vectors representing the same edge in the matrix.
-		Generally, hyperplains $h^{IJ}=\{z\,:\, z^I=z^J\}$ cross the cone, so we can 
-		divide the cone along vectors on these hyperplains by blowing up. 
-	\item[(4).] After the above step, the number of columns of all matrices strictly decrease,
-		\textit{i.e.} the dimension of row vectors decreases.
-		Now for each matrix, goto step (1).
+	\item[(1).] Replace any matrix by its reduced matrix. If all matrix in the set
+		have only one column or row, the algorithm stops.
+	\item[(2).] Find the minimal cone containing $(1,\dots,1)$, blow up according to
+		the set of variables corresponding to its edges, add all generated matrix into 
+		the set $\mathcal M$ and goto step (1).
+		If there's no cone containing $(1,\dots,1)$, goto step (3).
+	\item[(3).] For each cone, choose vectors on some hyperplains $h^{IJ}=\{z\,:\, z^I=z^J\}$,
+		and `divide' the cone along these vectors on hyperplains by blowing up such that 
+		each of generated cones is totally contained in some semi-spaces $\{H^{IJ}\}$, 
+		add all generated matrix into the set $\mathcal M$ and goto step (1).
 \end{enumerate}
 
 Therefore, we have answer how to terminate by designing a new winning strategy. 
