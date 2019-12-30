@@ -50,7 +50,7 @@
 \maketitle
 
 \begin{abstract}
-	abstract here
+	We provide an efficient method, blowing up, to compute leading order contributions of the recently introduced stringy integrals. The algorithm is based on well-known Kironaka's polyhedra game.
 \end{abstract}
 \newpage
 
@@ -1310,10 +1310,15 @@ All information about the leading order of such integrals is contained in the Mi
 
 Another way to reconstruct $N_{P}$ is, along with the opposite direction, to find the facets of $N_{P}$ by using the scattering-equation map. Where the aim is to find all directions such that $\mathbf{X}$ approaches facets of $N_{P}$ as $\mathbf{x}$ approaches boundaries of $\mathds{R}^{D}$ along with these directions~\cite{}. It would be interesting to find any relations between the reconstruction from the bottom up, the blow-up, and the reconstructiong from the top down, the scattering-equation map.
 
+As we saw in section 2, lots of terms have been dropped during the process of blow-ups, while higher order contributions of such integrals with respect to $\alpha'$ certainly depend on the details of regulating polynoimals. One way to obtain the higher order contribution is to expand the integrand with respect to $\alpha'$ then integration, the obstacle to this expansion is singularities in poles. The blow-up procedure provide a way to remove this obstacle: each integration region producted by blow-ups only meets singularities of the canonical form at one vertex, then a subtractation can be easily made such that the integrand have no divergence in the integration region.
+
+(Relation with sector decomposition...)
+
+
 
 \appendix
 
-\section*{Proof of bijectivity of the scattering-equation map}
+\section{Proof of bijectivity of the scattering-equation map}
 In section 2, we find that the blowing up procedure is simplified by the fact that the leading order contribution of stringy integrals are given by the canonical function for $N_{P}$, which is the Minkowski sum of Newton polytopes of polynomials forming the regulator. This fact is equivalent to say that the scattering-equation map is a bijection~\cite{}. Here we give another proof for this proposition. 
 
 \begin{pro*}
@@ -1400,6 +1405,7 @@ In section 2, we find that the blowing up procedure is simplified by the fact th
 	To this end, we only need to show that there exist some $I$ such that $\mathbf{y}'\cdot (\mathbf{n}^I-\mathbf{\Lambda})>0$ for any $\mathbf{y}'\neq 0$ and $\mathbf\Lambda \in (N(p))^\circ $, which is directly followed from the convexity of $N(p)$: If $\mathbf\Lambda \in (N(p))^\circ$, for a given $\mathbf{y}'\neq 0$, the hyperplain $L$ with normal vector $\mathbf{y}'$ crossing $\mathbf \Lambda$ 
 	divides the space $\mathds{R}^{D}$ into semi-spaces $L^+$ and $L^-$, then any $\mathbf{n}^I$ 
 	in $L^+$ are desired.
+
 	
 	\begin{center}
 		\begin{tikzpicture}
