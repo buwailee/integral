@@ -52,7 +52,17 @@
 \begin{abstract}
 	abstract here
 \end{abstract}
+\newpage
 
+\begin{center}
+	\rule{1.0\textwidth}{1pt}
+\end{center}
+\tableofcontents
+
+\bigskip
+\begin{center}
+	\rule{1.0\textwidth}{1pt}
+\end{center}
 
 
 \section{Introduction}
@@ -1290,10 +1300,16 @@ where we have dropped irrelevant terms and introduced $G_{1}=b+c+d-Y$. This vert
 where $G_{2}=G_{1}+X-c-d$, and the integration region for integration variables should be understood as $[0,\epsilon]^{2}$ while the subscript of integrals indicate the integration region before blow ups.
 
 
-\section{Discussion and Outlook}
+\section{Conclusions and Outlook}
 
 
-In this article, we have shown how to obtain the leading order contribution of stringy integrals by a blow-up algorithm. These integrals are generations of tree-level scattering of open strings and provide natural $\alpha'$-deformed cannonical forms for general polytopes. Interestingly, the algorithm is equivalent to a winning strategy for a simplified version of Hironaka's polyhedra game since more moves can be taken in our case.
+In this article, we have shown how to obtain the leading order contribution of stringy integrals by a blow-up algorithm. These integrals are generations of tree-level scattering of open strings and provide natural $\alpha'$-deformed cannonical forms for general polytopes.  Interestingly, the algorithm is equivalent to a winning strategy for a simplified version of Hironaka's polyhedra game since more moves can be taken in our case.
+
+All information about the leading order of such integrals is contained in the Minkowski sum $N_{P}$ of Newton polytopes of the regulating polynomials. In this sense, the blow-up method gives a way to reconstruct the polytope $N_{P}$ from its vertices. However, as we saw in section 3, spurious poles and hence spurious vertices are produced in the process of blow-ups. Additional efforts are still needed to recognize the real poles and vertices, especially when the dimensionality increases (curse of dimensionality) and the regulating polynomials get more and more complicated. The result obtained by blowing up is correct but redundant, thus a interesting question is how the polytope $N_{P}$ emerges form this (usually tedious) result. 
+
+
+Another way to reconstruct $N_{P}$ is, along with the opposite direction, to find the facets of $N_{P}$ by using the scattering-equation map. Where the aim is to find all directions such that $\mathbf{X}$ approaches facets of $N_{P}$ as $\mathbf{x}$ approaches boundaries of $\mathds{R}^{D}$ along with these directions~\cite{}. It would be interesting to find any relations between the reconstruction from the bottom up, the blow-up, and the reconstructiong from the top down, the scattering-equation map.
+
 
 \appendix
 
