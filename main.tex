@@ -50,9 +50,19 @@
 \maketitle
 
 \begin{abstract}
-	abstract here
+	We provide an efficient method, blowing up, to compute leading order contributions of the recently introduced stringy integrals. The algorithm is based on well-known Kironaka's polyhedra game.
 \end{abstract}
+\newpage
 
+\begin{center}
+	\rule{1.0\textwidth}{1pt}
+\end{center}
+\tableofcontents
+
+\bigskip
+\begin{center}
+	\rule{1.0\textwidth}{1pt}
+\end{center}
 
 
 \section{Introduction}
@@ -109,7 +119,7 @@ On the one hand, performing Minkowski sum for polytopes analyticly is nearly imp
 
 
 The main purpose of this article is to show an efficient method, {\it{blowing up}}, %(\textcolor{red}{C: or blowing-up map?}),
-to calculate the leading order of the integral eq.\eqref{int1} with respect to $\alpha'$. This is a general method which also is closely related to the {\it sector decomposition} prescription \cite{} used in Feynman integrals. We will see that the situation is easier when this method is applied in stringy integrals due to some features of canonical forms, and especially its closed relation to the polytope $N_{P}$. This method is based on two simple observations: i) the leading order contribution in $\alpha'$-expansion of stringy integrals arises from each vertex of the integration reigon $\mathds{R}_{+}^{D}$, ii) suppose that all $p_I(0)\neq 0$ in the integral eq.\eqref{int1}, then the integral at the neighbourhood of the origin becomes 
+to calculate the leading order of the integral eq.\eqref{int1} with respect to $\alpha'$. This is a general method which is closely related to the so-called \emph{Hironaka's polyhedra game}~\cite{}. We will see that the situation is easier when this method is applied in stringy integrals due to some features of canonical forms, and especially its closed relation to the polytope $N_{P}$. This method is based on two simple observations: i) the leading order contribution in $\alpha'$-expansion of stringy integrals arises from each vertex of the integration reigon $\mathds{R}_{+}^{D}$, ii) suppose that all $p_I(0)\neq 0$ in the integral eq.\eqref{int1}, then the integral at the neighbourhood of the origin becomes 
 \begin{equation}\label{int2}
 	\int_{[0,\epsilon]^D}\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i} \prod_{I}p_{I}(0)^{-\alpha' c_{I}}
 	=\prod_{i=1}^D\frac{\epsilon^{\alpha' X_i}p_{I}(0)^{-\alpha' c_{I}}}{\alpha' X_i}
@@ -120,11 +130,11 @@ Generally, it would not be such simple case, some polynomials $p_{I}$ may vanish
 % 	\item Some polynomials $p_I$ may vanish at the origin (or a vertex).
 % 	\item Furthermore, some $p_I$ may own the origin (or a vertex) as their singular point\footnote{A point $Q$ is a singular point of the surface defined by $p(\mathrm{x})$=0 if $p(Q)=0$ and $\partial p(Q)/\partial x_{i} =0$ for all $i$}.
 % \end{itemize}
-They can be overcome by a series of blowing up. After these blow-ups, the 
-stringy integral is decomposed into many integrals like eq.\eqref{int2}, then the leading order is given by a summation.
+They can be overcome by a series of blows-ups, after which the stringy integral is decomposed into many integrals like eq.\eqref{int2}, then the leading order is given by a summation. %
+Essentially, finding such a series of blow-ups is equivalent to give a winning strategy for a (simplified) Hironaka's polyhedra game.
 
 
-In section 2, we review the defination of blowing up and elaborate the principle and procedures of the blowing up algorithm. Section 3 uses several examples arising form cluster stringy integrals to illustate this algorithm. Section 4 contains discussion and outlook. Finally, in the appendix, we will give another proof for the proposition firstly given in \cite{Arkani-Hamed:2017tmz} that the scattering-equation map \eqref{SEmap} is a bijection. 
+In section 2, we review the defination of blows-up and describe its relation to Hironaka's polyhedra game, then elaborate the principle and procedures of the blowing up algorithm. Section 3 uses several examples arising form cluster stringy integrals to illustate this algorithm. Section 4 contains discussion and outlook. Finally, in the appendix, we will give another proof for the proposition firstly given in \cite{Arkani-Hamed:2017tmz} that the scattering-equation map \eqref{SEmap} is a bijection. 
 %from the interior of $\mathbb R_+^D$ to the interior of Minkowski sum of Newton polytopes of $p_I$. 
 
 % (\textcolor{red}{C: How to introduce scattering-equation map? Should we talk about its relation with blow up?})
@@ -1290,12 +1300,25 @@ where we have dropped irrelevant terms and introduced $G_{1}=b+c+d-Y$. This vert
 where $G_{2}=G_{1}+X-c-d$, and the integration region for integration variables should be understood as $[0,\epsilon]^{2}$ while the subscript of integrals indicate the integration region before blow ups.
 
 
-\section{Discussion and Outlook}
+\section{Conclusions and Outlook}
+
+
+In this article, we have shown how to obtain the leading order contribution of stringy integrals by a blow-up algorithm. These integrals are generations of tree-level scattering of open strings and provide natural $\alpha'$-deformed cannonical forms for general polytopes.  Interestingly, the algorithm is equivalent to a winning strategy for a simplified version of Hironaka's polyhedra game since more moves can be taken in our case.
+
+All information about the leading order of such integrals is contained in the Minkowski sum $N_{P}$ of Newton polytopes of the regulating polynomials. In this sense, the blow-up method gives a way to reconstruct the polytope $N_{P}$ from its vertices. However, as we saw in section 3, spurious poles and hence spurious vertices are produced in the process of blow-ups. Additional efforts are still needed to recognize the real poles and vertices, especially when the dimensionality increases (curse of dimensionality) and the regulating polynomials get more and more complicated. The result obtained by blowing up is correct but redundant, thus a interesting question is how the polytope $N_{P}$ emerges form this (usually tedious) result. 
+
+
+Another way to reconstruct $N_{P}$ is, along with the opposite direction, to find the facets of $N_{P}$ by using the scattering-equation map. Where the aim is to find all directions such that $\mathbf{X}$ approaches facets of $N_{P}$ as $\mathbf{x}$ approaches boundaries of $\mathds{R}^{D}$ along with these directions~\cite{}. It would be interesting to find any relations between the reconstruction from the bottom up, the blow-up, and the reconstructiong from the top down, the scattering-equation map.
+
+As we saw in section 2, lots of terms have been dropped during the process of blow-ups, while higher order contributions of such integrals with respect to $\alpha'$ certainly depend on the details of regulating polynoimals. One way to obtain the higher order contribution is to expand the integrand with respect to $\alpha'$ then integration, the obstacle to this expansion is singularities in poles. The blow-up procedure provide a way to remove this obstacle: each integration region producted by blow-ups only meets singularities of the canonical form at one vertex, then a subtractation can be easily made such that the integrand have no divergence in the integration region.
+
+(Relation with sector decomposition...)
+
 
 
 \appendix
 
-\section*{Proof of bijectivity of the scattering-equation map}
+\section{Proof of bijectivity of the scattering-equation map}
 In section 2, we find that the blowing up procedure is simplified by the fact that the leading order contribution of stringy integrals are given by the canonical function for $N_{P}$, which is the Minkowski sum of Newton polytopes of polynomials forming the regulator. This fact is equivalent to say that the scattering-equation map is a bijection~\cite{}. Here we give another proof for this proposition. 
 
 \begin{pro*}
@@ -1382,6 +1405,7 @@ In section 2, we find that the blowing up procedure is simplified by the fact th
 	To this end, we only need to show that there exist some $I$ such that $\mathbf{y}'\cdot (\mathbf{n}^I-\mathbf{\Lambda})>0$ for any $\mathbf{y}'\neq 0$ and $\mathbf\Lambda \in (N(p))^\circ $, which is directly followed from the convexity of $N(p)$: If $\mathbf\Lambda \in (N(p))^\circ$, for a given $\mathbf{y}'\neq 0$, the hyperplain $L$ with normal vector $\mathbf{y}'$ crossing $\mathbf \Lambda$ 
 	divides the space $\mathds{R}^{D}$ into semi-spaces $L^+$ and $L^-$, then any $\mathbf{n}^I$ 
 	in $L^+$ are desired.
+
 	
 	\begin{center}
 		\begin{tikzpicture}
@@ -1431,7 +1455,7 @@ In section 2, we find that the blowing up procedure is simplified by the fact th
 	\]
 	has a unique saddle point in $\mathds{R}^D$.
 	
-	Here $F(\mathbf y)$ is not necessarily a strict convex function.(\textcolor{red}{C: Why?} \textcolor{blue}{B: For example, $x^2$ is convex, but $(x^2)^{1/3}$ is not convex.}) However, consider a new function
+	Here $F(\mathbf y)$ is not necessarily a strict convex function. However, consider a new function
 	\[
 		F(\mathbf y)^{1/\alpha_0}=\prod_j F_j(\mathbf y)^{\alpha_j/\alpha_0},
 	\]
