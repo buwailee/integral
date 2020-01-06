@@ -75,7 +75,7 @@ as the canonical form of the moduli space $\mathcal{M}_{0,n}^{+}$ and the Koba-N
 \begin{equation} 
 	\int_{\mathds{R}_{+}^{D}} \prod_{i=1}^{D}\frac{\dif x_{i}}{x_{i}}x_{i}^{\alpha' X_{i}}\prod_{I}p_{I}(\mathbf{x})^{-\alpha'c_{I}}	\:, \label{int1}
 \end{equation}
-where $D=n{-}3$, $X_{i}$ and $c_{I}$ are linear combinations of Mandelstam variables $s_{ij}$'s. A \emph{stringy} integral is a integral of form eq.(\ref{int1}) but with arbitrary substraction-free polynoimals $p_{I}$. 
+where $D=n{-}3$, $X_{i}$ and $c_{I}$ are linear combinations of Mandelstam variables $s_{ij}$'s. A \emph{stringy} integral is a integral of form eq.(\ref{int1}) but with arbitrary subtraction-free polynomials $p_{I}$. 
 
 % In string theory, the tree level $n$-pt open superstring amplitudes
 % \[
@@ -110,16 +110,16 @@ where $D=n{-}3$, $X_{i}$ and $c_{I}$ are linear combinations of Mandelstam varia
 
 In \cite{Arkani-Hamed:2019mrd}, many important properties of stringy integrals are well studied, especially the relation between their field theory limit, {\it{i.e}}. the limit of $\alpha'\to 0$, and the Minkowski sum $N_{P}$ of Newton polytopes of $\{p_I\}$.
 %As in the original superstring amplitude, the field theory limit of a stringy integral is  its leading order as $\alpha'\to 0$. 
-More concretely, {\it{ i) the leading order of a stringy integral is given by the volume of the dual polytope, or the canonical function $\underline{\Omega}(N_{P})$, of $N_{P}$, and ii) a bijection between $\mathds{R}_{+}^{D}$ and $N_{P}$ is given by the siddle point equation of the regulator, that is the so-called scattering-equation map $\Phi$,}}
+More concretely, {\it{ i) the leading order of a stringy integral is given by the volume of the dual polytope, or the canonical function $\underline{\Omega}(N_{P})$, of $N_{P}$, and ii) a bijection between $\mathds{R}_{+}^{D}$ and $N_{P}$ is given by the saddle point equation of the regulator, that is the so-called scattering-equation map $\Phi$,}}
 \begin{equation} \label{SEmap}
 	X_{i}= \sum_{I}c_{I}\frac{\partial \log p_{I}}{\partial \log x_{i}}\:, \qquad  \text{for }i=1,\cdots,D.
 \end{equation}	
 In general, however, it's difficult to calculate the leading order of stringy integrals directly from the above two properties.
-On the one hand, performing Minkowski sum for polytopes analyticly is nearly impossible. On the other hand, to obtain the canonical form $\Omega(N_{P})$ from the pushforward $\Phi_{\ast}\bigl(\bigwedge_{i=1}^{D} \dif \log x_{i}\bigr)$ requires to solve highly non-linear equations, just like the case in CHY formalism.
+On the one hand, performing Minkowski sum for polytopes analytically is nearly impossible. On the other hand, to obtain the canonical form $\Omega(N_{P})$ from the pushforward $\Phi_{\ast}\bigl(\bigwedge_{i=1}^{D} \dif \log x_{i}\bigr)$ requires to solve highly non-linear equations, just like the case in CHY formalism.
 
 
 The main purpose of this article is to show an efficient method, {\it{blowing up}}, %(\textcolor{red}{C: or blowing-up map?}),
-to calculate the leading order of the integral eq.\eqref{int1} with respect to $\alpha'$. This is a general method which is closely related to the so-called \emph{Hironaka's polyhedra game}~\cite{}. We will see that the situation is easier when this method is applied in stringy integrals due to some features of canonical forms, and especially its closed relation to the polytope $N_{P}$. This method is based on two simple observations: i) the leading order contribution in $\alpha'$-expansion of stringy integrals arises from each vertex of the integration reigon $\mathds{R}_{+}^{D}$, ii) suppose that all $p_I(0)\neq 0$ in the integral eq.\eqref{int1}, then the integral at the neighbourhood of the origin becomes 
+to calculate the leading order of the integral eq.\eqref{int1} with respect to $\alpha'$. This is a general method which is closely related to the so-called \emph{Hironaka's polyhedra game}~\cite{}. We will see that the situation is easier when this method is applied in stringy integrals due to some features of canonical forms, and especially its closed relation to the polytope $N_{P}$. This method is based on two simple observations: i) the leading order contribution in $\alpha'$-expansion of stringy integrals arises from each vertex of the integration region $\mathds{R}_{+}^{D}$, ii) suppose that all $p_I(0)\neq 0$ in the integral eq.\eqref{int1}, then the integral at the neighbourhood of the origin becomes 
 \begin{equation}\label{int2}
 	\int_{[0,\epsilon]^D}\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i} \prod_{I}p_{I}(0)^{-\alpha' c_{I}}
 	=\prod_{i=1}^D\frac{\epsilon^{\alpha' X_i}p_{I}(0)^{-\alpha' c_{I}}}{\alpha' X_i}
@@ -134,7 +134,7 @@ They can be overcome by a series of blows-ups, after which the stringy integral 
 Essentially, finding such a series of blow-ups is equivalent to give a winning strategy for a (simplified) Hironaka's polyhedra game.
 
 
-In section 2, we review the defination of blows-up and describe its relation to Hironaka's polyhedra game, then elaborate the principle and procedures of the blowing up algorithm. Section 3 uses several examples arising form cluster stringy integrals to illustate this algorithm. Section 4 contains discussion and outlook. Finally, in the appendix, we will give another proof for the proposition firstly given in \cite{Arkani-Hamed:2017tmz} that the scattering-equation map \eqref{SEmap} is a bijection. 
+In section 2, we review the definition of blows-up and describe its relation to Hironaka's polyhedra game, then elaborate the principle and procedures of the blowing up algorithm. Section 3 uses several examples arising form cluster stringy integrals to illustrate this algorithm. Section 4 contains discussion and outlook. Finally, in the appendix, we will give another proof for the proposition firstly given in \cite{Arkani-Hamed:2017tmz} that the scattering-equation map \eqref{SEmap} is a bijection. 
 %from the interior of $\mathbb R_+^D$ to the interior of Minkowski sum of Newton polytopes of $p_I$. 
 
 % (\textcolor{red}{C: How to introduce scattering-equation map? Should we talk about its relation with blow up?})
@@ -156,7 +156,7 @@ In section 2, we review the defination of blows-up and describe its relation to 
 % canonical form leads that the contribution of the integral near a codimension $k$ face
 % diverges as $(\alpha')^{-k}$, so the leading terms come from vertices.
 
-% It is obvious that the leading order contribution in $\alpha'$-expansion of stringy integrals arise from each vertex of the integration reigon $\mathds{R}_{+}^{D}$. Since every vertex can be brought to the origin by replacing $x_{i}$ with $x_{i}^{-1}$, it is sufficient to work out the contribution from the origin only. Now, suppose that all $p_I(0)\neq 0$ in the integral eq.\eqref{int1}, then the integral at the neighbourhood of the origin becomes 
+% It is obvious that the leading order contribution in $\alpha'$-expansion of stringy integrals arise from each vertex of the integration region $\mathds{R}_{+}^{D}$. Since every vertex can be brought to the origin by replacing $x_{i}$ with $x_{i}^{-1}$, it is sufficient to work out the contribution from the origin only. Now, suppose that all $p_I(0)\neq 0$ in the integral eq.\eqref{int1}, then the integral at the neighbourhood of the origin becomes 
 % \begin{equation}\label{int2}
 % 	\int_{[0,\epsilon]^D}\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i} \prod_{I}p_{I}(0)^{-\alpha' c_{I}}
 % 	=\prod_{i=1}^D\frac{\epsilon^{\alpha' X_i}p_{I}(0)^{-\alpha' c_{I}}}{\alpha' X_i}
@@ -237,7 +237,7 @@ Before going into the detail of blowing up, let us clarify the problem mentioned
 \begin{equation*}
   \mathcal{I}(\alpha';W_{I})=\int_{\mathcal{P}} \Omega_{\mathcal{P}}(\mathbf{x}) \prod_{I}p_{I}(\mathbf{x})^{\alpha'W_{I}}\,,
 \end{equation*}
-where $\mathcal{P}$ is some positive geometry (in our case, it is some simple polytope) of dimension $D$ parameterized by $\mathbf{x}:= \{x_{1},\ldots,x_{D}\}$, $\Omega_{\mathcal{P}}$ is its associated canonical form, and $p_{I}(\mathbf{x})$ are polynomials vanishing at boundaries of $\mathcal{P}$ and hence regulate the logarithm divergence of $\Omega_{\mathcal{P}}$ at boundaries. For $p_{I}(x)^{\alpha' W_{I}}$ to be single valued in $\mathcal{P}$, we require that $p_{I}(\mathbf{x})$ is nonnegetaive in the interior of $\mathcal{P}$. %which is equivalent to say that $p_{I}$ is substraction-free under a positive parameterization. 
+where $\mathcal{P}$ is some positive geometry (in our case, it is some simple polytope) of dimension $D$ parameterized by $\mathbf{x}:= \{x_{1},\ldots,x_{D}\}$, $\Omega_{\mathcal{P}}$ is its associated canonical form, and $p_{I}(\mathbf{x})$ are polynomials vanishing at boundaries of $\mathcal{P}$ and hence regulate the logarithm divergence of $\Omega_{\mathcal{P}}$ at boundaries. For $p_{I}(x)^{\alpha' W_{I}}$ to be single valued in $\mathcal{P}$, we require that $p_{I}(\mathbf{x})$ is nonnegative in the interior of $\mathcal{P}$. %which is equivalent to say that $p_{I}$ is subtraction-free under a positive parameterization. 
 
 The leading order contribution of $\mathcal{I}$ with respect to $\alpha'$ arise from the integral over the neighbourhood of each vertex of $\mathcal{P}$. For any vertex, the leading order contribution can be trivially obtained if there are just $D$ polynomials $p_{I}$ vanishing and regular (non-singular) at this vertex as in \eqref{int2}, and such vertex is called {\it{normal crossing}} since this vertex has been crossed $D$ times geometrically. All troubles are caused by vertices which are {\it not} normal crossing. For example (see Fig. \ref{fig_1}), for the integral 
 \begin{equation}\label{exam:1}
@@ -924,14 +924,14 @@ Our algorithm is based on the following observations:
 	each of them is totally contained in some semi-spaces $\{H^{IJ}\}$, then
 	the number of columns of generated matrices decreases strictly.
 
-	The only possiblity we can't do this is that 
+	The only possibility we can't do this is that 
 	the intersection of all hyperplains $h^{IJ}=\{z\,:\, z^I=z^J\}$, 
 	or equivalently the vector $(1,1,\dots,1)$, 
 	is contained in the original cone.
 	In this case, no matter how blow-ups `divide' the cone, there always exists a cone contain
 	$(1,1,\dots,1)$ so that it is not contained in any semi-space $H^{IJ}$.
 
-	Although in this case we cannot reduce the nubmer of columns, we can reduce the number of rows.
+	Although in this case we cannot reduce the number of columns, we can reduce the number of rows.
 \end{enumerate}
 Now the algorithm is simple: For a given set $\mathcal M$ of matrix,
 \begin{enumerate}
@@ -1303,14 +1303,14 @@ where $G_{2}=G_{1}+X-c-d$, and the integration region for integration variables 
 \section{Conclusions and Outlook}
 
 
-In this article, we have shown how to obtain the leading order contribution of stringy integrals by a blow-up algorithm. These integrals are generations of tree-level scattering of open strings and provide natural $\alpha'$-deformed cannonical forms for general polytopes.  Interestingly, the algorithm is equivalent to a winning strategy for a simplified version of Hironaka's polyhedra game since more moves can be taken in our case.
+In this article, we have shown how to obtain the leading order contribution of stringy integrals by a blow-up algorithm. These integrals are generations of tree-level scattering of open strings and provide natural $\alpha'$-deformed canonical forms for general polytopes.  Interestingly, the algorithm is equivalent to a winning strategy for a simplified version of Hironaka's polyhedra game since more moves can be taken in our case.
 
 All information about the leading order of such integrals is contained in the Minkowski sum $N_{P}$ of Newton polytopes of the regulating polynomials. In this sense, the blow-up method gives a way to reconstruct the polytope $N_{P}$ from its vertices. However, as we saw in section 3, spurious poles and hence spurious vertices are produced in the process of blow-ups. Additional efforts are still needed to recognize the real poles and vertices, especially when the dimensionality increases (curse of dimensionality) and the regulating polynomials get more and more complicated. The result obtained by blowing up is correct but redundant, thus a interesting question is how the polytope $N_{P}$ emerges form this (usually tedious) result. 
 
 
 Another way to reconstruct $N_{P}$ is, along with the opposite direction, to find the facets of $N_{P}$ by using the scattering-equation map. Where the aim is to find all directions such that $\mathbf{X}$ approaches facets of $N_{P}$ as $\mathbf{x}$ approaches boundaries of $\mathds{R}^{D}$ along with these directions~\cite{}. It would be interesting to find any relations between the reconstruction from the bottom up, the blow-up, and the reconstructiong from the top down, the scattering-equation map.
 
-As we saw in section 2, lots of terms have been dropped during the process of blow-ups, while higher order contributions of such integrals with respect to $\alpha'$ certainly depend on the details of regulating polynoimals. One way to obtain the higher order contribution is to expand the integrand with respect to $\alpha'$ then integration, the obstacle to this expansion is singularities in poles. The blow-up procedure provide a way to remove this obstacle: each integration region producted by blow-ups only meets singularities of the canonical form at one vertex, then a subtractation can be easily made such that the integrand have no divergence in the integration region.
+As we saw in section 2, lots of terms have been dropped during the process of blow-ups, while higher order contributions of such integrals with respect to $\alpha'$ certainly depend on the details of regulating polynomials. One way to obtain the higher order contribution is to expand the integrand with respect to $\alpha'$ then integration, the obstacle to this expansion is singularities in poles. The blow-up procedure provide a way to remove this obstacle: each integration region produced by blow-ups only meets singularities of the canonical form at one vertex, then a subtractation can be easily made such that the integrand have no divergence in the integration region.
 
 (Relation with sector decomposition...)
 
