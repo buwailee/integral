@@ -999,7 +999,47 @@ Our algorithm is based on the following observations:
 	$(1,1,\dots,1)$ so that it is not contained in any semi-space $H^{IJ}$.
 
 	Although in this case we cannot reduce the number of columns, we can reduce the number of rows.
+
+\item One possible way to `divide' the cone is to reduce the number of outside vertices.
+	Before giving the explicit definition of outside or insider, let's first consider a $N=3$ 
+	example to show this idea.
+	\begin{center}
+	\begin{tikzpicture}
+		\draw (2,-1.5) -- (1.5,-2.5) -- (2,-4) -- (4,-3.5) -- (4.5,-2) -- (3,-1) -- cycle;
+		\fill[gray!30] (2,-1.5) -- (1.5,-2.5) -- (2,-4) -- (4,-3.5) -- (4.5,-2) -- (3,-1) -- cycle;
+		\draw[thick,densely dotted] (1,-1) -- (4.5,-6);
+		\draw[thick,densely dotted] (2.5,-1) -- (3.5,-6);
+		\draw[thick,densely dotted] (4,-1) -- (2.5,-6);
+		\node[circle,inner sep=1.5pt,fill=blue] at (2,-4) {};
+		\node[circle,inner sep=1.5pt,fill=blue] at (4.5,-2) {};
+		\node[circle,inner sep=1.5pt,fill=blue] at (1.5,-2.5) {};
+		\node[circle,inner sep=1.5pt,fill=blue] at (4,-3.5) {};
+		\node[circle,inner sep=1.5pt,fill=red] at (2,-1.5) {};
+		\node[circle,inner sep=1.5pt,fill=red] at (3,-1) {};
+		\draw[green!60!black] (0.6,-4.5) -- (5.6,-3.5);
+	\end{tikzpicture}
+	\end{center}
+In above diagram, the outside vertices are labeled by blue points, and inside vertices are
+labeled by red points. If we blow up the cone along a inside vector which is 
+the linear combination of outside vertices, then the number of outside
+vertices of each subcone is reduced by $1$. Therefore, after finite such operation,
+any subcone is contained in some semi-spaces defined by outside hyperplains.
+
+\item In higher dimensional space, hyperplains $h^{IJ}$ divide the whole space $\mathbb R_+^N$
+	into many small cones which can be labeled by a permutation of $(1,\dots,N)$. 
+	For a region label by $\eta$, it's given by the inequality 
+	$0\leq z^{\eta_1}\leq \cdots\leq z^{\eta_N}$. 
+	
+	For a given cone, we can find a hyperplain $H:\hat{n}\cdot z=0$ crossing
+	$(1,1,\dots,1)$ (the green line in the above diagram) 
+	such that the cone is contained in one side of this hyperplain.
+	Note that, in $N=3$ case, a outside region can cross the hyperplain $H$ 
+	but a inside region cannot, so we just generalize it to higher dimension.
+
+	Equivalently, a region is inside if and only if $\hat{n}$ is contained in 
+	its dual cone spanned by normal vectors of its facets.
 \end{enumerate}
+%
 Now basic logic of an algorithm is simple: For a given set $\mathcal M$ of matrix,
 \begin{enumerate}
 	\item[(1).] Replace any matrix by its reduced matrix. If all matrix in the set
@@ -1015,9 +1055,7 @@ Now basic logic of an algorithm is simple: For a given set $\mathcal M$ of matri
 		add all generated matrix into the set $\mathcal M$ and goto step (1).
 \end{enumerate}
 
-We have not given the explicit construction of step (3) of the algorithm, 
-which is the key point of this algorithm. Before giving it, let's first 
-show an example. Consider the matrix
+For example, consider the matrix
 \[
 	M=\left(
 		\begin{array}{ccc}
@@ -1054,10 +1092,10 @@ the hyperplain $z^1+z^2+z^3=12$ on the $z^1$-$z^2$ plane.
 \end{center}
 The intersection of three dotted line is the vector $(4,4,4)$, 
 so the cone doesn't contain $(1,1,1)$ and we can directly goto step (3).
-We first find a red point as the intersection of the hyperplain 
+The outside vertices are $n^1$ and $n^2$, so we first find a inside red point 
+as the intersection of the hyperplain 
 $z^1=z^3$ and the facet spanned by $\{n^1,n^2\}$ of the cone, 
-so in fact the red point represents a ray.
-On this ray, we find a typical vector $n_1+n_2$, 
+so in fact the red point represents the vector $n_1+n_2$, 
 which tells us that we should blow up $x_1$ and $x_2$.
 Therefore, the cone is decomposed into two new cones 
 \[
@@ -1187,30 +1225,6 @@ in above example.
 %but it's more efficient than lots of well-known winning strategies, and it's 
 %very easy to code.
 
-Now come back to the step (3). One possible way to `divide' the cone 
-is to reduce the number of outside vertices. Let's use a $N=3$ example to 
-explain it.
-\begin{center}
-	\begin{tikzpicture}
-
-		\draw (2,-1.5) -- (1.5,-2.5) -- (2,-4) -- (4,-3.5) -- (4.5,-2) -- (3,-1) -- cycle;
-		\fill[gray!30] (2,-1.5) -- (1.5,-2.5) -- (2,-4) -- (4,-3.5) -- (4.5,-2) -- (3,-1) -- cycle;
-		\draw[thick,densely dotted] (1,-1) -- (4.5,-6);
-		\draw[thick,densely dotted] (2.5,-1) -- (3.5,-6);
-		\draw[thick,densely dotted] (4,-1) -- (2.5,-6);
-		\node[circle,inner sep=1.5pt,fill=blue] at (2,-4) {};
-		\node[circle,inner sep=1.5pt,fill=blue] at (4.5,-2) {};
-		\node[circle,inner sep=1.5pt,fill=blue] at (1.5,-2.5) {};
-		\node[circle,inner sep=1.5pt,fill=blue] at (4,-3.5) {};
-		\node[circle,inner sep=1.5pt,fill=red] at (2,-1.5) {};
-		\node[circle,inner sep=1.5pt,fill=red] at (3,-1) {};
-		\draw[white] (0.6,-4.5) -- (5.6,-3.5);
-		\node[white] at (0.4,-1.7) {\text{Inside}};
-		\node[white] at (0.7,-3.1) {\text{Outside}};
-	\end{tikzpicture}
-\end{center}
-The outside vertices are labeled by blue points, and insider vertices are
-labeled by red points.
 
 % \section{Scattering-Equation Map}
  
