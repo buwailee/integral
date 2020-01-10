@@ -854,6 +854,10 @@ Our algorithm is based on the following observations:
 	Therefore, if we can choose a set $S$ for a given matrix such that $N$ or $D$ 
 	decreases strictly in generated matrices, then it's a winning strategy.
 
+	%\item With rescale of powers and blow-ups, we can prepare any vector 
+	%$\sum_{i} c_i n_i$ for nonnegative coefficients $\{c_i\}$. Note that 
+	%they form the cone spanned by all $n_i$.
+
 	\item If there's exist a set of positive integers $\{c_i\,:\,i\in S\}$ and a 
 	positive integer $k$ such that
 	\begin{equation}\label{linearprog}
@@ -868,15 +872,15 @@ Our algorithm is based on the following observations:
 	\]
 	after $x_j\mapsto x_ix_j$ for $j\in S$ but $j\neq i$, where $q$ doesn't depend on $x_i$.
 	It's equivalent to the transformation $X_i\mapsto X_i-ck$ and $p\mapsto q$ 
-	in the integral. The new generated matrices for each $i\in S$ is just the matrix
+	in the integral. The new generated matrix for each $i\in S$ is just the matrix
 	obtained by deleting the $i$-th row of the old matrix.
 	
 	Therefore, we can reduce the number of variables of the polynomial or equivalently 
 	the number of rows of the matrix in this case.
 
 	\item Geometrically, eq.\eqref{linearprog} means that the constant vector $(1,\dots,1)$ 
-	is in the cone spanned by row vectors $\{n_i\,:\,i\in S\}$, which is a standard linear 
-	programming problem. 
+	is in the cone spanned by row vectors $\{n_i\,:\,i\in S\}$. 
+	%which is a standard linear programming problem. 
 
 	\item If $n^J_i \geq n^I_i$ for all $i$, we can drop column vector $n^J$. Geometrically, 
 	it means that the cone spanned by $\{n_i\}$ is in the semi-space defined by $z^J\geq z^I$.
@@ -885,31 +889,92 @@ Our algorithm is based on the following observations:
 	
 	\item In the viewpoint of cones, the blowing up is nearly a subdivision of the cone.
 	If a blow-up produces a vector $\sum_{i\in S} c_i n_i$ in the cone 
-	or on a boundary of the cone, then the $j$-th generated cone for $j\in S$ is spanned by 
+	or on a boundary of the cone (and let's call it the blow-up along 
+	this vector from now on),
+	then the $j$-th generated cone for $j\in S$ is spanned by 
 	vectors $\{n_i\,:\,i\neq j\}$ and the vector $\sum_{i\in S} c_i n_i$,
-	which is a proper sub-cone of the original cone. The union of these cones is the original cone,
+	which is a proper sub-cone of the original cone. 
+	The union of these cones is the original cone,
 	but they usually intersect with each other, so it's not a subdivision. 
-	However, it could be a subdivision. For example, consider a cone with $D=N=3$,
+	For example, consider a cone with $D=4$ and $N=3$
 	\begin{center}
-	\begin{tikzpicture}
-	\draw (1.7,2.6) -- (-2,-0.5);
-	\draw (-2,-0.5) -- (3.5,-0.5);
-	\draw (-2,-0.5) -- (4.2,1.7);
-	\draw (1.1,2.1) -- (3.6,1.5) -- (2.8,-0.5) -- cycle ;
-	\draw[dashed] (-2,-0.5) -- (3.5,0.9);
-
-	\draw[dashed] (1.1,2.1) -- (2.7,0.7);
-	\draw[dashed] (3.6,1.5) -- (2.7,0.7);
-	\draw[dashed] (2.8,-0.5) -- (2.7,0.7);
-	\node[fill=green,circle,inner sep=1pt] at (2.7,0.7) {};
-
-	\fill[opacity=0.1,blue]  (1.1,2.1) -- (-2,-0.5) -- (2.7,0.7);
-	\fill[opacity=0.1,green] (-2,-0.5) -- (2.7,0.7) -- (2.8,-0.5);
-	\fill[opacity=0.1,red] (-2,-0.5) -- (2.7,0.7) -- (3.6,1.5);
-	\end{tikzpicture}	
+		\begin{tikzpicture}[scale=0.75]
+		\draw[fill=gray!30] (1.8,2.4) node[fill=red,circle,inner sep=1pt] {} 
+			-- (3.2,0.8) node[fill=red,circle,inner sep=1pt] {}
+			-- (2,-0.5)  node[fill=red,circle,inner sep=1pt] {}
+			-- (1.2,0.8) node[fill=blue,circle,inner sep=1pt] {}
+			-- cycle;
+		\draw (2.8,3.2) -- (-2,-0.5);
+		\draw (-2,-0.5) -- (3.5,-0.5);
+		\draw[dashed] (-2,-0.5) -- (4,1);
+		\draw (-2,-0.5) -- (4,2);
+		\draw (3.6,1.3) -- (-2,-0.5);
+		\node[fill=green,circle,inner sep=1pt] at (2.4,0.9) {};
+		\end{tikzpicture}
 	\end{center}
-	we blow up the cone according to the middle vector on the above diagram, and
-	three generated cones form a subdivision of the original cone.
+	We can use the gray polygon, the intersection of this cone with a hyperplain,
+	to represent it, and blow up along the green vector which is the positive
+	linear combination of three red vectors, then we can get three new subcones
+	as shown in the following diagram.
+	\begin{center}
+		\begin{tikzpicture}[scale=0.75,baseline={([yshift=-.5ex]current bounding box.center)}]
+		\draw[fill=gray!30] (2.5,0.2) node[fill=red,circle,inner sep=1pt] {}
+			-- (1.6,-1.6) node[fill=blue,circle,inner sep=1pt] {}
+			-- (3.2,-2.8) node[fill=red,circle,inner sep=1pt] {}
+			-- (4,-1.5) node[fill=red,circle,inner sep=1pt] {}
+			-- cycle;
+		\node[fill=green,circle,inner sep=1pt] at (3.1,-1.3) {};
+		\end{tikzpicture}
+		$\longmapsto$
+		\begin{tikzpicture}[scale=0.75,baseline={([yshift=-.5ex]current bounding box.center)}]
+		\draw[gray] (2.5,0.2) node[fill=red,circle,inner sep=1pt] {}
+			-- (1.6,-1.6) node[fill=blue,circle,inner sep=1pt] {}
+			-- (3.2,-2.8) node[fill=red,circle,inner sep=1pt] {}
+			-- (4,-1.5) node[fill=red,circle,inner sep=1pt] {}
+			-- cycle;
+		\draw[fill=gray!30] (2.5,0.2) -- (3.1,-1.3) -- (3.2,-2.8) -- (1.6,-1.6) --cycle;
+		\node[fill=green,circle,inner sep=1pt] at (3.1,-1.3) {};
+		\end{tikzpicture}
+		\begin{tikzpicture}[scale=0.75,baseline={([yshift=-.5ex]current bounding box.center)}]
+		\draw[gray] (2.5,0.2) node[fill=red,circle,inner sep=1pt] {}
+			-- (1.6,-1.6) node[fill=blue,circle,inner sep=1pt] {}
+			-- (3.2,-2.8) node[fill=red,circle,inner sep=1pt] {}
+			-- (4,-1.5) node[fill=red,circle,inner sep=1pt] {}
+			-- cycle;
+		\draw[fill=gray!30] (3.1,-1.3) -- (4,-1.5) -- (3.2,-2.8) -- (1.6,-1.6) --cycle;
+		\node[fill=green,circle,inner sep=1pt] at (3.1,-1.3) {};
+		\end{tikzpicture}
+		\begin{tikzpicture}[scale=0.75,baseline={([yshift=-.5ex]current bounding box.center)}]
+		\draw[gray] (2.5,0.2) node[fill=red,circle,inner sep=1pt] {}
+			-- (1.6,-1.6) node[fill=blue,circle,inner sep=1pt] {}
+			-- (3.2,-2.8) node[fill=red,circle,inner sep=1pt] {}
+			-- (4,-1.5) node[fill=red,circle,inner sep=1pt] {}
+			-- cycle;
+		\draw[fill=gray!30] (2.5,0.2) -- (4,-1.5) -- (1.6,-1.6) -- (1.6,-1.6) --cycle;
+		\node[fill=green,circle,inner sep=1pt] at (3.1,-1.3) {};
+		\end{tikzpicture}
+	\end{center}
+
+	%\begin{center}
+	%\begin{tikzpicture}
+	%\draw (1.7,2.6) -- (-2,-0.5);
+	%\draw (-2,-0.5) -- (3.5,-0.5);
+	%\draw (-2,-0.5) -- (4.2,1.7);
+	%\draw (1.1,2.1) -- (3.6,1.5) -- (2.8,-0.5) -- cycle ;
+	%\draw[dashed] (-2,-0.5) -- (3.5,0.9);
+
+	%\draw[dashed] (1.1,2.1) -- (2.7,0.7);
+	%\draw[dashed] (3.6,1.5) -- (2.7,0.7);
+	%\draw[dashed] (2.8,-0.5) -- (2.7,0.7);
+	%\node[fill=green,circle,inner sep=1pt] at (2.7,0.7) {};
+
+	%\fill[opacity=0.1,blue]  (1.1,2.1) -- (-2,-0.5) -- (2.7,0.7);
+	%\fill[opacity=0.1,green] (-2,-0.5) -- (2.7,0.7) -- (2.8,-0.5);
+	%\fill[opacity=0.1,red] (-2,-0.5) -- (2.7,0.7) -- (3.6,1.5);
+	%\end{tikzpicture}	
+	%\end{center}
+	%we blow up the cone according to the middle vector on the above diagram, and
+	%three generated cones form a subdivision of the original cone.
 
 	% However, if $n_j$ is not the vector of a edge of the cone and $\sum_{i\in S} c_i n_i\neq n_j$,
 	% then generated cones may have overlaps with each other. In this case, usually we
@@ -918,7 +983,8 @@ Our algorithm is based on the following observations:
 	% Suppose that $n_j=n_k$ in the matrix, it's equivalent to say that the polynomial is the 
 	% function of the product $x_jx_k$.
 	
-	The bonus of this viewpoint is that we can see information of many rounds in only one picture.
+	The bonus of this viewpoint is that we can see information of many rounds 
+	in only one picture.
 
 	\item If we can cut the cone by blowing up into small cones such that 
 	each of them is totally contained in some semi-spaces $\{H^{IJ}\}$, then
@@ -928,46 +994,48 @@ Our algorithm is based on the following observations:
 	the intersection of all hyperplains $h^{IJ}=\{z\,:\, z^I=z^J\}$, 
 	or equivalently the vector $(1,1,\dots,1)$, 
 	is contained in the original cone.
-	In this case, no matter how blow-ups `divide' the cone, there always exists a cone contain
+	In this case, no matter how blow-ups `divide' the cone, 
+	there always exists a cone contain
 	$(1,1,\dots,1)$ so that it is not contained in any semi-space $H^{IJ}$.
 
 	Although in this case we cannot reduce the number of columns, we can reduce the number of rows.
 \end{enumerate}
-Now the algorithm is simple: For a given set $\mathcal M$ of matrix,
+Now basic logic of an algorithm is simple: For a given set $\mathcal M$ of matrix,
 \begin{enumerate}
 	\item[(1).] Replace any matrix by its reduced matrix. If all matrix in the set
-		have only one column or row, the algorithm stops.
-	\item[(2).] For each matrix in $\mathcal M$, find the minimal cone containing $(1,\dots,1)$, 
-		blow up according to
-		the set of variables corresponding to its edges, add all generated matrix into 
-		the set $\mathcal M$ and goto step (1).
+	have only one column or row, the algorithm stops.
+	\item[(2).] For each matrix in $\mathcal M$, 
+		find the minimal cone containing $(1,\dots,1)$, blow up according to
+		the set of variables corresponding to its edges, 
+		add all generated matrix into the set $\mathcal M$ and goto step (1).
 		If there's no cone containing $(1,\dots,1)$, goto step (3).
-	\item[(3).] For each cone, choose vectors on some hyperplains $h^{IJ}=\{z\,:\, z^I=z^J\}$,
-		`divide' the cone along these vectors on hyperplains by blowing up such that 
-		each of generated cones is totally contained in some semi-spaces $\{H^{IJ}\}$, 
+	\item[(3).] For each cone, `divide' the cone by blow-ups such that 
+		each subcone is totally contained in some semi-spaces 
+		$\{H^{IJ}\}$, 
 		add all generated matrix into the set $\mathcal M$ and goto step (1).
 \end{enumerate}
 
-Therefore, we have answer how to terminate by designing a new winning strategy. 
-Let's give a example. Consider the matrix 
+We have not given the explicit construction of step (3) of the algorithm, 
+which is the key point of this algorithm. Before giving it, let's first 
+show an example. Consider the matrix
 \[
-M=\left(
-\begin{array}{ccc}
- n_1 \\
- n_2 \\
- n_3
-\end{array}
-\right)
-=\left(
-\begin{array}{ccc}
- 0 & 3 & 1 \\
- 2 & 0 & 1 \\
- 1 & 2 & 0
-\end{array}
-\right),
+	M=\left(
+		\begin{array}{ccc}
+			n_1 \\
+			n_2 \\
+			n_3
+		\end{array}
+	\right)
+	=\left(
+		\begin{array}{ccc}
+			0 & 3 & 1 \\
+			2 & 0 & 1 \\
+			1 & 2 & 0
+		\end{array}
+	\right),
 \]
-we can represent the cone by the projection of its intersection with the hyperplain $z^1+z^2+z^3=12$
-on the $z^1$-$z^2$ plane.
+we can represent the cone by the projection of its intersection with 
+the hyperplain $z^1+z^2+z^3=12$ on the $z^1$-$z^2$ plane.
 \begin{center}
 \begin{tikzpicture}
 \fill[opacity=0.2,gray] (0,4.5) -- (4,0) -- (2,4) -- cycle ;
@@ -984,45 +1052,46 @@ on the $z^1$-$z^2$ plane.
 \node at (-0.3,4.5) {$n^1$};
 \end{tikzpicture}
 \end{center}
-The intersection of three dotted line is the vector $(4,4,4)$, so the cone doesn't contain
-$(1,1,1)$. What's more, there's no extra vector in the cone, so we directly goto step (3).
-We first find a red point as the intersection of the hyperplain $z^1=z^3$ and the facet 
-spanned by $\{n^1,n^2\}$ of the cone, so in fact the red point represents a ray.
-On this ray, we find a typical vector $n_1+n_2$, which tells us that we should blow up 
-$x_1$ and $x_2$.
+The intersection of three dotted line is the vector $(4,4,4)$, 
+so the cone doesn't contain $(1,1,1)$ and we can directly goto step (3).
+We first find a red point as the intersection of the hyperplain 
+$z^1=z^3$ and the facet spanned by $\{n^1,n^2\}$ of the cone, 
+so in fact the red point represents a ray.
+On this ray, we find a typical vector $n_1+n_2$, 
+which tells us that we should blow up $x_1$ and $x_2$.
 Therefore, the cone is decomposed into two new cones 
 \[
 	M\mapsto \biggl\{
-	\begin{pmatrix}
-		0&3&1\\
-		2&3&2\\
-		1&2&0
-	\end{pmatrix},
-	\begin{pmatrix}
-		2&3&2\\
-		2&0&1\\
-		1&2&0
-	\end{pmatrix}
-\biggr\}
+		\begin{pmatrix}
+			0&3&1\\
+			2&3&2\\
+			1&2&0
+		\end{pmatrix},
+		\begin{pmatrix}
+			2&3&2\\
+			2&0&1\\
+			1&2&0
+		\end{pmatrix}
+	\biggr\}
 \] 
 by blowing up, and these matrices can be reduced to
 \[
 	M\mapsto \biggl\{
-	\begin{pmatrix}
-		0&1\\
-		2&2\\
-		1&0
-	\end{pmatrix}\cong
-	\begin{pmatrix}
-		0&1\\
-		1&0
-	\end{pmatrix},
-	\begin{pmatrix}
-		3&2\\
-		0&1\\
-		2&0
-	\end{pmatrix}
-\biggr\}
+		\begin{pmatrix}
+			0&1\\
+			2&2\\
+			1&0
+		\end{pmatrix}\cong
+		\begin{pmatrix}
+			0&1\\
+			1&0
+		\end{pmatrix},
+		\begin{pmatrix}
+			3&2\\
+			0&1\\
+			2&0
+		\end{pmatrix}
+	\biggr\}
 \]
 because the first one is contained in the semi-space $z^3\leq z^2$
 and the second one is contained in the semi-space $z^3\leq z^1$.
@@ -1031,57 +1100,57 @@ and get
 \begin{align*}
 	M&\mapsto 
 	\biggl\{
-	\begin{pmatrix}
-		0&1\\
-	\end{pmatrix},
-	\begin{pmatrix}
-		1&0\\
-	\end{pmatrix},
-	\begin{pmatrix}
-		0&1\\
-		2&0
-	\end{pmatrix},
-	\begin{pmatrix}
-		3&2\\
-		2&0
-	\end{pmatrix}
+		\begin{pmatrix}
+			0&1\\
+		\end{pmatrix},
+		\begin{pmatrix}
+			1&0\\
+		\end{pmatrix},
+		\begin{pmatrix}
+			0&1\\
+			2&0
+		\end{pmatrix},
+		\begin{pmatrix}
+			3&2\\
+			2&0
+		\end{pmatrix}
 	\biggr\}\\
 	 &\cong
-	\biggl\{
-	\begin{pmatrix}
-		0\\
-	\end{pmatrix},
-	\begin{pmatrix}
-		0\\
-	\end{pmatrix},
-	\begin{pmatrix}
-		0&1\\
-		2&0
-	\end{pmatrix},
-	\begin{pmatrix}
-		2\\
-		0
-	\end{pmatrix}
-	\biggr\}\\
-	&\mapsto
-	\biggl\{
-	\begin{pmatrix}
-		0\\
-	\end{pmatrix},
-	\begin{pmatrix}
-		0\\
-	\end{pmatrix},
-	\begin{pmatrix}
-		2&0
-	\end{pmatrix},
-	\begin{pmatrix}
-		0&2\\
-	\end{pmatrix},
-	\begin{pmatrix}
-		2\\
-		0
-	\end{pmatrix}
-	\biggr\}
+	 \biggl\{
+		 \begin{pmatrix}
+			 0\\
+		 \end{pmatrix},
+		 \begin{pmatrix}
+			 0\\
+		 \end{pmatrix},
+		 \begin{pmatrix}
+			 0&1\\
+			 2&0
+		 \end{pmatrix},
+		 \begin{pmatrix}
+			 2\\
+			 0
+		 \end{pmatrix}
+	 \biggr\}\\
+	 &\mapsto
+	 \biggl\{
+		 \begin{pmatrix}
+			 0\\
+		 \end{pmatrix},
+		 \begin{pmatrix}
+			 0\\
+		 \end{pmatrix},
+		 \begin{pmatrix}
+			 2&0
+		 \end{pmatrix},
+		 \begin{pmatrix}
+			 0&2\\
+		 \end{pmatrix},
+		 \begin{pmatrix}
+			 2\\
+			 0
+		 \end{pmatrix}
+	 \biggr\}
 \end{align*}
 Now the algorithm stops. If we go back to the integral of the polynomial $p=y^2z+x^3z^2+xy$
 corresponding to $M$, we should carefully add factors $c_i$
@@ -1098,25 +1167,50 @@ in above example.
 	\biggr) +O({\alpha'}^{-2}).
 \end{align*}
 
-Empirically, we can use a simplified version of this algorithm to choose $S$ for player A.
-For a given matrix, if player A chooses $S$ such that 
-\begin{compactenum}[\quad\, 1)]
-\item $\sum_{i\in S} n_i^I>0$ for all $I$;
-\item $\sum_{i\in S} n_i$ has maximal number of minimals;
-\item $\#S$ is minimal,
-\end{compactenum}
-then he/she can still win in all cases we have tested. 
-This strategy doesn't contain any transformation like $x_i\mapsto x_i^{1/c_i}$. The first 
-condition means that the polynomial goes to zero when $x_i\to 0$ for $i\in S$, and
-the last is used to avoid too many vertices. These two condition is first
-introduced in \cite{Binoth:2000ps}, and called strategy X in \cite{bogner2009mathematical}.
-Here, we introduce one more condition $2)$, which may be the key condition to avoid 
-infinite iteration. It's used to make sure the vector $\sum_{i\in S} n_i$
-is choosen on some hyperplains $z^I=z^J$.
+%Empirically, we can use a simplified version of this algorithm to choose $S$ for player A.
+%For a given matrix, if player A chooses $S$ such that 
+%\begin{compactenum}[\quad\, 1)]
+%\item $\sum_{i\in S} n_i^I>0$ for all $I$;
+%\item $\sum_{i\in S} n_i$ has maximal number of minimals;
+%\item $\#S$ is minimal,
+%\end{compactenum}
+%then he/she can still win in all cases we have tested. 
+%This strategy doesn't contain any transformation like $x_i\mapsto x_i^{1/c_i}$. The first 
+%condition means that the polynomial goes to zero when $x_i\to 0$ for $i\in S$, and
+%the last is used to avoid too many vertices. These two condition is first
+%introduced in \cite{Binoth:2000ps}, and called strategy X in \cite{bogner2009mathematical}.
+%Here, we introduce one more condition $2)$, which may be the key condition to avoid 
+%infinite iteration. It's used to make sure the vector $\sum_{i\in S} n_i$
+%is choosen on some hyperplains $z^I=z^J$.
 
-It's not clear now whether the simplified version is a winning strategy,
-but it's more efficient than lots of well-known winning strategies, and it's 
-very easy to code.
+%It's not clear now whether the simplified version is a winning strategy,
+%but it's more efficient than lots of well-known winning strategies, and it's 
+%very easy to code.
+
+Now come back to the step (3). One possible way to `divide' the cone 
+is to reduce the number of outside vertices. Let's use a $N=3$ example to 
+explain it.
+\begin{center}
+	\begin{tikzpicture}
+
+		\draw (2,-1.5) -- (1.5,-2.5) -- (2,-4) -- (4,-3.5) -- (4.5,-2) -- (3,-1) -- cycle;
+		\fill[gray!30] (2,-1.5) -- (1.5,-2.5) -- (2,-4) -- (4,-3.5) -- (4.5,-2) -- (3,-1) -- cycle;
+		\draw[thick,densely dotted] (1,-1) -- (4.5,-6);
+		\draw[thick,densely dotted] (2.5,-1) -- (3.5,-6);
+		\draw[thick,densely dotted] (4,-1) -- (2.5,-6);
+		\node[circle,inner sep=1.5pt,fill=blue] at (2,-4) {};
+		\node[circle,inner sep=1.5pt,fill=blue] at (4.5,-2) {};
+		\node[circle,inner sep=1.5pt,fill=blue] at (1.5,-2.5) {};
+		\node[circle,inner sep=1.5pt,fill=blue] at (4,-3.5) {};
+		\node[circle,inner sep=1.5pt,fill=red] at (2,-1.5) {};
+		\node[circle,inner sep=1.5pt,fill=red] at (3,-1) {};
+		\draw[white] (0.6,-4.5) -- (5.6,-3.5);
+		\node[white] at (0.4,-1.7) {\text{Inside}};
+		\node[white] at (0.7,-3.1) {\text{Outside}};
+	\end{tikzpicture}
+\end{center}
+The outside vertices are labeled by blue points, and insider vertices are
+labeled by red points.
 
 % \section{Scattering-Equation Map}
  
