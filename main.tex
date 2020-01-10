@@ -42,7 +42,7 @@
 \date{\today}
 \title{Blowing up Stringy Integrals: How to win Hironaka's polyhedra game}
 
-\author{Zhenjie Li,\and Qinglin Yang,\and Chi Zhang}
+\author{Zhenjie Li\and Chi Zhang}
 
 
 \begin{document}
@@ -50,7 +50,7 @@
 \maketitle
 
 \begin{abstract}
-	We provide an efficient method, blowing up, to compute leading order contributions of the recently introduced stringy integrals. The algorithm is based on well-known Kironaka's polyhedra game.
+	We provide an efficient method, blowing up, to compute leading order contributions of the recently introduced stringy integrals. The algorithm also gives a new winning strategy of the well-known Kironaka's polyhedra game.
 \end{abstract}
 \newpage
 
@@ -1040,7 +1040,7 @@ any subcone is contained in some semi-spaces defined by outside hyperplains.
 	its dual cone spanned by normal vectors of its facets.
 \end{enumerate}
 %
-Now basic logic of an algorithm is simple: For a given set $\mathcal M$ of matrix,
+Now our algorithm is simple: For a given set $\mathcal M$ of matrix,
 \begin{enumerate}
 	\item[(1).] Replace any matrix by its reduced matrix. If all matrix in the set
 	have only one column or row, the algorithm stops.
@@ -1049,13 +1049,20 @@ Now basic logic of an algorithm is simple: For a given set $\mathcal M$ of matri
 		the set of variables corresponding to its edges, 
 		add all generated matrix into the set $\mathcal M$ and goto step (1).
 		If there's no cone containing $(1,\dots,1)$, goto step (3).
-	\item[(3).] For each cone, `divide' the cone by blow-ups such that 
-		each subcone is totally contained in some semi-spaces 
+	\item[(3).] For each cone, reduce the number of outside vertices by blow-ups 
+		such that each generated subcone is totally contained in some semi-spaces 
 		$\{H^{IJ}\}$, 
 		add all generated matrix into the set $\mathcal M$ and goto step (1).
 \end{enumerate}
 
-For example, consider the matrix
+This algorithm always terminates in finite steps. If we do not want to rescale powers
+as the original Hironaka polyhedron game, we may use more steps because in this case 
+usually we can only slowly shrink the cone such that outside vertices approach the outside 
+hyperplains step by step. However, after finite steps, we can still make sure that 
+the number of outside vertices can be reduced, so the algorithm still terminates, but
+the algorithm involving rescaling of powers usually is more efficient.
+
+Now let's give a simple example to end this section. Consider the matrix
 \[
 	M=\left(
 		\begin{array}{ccc}
@@ -1424,157 +1431,157 @@ As we saw in section 2, lots of terms have been dropped during the process of bl
 
 
 
-\appendix
+%\appendix
 
-\section{Proof of bijectivity of the scattering-equation map}
-In section 2, we find that the blowing up procedure is simplified by the fact that the leading order contribution of stringy integrals are given by the canonical function for $N_{P}$, which is the Minkowski sum of Newton polytopes of polynomials forming the regulator. This fact is equivalent to say that the scattering-equation map is a bijection~\cite{}. Here we give another proof for this proposition. 
+%\section{Proof of bijectivity of the scattering-equation map}
+%In section 2, we find that the blowing up procedure is simplified by the fact that the leading order contribution of stringy integrals are given by the canonical function for $N_{P}$, which is the Minkowski sum of Newton polytopes of polynomials forming the regulator. This fact is equivalent to say that the scattering-equation map is a bijection~\cite{}. Here we give another proof for this proposition. 
 
-\begin{pro*}
-	For a product of $M$ polynomials $P=\prod_{j=1}^M p_j^{\alpha_j}$, 
-	where $\alpha_j>0$, 
-	$p_j=\sum_{I_{j}} a_{{I_j}} x^{\mathbf{n}^{I_j}}$ are polynomials with non-negative coefficients $a_{I_j}$ and
-	\[
-		x^{\mathbf{n}^{I_j}}:=\prod_{i=1}^D x_i^{n^{I_j}_i},
-	\]
-	we define a polytope $N_P$ in $\mathbb R^D$ as the Minkowski sum $N_P=\sum_j \alpha_j N(p_j)$ of Newton polytopes $N(p_j)$.
-	Then the scattering map:
-	\[
-		\mathbf{X}=\frac{\partial \log P}{\partial \log \mathbf{x}},
-	\]
-	where $\mathbf{X}=(X_{1},\ldots,X_{D})$ and $\mathbf{x}=(x_{1},\ldots,x_{D})$, is a one-to-one map from $(0,\infty)^D$ to the interior of $N_P$ when matrix $(n_i^I)$ has full rank%
-	\footnote{When matrix $(n_i^I)$ doesn't have full rank, the map is not one-to-one. 
-		But in fact, we only care about the case that it has full rank, so that $\dim (N(p))=D$. 
-		% If not, there exist some $\mathbf s\neq 0$ such that $\mathbf s \cdot \mathbf n^I=0$ for all $I$. 
-		% In this case,
-		% \[
-		% \mathbf s\cdot\mathbf X=\mathbf s\cdot\frac{\partial \log p}{\partial \log \mathbf x}=0.
-		% \]
-		% Therefore, one can project $\operatorname{im}(\mathbf X)$ 
-		% by setting some $x_i=1$ so that the new matrix $(n^I_i)$ has full rank.	
-		% In this case, one can recover the original image by solving these equations $\mathbf s\cdot\mathbf X=0$
-		% after working out the image in lower dimension.
-		}%
-		. 
-	\end{pro*}
+%\begin{pro*}
+	%For a product of $M$ polynomials $P=\prod_{j=1}^M p_j^{\alpha_j}$, 
+	%where $\alpha_j>0$, 
+	%$p_j=\sum_{I_{j}} a_{{I_j}} x^{\mathbf{n}^{I_j}}$ are polynomials with non-negative coefficients $a_{I_j}$ and
+	%\[
+		%x^{\mathbf{n}^{I_j}}:=\prod_{i=1}^D x_i^{n^{I_j}_i},
+	%\]
+	%we define a polytope $N_P$ in $\mathbb R^D$ as the Minkowski sum $N_P=\sum_j \alpha_j N(p_j)$ of Newton polytopes $N(p_j)$.
+	%Then the scattering map:
+	%\[
+		%\mathbf{X}=\frac{\partial \log P}{\partial \log \mathbf{x}},
+	%\]
+	%where $\mathbf{X}=(X_{1},\ldots,X_{D})$ and $\mathbf{x}=(x_{1},\ldots,x_{D})$, is a one-to-one map from $(0,\infty)^D$ to the interior of $N_P$ when matrix $(n_i^I)$ has full rank%
+	%\footnote{When matrix $(n_i^I)$ doesn't have full rank, the map is not one-to-one. 
+		%But in fact, we only care about the case that it has full rank, so that $\dim (N(p))=D$. 
+		%% If not, there exist some $\mathbf s\neq 0$ such that $\mathbf s \cdot \mathbf n^I=0$ for all $I$. 
+		%% In this case,
+		%% \[
+		%% \mathbf s\cdot\mathbf X=\mathbf s\cdot\frac{\partial \log p}{\partial \log \mathbf x}=0.
+		%% \]
+		%% Therefore, one can project $\operatorname{im}(\mathbf X)$ 
+		%% by setting some $x_i=1$ so that the new matrix $(n^I_i)$ has full rank.	
+		%% In this case, one can recover the original image by solving these equations $\mathbf s\cdot\mathbf X=0$
+		%% after working out the image in lower dimension.
+		%}%
+		%. 
+	%\end{pro*}
 	
-	\begin{proof}
-	The proof is finished in two steps:
-	\paragraph{Step 1: $M=1$}
-	Consider a polynomial $p=\sum_{I} a_I x^{\mathbf n^I}$ with $a_I\geq 0$ for all $I$. 
-	The scattering map now becomes
-	\[
-		\mathbf X(\mathbf{x})=\frac{\partial \log p}{\partial \log \mathbf x}.
-	\]
-	The proposition is equivalent to the claim that the equation $\mathbf X(\mathbf{x})=\mathbf\Lambda$ has a unique solution in $\mathbb R^D$ 
-	if and only if $\mathbf\Lambda\in (N(p))^\circ$. 
+	%\begin{proof}
+	%The proof is finished in two steps:
+	%\paragraph{Step 1: $M=1$}
+	%Consider a polynomial $p=\sum_{I} a_I x^{\mathbf n^I}$ with $a_I\geq 0$ for all $I$. 
+	%The scattering map now becomes
+	%\[
+		%\mathbf X(\mathbf{x})=\frac{\partial \log p}{\partial \log \mathbf x}.
+	%\]
+	%The proposition is equivalent to the claim that the equation $\mathbf X(\mathbf{x})=\mathbf\Lambda$ has a unique solution in $\mathbb R^D$ 
+	%if and only if $\mathbf\Lambda\in (N(p))^\circ$. 
 	
-	Let $\mathbf{\Lambda}$ be an interior point in $N(p)$ given by 
-	\[
-		\mathbf \Lambda=\sum_{I}\lambda_I\mathbf n^I
-		=\frac{\partial}{\partial \log \mathbf x}\sum_{I}\lambda_I \log x^{\mathbf n^I}
-	\]
-	where $\sum_I \lambda_I=1$ and $\lambda_I > 0$. The equation $\mathbf X(x)=\mathbf \Lambda$ becomes
-	\[
-	\begin{aligned}
-		0=\frac{\partial }{\partial \log \mathbf x}\left(
-			\log p-\sum_{I}\lambda_I \log x^{\mathbf n^I}
-		\right)=\frac{\partial }{\partial \log \mathbf x}\left(
-		\log F(\mathbf x)
-		\right)=\frac{1}{F(\mathbf x)}\frac{\partial F(\mathbf x)}{\partial \log \mathbf x}
-	\end{aligned}
-	\]
-	where
-	\[
-		F(\mathbf x)=\biggl(\sum_I a_I x^{\mathbf{n}^I}\biggr)\prod_J (x^{-\mathbf n^J})^{\lambda_J}.
-	\]
-	or in terms of $\mathbf y=\log \mathbf x$, 
-	\[
-		F(\mathbf y)
-		=\sum_I a_I \exp\left(\mathbf{y}\cdot \left(\mathbf{n}^I-\mathbf{\Lambda}\right)\right).
-	\]
-	Therefore we only need to show that $F(\mathbf y)$ has a unique saddle points in $\mathbb R^D$ 
-	because $F>0$ for all $\mathbf y$.
+	%Let $\mathbf{\Lambda}$ be an interior point in $N(p)$ given by 
+	%\[
+		%\mathbf \Lambda=\sum_{I}\lambda_I\mathbf n^I
+		%=\frac{\partial}{\partial \log \mathbf x}\sum_{I}\lambda_I \log x^{\mathbf n^I}
+	%\]
+	%where $\sum_I \lambda_I=1$ and $\lambda_I > 0$. The equation $\mathbf X(x)=\mathbf \Lambda$ becomes
+	%\[
+	%\begin{aligned}
+		%0=\frac{\partial }{\partial \log \mathbf x}\left(
+			%\log p-\sum_{I}\lambda_I \log x^{\mathbf n^I}
+		%\right)=\frac{\partial }{\partial \log \mathbf x}\left(
+		%\log F(\mathbf x)
+		%\right)=\frac{1}{F(\mathbf x)}\frac{\partial F(\mathbf x)}{\partial \log \mathbf x}
+	%\end{aligned}
+	%\]
+	%where
+	%\[
+		%F(\mathbf x)=\biggl(\sum_I a_I x^{\mathbf{n}^I}\biggr)\prod_J (x^{-\mathbf n^J})^{\lambda_J}.
+	%\]
+	%or in terms of $\mathbf y=\log \mathbf x$, 
+	%\[
+		%F(\mathbf y)
+		%=\sum_I a_I \exp\left(\mathbf{y}\cdot \left(\mathbf{n}^I-\mathbf{\Lambda}\right)\right).
+	%\]
+	%Therefore we only need to show that $F(\mathbf y)$ has a unique saddle points in $\mathbb R^D$ 
+	%because $F>0$ for all $\mathbf y$.
 	
-	To see it, we first notice that $F(\mathbf y)$ is a strict convex function of $\mathbf y$. In fact, the Hessian of $F(\mathbf y)$ is 
-	\[
-		H_{ij}(\mathbf y)=\frac{\partial^2}{\partial y_i\partial y_j}F(\mathbf y)=\sum_I a_I \exp\left(\mathbf{y}\cdot \left(\mathbf{n}^I-\mathbf{\Lambda}\right)\right)\left(\mathbf{n}^I-\mathbf{\Lambda}\right)_i\left(\mathbf{n}^I-\mathbf{\Lambda}\right)_j.
-	\]
-	For any $\mathbf v\neq 0$, 
-	\[
-		\sum_{i,j}v_iv_jH_{ij}=\sum_I a_I \exp\left(\mathbf{y}\cdot \left(\mathbf{n}^I-\mathbf{\Lambda}\right)\right) \left(\mathbf v\cdot (\mathbf{n}^I-\mathbf{\Lambda})\right)^2 >0.
-	\]
-	It cannot vanish because that it only happens when $\mathbf v\cdot (\mathbf{n}^I-\mathbf{\Lambda})=0$ 
-	for all $I$. However, we have assumed $\{\mathbf n^I\}$ has full rank, so
-	vectors $\{\mathbf{n}^I-\mathbf{\Lambda}\}$ span the whole space 
-	$\mathbb R^D$. 
+	%To see it, we first notice that $F(\mathbf y)$ is a strict convex function of $\mathbf y$. In fact, the Hessian of $F(\mathbf y)$ is 
+	%\[
+		%H_{ij}(\mathbf y)=\frac{\partial^2}{\partial y_i\partial y_j}F(\mathbf y)=\sum_I a_I \exp\left(\mathbf{y}\cdot \left(\mathbf{n}^I-\mathbf{\Lambda}\right)\right)\left(\mathbf{n}^I-\mathbf{\Lambda}\right)_i\left(\mathbf{n}^I-\mathbf{\Lambda}\right)_j.
+	%\]
+	%For any $\mathbf v\neq 0$, 
+	%\[
+		%\sum_{i,j}v_iv_jH_{ij}=\sum_I a_I \exp\left(\mathbf{y}\cdot \left(\mathbf{n}^I-\mathbf{\Lambda}\right)\right) \left(\mathbf v\cdot (\mathbf{n}^I-\mathbf{\Lambda})\right)^2 >0.
+	%\]
+	%It cannot vanish because that it only happens when $\mathbf v\cdot (\mathbf{n}^I-\mathbf{\Lambda})=0$ 
+	%for all $I$. However, we have assumed $\{\mathbf n^I\}$ has full rank, so
+	%vectors $\{\mathbf{n}^I-\mathbf{\Lambda}\}$ span the whole space 
+	%$\mathbb R^D$. 
 	
-	For a strict convex function $F(\mathbf y)$ on $\mathbb R^D$, it has a unique minimal in $\mathbb R^D$ 
-	if and only if it does not take the minima when $\mathbf{y}$ goes to infinity along any direction. 
-	To this end, we only need to show that there exist some $I$ such that $\mathbf{y}'\cdot (\mathbf{n}^I-\mathbf{\Lambda})>0$ for any $\mathbf{y}'\neq 0$ and $\mathbf\Lambda \in (N(p))^\circ $, which is directly followed from the convexity of $N(p)$: If $\mathbf\Lambda \in (N(p))^\circ$, for a given $\mathbf{y}'\neq 0$, the hyperplain $L$ with normal vector $\mathbf{y}'$ crossing $\mathbf \Lambda$ 
-	divides the space $\mathds{R}^{D}$ into semi-spaces $L^+$ and $L^-$, then any $\mathbf{n}^I$ 
-	in $L^+$ are desired.
+	%For a strict convex function $F(\mathbf y)$ on $\mathbb R^D$, it has a unique minimal in $\mathbb R^D$ 
+	%if and only if it does not take the minima when $\mathbf{y}$ goes to infinity along any direction. 
+	%To this end, we only need to show that there exist some $I$ such that $\mathbf{y}'\cdot (\mathbf{n}^I-\mathbf{\Lambda})>0$ for any $\mathbf{y}'\neq 0$ and $\mathbf\Lambda \in (N(p))^\circ $, which is directly followed from the convexity of $N(p)$: If $\mathbf\Lambda \in (N(p))^\circ$, for a given $\mathbf{y}'\neq 0$, the hyperplain $L$ with normal vector $\mathbf{y}'$ crossing $\mathbf \Lambda$ 
+	%divides the space $\mathds{R}^{D}$ into semi-spaces $L^+$ and $L^-$, then any $\mathbf{n}^I$ 
+	%in $L^+$ are desired.
 
 	
-	\begin{center}
-		\begin{tikzpicture}
-		\draw[black,thick](3.5,0.5)--(1,0)--(0,-3)--(1.5,-4.5)--(4.5,-3.5)--(5,-1)--cycle;
-		\draw[black,dashed](-1.4,-2)--(6,-2);
-		\draw[->,black,thick](2,-2)--(2,-1);
-		\draw[->,black,thick](2,-2)--(1,0);
-		\node at (2,-2.2) {$\mathbf{\Lambda}$};
-		\node at (2.2,-0.8) {$\mathbf{y}'$};
-		\node at (6.4,-2) {$L$};
-		\node at (5.6,-1.6) {$L^+$};
-		\node at (5.6,-2.4) {$L^-$};
-		\node at (0.6,0) {$\mathbf{n}^I$};
-		\end{tikzpicture}
-	\end{center}
-	Conversely, if $\mathbf\Lambda \not\in N(p)$, one can find a hyperplain $L$ such that $N(p)\subset L^-$, 
-	then the normal vector $\mathbf{y}'$ of $L$ belonging to $L^{+}$ gives the wanted direction since such that $F(t\mathbf{y}')\to 0$ as $t\to \infty$. Hence, $F(\mathbf y)$ has no saddle point in $\mathds{R}^D$ as a positive convex function.
+	%\begin{center}
+		%\begin{tikzpicture}
+		%\draw[black,thick](3.5,0.5)--(1,0)--(0,-3)--(1.5,-4.5)--(4.5,-3.5)--(5,-1)--cycle;
+		%\draw[black,dashed](-1.4,-2)--(6,-2);
+		%\draw[->,black,thick](2,-2)--(2,-1);
+		%\draw[->,black,thick](2,-2)--(1,0);
+		%\node at (2,-2.2) {$\mathbf{\Lambda}$};
+		%\node at (2.2,-0.8) {$\mathbf{y}'$};
+		%\node at (6.4,-2) {$L$};
+		%\node at (5.6,-1.6) {$L^+$};
+		%\node at (5.6,-2.4) {$L^-$};
+		%\node at (0.6,0) {$\mathbf{n}^I$};
+		%\end{tikzpicture}
+	%\end{center}
+	%Conversely, if $\mathbf\Lambda \not\in N(p)$, one can find a hyperplain $L$ such that $N(p)\subset L^-$, 
+	%then the normal vector $\mathbf{y}'$ of $L$ belonging to $L^{+}$ gives the wanted direction since such that $F(t\mathbf{y}')\to 0$ as $t\to \infty$. Hence, $F(\mathbf y)$ has no saddle point in $\mathds{R}^D$ as a positive convex function.
 	
-	Therefore, we have proven that $F(\mathbf y)$ has a unique minimal in $\mathbb R^D$ when 
-	$\mathbf \Lambda \in (N(p))^\circ$ and no saddle point in $\mathbb R^D$ when 
-	$\mathbf \Lambda \not\in N(p)$, which proves the first part.
+	%Therefore, we have proven that $F(\mathbf y)$ has a unique minimal in $\mathbb R^D$ when 
+	%$\mathbf \Lambda \in (N(p))^\circ$ and no saddle point in $\mathbb R^D$ when 
+	%$\mathbf \Lambda \not\in N(p)$, which proves the first part.
 	
-	\paragraph{Step 2: Generic $M$} Let $\mathbf{\Lambda}$ be a interior point in Minkowski sum $\sum_j \alpha_j N(p_{j})$ corresponding to $P=\prod_j p_{j}^{\alpha_{j}}$ given by 
-	\[
-		\mathbf{\Lambda}
-		=\sum_j \alpha_j \mathbf{\Lambda}_j
-		=\sum_j \alpha_{j} \biggl(\sum_{I_j}\lambda_{I_j}\mathbf{n}^{I_j}\biggr)
-		=\frac{\partial}{\partial \log \mathbf{x}}\sum_{j}\alpha_j\biggl( \sum_{I_j}\lambda_{I_j} \log x^{\mathbf n^{I_j}}\biggr)
-	\]
-	where $\sum_{I_j} \lambda_{I_j}=1$ and $\lambda_{I_j} > 0$. Then the equation $\mathbf{X}(\mathbf{x})=\mathbf{\Lambda}$ is 
-	\[
-		0=\frac{\partial }{\partial \log \mathbf{x}}\left(
-			\log P-\sum_{j}\alpha_j\sum_{I_j}\lambda_{I_j} \log x^{\mathbf n^{I_j}}
-		\right)=\frac{\partial }{\partial \log \mathbf{x}}\left(
-		\log \left(\prod_j F_{j}^{\alpha_{j}}\right)
-		\right),
-	\]
-	where
-	\[
-		\begin{aligned}
-			F_j(\mathbf y)&=\sum_{I_{j}} a_{I_{j}} \exp\left(\mathbf{y}\cdot \left(\mathbf{n}^{I_j}-\mathbf{\Lambda}_j\right)\right).
-		\end{aligned}
-	\]	
-	We only need to show that
-	\[
-		F(\mathbf y)=\prod_j F_j(\mathbf{y})^{\alpha_j}	
-	\]
-	has a unique saddle point in $\mathds{R}^D$.
+	%\paragraph{Step 2: Generic $M$} Let $\mathbf{\Lambda}$ be a interior point in Minkowski sum $\sum_j \alpha_j N(p_{j})$ corresponding to $P=\prod_j p_{j}^{\alpha_{j}}$ given by 
+	%\[
+		%\mathbf{\Lambda}
+		%=\sum_j \alpha_j \mathbf{\Lambda}_j
+		%=\sum_j \alpha_{j} \biggl(\sum_{I_j}\lambda_{I_j}\mathbf{n}^{I_j}\biggr)
+		%=\frac{\partial}{\partial \log \mathbf{x}}\sum_{j}\alpha_j\biggl( \sum_{I_j}\lambda_{I_j} \log x^{\mathbf n^{I_j}}\biggr)
+	%\]
+	%where $\sum_{I_j} \lambda_{I_j}=1$ and $\lambda_{I_j} > 0$. Then the equation $\mathbf{X}(\mathbf{x})=\mathbf{\Lambda}$ is 
+	%\[
+		%0=\frac{\partial }{\partial \log \mathbf{x}}\left(
+			%\log P-\sum_{j}\alpha_j\sum_{I_j}\lambda_{I_j} \log x^{\mathbf n^{I_j}}
+		%\right)=\frac{\partial }{\partial \log \mathbf{x}}\left(
+		%\log \left(\prod_j F_{j}^{\alpha_{j}}\right)
+		%\right),
+	%\]
+	%where
+	%\[
+		%\begin{aligned}
+			%F_j(\mathbf y)&=\sum_{I_{j}} a_{I_{j}} \exp\left(\mathbf{y}\cdot \left(\mathbf{n}^{I_j}-\mathbf{\Lambda}_j\right)\right).
+		%\end{aligned}
+	%\]	
+	%We only need to show that
+	%\[
+		%F(\mathbf y)=\prod_j F_j(\mathbf{y})^{\alpha_j}	
+	%\]
+	%has a unique saddle point in $\mathds{R}^D$.
 	
-	Here $F(\mathbf y)$ is not necessarily a strict convex function. However, consider a new function
-	\[
-		F(\mathbf y)^{1/\alpha_0}=\prod_j F_j(\mathbf y)^{\alpha_j/\alpha_0},
-	\]
-	where $\alpha_0$ is a positive number such that $\alpha_0< \alpha_j$ for all $j$, which is a convex function 
-	since each factor $F_{j}^{\alpha_{j}/\alpha_{0}}$ is a convex function. Since $F(\mathbf y)^{1/\alpha_0}$ takes its minimum at same points as $F(\mathbf y)$, 
-	we can further assume that $F(\mathbf y)$ is a strict convex function (\textcolor{red}{C: Why?}). 
+	%Here $F(\mathbf y)$ is not necessarily a strict convex function. However, consider a new function
+	%\[
+		%F(\mathbf y)^{1/\alpha_0}=\prod_j F_j(\mathbf y)^{\alpha_j/\alpha_0},
+	%\]
+	%where $\alpha_0$ is a positive number such that $\alpha_0< \alpha_j$ for all $j$, which is a convex function 
+	%since each factor $F_{j}^{\alpha_{j}/\alpha_{0}}$ is a convex function. Since $F(\mathbf y)^{1/\alpha_0}$ takes its minimum at same points as $F(\mathbf y)$, 
+	%we can further assume that $F(\mathbf y)$ is a strict convex function (\textcolor{red}{C: Why?}). 
 	
-	Finally, we claim that $F(\mathbf y)$ does not take minimum when $\mathbf{y}$ goes to infinity 
-	along any direction. It is because that for a given $\mathbf{y}$ and each $j$, $F_j(t\mathbf{y})\to \infty$ when $t\to \infty$,
-	so does $F(t\mathbf{y})=\prod_j F_j(t\mathbf{y})^{\alpha_j}$. Therefore, the equation $\mathbf{X}(x)=\mathbf{\Lambda}$ has a unique solution.
-	\end{proof}
+	%Finally, we claim that $F(\mathbf y)$ does not take minimum when $\mathbf{y}$ goes to infinity 
+	%along any direction. It is because that for a given $\mathbf{y}$ and each $j$, $F_j(t\mathbf{y})\to \infty$ when $t\to \infty$,
+	%so does $F(t\mathbf{y})=\prod_j F_j(t\mathbf{y})^{\alpha_j}$. Therefore, the equation $\mathbf{X}(x)=\mathbf{\Lambda}$ has a unique solution.
+	%\end{proof}
 	
 
 
