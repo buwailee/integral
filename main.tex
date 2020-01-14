@@ -239,7 +239,7 @@ Before going into the detail of blowing up, let us clarify the problem mentioned
 \end{equation*}
 where $\mathcal{P}$ is some positive geometry (in our case, it is some simple polytope) of dimension $D$ parameterized by $\mathbf{x}:= \{x_{1},\ldots,x_{D}\}$, $\Omega_{\mathcal{P}}$ is its associated canonical form, and $p_{I}(\mathbf{x})$ are polynomials vanishing at boundaries of $\mathcal{P}$ and hence regulate the logarithm divergence of $\Omega_{\mathcal{P}}$ at boundaries. For $p_{I}(x)^{\alpha' W_{I}}$ to be single valued in $\mathcal{P}$, we require that $p_{I}(\mathbf{x})$ is nonnegative in the interior of $\mathcal{P}$. %which is equivalent to say that $p_{I}$ is subtraction-free under a positive parameterization. 
 
-The leading order contribution of $\mathcal{I}$ with respect to $\alpha'$ arise from the integral over the neighbourhood of each vertex of $\mathcal{P}$. For any vertex, the leading order contribution can be trivially obtained if there are just $D$ polynomials $p_{I}$ vanishing and regular (non-singular) at this vertex as in \eqref{int2}, and such vertex is called {\it{normal crossing}} since this vertex has been crossed $D$ times geometrically. All troubles are caused by vertices which are {\it not} normal crossing. For example (see Fig. \ref{fig_1}), for the integral 
+The leading order contribution of $\mathcal{I}$ with respect to $\alpha'$ arise from the integral over the neighbourhood of each vertex of $\mathcal{P}$. For any vertex, the leading order contribution can be trivially obtained if there are just $D$ polynomials $p_{I}$ vanishing and regular (non-singular) at this vertex as in \eqref{int2}, and such vertex is called {\it{normal crossing}} since this vertex has been crossed $D$ times geometrically. All troubles are caused by vertices which are {\it not} normal crossing. For example (see Fig. \ref{fig_1}), consider the integral 
 \begin{equation}\label{exam:1}
 	\int_0^\infty \int_0^\infty \frac{\dif x}{x}\frac{\dif y}{y}x^{\alpha' X}
 	y^{\alpha' Y}(x+y+ xy)^{-\alpha' c},
@@ -263,8 +263,7 @@ the vertex $(0,0)$ is crossed by $x=0$ and $y=0$ once, by $x^3+y^3+xy=0$ twice.
 
 The main tool used in this article to solve this problem is blowing up (or blow-up).
 Briefly speaking, blowing up introduces additional dimensions for the original point,
-and curves crossing it in different directions are lifted to new curves 
-intersecting the additional dimensions with different points according to their directions.
+and curves crossing it in different directions are lifted to new curves such that they intersect at the different points in the additional dimensions according to their directions.
 
 % Let's give a short review of blowing up. 
 % In mathematics, blowing up or blowup is a type of geometric transformation which replaces 
@@ -279,31 +278,28 @@ crossing the original point $(0,0)$.
 % however it only contains little information of these lines. In another viewpoint,
 % $(0,0)$ is a `singularity' because generally $n$ lines cannot cross each other 
 % at a common point on the plane. 
-Now if we want know how these lines cross the point $(0,0)$, we can introduce 
+If we want know how these lines cross the point $(0,0)$, we can introduce 
 new variables $u$, $v$ and $t$ such that
 \[
 	x=ut,\quad y=vt,
 \] 
-where $[u,v]$ is a projective coordinate, otherwise any common factor of $u$ and $v$ can be 
-absorbed into the definition of $t$, then the line $l_i:a_ix+b_iy=0$ becomes a line parameterized 
-by $t$ with an additional point $[-b_i,a_i]\in \mathbb P^1$. Even when $t\to 0$, the additional point
-$[-b_i,a_i]\in \mathbb P^1$ is still meaningful, which tells us how this line goes to $(0,0)$
-so that it can used to tell apart different lines.
-In other words, we replace the point $(0,0)$ by a space $\mathbb P^1$, which is the additional
+where $[u:v]$ is a projective coordinate, since any common factor of $u$ and $v$ can be absorbed into the definition of $t$, the line $l_i:a_ix+b_iy=0$ hence becomes a line parameterized 
+by $t$ with an additional point $[-b_i:a_i]\in \mathbb P^1$. Then, the additional point $[-b_i:a_i]\in \mathbb P^1$ tells us how this line goes to $(0,0)$ so that it can be used to distinguish different lines.
+In other words, we replace the point $(0,0)$ with $\mathbb P^1$, which is the additional
 dimension mentioned above. 
 
-Now we can see how blowing up resolves singularities. 
-Consider the curve $x^3+y^3+xy=0$ on the plane, which is drawn in Fig.\ref{fig_1}.
-It crosses the original point twice in different 
-directions. Therefore, after blowing up, the uplifted curve intersects $\mathbb P^1$ with two 
-different points so that it has no self-intersection. 
+% Now Let us see how blowing up resolves singularities. 
+% Consider the curve $x^3+y^3+xy=0$ on the plane, which is drawn in Fig.\ref{fig_1}.
+% It crosses the original point twice in different 
+% directions. Therefore, after blowing up, the uplifted curve intersects $\mathbb P^1$ with two 
+% different points so that it has no self-intersection. 
 
 The above example is called the blow-up of the plane along the original point.
 In this article, we will consider the blow-up of $\mathbb R^D$
 along subspace $\mathbb R^n$ defined by $x_{i_1}=\cdots=x_{i_n}=0$. 
-The blow-up is the surface defined by $x_{i_j}y_k=x_{i_k}y_j$ in space 
+(The blow-up is the surface defined by $x_{i_j}y_k=x_{i_k}y_j$ in space 
 $\mathbb R^{D}\times \mathbb P^{n-1}$,
-where $[y_1,\dots,y_n]$ is the projective coordinate. These equation can be easily
+where $[y_1,\dots,y_n]$ is the projective coordinate. \textcolor{red}{C: I don't undertand, say what is the range of $i_{j},k,i_{k},j$, what is the dimension of the surface. make it more plain}) These equation can be easily
 solved by $y_j=tx_{i_j}$ for $t\neq 0$.
 
 % Generally, let $X=\operatorname{Spec} A$ be an affine scheme, and let $V(f_1,\dots,f_n)\subset X$
@@ -313,38 +309,39 @@ solved by $y_j=tx_{i_j}$ for $t\neq 0$.
 % \alpha_{(f_1,\dots,f_n)}:X-Y\to \mathbb P_A^{n-1}.
 % \] 
 
-Now let's carefully consider the first example of integral \eqref{exam:1},
+Now let's carefully consider the first example, the integral \eqref{exam:1}
 \[
-	I=\int_0^\infty \int_0^\infty\frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y+x y)^{-\alpha' c}.
+	I=\int_0^\infty \int_0^\infty\frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y+x y)^{-\alpha' c},
 \]
-The leading terms come form the neighbourhoods of four vertices $(0,0)$, $(0,\infty)$, $(\infty,0)$ and $(\infty,\infty)$. Let's consider the simplest vertex first, 
+for which the leading contribution come from the neighbourhoods of four vertices $(0,0)$, $(0,\infty)$, $(\infty,0)$ and $(\infty,\infty)$. One can easily see that the vertices $(0,\infty)$, $(\infty,0)$ and $(\infty,\infty)$ are normal crossing. The consequece of this fact is the integrand decouples into powers of $x$ and $y$, then the leading contribution can be trivially obtained, for example 
 \begin{align*}
 	I(0,\infty)&=\int_{0}^\epsilon\int_{1/\epsilon}^\infty \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y+xy)^{-\alpha' c} \\
 	&\approx \int_{0}^\epsilon\int_{1/\epsilon}^\infty \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' (b-c)}= 
 	\frac{1}{{\alpha'}^2}\frac{1}{a} \frac{1}{c-b}+O({\alpha'}^{-1})
 \end{align*}
-Near the vertex $(0,\infty)$, the integral decouples because the mixed factor $x+y+xy \approx y$ when $y \gg x$.  Similarly, $I(\infty,0)\approx ({\alpha'}^2 b (c-a))^{-1}$. 
+Similarly, $I(\infty,0)\approx ({\alpha'}^2 b (c-a))^{-1}$ and $I(\infty,\infty)\approx (\alpha'^{2}(c-a) (c-b))^{-1}.$
 
-For the harder vertex
-\[
-I(0,0)=\int^{\epsilon}_0 \int^{\epsilon}_0 \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y+xy)^{-\alpha' c}
-%\sim\int^{\epsilon}_0 \int^{\epsilon}_0\frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y)^{-\alpha' c}.
-\]
-when $(x,y)\to (0,0)$, we cannot decouple $x$ and $y$ in the mixed factor $(x+y+xy)^{-\alpha' c}$ 
-because we don't know which one is dominated. However, we can drop the term $xy$ because $xy\ll x$, $y$. 
-For the remaining terms $x+y$, we can introduce new variables $x = tp$ and $y=t(1-p)$, 
-\textit{i.e. blow-up}, then
-\begin{equation}\label{canonicalformunderblowup}
+The vertex $(0,0)$ is harder due to the behavor of the mixed factor $(x+y+xy)^{-\alpha' c}$ at the neighbourhood of thie vertex. % $(x,y)\to (0,0)$
+% \[
+% I(0,0)=\int^{\epsilon}_0 \int^{\epsilon}_0 \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y+xy)^{-\alpha' c}
+% %\sim\int^{\epsilon}_0 \int^{\epsilon}_0\frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y)^{-\alpha' c}.
+% \]
+% when $(x,y)\to (0,0)$, we cannot decouple $x$ and $y$ in the mixed factor $(x+y+xy)^{-\alpha' c}$ 
+% because we don't know which one is dominated. 
+However, we can always drop the term $xy$ which becomes irrelevant when $(x,y)\to (0,0)$. %because $xy\ll x$, $y$. 
+%For the remaining terms $x+y$, 
+Then we can introduce new variables $(t,p)$ by the map $x = tp$ and $y=t(1-p)$, \textit{i.e. blow-up}. The vertex (0,0) is blowed up to a unit interval with $t=0$ and $p\in [0,1]$ under this map, and it is easy to see that the factor $(x+y)$ is dominated by $x$ when $p\to 0$ by $y$ when $p \to1$. By intersering $t$ and $p$,
+ \begin{equation}\label{canonicalformunderblowup}
 	\frac{dxdy}{xy} = \frac{dp}{p(1-p)}\frac{dt}{t},
-\end{equation}
+ \end{equation}
 and
 \begin{equation*}
 	I(0,0)\approx\int_0^\epsilon\frac{dt}{t} t^{\alpha'(a+b-c)}\int_0^{1}\frac{dp}{p(1-p)}p^{\alpha' a}(1-p)^{\alpha' b}%\sim \frac{1}{\alpha'}\frac{1}{a+b-c}\int_0^{1}\frac{dp}{p(1-p)}p^{\alpha' a}(1-p)^{\alpha' b}
 	= \frac{1}{{\alpha'}^2}\frac{1}{a+b-c}\biggl(\frac 1a+\frac 1b\biggr)
 	+O({\alpha'}^{-1})
 \end{equation*}
-In this example, whether $x$ or $y$ is dominated in the integration is characterized by $p$, 
-and both vertices $p\approx 0$ ($x\ll y$) and $p\approx 1$ ($y\ll x$) contribute.
+% In this example, whether $x$ or $y$ is dominated in the integration is characterized by $p$, 
+% and both vertices $p\approx 0$ ($x\ll y$) and $p\approx 1$ ($y\ll x$) contribute.
 \begin{center}
 \begin{tikzpicture}[scale=0.8]
 \fill[gray!30,opacity=0.4] (-6.9,1.4) -- (-3.9,1.4) -- (-3.9,4.4) -- (-6.9,4.4);
@@ -375,11 +372,12 @@ and both vertices $p\approx 0$ ($x\ll y$) and $p\approx 1$ ($y\ll x$) contribute
 \node at (2.8,-3.6) {\small $1-p$};
 \end{tikzpicture}
 \end{center}
-Similarly, one can work out 
-\[
-	I(\infty,\infty)\approx \frac{1}{{\alpha'}^2}\frac{1}{(c-a) (c-b)} 
-\]
-and finally
+% Similarly, one can work out 
+% \[
+% 	I(\infty,\infty)\approx \frac{1}{{\alpha'}^2}\frac{1}{(c-a) (c-b)} 
+% \]
+% and 
+Finally
 \begin{align*}
 	I&\approx I(0,0)+I(0,\infty)+I(\infty,0)+I(\infty,\infty)\\
 	 &\approx \frac{1}{{\alpha'}^2}
