@@ -330,7 +330,7 @@ The vertex $(0,0)$ is harder due to the behavor of the mixed factor $(x+y+xy)^{-
 % because we don't know which one is dominated. 
 However, we can always drop the term $xy$ which becomes irrelevant when $(x,y)\to (0,0)$. %because $xy\ll x$, $y$. 
 %For the remaining terms $x+y$, 
-Then we can introduce new variables $(t,p)$ by the map $x = tp$ and $y=t(1-p)$, \textit{i.e. blow-up}. The vertex (0,0) is blowed up to a unit interval with $t=0$ and $p\in [0,1]$ under this map, and it is easy to see that the factor $(x+y)$ is dominated by $x$ when $p\to 0$ by $y$ when $p \to1$. By intersering $t$ and $p$,
+Then we can introduce new variables $(t,p)$ by the map $x = tp$ and $y=t(1-p)$, \textit{i.e. blow-up}. The vertex (0,0) is blowed up to a unit interval with $t=0$ and $p\in [0,1]$ under this map, and it is easy to see that the factor $(x+y)$ is dominated by $x$ when $p\to 0$ and by $y$ when $p \to1$. By intersering $t$ and $p$, we have
  \begin{equation}\label{canonicalformunderblowup}
 	\frac{dxdy}{xy} = \frac{dp}{p(1-p)}\frac{dt}{t},
  \end{equation}
@@ -394,7 +394,7 @@ Finally
 %	I\sim I(0,0)+I(0,\infty)+I(\infty,0)+I(\infty,\infty).
 %\]
 
-Now for the second example \eqref{exam:2}, near $(0,0)$, blow up $p=x^3+y^3+x y$ by letting
+For the second example \eqref{exam:2}, the regulating polynomial $p=x^3+y^3+x y$ has a singularity at (0,0). This singularity can be blowed up by setting
 $x=tu$ and $y=tv$, then when $u\approx 1$, 
 $p=t^2(t +t v^3+ v)\approx t^2(t+v)=t(x^2+y)$. 
 Similarly, if $v=1$, we will get $p\approx t(x+y^2)$. 
