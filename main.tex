@@ -69,11 +69,11 @@
 
 Very recently, a vast generalization of tree level strings integrals has been proposed in \cite{Arkani-Hamed:2019mrd}. This generalization is realized by identifying the Parke-Taylor form 
 \[
-	\mathsf{PT}(n):=\frac{\dif^{n}z}{\mathrm{SL}(2,\mathds{R})} \prod_{i=1}^{n}\frac{1}{z_{i}-z_{i+1}}
+	\mathsf{PT}(n):=\frac{\dif^{n}z}{\mathrm{SL}(2,\mathbb{R})} \prod_{i=1}^{n}\frac{1}{z_{i}-z_{i+1}}
 \]
-as the canonical form of the moduli space $\mathcal{M}_{0,n}^{+}$ and the Koba-Nielson factor as a regulator of the divergent integral $\int \mathsf{PT}(n)$. With a positive parameterization  $\mathbf{x}:= \{x_{1},\cdots, x_{n-3}\}$  of $\mathcal{M}_{0,n}^{+}$, $\mathsf{PT}(n)$ becomes the canonical form $\prod_{i=1}^{n-3} \dif \log x_{i}$ of $\mathds{R}_{+}^{n-3}$ and the Koba-Nielson factor $\prod_{i<j} (z_{i}-z_{j})^{s_{ij}}$ becomes a product of powers of some Laurent polynomials $p_{I}(\mathbf{x})$, then string integrals end up with the form of
+as the canonical form of the moduli space $\mathcal{M}_{0,n}^{+}$ and the Koba-Nielson factor as a regulator of the divergent integral $\int \mathsf{PT}(n)$. With a positive parameterization  $\mathbf{x}:= \{x_{1},\cdots, x_{n-3}\}$  of $\mathcal{M}_{0,n}^{+}$, $\mathsf{PT}(n)$ becomes the canonical form $\prod_{i=1}^{n-3} \dif \log x_{i}$ of $\mathbb{R}_{+}^{n-3}$ and the Koba-Nielson factor $\prod_{i<j} (z_{i}-z_{j})^{s_{ij}}$ becomes a product of powers of some Laurent polynomials $p_{I}(\mathbf{x})$, then string integrals end up with the form of
 \begin{equation} 
-	\int_{\mathds{R}_{+}^{D}} \prod_{i=1}^{D}\frac{\dif x_{i}}{x_{i}}x_{i}^{\alpha' X_{i}}\prod_{I}p_{I}(\mathbf{x})^{-\alpha'c_{I}}	\:, \label{int1}
+	\int_{\mathbb{R}_{+}^{D}} \prod_{i=1}^{D}\frac{\dif x_{i}}{x_{i}}x_{i}^{\alpha' X_{i}}\prod_{I}p_{I}(\mathbf{x})^{-\alpha'c_{I}}	\:, \label{int1}
 \end{equation}
 where $D=n{-}3$, $X_{i}$ and $c_{I}$ are linear combinations of Mandelstam variables $s_{ij}$'s. A \emph{stringy} integral is a integral of form eq.(\ref{int1}) but with arbitrary subtraction-free polynomials $p_{I}$. 
 
@@ -110,7 +110,7 @@ where $D=n{-}3$, $X_{i}$ and $c_{I}$ are linear combinations of Mandelstam varia
 
 In \cite{Arkani-Hamed:2019mrd}, many important properties of stringy integrals are well studied, especially the relation between their field theory limit, {\it{i.e}}. the limit of $\alpha'\to 0$, and the Minkowski sum $N_{P}$ of Newton polytopes of $\{p_I\}$.
 %As in the original superstring amplitude, the field theory limit of a stringy integral is  its leading order as $\alpha'\to 0$. 
-More concretely, {\it{ i) the leading order of a stringy integral is given by the volume of the dual polytope, or the canonical function $\underline{\Omega}(N_{P})$, of $N_{P}$, and ii) a bijection between $\mathds{R}_{+}^{D}$ and $N_{P}$ is given by the saddle point equation of the regulator, that is the so-called scattering-equation map $\Phi$,}}
+More concretely, {\it{ i) the leading order of a stringy integral is given by the volume of the dual polytope, or the canonical function $\underline{\Omega}(N_{P})$, of $N_{P}$, and ii) a bijection between $\mathbb{R}_{+}^{D}$ and $N_{P}$ is given by the saddle point equation of the regulator, that is the so-called scattering-equation map $\Phi$,}}
 \begin{equation} \label{SEmap}
 	X_{i}= \sum_{I}c_{I}\frac{\partial \log p_{I}}{\partial \log x_{i}}\:, \qquad  \text{for }i=1,\cdots,D.
 \end{equation}	
@@ -119,7 +119,7 @@ On the one hand, performing Minkowski sum for polytopes analytically is nearly i
 
 
 The main purpose of this article is to show an efficient method, {\it{blowing up}}, %(\textcolor{red}{C: or blowing-up map?}),
-to calculate the leading order of the integral eq.\eqref{int1} with respect to $\alpha'$. This is a general method which is closely related to the so-called \emph{Hironaka's polyhedra game}~\cite{}. We will see that the situation is easier when this method is applied in stringy integrals due to some features of canonical forms, and especially its closed relation to the polytope $N_{P}$. This method is based on two simple observations: i) the leading order contribution in $\alpha'$-expansion of stringy integrals arises from each vertex of the integration region $\mathds{R}_{+}^{D}$, ii) suppose that all $p_I(0)\neq 0$ in the integral eq.\eqref{int1}, then the integral at the neighbourhood of the origin becomes 
+to calculate the leading order of the integral eq.\eqref{int1} with respect to $\alpha'$. This is a general method which is closely related to the so-called \emph{Hironaka's polyhedra game}~\cite{}. We will see that the situation is easier when this method is applied in stringy integrals due to some features of canonical forms, and especially its closed relation to the polytope $N_{P}$. This method is based on two simple observations: i) the leading order contribution in $\alpha'$-expansion of stringy integrals arises from each vertex of the integration region $\mathbb{R}_{+}^{D}$, ii) suppose that all $p_I(0)\neq 0$ in the integral eq.\eqref{int1}, then the integral at the neighbourhood of the origin becomes 
 \begin{equation}\label{int2}
 	\int_{[0,\epsilon]^D}\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i} \prod_{I}p_{I}(0)^{-\alpha' c_{I}}
 	=\prod_{i=1}^D\frac{\epsilon^{\alpha' X_i}p_{I}(0)^{-\alpha' c_{I}}}{\alpha' X_i}
@@ -459,13 +459,13 @@ if we find that $x^{n^J}$ and $x^{n^I}$
 such that $n^J_i\geq n^I_i$ for every $i$, then there's no need to consider 
 $x^{n^J}$ anymore because it goes to zero faster than $x^{n^I}$. 
 Geometrically, one can assign each term with a cone 
-$C_{I}=(\mathbf n^I+\mathbb R^D_{+})$, the above
+$C_{I}=(n^I+\mathbb R^D_{+})$, the above
 claim is equivalently that terms in this cone can be thrown away.
 Furthermore, we can consider the \textit{convex hull} of these cones $\{C_I\}$, 
 \textit{i.e.} the smallest convex set contains these cones,
 which is the \textit{Newton polyhedron} $C[p]$ of the polynomial $p$. 
 It's usually larger than the union of these cones $\bigcup_I C_I$, 
-but terms other than vertices in the Newton polyhedron 
+but terms other than vertices of the Newton polyhedron 
 are also not dominated! 
 %Here let's consider an example $p(x)=x^6+y^6+x^2y^2$. 
 %\begin{center}
@@ -861,15 +861,6 @@ reduced matrices.
 For example, 
 \[
 \begin{pmatrix}
-	1&2\\
-	3&2
-\end{pmatrix}\cong 
-\begin{pmatrix}
-	1&2\\
-	3&2\\
-	2&2
-\end{pmatrix}\cong
-\begin{pmatrix}
 	1&2&3\\
 	3&2&4\\
 	2&2&3
@@ -878,7 +869,16 @@ For example,
 	0&1&2\\
 	1&0&2\\
 	0&0&1
-\end{pmatrix}.
+\end{pmatrix}\cong
+\begin{pmatrix}
+	0&1\\
+	1&0\\
+	0&0
+\end{pmatrix}\cong
+\begin{pmatrix}
+	0&1\\
+	1&0
+\end{pmatrix} 
 \]
 For two equivalent matrices $(n^I_i)\cong (m^J_k)$, there exists a vector $v$ such that 
 $\sum_I a_I x^{n^I}\approx x^v\sum_J a_J x^{m^J}$, so equivalent matrices give us
@@ -1468,7 +1468,7 @@ In this article, we have shown how to obtain the leading order contribution of s
 All information about the leading order of such integrals is contained in the Minkowski sum $N_{P}$ of Newton polytopes of the regulating polynomials. In this sense, the blow-up method gives a way to reconstruct the polytope $N_{P}$ from its vertices. However, as we saw in section 3, spurious poles and hence spurious vertices are produced in the process of blow-ups. Additional efforts are still needed to recognize the real poles and vertices, especially when the dimensionality increases (curse of dimensionality) and the regulating polynomials get more and more complicated. The result obtained by blowing up is correct but redundant, thus a interesting question is how the polytope $N_{P}$ emerges form this (usually tedious) result. 
 
 
-Another way to reconstruct $N_{P}$ is, along with the opposite direction, to find the facets of $N_{P}$ by using the scattering-equation map. Where the aim is to find all directions such that $\mathbf{X}$ approaches facets of $N_{P}$ as $\mathbf{x}$ approaches boundaries of $\mathds{R}^{D}$ along with these directions~\cite{}. It would be interesting to find any relations between the reconstruction from the bottom up, the blow-up, and the reconstructiong from the top down, the scattering-equation map.
+Another way to reconstruct $N_{P}$ is, along with the opposite direction, to find the facets of $N_{P}$ by using the scattering-equation map. Where the aim is to find all directions such that $\mathbf{X}$ approaches facets of $N_{P}$ as $\mathbf{x}$ approaches boundaries of $\mathbb{R}^{D}$ along with these directions~\cite{}. It would be interesting to find any relations between the reconstruction from the bottom up, the blow-up, and the reconstructiong from the top down, the scattering-equation map.
 
 As we saw in section 2, lots of terms have been dropped during the process of blow-ups, while higher order contributions of such integrals with respect to $\alpha'$ certainly depend on the details of regulating polynomials. One way to obtain the higher order contribution is to expand the integrand with respect to $\alpha'$ then integration, the obstacle to this expansion is singularities in poles. The blow-up procedure provide a way to remove this obstacle: each integration region produced by blow-ups only meets singularities of the canonical form at one vertex, then a subtractation can be easily made such that the integrand have no divergence in the integration region.
 
