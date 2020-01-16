@@ -134,7 +134,11 @@ They can be overcome by a series of blows-ups, after which the stringy integral 
 Essentially, finding such a series of blow-ups is equivalent to give a winning strategy for a (simplified) Hironaka's polyhedra game.
 
 
-In section 2, we review the definition of blows-up and describe its relation to Hironaka's polyhedra game, then elaborate the principle and procedures of the blowing up algorithm. Section 3 uses several examples arising form cluster stringy integrals to illustrate this algorithm. Section 4 contains discussion and outlook. Finally, in the appendix, we will give another proof for the proposition firstly given in \cite{Arkani-Hamed:2017tmz} that the scattering-equation map \eqref{SEmap} is a bijection. 
+In section 2, we review the definition of blows-up and describe its relation to Hironaka's polyhedra game, then elaborate the principle and procedures of the blowing up algorithm. 
+In section 3, we introduce a new viewpoint to approach the Hironaka's polyhedra game
+and give a new winning strategy of the game.
+Section 4 uses several examples arising form cluster stringy integrals to illustrate this algorithm.
+Section 5 contains discussion and outlook. Finally, in the appendix, we will give another proof for the proposition firstly given in \cite{Arkani-Hamed:2017tmz} that the scattering-equation map \eqref{SEmap} is a bijection. 
 %from the interior of $\mathbb R_+^D$ to the interior of Minkowski sum of Newton polytopes of $p_I$. 
 
 % (\textcolor{red}{C: How to introduce scattering-equation map? Should we talk about its relation with blow up?})
@@ -164,7 +168,7 @@ In section 2, we review the definition of blows-up and describe its relation to 
 % \end{equation}
 %Geometrically, it's so simple because it's only $x_1=\cdots=x_D=0$ that defines the vertices. 
 
-\section{Blow up}
+\section{Blow-up and Hironaka's Polyhedra Game}
 
 % (Some review of positive geometry \& canonical form. ...)
 
@@ -232,8 +236,13 @@ In section 2, we review the definition of blows-up and describe its relation to 
 % 
 % One important lesson from the above trivial integral is that the leading terms of the integral come from the vertices of the positive geometry. 
 
+In this section, we first show some heuristic examples 
+to show the general procedure to calculate the leading order fo stringy integrals
+by blow-ups.
+Then we prove the equivalence of this procedure and the famous Hironaka's polyhedra
+game.
 
-Before going into the detail of blowing up, let us clarify the problem mentioned in introduction. To this end, it is useful to recover a more general form of string integrals
+Before going into details of blowing up, let us clarify the problem mentioned in introduction. To this end, it is useful to recover a more general form of string integrals
 \begin{equation*}
   \mathcal{I}(\alpha';W_{I})=\int_{\mathcal{P}} \Omega_{\mathcal{P}}(\mathbf{x}) \prod_{I}p_{I}(\mathbf{x})^{\alpha'W_{I}}\,,
 \end{equation*}
@@ -297,9 +306,10 @@ dimension mentioned above.
 The above example is called the blow-up of the plane along the original point.
 In this article, we will consider the blow-up of $\mathbb R^D$
 along subspace $\mathbb R^n$ defined by $x_{i_1}=\cdots=x_{i_n}=0$. 
-(The blow-up is the surface defined by $x_{i_j}y_k=x_{i_k}y_j$ in space 
+(The blow-up is the surface defined by equations $\{x_{i_j}y_k=x_{i_k}y_j\,:\, 1\leq j<k\leq n\}$ in space 
 $\mathbb R^{D}\times \mathbb P^{n-1}$,
-where $[y_1,\dots,y_n]$ is the projective coordinate. \textcolor{red}{C: I don't undertand, say what is the range of $i_{j},k,i_{k},j$, what is the dimension of the surface. make it more plain}) These equation can be easily
+where $[y_1:\dots:y_n]$ is the projective coordinate. 
+These equations can be easily
 solved by $y_j=tx_{i_j}$ for $t\neq 0$.
 
 % Generally, let $X=\operatorname{Spec} A$ be an affine scheme, and let $V(f_1,\dots,f_n)\subset X$
@@ -313,12 +323,16 @@ Now let's carefully consider the first example, the integral \eqref{exam:1}
 \[
 	I=\int_0^\infty \int_0^\infty\frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y+x y)^{-\alpha' c},
 \]
-for which the leading contribution come from the neighbourhoods of four vertices $(0,0)$, $(0,\infty)$, $(\infty,0)$ and $(\infty,\infty)$. One can easily see that the vertices $(0,\infty)$, $(\infty,0)$ and $(\infty,\infty)$ are normal crossing. The consequece of this fact is the integrand decouples into powers of $x$ and $y$, then the leading contribution can be trivially obtained, for example 
+whose leading contribution come from the neighbourhoods of four vertices $(0,0)$, $(0,\infty)$, $(\infty,0)$ and $(\infty,\infty)$. One can easily see that the vertices $(0,\infty)$, $(\infty,0)$ and $(\infty,\infty)$ are normal crossing. The consequece of this fact is the integrand decouples into powers of $x$ and $y$, then the leading contribution can be trivially obtained, for example 
 \begin{align*}
 	I(0,\infty)&=\int_{0}^\epsilon\int_{1/\epsilon}^\infty \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y+xy)^{-\alpha' c} \\
 	&\approx \int_{0}^\epsilon\int_{1/\epsilon}^\infty \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' (b-c)}= 
-	\frac{1}{{\alpha'}^2}\frac{1}{a} \frac{1}{c-b}+O({\alpha'}^{-1})
+	\frac{1}{{\alpha'}^2}\frac{1}{a} \frac{1}{c-b}+O({\alpha'}^{-1}),
 \end{align*}
+where we throw away $x$ and $xy$ in $x+y+xy$ after $\approx$ because in this case $x\ll y$
+so that they do not contribute the leading order when $\alpha' \to 0$.
+In this article, the symbol $\approx$ is used to relate two integrals with the same leading terms 
+or two polynomials which contribute the same leading terms in the integration.
 Similarly, $I(\infty,0)\approx ({\alpha'}^2 b (c-a))^{-1}$ and $I(\infty,\infty)\approx (\alpha'^{2}(c-a) (c-b))^{-1}.$
 
 The vertex $(0,0)$ is harder due to the behavor of the mixed factor $(x+y+xy)^{-\alpha' c}$ at the neighbourhood of thie vertex. % $(x,y)\to (0,0)$
@@ -329,15 +343,24 @@ The vertex $(0,0)$ is harder due to the behavor of the mixed factor $(x+y+xy)^{-
 % when $(x,y)\to (0,0)$, we cannot decouple $x$ and $y$ in the mixed factor $(x+y+xy)^{-\alpha' c}$ 
 % because we don't know which one is dominated. 
 However, we can always drop the term $xy$ which becomes irrelevant when $(x,y)\to (0,0)$. %because $xy\ll x$, $y$. 
-%For the remaining terms $x+y$, 
-Then we can introduce new variables $(t,p)$ by the map $x = tp$ and $y=t(1-p)$, \textit{i.e. blow-up}. The vertex (0,0) is blowed up to a unit interval with $t=0$ and $p\in [0,1]$ under this map, and it is easy to see that the factor $(x+y)$ is dominated by $x$ when $p\to 0$ by $y$ when $p \to1$. By intersering $t$ and $p$,
+For the remaining terms $x+y$, 
+we can introduce new variables $(t,[u:v])$ defined by equations $x = tu$ and $y=tv$ in
+$\mathbb R\times\mathbb P^1$, \textit{i.e. blow-up}. Because $x$, $y\geq 0$ in the integral region,
+%It's convenient to further identify the $\mathbb P^1$ with
+%the line $u+v=1$ defined in $\mathbb R^2$.
+the vertex $(0,0)$ is blowed up to a $1$-dimensional simplex $\mathbb P^1_+=\{[u:v]\,:\,u,v\geq 0\}$ 
+with two new vertices $u=0$ and $v=0$ under this map, 
+and it is easy to see that the factor $(x+y)$ is dominated by $x$ near the vertex $u=0$ or 
+by $y$ near the vertex $v = 0$.
+The one-dimensional simplex $\mathbb P^1_+$ can be identified with 
+the unit interval $[0,1]$ by setting $u+v=1$, so
  \begin{equation}\label{canonicalformunderblowup}
-	\frac{dxdy}{xy} = \frac{dp}{p(1-p)}\frac{dt}{t},
+	\frac{dxdy}{xy} = \frac{du}{u(1-u)}\frac{dt}{t},
  \end{equation}
 and
 \begin{equation*}
-	I(0,0)\approx\int_0^\epsilon\frac{dt}{t} t^{\alpha'(a+b-c)}\int_0^{1}\frac{dp}{p(1-p)}p^{\alpha' a}(1-p)^{\alpha' b}%\sim \frac{1}{\alpha'}\frac{1}{a+b-c}\int_0^{1}\frac{dp}{p(1-p)}p^{\alpha' a}(1-p)^{\alpha' b}
-	= \frac{1}{{\alpha'}^2}\frac{1}{a+b-c}\biggl(\frac 1a+\frac 1b\biggr)
+	I(0,0)\approx\int_0^\epsilon\frac{dt}{t} t^{\alpha'(a+b-c)}\int_0^{1}\frac{du}{u(1-u)}u^{\alpha' a}(1-u)^{\alpha' b}%\sim \frac{1}{\alpha'}\frac{1}{a+b-c}\int_0^{1}\frac{dp}{p(1-p)}p^{\alpha' a}(1-p)^{\alpha' b}
+	= \frac{1}{{\alpha'}^2}\frac{1}{a+b-c}\biggl(\frac 1a+\frac 1b\biggr).
 	+O({\alpha'}^{-1})
 \end{equation*}
 % In this example, whether $x$ or $y$ is dominated in the integration is characterized by $p$, 
@@ -353,7 +376,7 @@ and
 \draw[->] (-4.6,-0.8) -- (-1.5,-0.8);
 \draw[->] (-4.5,-0.9) -- (-4.5,2.2);
 \draw (-3.5,-0.8) -- (-4.5,0.2);
-\draw[densely dashed,->] (-4.5,0.2) -- (-3.2,-1.1)node[right]{$p$};
+\draw[densely dashed,->] (-4.5,0.2) -- (-3.2,-1.1)node[right]{$u$};
 \draw[->]  plot[smooth, tension=.7] coordinates {(-4.4,0.3) (-2.7,1.7) (-0.6,2)};
 \draw[->]  plot[smooth, tension=.7] coordinates {(-3.5,-0.9) (-2.4,-2.4) (-0.6,-2.6)};
 \fill[gray!30,opacity=0.4] (0.8,-3.4) -- (2.8,-3.4) -- (2.8,-0.4) -- (-0.2,-0.4) -- (-0.2,-3.4);
@@ -362,14 +385,14 @@ and
 \fill[gray!30,opacity=0.4] (0.8,1) -- (2.8,1) -- (2.8,4) -- (-0.2,4) -- (-0.2,1);
 \draw[->] (-0.3,1) -- (2.8,1);
 \draw[->] (-0.2,0.9) -- (-0.2,4);
-\node at (-2.8,2) {\small $p\approx 0$};
-\node at (-2.2,-2) {\small $p\approx 1$};
+\node at (-2.8,2) {\small $u\to 0$};
+\node at (-2.2,-2) {\small $v\to 0$};
 \node at (-4,-1) {\small $t$};
 \node at (-4.6,-0.4) {\small $t$};
-\node at (2.8,0.8) {\small $p$};
+\node at (2.8,0.8) {\small $u$};
 \node at (-0.4,4) {\small $t$};
 \node at (-0.4,-0.4) {\small $t$};
-\node at (2.8,-3.6) {\small $1-p$};
+\node at (2.8,-3.6) {\small $v$};
 \end{tikzpicture}
 \end{center}
 % Similarly, one can work out 
@@ -377,13 +400,13 @@ and
 % 	I(\infty,\infty)\approx \frac{1}{{\alpha'}^2}\frac{1}{(c-a) (c-b)} 
 % \]
 % and 
-Finally
+Finally,
 \begin{align*}
 	I&\approx I(0,0)+I(0,\infty)+I(\infty,0)+I(\infty,\infty)\\
 	 &\approx \frac{1}{{\alpha'}^2}
 	 \biggl(
 \frac{1}{b (a+b-c)}+\frac{1}{b (c-a)}+\frac{1}{a (c-b)}+\frac{1}{(c-a) (c-b)}+\frac{1}{a (a+b-c)}
-	 \biggr)
+	 \biggr).
 \end{align*}
 %similarly, 
 %\[
@@ -394,86 +417,115 @@ Finally
 %	I\sim I(0,0)+I(0,\infty)+I(\infty,0)+I(\infty,\infty).
 %\]
 
-Now for the second example \eqref{exam:2}, near $(0,0)$, blow up $p=x^3+y^3+x y$ by letting
-$x=tu$ and $y=tv$, then when $u\approx 1$, 
+Now for the second example \eqref{exam:2}, we 
+blow up the singularity $(0,0)$ by the same map $x=tu$ and $y=tv$. For the polynomial $p=x^3+y^3+x y$,
+when $u=1$, 
 $p=t^2(t +t v^3+ v)\approx t^2(t+v)=t(x^2+y)$. 
-Similarly, if $v=1$, we will get $p\approx t(x+y^2)$. 
+Similarly, when $v=1$, we will get $p\approx t(x+y^2)$. 
 If we draw new curves $x^2+y=0$ and $x+y^2=0$ and the original curve $x^3+y^3+xy=0$, 
 we can see that the original curve is 
-decomposed into two curves generated by blowing up in the above diagram, so that 
-the contribution of integral is also decomposed.
+decomposed into two curves generated by blowing up in the above diagram, 
+so that the contribution of integral is also decomposed.
 \begin{center}
 	\includegraphics[scale=0.7]{fig_2.pdf}	
 \end{center}
 where the blue curve is $x^3+y^3+xy=0$, the green curve is $y+x^2=0$ and
 the orange curve $x+y^2=0$.
 
-In other words, in the expansion 
-\[
-	(y+x^2)(x+y^2)=xy+x^3+y^3+xy^2+x^2y+x^2y^2\approx x^3+y^3+xy,
-\]
-where $xy^2$, $x^2y$, $x^2y^2\ll xy$ so that they don't contribute in the integral near $(0,0)$.
+%In other words, in the expansion 
+%\[
+	%(y+x^2)(x+y^2)=xy+x^3+y^3+xy^2+x^2y+x^2y^2\approx x^3+y^3+xy,
+%\]
+%where $xy^2$, $x^2y$, $x^2y^2\ll xy$ so that they don't contribute in the integral near $(0,0)$.
 
-% Generally, we want to decompose a polynomial into
-% \[
-% 	p\sim \prod_{i\leq j} \prod_k (x_i^{a^k_{ij}}+x_j^{b^k_{ij}})
-% \]
+From the last two examples, we can see that polynomials are not canonical objects 
+for the leading order of a integral because different polynomials can give the 
+same contribution, \textit{i.e} we can throw away irrelevant terms, 
+so a natural question arises. What's the canonical object to describe the 
+leading contribution of a polynomial in a integral near a vertex? The answer is 
+the \textit{Newton polyhedron} of this polynomial.
 
-The similar method used above can be generalized. We now carefully consider which terms can be thrown away.
-% Generally, the integral near a vertex need not to be decoupled as $I(0,\infty)$ above, 
-% so blowing-up is necessary. 
-Suppose we come to the vertex defined locally by $x_1=\cdots=x_D=0$, 
+%We now carefully consider which terms can be thrown away.
+Precisely, suppose we come to the vertex defined locally by $x_1=\cdots=x_D=0$, 
 \[
 	I(0,\dots,0)=\int_{[0,\epsilon]^D} \frac{d x_1}{x_1}\cdots \frac{d x_D}{x_D} 
-	\prod_i(p_i(x))^{\alpha' s_i}.
+	\prod_a(p_a(x))^{\alpha' s_a}.
 \]
-In each polynomial $p_i$, 
+In each polynomial 
 \[
-	p_i(x)=\sum_{I} a_{iI} x^{n^I},
+	p_a(x)=\sum_{I} c_{aI} x^{n^I}:=\sum_I c_{aI} \prod_{i=1}^N x_i^{n^I_i},
 \]
-we need to worry about which $x^{n^I}$ is dominated (by blowing up) in the integration,
-however not all terms can dominate 
-the integral. For example, if we find that $x^{n^J}=x^{n^I}x^{v}$ or equivalently $n^J=n^I+v$ for some 
-non-zero positive vector $v$, there's no need to consider $x^{n^J}$ anymore because it goes to zero faster 
-than $x^{n^I}$. Geometrically, one can assign each term with a cone $C_{I}=(n^I+\mathbb R^D_{+})$, the above
-claim is equivalently that other terms in this cone can be thrown away.
-
+if we find that $x^{n^J}$ and $x^{n^I}$ 
+such that $n^J_i\geq n^I_i$ for every $i$, then there's no need to consider 
+$x^{n^J}$ anymore because it goes to zero faster than $x^{n^I}$. 
+Geometrically, one can assign each term with a cone 
+$C_{I}=(\mathbf n^I+\mathbb R^D_{+})$, the above
+claim is equivalently that terms in this cone can be thrown away.
 Furthermore, we can consider the \textit{convex hull} of these cones $\{C_I\}$, 
 \textit{i.e.} the smallest convex set contains these cones,
-which is a polyhedron. It's usually larger than
-the union of these cones $\bigcup_I C_I$, but terms other than vertices in this polyhedron 
-are also not dominated! Here let's consider an example $p(x)=x^6+y^6+x^2y^2$. 
-\begin{center}
-	\begin{tikzpicture}
-		\fill[gray,opacity=0.2] (0,4) -- (0,3) -- (4,3) -- (4,4);
-		\fill[gray,opacity=0.2] (1,4) -- (1,1) -- (4,1) -- (4,4);
-		\fill[gray,opacity=0.2] (3,4) -- (3,0) -- (4,0) -- (4,4); 
-		\fill[green,opacity=0.2] (0,3) -- (1,3) -- (1,1); 
-		\fill[green,opacity=0.2] (3,0) -- (3,1) -- (1,1); 
-		\draw[thick] (0,4) -- (0,3) -- (1,1) -- (3,0) -- (4,0);
-		\draw[->](-0.1,0) -- (4.1,0);
-		\draw[->](0,-0.1) -- (0,4.1);
-		\node[inner sep=1.5pt,circle,fill=blue] at (0,3) {};
-		\node[inner sep=1.5pt,circle,fill=blue] at (1,1) {};
-		\node[inner sep=1.5pt,circle,fill=blue] at (3,0) {};
-	\end{tikzpicture}
-\end{center}
-In the above diagram, besides gray cones, the polyhedron contains two green regions. 
-If we add terms like $x^5y^2$ in the interior of green regions to the polynomial, 
-we will show in the next lemma that the leading terms of the integral 
-from this vertices $x_1=x_2=\cdots=x_D=0$ do not change.
+which is the \textit{Newton polyhedron} $C[p]$ of the polynomial $p$. 
+It's usually larger than the union of these cones $\bigcup_I C_I$, 
+but terms other than vertices in the Newton polyhedron 
+are also not dominated! 
+%Here let's consider an example $p(x)=x^6+y^6+x^2y^2$. 
+%\begin{center}
+	%\begin{tikzpicture}
+		%\fill[gray,opacity=0.2] (0,4) -- (0,3) -- (4,3) -- (4,4);
+		%\fill[gray,opacity=0.2] (1,4) -- (1,1) -- (4,1) -- (4,4);
+		%\fill[gray,opacity=0.2] (3,4) -- (3,0) -- (4,0) -- (4,4); 
+		%\fill[green,opacity=0.2] (0,3) -- (1,3) -- (1,1); 
+		%\fill[green,opacity=0.2] (3,0) -- (3,1) -- (1,1); 
+		%\draw[thick] (0,4) -- (0,3) -- (1,1) -- (3,0) -- (4,0);
+		%\draw[->](-0.1,0) -- (4.1,0);
+		%\draw[->](0,-0.1) -- (0,4.1);
+		%\node[inner sep=1.5pt,circle,fill=blue] at (0,3) {};
+		%\node[inner sep=1.5pt,circle,fill=blue] at (1,1) {};
+		%\node[inner sep=1.5pt,circle,fill=blue] at (3,0) {};
+	%\end{tikzpicture}
+%\end{center}
+%In the above diagram, besides gray cones, the polyhedron contains two green regions. 
+%If we add terms like $x^5y^2$ in the interior of green regions to the polynomial, 
+%we will show in the next lemma that the leading terms of the integral 
+%from this vertices $x_1=x_2=\cdots=x_D=0$ do not change.
 
-\begin{lem}
-Suppose $p(x)=\sum_{I\in \mathscr A}a_I x^{n^I}$ is a polynomial, and $C[p]$ is the convex hull
-of cones $\{C_{I}=(n^I+\mathbb R^D_{+})\}$. 
-When we consider the integral near the vertices $x_1=\cdots=x_D=0$, 
-then we can replace $p(x)$ by a new polynomial $\bar p(x)=\sum_{J\in \mathscr B}a_J x^{n^J}$ such that
-the leading order of the integral does not change.
-\end{lem}
+\begin{pro}
+The leading order of integrals
+\[
+	I=\int_{[0,\epsilon]^D} \left(\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i}\right)
+	p_1^{-\alpha' c} \prod_I q_I^{-\alpha' c_I}
+	\quad \text{and} \quad 
+	I'=\int_{[0,\epsilon]^D} \left(\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i}\right)
+	p_2^{-\alpha' c} \prod_I q_I^{-\alpha' c_I}
+\]
+are the same if and only if $p_1$ and $p_2$ have the same Newton polyhedron,
+\textit{i.e.} $C[p_1]=C[p_2]$.
+\end{pro}
+
+From the theorem in \cite{Arkani-Hamed:2019mrd}, the leading order of the integral eq.\eqref{int1} 
+only depends on the Minkowski sum of Newton polytopes of polynomials $p_I$.
+The \textit{Newton polytope} of a polynomial is very like the Newton polyhedron of a polynomial defined above.
+For a polynomial $q=\sum_I a_I x^{n^I}$, it's the convex hull of vectors $\{n^I\}$. The
+\textit{Minkowski sum} (or vector sum) of two set $A$ and $B$ is the set $\{x+y\,:\,x\in A,\,y\in B\}$. 
+Note that the Newton polyhedron of a polynomial is just the Minkowski sum of Newton polytope and $\mathbb R_+^D$.
+
+Therefore, the above proposition is like the local version of this theorem, so that 
+it seems trivial. However, it's more free to use the local version because 
+the cone is not as rigid as the Newton polytope, and it just looks  
+like a `corner' of the Newton polytope.
+
+%\begin{lem}
+%Suppose $p(x)=\sum_{I\in \mathscr A}a_I x^{n^I}$ is a polynomial, and $C[p]$ is the convex hull
+%of cones $\{C_{I}=(n^I+\mathbb R^D_{+})\}$. 
+%When we consider the integral near the vertices $x_1=\cdots=x_D=0$, 
+%then we can replace $p(x)$ by a new polynomial $\bar p(x)=\sum_{J\in \mathscr B}a_J x^{n^J}$ such that
+%the leading order of the integral does not change.
+%\end{lem}
 
 % In the following proof, we define $|v|=\sum_{i=1}^D v_i$ for any vector $v\in \mathbb R^D$.
 
 \begin{proof}
+We only need to prove that terms in the Newton polyhedron can be dropped in the 
+integration for a polynomial $p=\sum_I a_I X^{n^I}$.
 We have seen that terms other than vertices in $\bigcup_I C_I$ do not contribute. Suppose a term $x^v$ 
 is in the interior of $C[p]-\bigcup_I C_I$,  
 then there exist non-negative numbers $\{c_J\}$ such that it can be written as 
@@ -501,36 +553,10 @@ We can prove the result by showing this terms goes to zero faster than some vert
 same boundary, so we can further assume that $p$ is a homogeneous polynomial.
 After blowing-up, near the new vertex
 $y_i=1$, the polynomial becomes $p'=t^{\sum_i v_i}\sum_{I}a_I y^{n^I}|_{y_i=1}$. 
-Since $v$ is not a vertex, it should be in the interior of the cone of this new polynomial or 
-on the boundary of the cone (for all $i$), and then by 
+Since $v$ is not a vertex, it should be in the interior of the polyhedron of this new polynomial or 
+on the boundary of the polyhedron (for all $i$), and then by 
 the proven part of lemma and induction on codimension, it doesn't contribute the integral.
 \end{proof}
-
-In other words, we have proven the following proposition. 
-
-\begin{pro}
-The leading order of integrals
-\[
-	I=\int_{[0,\epsilon]^D} \left(\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i}\right)
-	p_1^{-\alpha' c} \prod_I q_I^{-\alpha' c_I}
-	\quad \text{and} \quad 
-	I'=\int_{[0,\epsilon]^D} \left(\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i}\right)
-	p_2^{-\alpha' c} \prod_I q_I^{-\alpha' c_I}
-\]
-are the same if and only if $C[p_1]=C[p_2]$.
-\end{pro}
-
-From the theorem in \cite{Arkani-Hamed:2019mrd}, the leading order of the integral eq.\eqref{int1} 
-only depends on the Minkowski sum of Newton polytopes of polynomials $p_I$.
-The \textit{Newton polytope} of a polynomial is very like the polyhedron of a polynomial defined above.
-For a polynomial $q=\sum_I a_I x^{n^I}$, it's the convex hull of vectors $\{n^I\}$. The
-\textit{Minkowski sum} (or vector sum) of two set $A$ and $B$ is the set $\{x+y\,:\,x\in A,\,y\in B\}$. 
-Note that the polyhedron of a polynomial is just the Minkowski sum of Newton polytope and $\mathbb R_+^D$.
-
-Therefore, the above proposition is like the local version of this theorem, so that 
-it seems trivial. However, it's more free to use the local version because 
-the cone is not as rigid as the Newton polytope, and it just looks  
-like a `corner' of the Newton polytope.
 
 % Geometrically, if we consider the cone $C$ spanned by all $\{n^I\}$, then the basis can be choosen as the vertices on the boundary of $C$, and terms corresponding to points inside $C$ can be dropped.
 % For example, suppose that $p(x,y)=x^3+y^3+xy+x^3y^2+xy^3$, we draw each $n^I$ in the following diagram,
@@ -585,7 +611,7 @@ polynomial
 Our aim is to find a series of blow-ups to make this polynomial $p$ decoupled at
 each generated vertices.
 
-Now it's a good time to consider general blow-ups, and see what they do on integrals and polyhedrons.
+Now it's a good time to consider general blow-ups, and see what they do on integrals and polyhedra.
 
 As hinted by eq.\eqref{canonicalformunderblowup}, one important feature of $\Omega_{\mathcal P}$
 is `invariant' under the blowing-up because the residue of the canonical form on the boundary is
@@ -593,7 +619,7 @@ the canonical form of the boundary.
 Suppose we blow up near the boundary defined locally by $x_1=\cdots=x_n=0$ in integral eq.\eqref{int1}. 
 It's already the most general cases. In fact, if in the definition of a boundary $x_i=\infty$, we can
 change the variable $x_i\mapsto 1/x_i$ and then $x_i=0$.
-Let $x_i=ty_i$, where $[y_1,\dots,y_n]$ are positive projective coordinates. 
+Let $x_i=ty_i$, where $[y_1:\dots:y_n]$ are positive projective coordinates. 
 Near the boundary, the canonical form of $\Omega$ performs as 
 \[
 	\Omega=\frac{dx_1}{x_1}\wedge \cdots\wedge\frac{dx_n}{x_n}
@@ -608,7 +634,7 @@ where $y_n=1-(y_1+\cdots+y_{n-1})$ and $\Phi$ is the canonical form of the bound
 \[
 	\operatorname{Res}_{t=0}(\Omega)=\frac{1}{y_n}\frac{dy_1}{y_1}\wedge \cdots\wedge\frac{dy_{n-1}}{y_{n-1}}\wedge \Phi(x')=\Omega_{n-1}(y)\wedge \Phi(x'),
 \]
-$\Omega_{n-1}(y)$ the canonical form of a standard $(n-1)$-dimensional simplex $\Delta_{n-1}$ defined by
+$\Omega_{n-1}(y)$ the canonical form of a standard $(n-1)$-dimensional simplex $\mathbb P^{n-1}_+$ defined by
 $
 	\sum_{i=1}^n y_i=1
 $ and $y_i\geq 0$. 
@@ -655,7 +681,7 @@ $ and $y_i\geq 0$.
 % however we still need to worry about the blowing-up of $t$, $y$ and $x'$ in $q_I$ because
 % it's still unknown that which one is dominated.
 
-Another important feature of the canonical form is about the rescale of powers of variables.
+Another important feature of the canonical form is about the rescale of exponents of variables.
 If we change the variables by
 \(
 	x_i\mapsto x_i^{1/c_i}
@@ -680,7 +706,7 @@ $.
 Note that $y_i=1$ means that $y_j=0$ for $j\neq i$ because $\sum_i y_i=1$. Therefore, it's equivalent to 
 do such change of variables
 \[
-	x'\to x',\quad x_j\to tx_j\quad \text{for $j\neq i$},\quad x_i\to t,
+	x'\to x',\quad x_j\to ty_j\quad \text{for $j\neq i$},\quad x_i\to t,
 \]
 or by reusing the name of $x_i$ for $t$ to save the namespace,
 \[
@@ -719,6 +745,20 @@ but it's not the wanted (decoupled) polyhedron, so we blow up it again and we ge
 \end{center}
 Note that we still need to work out other vertices generated by blowing up. 
 
+However, usually a bad choice of set of variables to blow up may lead to the
+infinite recursion in higher dimension.
+For example, 
+\[
+	p(x_1,x_2,x_3)=x_1x_3^2+x_2^2+x_2x_3,
+\]
+if we choose $x_1$ and $x_2$ to blow up, then for the vertex 
+$\{x_1\mapsto x_1, x_2\mapsto x_1x_2, x_3\mapsto x_3\}$,
+\[
+	p(x_1,x_2,x_3)\mapsto x_1(x_1x_2^2+x_3^2+x_2x_3)=x_1 p(x_1,x_3,x_2).
+\]
+We will get the polynomial $p$ again and the endless loop if we always choose such
+variables to blow up.
+
 Now, a natural question arises. For a given polynomial $p$, 
 can we terminate after finite steps such that near each generated vertex, $p$ becomes 
 decoupled? This question is first declared by Hironaka \cite{hironaka1967}. 
@@ -732,11 +772,14 @@ $x_{i_j} \to x_{i_k}x_{i_j}$ for $j\neq k$.
 If $p$ becomes decoupled, then player A wins, otherwise they start a new round by using the 
 new generated polynomial. If player A cannot win in finite rounds, player B wins.
 
-How to win this game is equivalent to how to resolve singularities
-by a series of blow-ups, \textit{i.e.}
-a winning strategy for player A is a construction of resolution of singularities. 
-There are many known winning strategies for player A. 
+%How to win this game is equivalent to how to resolve singularities
+%by a series of blow-ups, \textit{i.e.}
+%a winning strategy for player A is a construction of resolution of singularities. 
+
+It's clear that any winning strategy for player A will tell us how to 
+calculate stringy integrals. There're many know winning strategies.
 \cite{spivakovsky1983solution,zeillinger2006short,hauser2003hironaka}
+However, they are not so efficient. ... 
 % [Spivakovsky 83], [Encinas \& Hauser 02], [Zeillinger 05], \dots.
 
 % We mainly use the Zeillinger's method in the calculation. 
@@ -782,7 +825,11 @@ There are many known winning strategies for player A.
 % Denote the minimal element by $(G,L)=(g(v),l(v))$. 
 % The triple designed by Zeillinger is $(|M_p|,G,L)$. We will not go into details of the proof. 
 
-In this article, we design another strategy to win the game.
+\section{Algorithm}
+
+In this section, we design another strategy for player A to win the Hironaka's
+polyhedra game from a new viewpoint. 
+
 Let's first introduce the language of the matrix for future use.
 For the polynomial $p=\sum_I a_I x^{n^I}$, write down the matrix $(n^I_i)$, 
 \[
@@ -907,7 +954,7 @@ Our algorithm is based on the following observations:
 		\draw[dashed] (-2,-0.5) -- (4,1);
 		\draw (-2,-0.5) -- (4,2);
 		\draw (3.6,1.3) -- (-2,-0.5);
-		\node[fill=green,circle,inner sep=1pt] at (2.4,0.9) {};
+		\node[fill=green!70!black,circle,inner sep=1pt] at (2.4,0.9) {};
 		\end{tikzpicture}
 	\end{center}
 	We can use the gray polygon, the intersection of this cone with a hyperplain,
@@ -921,7 +968,7 @@ Our algorithm is based on the following observations:
 			-- (3.2,-2.8) node[fill=red,circle,inner sep=1pt] {}
 			-- (4,-1.5) node[fill=red,circle,inner sep=1pt] {}
 			-- cycle;
-		\node[fill=green,circle,inner sep=1pt] at (3.1,-1.3) {};
+		\node[fill=green!70!black,circle,inner sep=1pt] at (3.1,-1.3) {};
 		\end{tikzpicture}
 		$\longmapsto$
 		\begin{tikzpicture}[scale=0.75,baseline={([yshift=-.5ex]current bounding box.center)}]
@@ -931,7 +978,7 @@ Our algorithm is based on the following observations:
 			-- (4,-1.5) node[fill=red,circle,inner sep=1pt] {}
 			-- cycle;
 		\draw[fill=gray!30] (2.5,0.2) -- (3.1,-1.3) -- (3.2,-2.8) -- (1.6,-1.6) --cycle;
-		\node[fill=green,circle,inner sep=1pt] at (3.1,-1.3) {};
+		\node[fill=green!70!black,circle,inner sep=1pt] at (3.1,-1.3) {};
 		\end{tikzpicture}
 		\begin{tikzpicture}[scale=0.75,baseline={([yshift=-.5ex]current bounding box.center)}]
 		\draw[gray] (2.5,0.2) node[fill=red,circle,inner sep=1pt] {}
@@ -940,7 +987,7 @@ Our algorithm is based on the following observations:
 			-- (4,-1.5) node[fill=red,circle,inner sep=1pt] {}
 			-- cycle;
 		\draw[fill=gray!30] (3.1,-1.3) -- (4,-1.5) -- (3.2,-2.8) -- (1.6,-1.6) --cycle;
-		\node[fill=green,circle,inner sep=1pt] at (3.1,-1.3) {};
+		\node[fill=green!70!black,circle,inner sep=1pt] at (3.1,-1.3) {};
 		\end{tikzpicture}
 		\begin{tikzpicture}[scale=0.75,baseline={([yshift=-.5ex]current bounding box.center)}]
 		\draw[gray] (2.5,0.2) node[fill=red,circle,inner sep=1pt] {}
@@ -949,7 +996,7 @@ Our algorithm is based on the following observations:
 			-- (4,-1.5) node[fill=red,circle,inner sep=1pt] {}
 			-- cycle;
 		\draw[fill=gray!30] (2.5,0.2) -- (4,-1.5) -- (1.6,-1.6) -- (1.6,-1.6) --cycle;
-		\node[fill=green,circle,inner sep=1pt] at (3.1,-1.3) {};
+		\node[fill=green!70!black,circle,inner sep=1pt] at (3.1,-1.3) {};
 		\end{tikzpicture}
 	\end{center}
 
