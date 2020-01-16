@@ -50,7 +50,7 @@
 \maketitle
 
 \begin{abstract}
-	We provide an efficient method, blowing up, to compute leading order contributions of the recently introduced stringy integrals. The algorithm also gives a new winning strategy of the well-known Hironaka's polyhedra game.
+We provide an efficient method of blowing up to compute leading order contributions of the recently introduced stringy integrals. The algorithm also gives a new winning strategy of the well-known Hironaka's polyhedra game.
 \end{abstract}
 \newpage
 
@@ -237,7 +237,7 @@ Section 5 contains discussion and outlook. Finally, in the appendix, we will giv
 % One important lesson from the above trivial integral is that the leading terms of the integral come from the vertices of the positive geometry. 
 
 In this section, we first show some heuristic examples 
-to show the general procedure to calculate the leading order fo stringy integrals
+to show the general procedure to calculate the leading order of stringy integrals
 by blow-ups.
 Then we prove the equivalence of this procedure and the famous Hironaka's polyhedra
 game.
@@ -323,7 +323,7 @@ Now let's carefully consider the first example, the integral \eqref{exam:1}
 \[
 	I=\int_0^\infty \int_0^\infty\frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y+x y)^{-\alpha' c},
 \]
-whose leading contribution come from the neighbourhoods of four vertices $(0,0)$, $(0,\infty)$, $(\infty,0)$ and $(\infty,\infty)$. One can easily see that the vertices $(0,\infty)$, $(\infty,0)$ and $(\infty,\infty)$ are normal crossing. The consequece of this fact is the integrand decouples into powers of $x$ and $y$, then the leading contribution can be trivially obtained, for example 
+whose leading contribution come from the neighbourhoods of four vertices $(0,0)$, $(0,\infty)$, $(\infty,0)$ and $(\infty,\infty)$. One can easily see that the vertices $(0,\infty)$, $(\infty,0)$ and $(\infty,\infty)$ are normal crossing. The consequence of this fact is the integrand decouples into powers of $x$ and $y$, then the leading contribution can be trivially obtained, for example 
 \begin{align*}
 	I(0,\infty)&=\int_{0}^\epsilon\int_{1/\epsilon}^\infty \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y+xy)^{-\alpha' c} \\
 	&\approx \int_{0}^\epsilon\int_{1/\epsilon}^\infty \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' (b-c)}= 
@@ -335,7 +335,7 @@ In this article, the symbol $\approx$ is used to relate two integrals with the s
 or two polynomials which contribute the same leading terms in the integration.
 Similarly, $I(\infty,0)\approx ({\alpha'}^2 b (c-a))^{-1}$ and $I(\infty,\infty)\approx (\alpha'^{2}(c-a) (c-b))^{-1}.$
 
-The vertex $(0,0)$ is harder due to the behavor of the mixed factor $(x+y+xy)^{-\alpha' c}$ at the neighbourhood of thie vertex. % $(x,y)\to (0,0)$
+The vertex $(0,0)$ is harder due to the behaviour of the mixed factor $(x+y+xy)^{-\alpha' c}$ at the neighbourhood of this vertex. % $(x,y)\to (0,0)$
 % \[
 % I(0,0)=\int^{\epsilon}_0 \int^{\epsilon}_0 \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y+xy)^{-\alpha' c}
 % %\sim\int^{\epsilon}_0 \int^{\epsilon}_0\frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y)^{-\alpha' c}.
@@ -348,7 +348,7 @@ we can introduce new variables $(t,[u:v])$ defined by equations $x = tu$ and $y=
 $\mathbb R\times\mathbb P^1$, \textit{i.e. blow-up}. Because $x$, $y\geq 0$ in the integral region,
 %It's convenient to further identify the $\mathbb P^1$ with
 %the line $u+v=1$ defined in $\mathbb R^2$.
-the vertex $(0,0)$ is blowed up to a $1$-dimensional simplex $\mathbb P^1_+=\{[u:v]\,:\,u,v\geq 0\}$ 
+the vertex $(0,0)$ is blown up to a $1$-dimensional simplex $\mathbb P^1_+=\{[u:v]\,:\,u,v\geq 0\}$ 
 with two new vertices $u=0$ and $v=0$ under this map, 
 and it is easy to see that the factor $(x+y)$ is dominated by $x$ near the vertex $u=0$ or 
 by $y$ near the vertex $v = 0$.
@@ -695,7 +695,7 @@ for $i\in S$, where $c_i$ is a positive rational number, then integral becomes
 \]
 Note that the rescale of the integral region doesn't change the leading order of the integral
 because $\epsilon^{\alpha'}$ and $(\epsilon^{1/c_i})^{\alpha'}$ both behave as $1+O(\alpha')$
-when $\alpha'\to 0$. Therefore, it only introduces a prefactor $\prod_{i\in S}c_i$ 
+when $\alpha'\to 0$. Therefore, it only introduces a factor $\prod_{i\in S}c_i$ 
 for the integral and doesn't break the form of the integral 
 thanks to $\dif \log$ singularities of the canonical form.
 
@@ -708,7 +708,7 @@ do such change of variables
 \[
 	x'\to x',\quad x_j\to ty_j\quad \text{for $j\neq i$},\quad x_i\to t,
 \]
-or by reusing the name of $x_i$ for $t$ to save the namespace,
+or by reusing the name of $x_i$ for $t$ and $x_j$ for $y_j$ to save the namespace,
 \[
 	x_j\to x_ix_j\quad \text{for $j\neq i$}.
 \]
