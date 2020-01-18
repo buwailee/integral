@@ -134,10 +134,11 @@ They can be overcome by a series of blows-ups, after which the stringy integral 
 Essentially, finding such a series of blow-ups is equivalent to give a winning strategy for a (simplified) Hironaka's polyhedra game.
 
 
-In section 2, we review the definition of blows-up and describe its relation to Hironaka's polyhedra game, then elaborate the principle and procedures of the blowing up algorithm. 
-In section 3, we introduce a new viewpoint to approach the Hironaka's polyhedra game
+In section 2, we review the definition of blow-up and describe its relation to Hironaka's polyhedra game.
+%then elaborate the principle and procedures of the blowing up algorithm. 
+Section 3 uses several examples arising form cluster stringy integrals to illustrate this algorithm.
+In section 4, we introduce a new viewpoint to approach the Hironaka's polyhedra game
 and give a new winning strategy of the game.
-Section 4 uses several examples arising form cluster stringy integrals to illustrate this algorithm.
 Section 5 contains discussion and outlook. Finally, in the appendix, we will give another proof for the proposition firstly given in \cite{Arkani-Hamed:2017tmz} that the scattering-equation map \eqref{SEmap} is a bijection. 
 %from the interior of $\mathbb R_+^D$ to the interior of Minkowski sum of Newton polytopes of $p_I$. 
 
@@ -238,9 +239,9 @@ Section 5 contains discussion and outlook. Finally, in the appendix, we will giv
 
 In this section, we first show some heuristic examples 
 to show the general procedure to calculate the leading order of stringy integrals
-by blow-ups.
-Then we prove the equivalence of this procedure and the famous Hironaka's polyhedra
-game.
+by blowing up and catch some important features of this calculation.
+Then we go to the general case and prove the equivalence of this procedure 
+and the famous Hironaka's polyhedra game.
 
 Before going into details of blowing up, let us clarify the problem mentioned in introduction. To this end, it is useful to recover a more general form of string integrals
 \begin{equation*}
@@ -259,7 +260,7 @@ For the integral
 \int_0^\infty \int_0^\infty \frac{\dif x}{x}\frac{\dif y}{y}x^{\alpha' X}
 y^{\alpha' Y}(x^3+y^3+ xy)^{-\alpha' c},
 \end{equation}
-the vertex $(0,0)$ is crossed by $x=0$ and $y=0$ once, by $x^3+y^3+xy=0$ twice. 
+the vertex $(0,0)$ is crossed by $x=0$ and $y=0$ once and by $x^3+y^3+xy=0$ twice. 
 
 \begin{figure}[h]
 \begin{center}
@@ -271,14 +272,11 @@ the vertex $(0,0)$ is crossed by $x=0$ and $y=0$ once, by $x^3+y^3+xy=0$ twice.
 \end{figure}
 
 The main tool used in this article to solve this problem is blowing up (or blow-up).
-Briefly speaking, blowing up introduces additional dimensions for the original point,
-and curves crossing it in different directions are lifted to new curves such that they intersect at the different points in the additional dimensions according to their directions.
+Briefly speaking, blow-up (along the original point) introduces additional dimensions for the original point such that
+curves crossing it in different directions are lifted to new curves intersecting the additional dimensions in different points.
 
-% Let's give a short review of blowing up. 
 % In mathematics, blowing up or blowup is a type of geometric transformation which replaces 
 % a subspace of a given space with all the directions pointing out of that subspace.
-% One main purpose of blowing-up in math is to resolve singularities. 
-% (\textcolor{red}{C:This short review, especially this example, is a bit confusing and misleading, at least I don't get the point, maybe some pictures or other example can help to clarify it.})
 Let's first consider a simple but heuristic example of blowing up. 
 Suppose there's a family of line $\{l_i: a_ix+b_iy=0\}_{i=1,\dots,n}$ on the plane 
 $\mathbb R^2$
@@ -293,9 +291,8 @@ new variables $u$, $v$ and $t$ such that
 	x=ut,\quad y=vt,
 \] 
 where $[u:v]$ is a projective coordinate, since any common factor of $u$ and $v$ can be absorbed into the definition of $t$, the line $l_i:a_ix+b_iy=0$ hence becomes a line parameterized 
-by $t$ with an additional point $[-b_i:a_i]\in \mathbb P^1$. Then, the additional point $[-b_i:a_i]\in \mathbb P^1$ tells us how this line goes to $(0,0)$ so that it can be used to distinguish different lines.
-In other words, we replace the point $(0,0)$ with $\mathbb P^1$, which is the additional
-dimension mentioned above. 
+by $t$ with an additional point $[-b_i:a_i]\in \mathbb P^1$. The additional point $[-b_i:a_i]\in \mathbb P^1$ tells us how this line goes to $(0,0)$ so that it can be used to distinguish different lines.
+In other words, we replace the point $(0,0)$ with $\mathbb P^1$, which is the additional dimension mentioned above. 
 
 % Now Let us see how blowing up resolves singularities. 
 % Consider the curve $x^3+y^3+xy=0$ on the plane, which is drawn in Fig.\ref{fig_1}.
@@ -306,11 +303,9 @@ dimension mentioned above.
 The above example is called the blow-up of the plane along the original point.
 In this article, we will consider the blow-up of $\mathbb R^D$
 along subspace $\mathbb R^n$ defined by $x_{i_1}=\cdots=x_{i_n}=0$. 
-(The blow-up is the surface defined by equations $\{x_{i_j}y_k=x_{i_k}y_j\,:\, 1\leq j<k\leq n\}$ in space 
+The blow-up is the surface defined by equations $\{x_{i_j}y_k=x_{i_k}y_j\,:\, 1\leq j<k\leq n\}$ in space 
 $\mathbb R^{D}\times \mathbb P^{n-1}$,
 where $[y_1:\dots:y_n]$ is the projective coordinate. 
-These equations can be easily
-solved by $y_j=tx_{i_j}$ for $t\neq 0$.
 
 % Generally, let $X=\operatorname{Spec} A$ be an affine scheme, and let $V(f_1,\dots,f_n)\subset X$
 % is a closed subscheme of $X$. The blow-up of $Y$ in X is the closure in
@@ -331,28 +326,32 @@ whose leading contribution come from the neighbourhoods of four vertices $(0,0)$
 \end{align*}
 where we throw away $x$ and $xy$ in $x+y+xy$ after $\approx$ because in this case $x\ll y$
 so that they do not contribute the leading order when $\alpha' \to 0$.
-In this article, the symbol $\approx$ is used to relate two integrals with the same leading terms 
+In this article, the symbol $\approx$ is used to relate two expressions 
+(usually integrals) with the same leading terms 
 or two polynomials which contribute the same leading terms in the integration.
 Similarly, $I(\infty,0)\approx ({\alpha'}^2 b (c-a))^{-1}$ and $I(\infty,\infty)\approx (\alpha'^{2}(c-a) (c-b))^{-1}.$
 
-The vertex $(0,0)$ is harder due to the behaviour of the mixed factor $(x+y+xy)^{-\alpha' c}$ at the neighbourhood of this vertex. % $(x,y)\to (0,0)$
+The vertex $(0,0)$ is harder due to the behaviour of the mixed factor $(x+y+xy)^{-\alpha' c}$ at the neighbourhood of this vertex. 
 % \[
 % I(0,0)=\int^{\epsilon}_0 \int^{\epsilon}_0 \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y+xy)^{-\alpha' c}
 % %\sim\int^{\epsilon}_0 \int^{\epsilon}_0\frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y)^{-\alpha' c}.
 % \]
 % when $(x,y)\to (0,0)$, we cannot decouple $x$ and $y$ in the mixed factor $(x+y+xy)^{-\alpha' c}$ 
 % because we don't know which one is dominated. 
-However, we can always drop the term $xy$ which becomes irrelevant when $(x,y)\to (0,0)$. %because $xy\ll x$, $y$. 
-For the remaining terms $x+y$, 
-we can introduce new variables $(t,[u:v])$ defined by equations $x = tu$ and $y=tv$ in
-$\mathbb R\times\mathbb P^1$, \textit{i.e. blow-up}. Because $x$, $y\geq 0$ in the integral region,
+However, we can always drop the term $xy$ which becomes irrelevant 
+when $(x,y)\to (0,0)$ because $xy\ll x$, $y$. 
+For remaining terms $x+y$, 
+we blow up the plane along $(0,0)$ by introducing new variables 
+$(t,[u:v])$ defined by equations $x=tu$ and $y=tv$ in
+$\mathbb R\times\mathbb P^1$. 
+Because $x$, $y\geq 0$ in the integral region,
 %It's convenient to further identify the $\mathbb P^1$ with
 %the line $u+v=1$ defined in $\mathbb R^2$.
 the vertex $(0,0)$ is blown up to a $1$-dimensional simplex $\mathbb P^1_+=\{[u:v]\,:\,u,v\geq 0\}$ 
 with two new vertices $u=0$ and $v=0$ under this map, 
 and it is easy to see that the factor $(x+y)$ is dominated by $x$ near the vertex $u=0$ or 
-by $y$ near the vertex $v = 0$.
-The one-dimensional simplex $\mathbb P^1_+$ can be identified with 
+by $y$ near the vertex $v = 0$. More precisely,
+the one-dimensional simplex $\mathbb P^1_+$ can be identified with 
 the unit interval $[0,1]$ by setting $u+v=1$, so
  \begin{equation}\label{canonicalformunderblowup}
 	\frac{dxdy}{xy} = \frac{du}{u(1-u)}\frac{dt}{t},
@@ -417,20 +416,22 @@ Finally,
 %	I\sim I(0,0)+I(0,\infty)+I(\infty,0)+I(\infty,\infty).
 %\]
 
-Now for the second example \eqref{exam:2}, we 
+For the second example \eqref{exam:2}, we 
 blow up the singularity $(0,0)$ by the same map $x=tu$ and $y=tv$. For the polynomial $p=x^3+y^3+x y$,
 when $u=1$, 
 $p=t^2(t +t v^3+ v)\approx t^2(t+v)=t(x^2+y)$. 
 Similarly, when $v=1$, we will get $p\approx t(x+y^2)$. 
 If we draw new curves $x^2+y=0$ and $x+y^2=0$ and the original curve $x^3+y^3+xy=0$, 
 we can see that the original curve is 
-decomposed into two curves generated by blowing up in the above diagram, 
+decomposed into two curves generated by blowing up in the above diagram
 so that the contribution of integral is also decomposed.
-\begin{center}
-	\includegraphics[scale=0.7]{fig_2.pdf}	
-\end{center}
-where the blue curve is $x^3+y^3+xy=0$, the green curve is $y+x^2=0$ and
-the orange curve $x+y^2=0$.
+\begin{figure}[th]
+	\centering\includegraphics[scale=0.7]{fig_2.pdf}	
+	\caption{
+		Blue curve: $x^3+y^3+xy=0$; Green curve: $y+x^2=0$;
+		Orange curve $x+y^2=0$.
+	}
+\end{figure}
 
 %In other words, in the expansion 
 %\[
@@ -440,7 +441,7 @@ the orange curve $x+y^2=0$.
 
 From the last two examples, we can see that polynomials are not canonical objects 
 for the leading order of a integral because different polynomials can give the 
-same contribution, \textit{i.e} we can throw away irrelevant terms, 
+same contribution, %\textit{i.e} we can throw away irrelevant terms, 
 so a natural question arises. What's the canonical object to describe the 
 leading contribution of a polynomial in a integral near a vertex? The answer is 
 the \textit{Newton polyhedron} of this polynomial.
@@ -455,18 +456,19 @@ In each polynomial
 \[
 	p_a(x)=\sum_{I} c_{aI} x^{n^I}:=\sum_I c_{aI} \prod_{i=1}^N x_i^{n^I_i},
 \]
-if we find that $x^{n^J}$ and $x^{n^I}$ 
-such that $n^J_i\geq n^I_i$ for every $i$, then there's no need to consider 
+if we find $x^{n^J}$ and $x^{n^I}$ where
+$n^J_i\geq n^I_i$ for every $i$, then there's no need to consider 
 $x^{n^J}$ anymore because it goes to zero faster than $x^{n^I}$. 
 Geometrically, one can assign each term with a cone 
-$C_{I}=(n^I+\mathbb R^D_{+})$, the above
+$C_{I}=(n^I+\mathbb R^D_{+}):=\{(n^I_1+v_1,\dots,n^I_D+v_D)\,:\, 
+\text{$v_i\geq 0$ for all $i$}\}$, the above
 claim is equivalently that terms in this cone can be thrown away.
 Furthermore, we can consider the \textit{convex hull} of these cones $\{C_I\}$, 
 \textit{i.e.} the smallest convex set contains these cones,
 which is the \textit{Newton polyhedron} $C[p]$ of the polynomial $p$. 
 It's usually larger than the union of these cones $\bigcup_I C_I$, 
 but terms other than vertices of the Newton polyhedron 
-are also not dominated! 
+also doesn't contribute! 
 %Here let's consider an example $p(x)=x^6+y^6+x^2y^2$. 
 %\begin{center}
 	%\begin{tikzpicture}
