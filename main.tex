@@ -40,7 +40,7 @@
 %\color{textcolor}
 
 \date{\today}
-\title{Blowing up Stringy Integrals: How to win Hironaka's polyhedra game}
+\title{Blowing up Stringy Canonical Forms: How to win Hironaka's polyhedra game}
 
 \author{Zhenjie Li\and Chi Zhang}
 
@@ -756,7 +756,7 @@ $\{x_1\mapsto x_1, x_2\mapsto x_1x_2, x_3\mapsto x_3\}$,
 \[
 	p(x_1,x_2,x_3)\mapsto x_1(x_1x_2^2+x_3^2+x_2x_3)=x_1 p(x_1,x_3,x_2).
 \]
-We will get the polynomial $p$ again and the endless loop if we always choose such
+We will get the polynomial $p$ again and then an endless loop if we always choose such
 variables to blow up.
 
 Now, a natural question arises. For a given polynomial $p$, 
@@ -824,6 +824,155 @@ However, they are not so efficient. ...
 % \]
 % Denote the minimal element by $(G,L)=(g(v),l(v))$. 
 % The triple designed by Zeillinger is $(|M_p|,G,L)$. We will not go into details of the proof. 
+
+
+\section{Application and Example}
+
+% string Z integral, Cn, Gkn ...
+In this section, we will give several examples to illustrate this blow-up method, most of examples comes from the so-called cluster stringy integrals~\cite{} which are closely related to the origin string integrals.
+The dimension of all examples in this section is 2 or 3, so we avoid
+endless loops ad hoc.
+
+
+\subsubsection*{Cluster string integral: $A_{2}$}
+This integral is equivalent to the $Z$-integral $Z_{12345}(1,2,3,4,5)$~\cite{}, which in a positive parameterization takes the form of 
+\[
+	\mathcal{I}_{A_{2}}=\int_{\mathbb R_+^2} \frac{\dif x_1}{x_1}\frac{\dif x_2}{x_2}x_1^{\alpha' X}x_2^{\alpha' Y}
+	(1+x_1)^{-\alpha' a}(1+x_2)^{-\alpha' b}(1+x_1+x_1x_2)^{-\alpha' c}
+\] 
+where $1+x_{1}$, $1+x_{2}$ and $1+x_{1}+x_{1}x_{2}$ are $F$-polynomials with the initial seed $A_{2}$ quiver. With variable substitutions
+\[
+	x_{1}=\frac{1-z_{3}}{z_{3}}\,,\qquad x_{2}=\frac{z_{3}-z_{2}}{z_{2}(1-z_{3})}
+\]
+and 
+\[
+	X=s_{12},\quad Y=s_{45},\quad a=-s_{24},\quad b=-s_{35},\quad c=-s_{25} \:,
+	\] 
+the integral $\mathcal{I}_{A_{2}}$ becomes $Z_{12345}(12345)$ under the usual gauge fixing $\{z_{1},z_{4},z_{5}\}\to\{0,1,\infty\}$. It is easy to see that vertices $(0,0)$, $(0,\infty)$ and $(\infty,0)$ are all normal crossing, then no blow up is needed and their contributions to leading order simply are
+\begin{align*}
+	&\mathcal{I}_{A_{2}}(0,0)=\frac{1}{\alpha'^{2}}\frac{1}{XY}+O(\alpha'^{-1}) \:, \\
+	%&\mathcal{I}_{A_{2}}(0,\infty)=\frac{1}{\alpha'^{2}}\frac{1}{(a+c-X)Y}+O(\alpha'^{-1}) \:, 
+	&\mathcal{I}_{A_{2}}(\infty,0)=\frac{1}{\alpha'^{2}}\frac{1}{(a+c-X)Y}+O(\alpha'^{-1}) \:, \\
+	&\mathcal{I}_{A_{2}}(\infty,\infty)=\frac{1}{\alpha'^{2}}\frac{1}{(a+c-X)(b+c-Y)}+O(\alpha'^{-1}) \:.
+\end{align*}
+The vertex $(0,\infty)$ is not normal crossing, we bring this vertex to the origin by taking $x_{2}\to x_{2}^{-1}$, then the integral over the neighbourhood of this vertex reads
+\[
+    \mathcal{I}_{A_{2}}(0,\infty) \approx \int_{[0,\epsilon]^{2}} \frac{\dif x_{1}\,\dif x_{2}}{x_{1} x_{2}} x_{1}^{\alpha'X}x_{2}^{\alpha'(b+c-Y)}(x_{1}+x_{2}+x_{1}x_{2})^{-\alpha'c}
+\]
+where some irrelevant power functions of the form $(1+\cdots)$ have been dropped. This is exactly the example we used in section 2, then the leading order contribution of $\mathcal{I}_{A_{2}}$ is simply
+\begin{align*}
+   \mathcal{I}_{A_2}&=\frac{1}{\alpha'^{-2}}\biggl(\frac{1}{(a+c-X) (b+c-Y)}+\frac{1}{X (b+X-Y)} \\
+   &\quad +\frac{1}{(b+c-Y) (b+X-Y)}+\frac{1}{Y (a+c-X)}+\frac{1}{X Y}\biggr) + O(\alpha'^{-1}) 
+\end{align*}
+
+\subsubsection*{Cluster stringy integral: $A_3$}
+
+This integral is equivalent to the $Z$-integral $Z_{123456}(1,2,3,4,5,6)$, which in a positive parameterization takes the form of 
+\begin{align*}
+	\int_{\mathbb R_+^3} \frac{\dif x_1}{x_1}\frac{\dif x_2}{x_2}\frac{\dif x_3}{x_3}
+	x_1^{\alpha' X}x_2^{\alpha' Y}x_3^{\alpha' Z}
+	&(x_1 + 1)^{-\alpha' a_1}
+	(x_2 + 1)^{-\alpha'a_2}
+	(x_3 + 1)^{-\alpha'a_3}
+	(x_1x_2 + x_1 + 1)^{-\alpha'a_4}\\
+	&(x_2x_3 + x_3 + 1)^{-\alpha'a_5}
+	(x_1x_2x_3 + x_1x_3 + x_1 + x_3 + 1)^{-\alpha'a_6}
+\end{align*}
+where 6 polynomials with constant term 1 are $F$-polynomials with the initial seed $A_{3}$ quiver. With variable substitutions
+\[
+x_{1}=\frac{(z_{2}-z_{3})(1-z_{4})}{(1-z_{2})(z_{3}-z_{4})}\:,\quad x_{2}=\frac{z_{4}-z_{2}}{z_{2}(1-z_{4})}\:, \quad
+x_{3}=\frac{z_{2}}{1-z_{2}}
+\]
+and
+\begin{gather*}
+	X=s_{12},\quad Y=s_{123},\quad Z=s_{45} \\
+	a_{1}=-s_{24},\quad a_{2}=-s_{36},\quad a_{3}=-s_{15},\quad a_{4}=-s_{26},\quad a_{5}=-s_{35},\quad a_{6}=-s_{25}	
+\end{gather*}
+the integral $\mathcal{I}_{A_{3}}$ becomes $Z_{123456}(1,2,3,4,5,6)$ under the usual gauge fixing $\{z_{1},z_{5},z_{6}\}\to\{0,1,\infty\}$. Of the 8 vertices, $(0,0,0)$, $(0,0,\infty)$, $(\infty,0,0)$, $(\infty,0,\infty)$ and $(\infty,\infty,\infty)$ are normal crossing ones, and their contributions to leading order is 
+\begin{align*}
+	\mathcal{I}_{A_{3}}^{(1)}&=\frac{1}{\alpha'^{2}}\biggl(\frac{1}{XYZ}+\frac{1}{F_{1}XY} +\frac{1}{F_{2}YZ}+\frac{1}{F_{1}F_{2}Y} 
+	+\frac{1}{F_{1}F_{2}F_{3}}\biggr) +O(\alpha'^{-1})
+\end{align*}	
+where
+\begin{align*}
+	F_{1} &= a_{3}+a_{5}+a_{6}-Z \\
+	F_{2} &= a_{1}+a_{4}+a_{6}-X \\
+	F_{3} &= a_{2}+a_{4}+a_{5}+a_{6}-Y
+\end{align*}
+For the remaining vertices, we bring them to the origin by setting $x_{i}\to x_{i}^{-1}$,
+\begin{align*}
+	\mathcal{I}_{A_{3}}(0,\infty,0)&\approx\int_{[0,\epsilon]^{3}}\prod_{i=1}^{3}\frac{\dif x_{i}}{x_{i}} x_{1}^{\alpha' X}
+	x_{2}^{\alpha' F_{3}}x_{3}^{\alpha' Z}(x_{1}+x_{2})^{-\alpha' a_{4}}(x_{2}+x_{3})^{-\alpha' a_{5}}
+	\biggl(x_{2}+\sum_{i<j} x_{i}x_{j}\biggr)^{-\alpha' a_{6}} \\
+	\mathcal{I}_{A_{3}}(\infty,\infty,0)&\approx \int_{[0,\epsilon]^{3}}\frac{\dif x_{i}}{x_{i}}x_{1}^{\alpha' F_{2}}x_{2}^{\alpha' F_{3}}x_{3}^{\alpha'Z} (x_{2}+x_{3})^{-\alpha'(a_{5}+a_{6})} \\
+	\mathcal{I}_{A_{3}}(0,\infty,\infty)&\approx \int_{[0,\epsilon]^{3}}\frac{\dif x_{i}}{x_{i}}x_{1}^{\alpha' X}x_{2}^{\alpha' F_{3}}x_{3}^{\alpha' F_{1}} (x_{1}+x_{2})^{-\alpha'(a_{4}+a_{6})}
+\end{align*}
+where we have dropped some irrelevant terms according to our algorithm. The last two again are the cases we have encountered before, then a further attention is needed only for the first one, which can be decomposed into six normal crossing pieces 
+\begin{equation*}
+	\mathcal{I}_{A_{3}}(0,\infty,0)\approx
+	\begin{cases}
+		\int_{[0,\epsilon]^{3}}\prod_{i=1}^{3}\frac{\dif y_{i}}{y_{i}} y_{1}^{\alpha'X} y_{2}^{\alpha' F_{4}}
+		y_{3}^{\alpha'F_{5} }  & \{x_{1}=y_{1}y_{2}y_{3}, x_{2}=y_{2}y_{3},x_{3}=y_{3}\} \\
+		\int_{[0,\epsilon]^{3}}\prod_{i=1}^{3}\frac{\dif y_{i}}{y_{i}} y_{1}^{\alpha'X} y_{2}^{\alpha' (X+Z)}
+		y_{3}^{\alpha'F_{5} }  & \{x_{1}=y_{1}y_{2}y_{3}, x_{3}=y_{2}y_{3},x_{2}=y_{3}\}  \\
+		\int_{[0,\epsilon]^{3}}\prod_{i=1}^{3}\frac{\dif y_{i}}{y_{i}} y_{1}^{\alpha' F_{3}} y_{2}^{\alpha' F_{4}}
+		y_{3}^{\alpha'F_{5} }  & \{x_{2}=y_{1}y_{2}y_{3}, x_{1}=y_{2}y_{3},x_{3}=y_{3}\}  \\
+		\int_{[0,\epsilon]^{3}}\prod_{i=1}^{3}\frac{\dif y_{i}}{y_{i}} y_{1}^{\alpha' F_{3}} y_{2}^{\alpha' F_{6}}
+		y_{3}^{\alpha'F_{5} }  & \{x_{2}=y_{1}y_{2}y_{3}, x_{3}=y_{2}y_{3},x_{1}=y_{3}\}  \\
+		\int_{[0,\epsilon]^{3}}\prod_{i=1}^{3}\frac{\dif y_{i}}{y_{i}} y_{1}^{\alpha' Z} y_{2}^{\alpha' (X+Z)}
+		y_{3}^{\alpha'F_{5} }  & \{x_{3}=y_{1}y_{2}y_{3}, x_{1}=y_{2}y_{3},x_{2}=y_{3}\}  \\
+		\int_{[0,\epsilon]^{3}}\prod_{i=1}^{3}\frac{\dif y_{i}}{y_{i}} y_{1}^{\alpha' Z} y_{2}^{\alpha' F_{6}}
+		y_{3}^{\alpha'F_{5} }  & \{x_{3}=y_{1}y_{2}y_{3}, x_{2}=y_{2}y_{3},x_{1}=y_{3}\}  
+	\end{cases}
+\end{equation*}
+where each piece correspond to a simplex $0<x_{i}<x_{j}<x_{k}$, irrelevant terms are dropped again and we have introduced
+\begin{align*}
+	&F_{4}=X+F_{3}-a_{4}-a_{6} \:, \\
+	&F_{5}=F_{3}+X+Z-a_{4}-a_{5}-a_{6} \:, \\
+	&F_{6}=F_{3}+Z-a_{5}-a_{6} \:.
+\end{align*}
+It can be easily checked that all $F$'s are planar and remaining poles, although the spurious pole $X+Z$ appears in the process, and the result for leading order is exactly the 6 point amplitude for bi-adjoint $\phi^{3}$ theory.
+
+\subsubsection*{Cluster stringy integral: $C_2$}
+
+This integral is equivalent to the $Z$-integral $Z(1^{+}2^{+})$ defined on the moduli space of paired punctures~\cite{Li:2018mnq}, which in a positive parameterization is 
+\begin{align*}
+\int_{\mathbb R_+^2} \frac{\dif x_1}{x_1}\frac{\dif x_2}{x_2}x_1^{\alpha' X}x_2^{\alpha' Y}
+&(x_1 + 1)^{-\alpha' a} 
+(x_2 + 1)^{-\alpha' b}\\
+&(x_1x_2 + x_1 + 1)^{-\alpha' c}
+(x_1^2x_2 + x_1^2 + 2x_1 + 1)^{-\alpha' d} 
+\end{align*}
+where 4 polynomials with constant term 1 are $F$-polynomials with a $C_{2}$ quiver as the initial seed.
+This integral are related to $Z(1^{+}2^{+})$ (with gauge fixing $z_{0}=1$) by 
+\begin{equation*}
+	x_{1}=\frac{(1-z_{1})(z_{2}-z_{1})}{2z_{1}(1+z_{2})} \:,\qquad x_{2}=-\frac{(1+z_{1})^{2}}{(1-z_{1})^{2}}
+\end{equation*}
+and
+\begin{align*}
+	X=2s_{01}\:,\quad Y=s_{012}\:,\quad a=-2s_{1\tilde{2}}\:,\quad b=-s_{2\tilde{2}}\:,\quad 
+	c=-2s_{02}\:,\quad d=-s_{0\tilde{0}}
+\end{align*}
+with the Mandelstam variables defined therein. In this case, only vertex $(0,\infty)$ is not normal crossing, we transform this vertex to the origin as before, then we have
+\begin{align*}
+	\mathcal{I}_{C_{2}}(0,\infty)\approx \int_{[0,\epsilon]^{2}} \frac{\dif x_{1}\dif x_{2}}{x_{1}x_{2}} x_{1}^{\alpha' X}x_{2}^{\alpha' G_{1}}
+	(x_{1}+x_{2})^{-\alpha' c} (x_{1}^{2}+x_{2})^{-\alpha' d}
+\end{align*}
+where we have dropped irrelevant terms and introduced $G_{1}=b+c+d-Y$. This vertex can be decomposed into 3 normal crossing piece by the following blow ups
+\begin{align*}
+	\mathcal{I}_{C_{2}}(0,\infty)\approx\left\{
+	\begin{aligned}
+		&\int_{0<x_{1}<x_{2}}\frac{\dif y_{1}\dif y_{2}}{y_{1}y_{2}} y_{1}^{\alpha' X}y_{2}^{\alpha' G_{2}} \\
+		&\int_{0<x_{2}<x_{1}}\frac{\dif y_{1}\dif y_{2}}{y_{1}y_{2}} y_{1}^{\alpha' G_{1}}y_{2}^{\alpha' G_{2}}(y_{1}+y_{2})^{-\alpha'd} \approx
+		\left\{\begin{aligned}
+			\int_{0<y_{1}<y_{2}}\frac{\dif z_{1} \dif z_{2}}{z_{1}z_{2}}z_{1}^{\alpha' G_{1}}
+			z_{2}^{\alpha'(G_{1}+G_{2}-d)} \\
+			\int_{0<y_{2}<y_{1}}\frac{\dif z_{1}\dif z_{2}}{z_{1}z_{2}} z_{2}^{\alpha' G_{2}}
+			z_{1}^{\alpha'(G_{1}+G_{2}-d)}
+		\end{aligned} \right. 
+	\end{aligned} \right.
+\end{align*}
+where $G_{2}=G_{1}+X-c-d$, and the integration region for integration variables should be understood as $[0,\epsilon]^{2}$ while the subscript of integrals indicate the integration region before blow ups.
 
 \section{Algorithm}
 
@@ -1311,153 +1460,6 @@ in above example.
 % \end{defi}
 % 
 
-
-\section{Application and Example}
-
-% string Z integral, Cn, Gkn ...
-In this section, we will give several examples to illustrate this blow up algorithm, most of examples comes from the so-called cluster stringy integrals~\cite{} which are closely related to the origin string integrals.
-
-\subsubsection*{Cluster string integral: $A_{2}$}
-This integral is equivalent to the $Z$-integral $Z_{12345}(1,2,3,4,5)$~\cite{}, which in a positive parameterization takes the form of 
-\[
-	\mathcal{I}_{A_{2}}=\int_{\mathbb R_+^2} \frac{\dif x_1}{x_1}\frac{\dif x_2}{x_2}x_1^{\alpha' X}x_2^{\alpha' Y}
-	(1+x_1)^{-\alpha' a}(1+x_2)^{-\alpha' b}(1+x_1+x_1x_2)^{-\alpha' c}
-\] 
-where $1+x_{1}$, $1+x_{2}$ and $1+x_{1}+x_{1}x_{2}$ are $F$-polynomials with the initial seed $A_{2}$ quiver. With variable substitutions
-\[
-	x_{1}=\frac{1-z_{3}}{z_{3}}\,,\qquad x_{2}=\frac{z_{3}-z_{2}}{z_{2}(1-z_{3})}
-\]
-and 
-\[
-	X=s_{12},\quad Y=s_{45},\quad a=-s_{24},\quad b=-s_{35},\quad c=-s_{25} \:,
-	\] 
-the integral $\mathcal{I}_{A_{2}}$ becomes $Z_{12345}(12345)$ under the usual gauge fixing $\{z_{1},z_{4},z_{5}\}\to\{0,1,\infty\}$. It is easy to see that vertices $(0,0)$, $(0,\infty)$ and $(\infty,0)$ are all normal crossing, then no blow up is needed and their contributions to leading order simply are
-\begin{align*}
-	&\mathcal{I}_{A_{2}}(0,0)=\frac{1}{\alpha'^{2}}\frac{1}{XY}+O(\alpha'^{-1}) \:, \\
-	%&\mathcal{I}_{A_{2}}(0,\infty)=\frac{1}{\alpha'^{2}}\frac{1}{(a+c-X)Y}+O(\alpha'^{-1}) \:, 
-	&\mathcal{I}_{A_{2}}(\infty,0)=\frac{1}{\alpha'^{2}}\frac{1}{(a+c-X)Y}+O(\alpha'^{-1}) \:, \\
-	&\mathcal{I}_{A_{2}}(\infty,\infty)=\frac{1}{\alpha'^{2}}\frac{1}{(a+c-X)(b+c-Y)}+O(\alpha'^{-1}) \:.
-\end{align*}
-The vertex $(0,\infty)$ is not normal crossing, we bring this vertex to the origin by taking $x_{2}\to x_{2}^{-1}$, then the integral over the neighbourhood of this vertex reads
-\[
-    \mathcal{I}_{A_{2}}(0,\infty) \approx \int_{[0,\epsilon]^{2}} \frac{\dif x_{1}\,\dif x_{2}}{x_{1} x_{2}} x_{1}^{\alpha'X}x_{2}^{\alpha'(b+c-Y)}(x_{1}+x_{2}+x_{1}x_{2})^{-\alpha'c}
-\]
-where some irrelevant power functions of the form $(1+\cdots)$ have been dropped. This is exactly the example we used in section 2, then the leading order contribution of $\mathcal{I}_{A_{2}}$ is simply
-\begin{align*}
-   \mathcal{I}_{A_2}&=\frac{1}{\alpha'^{-2}}\biggl(\frac{1}{(a+c-X) (b+c-Y)}+\frac{1}{X (b+X-Y)} \\
-   &\quad +\frac{1}{(b+c-Y) (b+X-Y)}+\frac{1}{Y (a+c-X)}+\frac{1}{X Y}\biggr) + O(\alpha'^{-1}) 
-\end{align*}
-
-
-
-\subsubsection*{Cluster stringy integral: $A_3$}
-
-This integral is equivalent to the $Z$-integral $Z_{123456}(1,2,3,4,5,6)$, which in a positive parameterization takes the form of 
-\begin{align*}
-	\int_{\mathbb R_+^3} \frac{\dif x_1}{x_1}\frac{\dif x_2}{x_2}\frac{\dif x_3}{x_3}
-	x_1^{\alpha' X}x_2^{\alpha' Y}x_3^{\alpha' Z}
-	&(x_1 + 1)^{-\alpha' a_1}
-	(x_2 + 1)^{-\alpha'a_2}
-	(x_3 + 1)^{-\alpha'a_3}
-	(x_1x_2 + x_1 + 1)^{-\alpha'a_4}\\
-	&(x_2x_3 + x_3 + 1)^{-\alpha'a_5}
-	(x_1x_2x_3 + x_1x_3 + x_1 + x_3 + 1)^{-\alpha'a_6}
-\end{align*}
-where 6 polynomials with constant term 1 are $F$-polynomials with the initial seed $A_{3}$ quiver. With variable substitutions
-\[
-x_{1}=\frac{(z_{2}-z_{3})(1-z_{4})}{(1-z_{2})(z_{3}-z_{4})}\:,\quad x_{2}=\frac{z_{4}-z_{2}}{z_{2}(1-z_{4})}\:, \quad
-x_{3}=\frac{z_{2}}{1-z_{2}}
-\]
-and
-\begin{gather*}
-	X=s_{12},\quad Y=s_{123},\quad Z=s_{45} \\
-	a_{1}=-s_{24},\quad a_{2}=-s_{36},\quad a_{3}=-s_{15},\quad a_{4}=-s_{26},\quad a_{5}=-s_{35},\quad a_{6}=-s_{25}	
-\end{gather*}
-the integral $\mathcal{I}_{A_{3}}$ becomes $Z_{123456}(1,2,3,4,5,6)$ under the usual gauge fixing $\{z_{1},z_{5},z_{6}\}\to\{0,1,\infty\}$. Of the 8 vertices, $(0,0,0)$, $(0,0,\infty)$, $(\infty,0,0)$, $(\infty,0,\infty)$ and $(\infty,\infty,\infty)$ are normal crossing ones, and their contributions to leading order is 
-\begin{align*}
-	\mathcal{I}_{A_{3}}^{(1)}&=\frac{1}{\alpha'^{2}}\biggl(\frac{1}{XYZ}+\frac{1}{F_{1}XY} +\frac{1}{F_{2}YZ}+\frac{1}{F_{1}F_{2}Y} 
-	+\frac{1}{F_{1}F_{2}F_{3}}\biggr) +O(\alpha'^{-1})
-\end{align*}	
-where
-\begin{align*}
-	F_{1} &= a_{3}+a_{5}+a_{6}-Z \\
-	F_{2} &= a_{1}+a_{4}+a_{6}-X \\
-	F_{3} &= a_{2}+a_{4}+a_{5}+a_{6}-Y
-\end{align*}
-For the remaining vertices, we bring them to the origin by setting $x_{i}\to x_{i}^{-1}$,
-\begin{align*}
-	\mathcal{I}_{A_{3}}(0,\infty,0)&\approx\int_{[0,\epsilon]^{3}}\prod_{i=1}^{3}\frac{\dif x_{i}}{x_{i}} x_{1}^{\alpha' X}
-	x_{2}^{\alpha' F_{3}}x_{3}^{\alpha' Z}(x_{1}+x_{2})^{-\alpha' a_{4}}(x_{2}+x_{3})^{-\alpha' a_{5}}
-	\biggl(x_{2}+\sum_{i<j} x_{i}x_{j}\biggr)^{-\alpha' a_{6}} \\
-	\mathcal{I}_{A_{3}}(\infty,\infty,0)&\approx \int_{[0,\epsilon]^{3}}\frac{\dif x_{i}}{x_{i}}x_{1}^{\alpha' F_{2}}x_{2}^{\alpha' F_{3}}x_{3}^{\alpha'Z} (x_{2}+x_{3})^{-\alpha'(a_{5}+a_{6})} \\
-	\mathcal{I}_{A_{3}}(0,\infty,\infty)&\approx \int_{[0,\epsilon]^{3}}\frac{\dif x_{i}}{x_{i}}x_{1}^{\alpha' X}x_{2}^{\alpha' F_{3}}x_{3}^{\alpha' F_{1}} (x_{1}+x_{2})^{-\alpha'(a_{4}+a_{6})}
-\end{align*}
-where we have dropped some irrelevant terms according to our algorithm. The last two again are the cases we have encountered before, then a further attention is needed only for the first one, which can be decomposed into six normal crossing pieces 
-\begin{equation*}
-	\mathcal{I}_{A_{3}}(0,\infty,0)\approx
-	\begin{cases}
-		\int_{[0,\epsilon]^{3}}\prod_{i=1}^{3}\frac{\dif y_{i}}{y_{i}} y_{1}^{\alpha'X} y_{2}^{\alpha' F_{4}}
-		y_{3}^{\alpha'F_{5} }  & \{x_{1}=y_{1}y_{2}y_{3}, x_{2}=y_{2}y_{3},x_{3}=y_{3}\} \\
-		\int_{[0,\epsilon]^{3}}\prod_{i=1}^{3}\frac{\dif y_{i}}{y_{i}} y_{1}^{\alpha'X} y_{2}^{\alpha' (X+Z)}
-		y_{3}^{\alpha'F_{5} }  & \{x_{1}=y_{1}y_{2}y_{3}, x_{3}=y_{2}y_{3},x_{2}=y_{3}\}  \\
-		\int_{[0,\epsilon]^{3}}\prod_{i=1}^{3}\frac{\dif y_{i}}{y_{i}} y_{1}^{\alpha' F_{3}} y_{2}^{\alpha' F_{4}}
-		y_{3}^{\alpha'F_{5} }  & \{x_{2}=y_{1}y_{2}y_{3}, x_{1}=y_{2}y_{3},x_{3}=y_{3}\}  \\
-		\int_{[0,\epsilon]^{3}}\prod_{i=1}^{3}\frac{\dif y_{i}}{y_{i}} y_{1}^{\alpha' F_{3}} y_{2}^{\alpha' F_{6}}
-		y_{3}^{\alpha'F_{5} }  & \{x_{2}=y_{1}y_{2}y_{3}, x_{3}=y_{2}y_{3},x_{1}=y_{3}\}  \\
-		\int_{[0,\epsilon]^{3}}\prod_{i=1}^{3}\frac{\dif y_{i}}{y_{i}} y_{1}^{\alpha' Z} y_{2}^{\alpha' (X+Z)}
-		y_{3}^{\alpha'F_{5} }  & \{x_{3}=y_{1}y_{2}y_{3}, x_{1}=y_{2}y_{3},x_{2}=y_{3}\}  \\
-		\int_{[0,\epsilon]^{3}}\prod_{i=1}^{3}\frac{\dif y_{i}}{y_{i}} y_{1}^{\alpha' Z} y_{2}^{\alpha' F_{6}}
-		y_{3}^{\alpha'F_{5} }  & \{x_{3}=y_{1}y_{2}y_{3}, x_{2}=y_{2}y_{3},x_{1}=y_{3}\}  
-	\end{cases}
-\end{equation*}
-where each piece correspond to a simplex $0<x_{i}<x_{j}<x_{k}$, irrelevant terms are dropped again and we have introduced
-\begin{align*}
-	&F_{4}=X+F_{3}-a_{4}-a_{6} \:, \\
-	&F_{5}=F_{3}+X+Z-a_{4}-a_{5}-a_{6} \:, \\
-	&F_{6}=F_{3}+Z-a_{5}-a_{6} \:.
-\end{align*}
-It can be easily checked that all $F$'s are planar and remaining poles, although the spurious pole $X+Z$ appears in the process, and the result for leading order is exactly the 6 point amplitude for bi-adjoint $\phi^{3}$ theory.
-
-
-\subsubsection*{Cluster stringy integral: $C_2$}
-This integral is equivalent to the $Z$-integral $Z(1^{+}2^{+})$ defined on the moduli space of paired punctures~\cite{Li:2018mnq}, which in a positive parameterization is 
-\begin{align*}
-\int_{\mathbb R_+^2} \frac{\dif x_1}{x_1}\frac{\dif x_2}{x_2}x_1^{\alpha' X}x_2^{\alpha' Y}
-&(x_1 + 1)^{-\alpha' a} 
-(x_2 + 1)^{-\alpha' b}\\
-&(x_1x_2 + x_1 + 1)^{-\alpha' c}
-(x_1^2x_2 + x_1^2 + 2x_1 + 1)^{-\alpha' d} 
-\end{align*}
-where 4 polynomials with constant term 1 are $F$-polynomials with a $C_{2}$ quiver as the initial seed.
-This integral are related to $Z(1^{+}2^{+})$ (with gauge fixing $z_{0}=1$) by 
-\begin{equation*}
-	x_{1}=\frac{(1-z_{1})(z_{2}-z_{1})}{2z_{1}(1+z_{2})} \:,\qquad x_{2}=-\frac{(1+z_{1})^{2}}{(1-z_{1})^{2}}
-\end{equation*}
-and
-\begin{align*}
-	X=2s_{01}\:,\quad Y=s_{012}\:,\quad a=-2s_{1\tilde{2}}\:,\quad b=-s_{2\tilde{2}}\:,\quad 
-	c=-2s_{02}\:,\quad d=-s_{0\tilde{0}}
-\end{align*}
-with the Mandelstam variables defined therein. In this case, only vertex $(0,\infty)$ is not normal crossing, we transform this vertex to the origin as before, then we have
-\begin{align*}
-	\mathcal{I}_{C_{2}}(0,\infty)\approx \int_{[0,\epsilon]^{2}} \frac{\dif x_{1}\dif x_{2}}{x_{1}x_{2}} x_{1}^{\alpha' X}x_{2}^{\alpha' G_{1}}
-	(x_{1}+x_{2})^{-\alpha' c} (x_{1}^{2}+x_{2})^{-\alpha' d}
-\end{align*}
-where we have dropped irrelevant terms and introduced $G_{1}=b+c+d-Y$. This vertex can be decomposed into 3 normal crossing piece by the following blow ups
-\begin{align*}
-	\mathcal{I}_{C_{2}}(0,\infty)\approx\left\{
-	\begin{aligned}
-		&\int_{0<x_{1}<x_{2}}\frac{\dif y_{1}\dif y_{2}}{y_{1}y_{2}} y_{1}^{\alpha' X}y_{2}^{\alpha' G_{2}} \\
-		&\int_{0<x_{2}<x_{1}}\frac{\dif y_{1}\dif y_{2}}{y_{1}y_{2}} y_{1}^{\alpha' G_{1}}y_{2}^{\alpha' G_{2}}(y_{1}+y_{2})^{-\alpha'd} \approx
-		\left\{\begin{aligned}
-			\int_{0<y_{1}<y_{2}}\frac{\dif z_{1} \dif z_{2}}{z_{1}z_{2}}z_{1}^{\alpha' G_{1}}
-			z_{2}^{\alpha'(G_{1}+G_{2}-d)} \\
-			\int_{0<y_{2}<y_{1}}\frac{\dif z_{1}\dif z_{2}}{z_{1}z_{2}} z_{2}^{\alpha' G_{2}}
-			z_{1}^{\alpha'(G_{1}+G_{2}-d)}
-		\end{aligned} \right. 
-	\end{aligned} \right.
-\end{align*}
-where $G_{2}=G_{1}+X-c-d$, and the integration region for integration variables should be understood as $[0,\epsilon]^{2}$ while the subscript of integrals indicate the integration region before blow ups.
 
 
 \section{Conclusions and Outlook}
