@@ -71,7 +71,7 @@ Very recently, a vast generalization of tree level strings integrals has been pr
 \[
 	\mathsf{PT}(n):=\frac{\dif^{n}z}{\mathrm{SL}(2,\mathbb{R})} \prod_{i=1}^{n}\frac{1}{z_{i}-z_{i+1}}
 \]
-as the canonical form of the moduli space $\mathcal{M}_{0,n}^{+}$ and the Koba-Nielson factor as a regulator of the divergent integral $\int \mathsf{PT}(n)$. With a positive parameterization  $\mathbf{x}:= \{x_{1},\cdots, x_{n-3}\}$  of $\mathcal{M}_{0,n}^{+}$, $\mathsf{PT}(n)$ becomes the canonical form $\prod_{i=1}^{n-3} \dif \log x_{i}$ of $\mathbb{R}_{+}^{n-3}$ and the Koba-Nielson factor $\prod_{i<j} (z_{i}-z_{j})^{s_{ij}}$ becomes a product of powers of some Laurent polynomials $p_{I}(\mathbf{x})$, then string integrals end up with the form of
+as the canonical form of the moduli space $\mathcal{M}_{0,n}^{+}$ and the Koba-Nielson factor as a regulator of the divergent integral $\int \mathsf{PT}(n)$. With a positive parameterization  $\mathbf{x}:= \{x_{1},\cdots, x_{n-3}\}$  of $\mathcal{M}_{0,n}^{+}$, $\mathsf{PT}(n)$ becomes the canonical form $\prod_{i=1}^{n-3} \dif \log x_{i}$ of $\mathbb{R}_{+}^{n-3}:=[0,\infty]^{n-3}$ and the Koba-Nielson factor $\prod_{i<j} (z_{i}-z_{j})^{s_{ij}}$ becomes a product of powers of some Laurent polynomials $p_{I}(\mathbf{x})$, then string integrals end up with the form of
 \begin{equation} 
 	\int_{\mathbb{R}_{+}^{D}} \prod_{i=1}^{D}\frac{\dif x_{i}}{x_{i}}x_{i}^{\alpha' X_{i}}\prod_{I}p_{I}(\mathbf{x})^{-\alpha'c_{I}}	\:, \label{int1}
 \end{equation}
@@ -136,10 +136,10 @@ Essentially, finding such a series of blow-ups is equivalent to give a winning s
 
 In section 2, we review the definition of blow-up and describe its relation to Hironaka's polyhedra game.
 %then elaborate the principle and procedures of the blowing up algorithm. 
-Section 3 uses several examples arising form cluster stringy integrals to illustrate this algorithm.
-In section 4, we introduce a new viewpoint to approach the Hironaka's polyhedra game
-and give a new winning strategy of the game.
-Section 5 contains discussion and outlook. Finally, in the appendix, we will give another proof for the proposition firstly given in \cite{Arkani-Hamed:2017tmz} that the scattering-equation map \eqref{SEmap} is a bijection. 
+Section 3 uses several examples arising form cluster stringy integrals to illustrate this method.
+In section 4, we introduce a new viewpoint to approach the Hironaka's polyhedra game and give a new winning strategy of the game.
+Section 5 contains discussion and outlook. 
+%Finally, in the appendix, we will give another proof for the proposition firstly given in \cite{Arkani-Hamed:2017tmz} that the scattering-equation map \eqref{SEmap} is a bijection. 
 %from the interior of $\mathbb R_+^D$ to the interior of Minkowski sum of Newton polytopes of $p_I$. 
 
 % (\textcolor{red}{C: How to introduce scattering-equation map? Should we talk about its relation with blow up?})
@@ -237,7 +237,7 @@ Section 5 contains discussion and outlook. Finally, in the appendix, we will giv
 % 
 % One important lesson from the above trivial integral is that the leading terms of the integral come from the vertices of the positive geometry. 
 
-In this section, we first show some heuristic examples 
+In this section, we first use some heuristic examples 
 to show the general procedure to calculate the leading order of stringy integrals
 by blowing up and catch some important features of this calculation.
 Then we go to the general case and prove the equivalence of this procedure 
@@ -291,7 +291,7 @@ new variables $u$, $v$ and $t$ such that
 	x=ut,\quad y=vt,
 \] 
 where $[u:v]$ is a projective coordinate, since any common factor of $u$ and $v$ can be absorbed into the definition of $t$, the line $l_i:a_ix+b_iy=0$ hence becomes a line parameterized 
-by $t$ with an additional point $[-b_i:a_i]\in \mathbb P^1$. The additional point $[-b_i:a_i]\in \mathbb P^1$ tells us how this line goes to $(0,0)$ so that it can be used to distinguish different lines.
+by $t$ with an additional point $[-b_i:a_i]\in \mathbb P^1$. These additional points in $\mathbb P^1$ tell us how these line approach $(0,0)$ so that they can be used to distinguish different lines.
 In other words, we replace the point $(0,0)$ with $\mathbb P^1$, which is the additional dimension mentioned above. 
 
 % Now Let us see how blowing up resolves singularities. 
@@ -303,9 +303,11 @@ In other words, we replace the point $(0,0)$ with $\mathbb P^1$, which is the ad
 The above example is called the blow-up of the plane along the original point.
 In this article, we will consider the blow-up of $\mathbb R^D$
 along subspace $\mathbb R^n$ defined by $x_{i_1}=\cdots=x_{i_n}=0$. 
-The blow-up is the surface defined by equations $\{x_{i_j}y_k=x_{i_k}y_j\,:\, 1\leq j<k\leq n\}$ in space 
+The blow-up is the variety defined by equations $\{x_{i_j}y_k=x_{i_k}y_j\,:\, 1\leq j<k\leq n\}$ in space 
 $\mathbb R^{D}\times \mathbb P^{n-1}$,
 where $[y_1:\dots:y_n]$ is the projective coordinate. 
+%These equations can be easily solved by 
+%$x_{i_j}=ty_{j}$ for $t\neq 0$.
 
 % Generally, let $X=\operatorname{Spec} A$ be an affine scheme, and let $V(f_1,\dots,f_n)\subset X$
 % is a closed subscheme of $X$. The blow-up of $Y$ in X is the closure in
@@ -318,7 +320,7 @@ Now let's carefully consider the first example, the integral \eqref{exam:1}
 \[
 	I=\int_0^\infty \int_0^\infty\frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y+x y)^{-\alpha' c},
 \]
-whose leading contribution come from the neighbourhoods of four vertices $(0,0)$, $(0,\infty)$, $(\infty,0)$ and $(\infty,\infty)$. One can easily see that the vertices $(0,\infty)$, $(\infty,0)$ and $(\infty,\infty)$ are normal crossing. The consequence of this fact is the integrand decouples into powers of $x$ and $y$, then the leading contribution can be trivially obtained, for example 
+whose leading contribution comes from the neighbourhoods of four vertices $(0,0)$, $(0,\infty)$, $(\infty,0)$ and $(\infty,\infty)$. One can easily see that the vertices $(0,\infty)$, $(\infty,0)$ and $(\infty,\infty)$ are normal crossing. The consequence of this fact is the integrand decouples into powers of $x$ and $y$, then the leading contribution can be trivially obtained, for example 
 \begin{align*}
 	I(0,\infty)&=\int_{0}^\epsilon\int_{1/\epsilon}^\infty \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y+xy)^{-\alpha' c} \\
 	&\approx \int_{0}^\epsilon\int_{1/\epsilon}^\infty \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' (b-c)}= 
@@ -347,7 +349,7 @@ $\mathbb R\times\mathbb P^1$.
 Because $x$, $y\geq 0$ in the integral region,
 %It's convenient to further identify the $\mathbb P^1$ with
 %the line $u+v=1$ defined in $\mathbb R^2$.
-the vertex $(0,0)$ is blown up to a $1$-dimensional simplex $\mathbb P^1_+=\{[u:v]\,:\,u,v\geq 0\}$ 
+the vertex $(0,0)$ is blown up to an one-dimensional simplex $\mathbb P^1_+=\{[u:v]\,:\,u,v\geq 0\}$ 
 with two new vertices $u=0$ and $v=0$ under this map, 
 and it is easy to see that the factor $(x+y)$ is dominated by $x$ near the vertex $u=0$ or 
 by $y$ near the vertex $v = 0$. More precisely,
@@ -416,22 +418,22 @@ Finally,
 %	I\sim I(0,0)+I(0,\infty)+I(\infty,0)+I(\infty,\infty).
 %\]
 
-For the second example \eqref{exam:2}, we 
-blow up the singularity $(0,0)$ by the same map $x=tu$ and $y=tv$. For the polynomial $p=x^3+y^3+x y$,
-when $u=1$, 
-$p=t^2(t +t v^3+ v)\approx t^2(t+v)=t(x^2+y)$. 
-Similarly, when $v=1$, we will get $p\approx t(x+y^2)$. 
-If we draw new curves $x^2+y=0$ and $x+y^2=0$ and the original curve $x^3+y^3+xy=0$, 
-we can see that the original curve is 
-decomposed into two curves generated by blowing up in the above diagram
-so that the contribution of integral is also decomposed.
-\begin{figure}[th]
-	\centering\includegraphics[scale=0.7]{fig_2.pdf}	
-	\caption{
-		Blue curve: $x^3+y^3+xy=0$; Green curve: $y+x^2=0$;
-		Orange curve $x+y^2=0$.
-	}
-\end{figure}
+%For the second example \eqref{exam:2}, we 
+%blow up the singularity $(0,0)$ by the same map $x=tu$ and $y=tv$. For the polynomial $p=x^3+y^3+x y$,
+%when $u=1$, 
+%$p=t^2(t +t v^3+ v)\approx t^2(t+v)=t(x^2+y)$. 
+%Similarly, when $v=1$, we will get $p\approx t(x+y^2)$. 
+%If we draw new curves $x^2+y=0$ and $x+y^2=0$ and the original curve $x^3+y^3+xy=0$, 
+%we can see that the original curve is 
+%decomposed into two curves generated by blowing up in the above diagram
+%so that the contribution of integral is also decomposed.
+%\begin{figure}[th]
+	%\centering\includegraphics[scale=0.7]{fig_2.pdf}	
+	%\caption{
+		%Blue curve: $x^3+y^3+xy=0$; Green curve: $y+x^2=0$;
+		%Orange curve $x+y^2=0$.
+	%}
+%\end{figure}
 
 %In other words, in the expansion 
 %\[
@@ -439,27 +441,30 @@ so that the contribution of integral is also decomposed.
 %\]
 %where $xy^2$, $x^2y$, $x^2y^2\ll xy$ so that they don't contribute in the integral near $(0,0)$.
 
-From the last two examples, we can see that polynomials are not canonical objects 
+From the last example, we can see that polynomials are not canonical objects 
 for the leading order of a integral because different polynomials can give the 
-same contribution, %\textit{i.e} we can throw away irrelevant terms, 
-so a natural question arises. What's the canonical object to describe the 
+same contribution. For example, we can throw away irrelevant terms in the 
+polynomial. Besides, the integral also doesn't depend on positive coefficients
+in the polynomial which we will explain later.
+Thus a natural question arises. What's the canonical object to describe the 
 leading contribution of a polynomial in a integral near a vertex? The answer is 
 the \textit{Newton polyhedron} of this polynomial.
 
 %We now carefully consider which terms can be thrown away.
-Precisely, suppose we come to the vertex defined locally by $x_1=\cdots=x_D=0$, 
+Concretely, suppose we come to the vertex defined locally by $x_1=\cdots=x_D=0$, 
 \[
-	I(0,\dots,0)=\int_{[0,\epsilon]^D} \frac{d x_1}{x_1}\cdots \frac{d x_D}{x_D} 
-	\prod_a(p_a(x))^{\alpha' s_a}.
+	I(0,\dots,0)=\int_{[0,\epsilon]^D} 
+	\biggl(\prod_{i=1}^D\frac{d x_i}{x_i}x_i^{\alpha' X_i}\biggr)
+	p(x)^{-c}\prod_a(q_a(x))^{-\alpha' c_a}.
 \]
-In each polynomial 
+In the polynomial 
 \[
-	p_a(x)=\sum_{I} c_{aI} x^{n^I}:=\sum_I c_{aI} \prod_{i=1}^N x_i^{n^I_i},
+	p(x)=\sum_{I} s_{I} x^{n^I}:=\sum_I s_{I} \prod_{i=1}^N x_i^{n^I_i},
 \]
 if we find $x^{n^J}$ and $x^{n^I}$ where
 $n^J_i\geq n^I_i$ for every $i$, then there's no need to consider 
 $x^{n^J}$ anymore because it goes to zero faster than $x^{n^I}$. 
-Geometrically, one can assign each term with a cone 
+Geometrically, one can assign each term of $p$ with a cone 
 $C_{I}=(n^I+\mathbb R^D_{+}):=\{(n^I_1+v_1,\dots,n^I_D+v_D)\,:\, 
 \text{$v_i\geq 0$ for all $i$}\}$, the above
 claim is equivalently that terms in this cone can be thrown away.
@@ -494,10 +499,10 @@ also doesn't contribute!
 The leading order of integrals
 \[
 	I=\int_{[0,\epsilon]^D} \left(\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i}\right)
-	p_1^{-\alpha' c} \prod_I q_I^{-\alpha' c_I}
+	p_1^{-\alpha' c} \prod_a q_a^{-\alpha' c_I}
 	\quad \text{and} \quad 
 	I'=\int_{[0,\epsilon]^D} \left(\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i}\right)
-	p_2^{-\alpha' c} \prod_I q_I^{-\alpha' c_I}
+	p_2^{-\alpha' c} \prod_a q_a^{-\alpha' c_I}
 \]
 are the same if and only if $p_1$ and $p_2$ have the same Newton polyhedron,
 \textit{i.e.} $C[p_1]=C[p_2]$.
@@ -506,12 +511,13 @@ are the same if and only if $p_1$ and $p_2$ have the same Newton polyhedron,
 From the theorem in \cite{Arkani-Hamed:2019mrd}, the leading order of the integral eq.\eqref{int1} 
 only depends on the Minkowski sum of Newton polytopes of polynomials $p_I$.
 The \textit{Newton polytope} of a polynomial is very like the Newton polyhedron of a polynomial defined above.
-For a polynomial $q=\sum_I a_I x^{n^I}$, it's the convex hull of vectors $\{n^I\}$. The
+For a polynomial $q=\sum_I a_I x^{n^I}$, it's the convex hull of vectors 
+$\{n^I=(n^I_1,\dots,n^I_D)\}$. The
 \textit{Minkowski sum} (or vector sum) of two set $A$ and $B$ is the set $\{x+y\,:\,x\in A,\,y\in B\}$. 
 Note that the Newton polyhedron of a polynomial is just the Minkowski sum of Newton polytope and $\mathbb R_+^D$.
 
-Therefore, the above proposition is like the local version of this theorem, so that 
-it seems trivial. However, it's more free to use the local version because 
+Therefore, the above proposition is like the local version of this theorem, 
+so it may seem trivial. However, it's more free to use the local version because 
 the cone is not as rigid as the Newton polytope, and it just looks  
 like a `corner' of the Newton polytope.
 
@@ -528,6 +534,8 @@ like a `corner' of the Newton polytope.
 \begin{proof}
 We only need to prove that terms in the Newton polyhedron can be dropped in the 
 integration for a polynomial $p=\sum_I a_I x^{n^I}$.
+\textcolor{blue}{(B: It's wrong. We also need to prove that 
+it doesn't depend on coefficients in polynomial.)}
 We have seen that terms other than vertices in $\bigcup_I C_I$ do not contribute. Suppose a term $x^v$ 
 is in the interior of $C[p]-\bigcup_I C_I$,  
 then there exist non-negative numbers $\{c_J\}$ such that it can be written as 
