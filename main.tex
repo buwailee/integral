@@ -40,7 +40,7 @@
 %\color{textcolor}
 
 \date{\today}
-\title{Blowing up Stringy Integrals: How to win Hironaka's polyhedra game}
+\title{Blowing up Stringy Canonical Forms: How to win Hironaka's polyhedra game}
 
 \author{Zhenjie Li\and Chi Zhang}
 
@@ -50,7 +50,7 @@
 \maketitle
 
 \begin{abstract}
-	We provide an efficient method, blowing up, to compute leading order contributions of the recently introduced stringy integrals. The algorithm also gives a new winning strategy of the well-known Hironaka's polyhedra game.
+We provide an efficient method of blowing up to compute leading order contributions of the recently introduced stringy integrals. The algorithm also gives a new winning strategy of the well-known Hironaka's polyhedra game.
 \end{abstract}
 \newpage
 
@@ -69,11 +69,11 @@
 
 Very recently, a vast generalization of tree level strings integrals has been proposed in \cite{Arkani-Hamed:2019mrd}. This generalization is realized by identifying the Parke-Taylor form 
 \[
-	\mathsf{PT}(n):=\frac{\dif^{n}z}{\mathrm{SL}(2,\mathds{R})} \prod_{i=1}^{n}\frac{1}{z_{i}-z_{i+1}}
+	\mathsf{PT}(n):=\frac{\dif^{n}z}{\mathrm{SL}(2,\mathbb{R})} \prod_{i=1}^{n}\frac{1}{z_{i}-z_{i+1}}
 \]
-as the canonical form of the moduli space $\mathcal{M}_{0,n}^{+}$ and the Koba-Nielson factor as a regulator of the divergent integral $\int \mathsf{PT}(n)$. With a positive parameterization  $\mathbf{x}:= \{x_{1},\cdots, x_{n-3}\}$  of $\mathcal{M}_{0,n}^{+}$, $\mathsf{PT}(n)$ becomes the canonical form $\prod_{i=1}^{n-3} \dif \log x_{i}$ of $\mathds{R}_{+}^{n-3}$ and the Koba-Nielson factor $\prod_{i<j} (z_{i}-z_{j})^{s_{ij}}$ becomes a product of powers of some Laurent polynomials $p_{I}(\mathbf{x})$, then string integrals end up with the form of
+as the canonical form of the moduli space $\mathcal{M}_{0,n}^{+}$ and the Koba-Nielson factor as a regulator of the divergent integral $\int \mathsf{PT}(n)$. With a positive parameterization  $\mathbf{x}:= \{x_{1},\cdots, x_{n-3}\}$  of $\mathcal{M}_{0,n}^{+}$, $\mathsf{PT}(n)$ becomes the canonical form $\prod_{i=1}^{n-3} \dif \log x_{i}$ of $\mathbb{R}_{+}^{n-3}$ and the Koba-Nielson factor $\prod_{i<j} (z_{i}-z_{j})^{s_{ij}}$ becomes a product of powers of some Laurent polynomials $p_{I}(\mathbf{x})$, then string integrals end up with the form of
 \begin{equation} 
-	\int_{\mathds{R}_{+}^{D}} \prod_{i=1}^{D}\frac{\dif x_{i}}{x_{i}}x_{i}^{\alpha' X_{i}}\prod_{I}p_{I}(\mathbf{x})^{-\alpha'c_{I}}	\:, \label{int1}
+	\int_{\mathbb{R}_{+}^{D}} \prod_{i=1}^{D}\frac{\dif x_{i}}{x_{i}}x_{i}^{\alpha' X_{i}}\prod_{I}p_{I}(\mathbf{x})^{-\alpha'c_{I}}	\:, \label{int1}
 \end{equation}
 where $D=n{-}3$, $X_{i}$ and $c_{I}$ are linear combinations of Mandelstam variables $s_{ij}$'s. A \emph{stringy} integral is a integral of form eq.(\ref{int1}) but with arbitrary subtraction-free polynomials $p_{I}$. 
 
@@ -110,7 +110,7 @@ where $D=n{-}3$, $X_{i}$ and $c_{I}$ are linear combinations of Mandelstam varia
 
 In \cite{Arkani-Hamed:2019mrd}, many important properties of stringy integrals are well studied, especially the relation between their field theory limit, {\it{i.e}}. the limit of $\alpha'\to 0$, and the Minkowski sum $N_{P}$ of Newton polytopes of $\{p_I\}$.
 %As in the original superstring amplitude, the field theory limit of a stringy integral is  its leading order as $\alpha'\to 0$. 
-More concretely, {\it{ i) the leading order of a stringy integral is given by the volume of the dual polytope, or the canonical function $\underline{\Omega}(N_{P})$, of $N_{P}$, and ii) a bijection between $\mathds{R}_{+}^{D}$ and $N_{P}$ is given by the saddle point equation of the regulator, that is the so-called scattering-equation map $\Phi$,}}
+More concretely, {\it{ i) the leading order of a stringy integral is given by the volume of the dual polytope, or the canonical function $\underline{\Omega}(N_{P})$, of $N_{P}$, and ii) a bijection between $\mathbb{R}_{+}^{D}$ and $N_{P}$ is given by the saddle point equation of the regulator, that is the so-called scattering-equation map $\Phi$,}}
 \begin{equation} \label{SEmap}
 	X_{i}= \sum_{I}c_{I}\frac{\partial \log p_{I}}{\partial \log x_{i}}\:, \qquad  \text{for }i=1,\cdots,D.
 \end{equation}	
@@ -119,7 +119,7 @@ On the one hand, performing Minkowski sum for polytopes analytically is nearly i
 
 
 The main purpose of this article is to show an efficient method, {\it{blowing up}}, %(\textcolor{red}{C: or blowing-up map?}),
-to calculate the leading order of the integral eq.\eqref{int1} with respect to $\alpha'$. This is a general method which is closely related to the so-called \emph{Hironaka's polyhedra game}~\cite{}. We will see that the situation is easier when this method is applied in stringy integrals due to some features of canonical forms, and especially its closed relation to the polytope $N_{P}$. This method is based on two simple observations: i) the leading order contribution in $\alpha'$-expansion of stringy integrals arises from each vertex of the integration region $\mathds{R}_{+}^{D}$, ii) suppose that all $p_I(0)\neq 0$ in the integral eq.\eqref{int1}, then the integral at the neighbourhood of the origin becomes 
+to calculate the leading order of the integral eq.\eqref{int1} with respect to $\alpha'$. This is a general method which is closely related to the so-called \emph{Hironaka's polyhedra game}~\cite{}. We will see that the situation is easier when this method is applied in stringy integrals due to some features of canonical forms, and especially its closed relation to the polytope $N_{P}$. This method is based on two simple observations: i) the leading order contribution in $\alpha'$-expansion of stringy integrals arises from each vertex of the integration region $\mathbb{R}_{+}^{D}$, ii) suppose that all $p_I(0)\neq 0$ in the integral eq.\eqref{int1}, then the integral at the neighbourhood of the origin becomes 
 \begin{equation}\label{int2}
 	\int_{[0,\epsilon]^D}\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i} \prod_{I}p_{I}(0)^{-\alpha' c_{I}}
 	=\prod_{i=1}^D\frac{\epsilon^{\alpha' X_i}p_{I}(0)^{-\alpha' c_{I}}}{\alpha' X_i}
@@ -134,7 +134,12 @@ They can be overcome by a series of blows-ups, after which the stringy integral 
 Essentially, finding such a series of blow-ups is equivalent to give a winning strategy for a (simplified) Hironaka's polyhedra game.
 
 
-In section 2, we review the definition of blows-up and describe its relation to Hironaka's polyhedra game, then elaborate the principle and procedures of the blowing up algorithm. Section 3 uses several examples arising form cluster stringy integrals to illustrate this algorithm. Section 4 contains discussion and outlook. Finally, in the appendix, we will give another proof for the proposition firstly given in \cite{Arkani-Hamed:2017tmz} that the scattering-equation map \eqref{SEmap} is a bijection. 
+In section 2, we review the definition of blow-up and describe its relation to Hironaka's polyhedra game.
+%then elaborate the principle and procedures of the blowing up algorithm. 
+Section 3 uses several examples arising form cluster stringy integrals to illustrate this algorithm.
+In section 4, we introduce a new viewpoint to approach the Hironaka's polyhedra game
+and give a new winning strategy of the game.
+Section 5 contains discussion and outlook. Finally, in the appendix, we will give another proof for the proposition firstly given in \cite{Arkani-Hamed:2017tmz} that the scattering-equation map \eqref{SEmap} is a bijection. 
 %from the interior of $\mathbb R_+^D$ to the interior of Minkowski sum of Newton polytopes of $p_I$. 
 
 % (\textcolor{red}{C: How to introduce scattering-equation map? Should we talk about its relation with blow up?})
@@ -164,7 +169,7 @@ In section 2, we review the definition of blows-up and describe its relation to 
 % \end{equation}
 %Geometrically, it's so simple because it's only $x_1=\cdots=x_D=0$ that defines the vertices. 
 
-\section{Blow up}
+\section{Blow-up and Hironaka's Polyhedra Game}
 
 % (Some review of positive geometry \& canonical form. ...)
 
@@ -232,8 +237,13 @@ In section 2, we review the definition of blows-up and describe its relation to 
 % 
 % One important lesson from the above trivial integral is that the leading terms of the integral come from the vertices of the positive geometry. 
 
+In this section, we first show some heuristic examples 
+to show the general procedure to calculate the leading order of stringy integrals
+by blowing up and catch some important features of this calculation.
+Then we go to the general case and prove the equivalence of this procedure 
+and the famous Hironaka's polyhedra game.
 
-Before going into the detail of blowing up, let us clarify the problem mentioned in introduction. To this end, it is useful to recover a more general form of string integrals
+Before going into details of blowing up, let us clarify the problem mentioned in introduction. To this end, it is useful to recover a more general form of string integrals
 \begin{equation*}
   \mathcal{I}(\alpha';W_{I})=\int_{\mathcal{P}} \Omega_{\mathcal{P}}(\mathbf{x}) \prod_{I}p_{I}(\mathbf{x})^{\alpha'W_{I}}\,,
 \end{equation*}
@@ -250,7 +260,7 @@ For the integral
 \int_0^\infty \int_0^\infty \frac{\dif x}{x}\frac{\dif y}{y}x^{\alpha' X}
 y^{\alpha' Y}(x^3+y^3+ xy)^{-\alpha' c},
 \end{equation}
-the vertex $(0,0)$ is crossed by $x=0$ and $y=0$ once, by $x^3+y^3+xy=0$ twice. 
+the vertex $(0,0)$ is crossed by $x=0$ and $y=0$ once and by $x^3+y^3+xy=0$ twice. 
 
 \begin{figure}[h]
 \begin{center}
@@ -262,14 +272,11 @@ the vertex $(0,0)$ is crossed by $x=0$ and $y=0$ once, by $x^3+y^3+xy=0$ twice.
 \end{figure}
 
 The main tool used in this article to solve this problem is blowing up (or blow-up).
-Briefly speaking, blowing up introduces additional dimensions for the original point,
-and curves crossing it in different directions are lifted to new curves such that they intersect at the different points in the additional dimensions according to their directions.
+Briefly speaking, blow-up (along the original point) introduces additional dimensions for the original point such that
+curves crossing it in different directions are lifted to new curves intersecting the additional dimensions in different points.
 
-% Let's give a short review of blowing up. 
 % In mathematics, blowing up or blowup is a type of geometric transformation which replaces 
 % a subspace of a given space with all the directions pointing out of that subspace.
-% One main purpose of blowing-up in math is to resolve singularities. 
-% (\textcolor{red}{C:This short review, especially this example, is a bit confusing and misleading, at least I don't get the point, maybe some pictures or other example can help to clarify it.})
 Let's first consider a simple but heuristic example of blowing up. 
 Suppose there's a family of line $\{l_i: a_ix+b_iy=0\}_{i=1,\dots,n}$ on the plane 
 $\mathbb R^2$
@@ -284,9 +291,8 @@ new variables $u$, $v$ and $t$ such that
 	x=ut,\quad y=vt,
 \] 
 where $[u:v]$ is a projective coordinate, since any common factor of $u$ and $v$ can be absorbed into the definition of $t$, the line $l_i:a_ix+b_iy=0$ hence becomes a line parameterized 
-by $t$ with an additional point $[-b_i:a_i]\in \mathbb P^1$. Then, the additional point $[-b_i:a_i]\in \mathbb P^1$ tells us how this line goes to $(0,0)$ so that it can be used to distinguish different lines.
-In other words, we replace the point $(0,0)$ with $\mathbb P^1$, which is the additional
-dimension mentioned above. 
+by $t$ with an additional point $[-b_i:a_i]\in \mathbb P^1$. The additional point $[-b_i:a_i]\in \mathbb P^1$ tells us how this line goes to $(0,0)$ so that it can be used to distinguish different lines.
+In other words, we replace the point $(0,0)$ with $\mathbb P^1$, which is the additional dimension mentioned above. 
 
 % Now Let us see how blowing up resolves singularities. 
 % Consider the curve $x^3+y^3+xy=0$ on the plane, which is drawn in Fig.\ref{fig_1}.
@@ -297,10 +303,9 @@ dimension mentioned above.
 The above example is called the blow-up of the plane along the original point.
 In this article, we will consider the blow-up of $\mathbb R^D$
 along subspace $\mathbb R^n$ defined by $x_{i_1}=\cdots=x_{i_n}=0$. 
-(The blow-up is the surface defined by $x_{i_j}y_k=x_{i_k}y_j$ in space 
+The blow-up is the surface defined by equations $\{x_{i_j}y_k=x_{i_k}y_j\,:\, 1\leq j<k\leq n\}$ in space 
 $\mathbb R^{D}\times \mathbb P^{n-1}$,
-where $[y_1,\dots,y_n]$ is the projective coordinate. \textcolor{red}{C: I don't undertand, say what is the range of $i_{j},k,i_{k},j$, what is the dimension of the surface. make it more plain}) These equation can be easily
-solved by $y_j=tx_{i_j}$ for $t\neq 0$.
+where $[y_1:\dots:y_n]$ is the projective coordinate. 
 
 % Generally, let $X=\operatorname{Spec} A$ be an affine scheme, and let $V(f_1,\dots,f_n)\subset X$
 % is a closed subscheme of $X$. The blow-up of $Y$ in X is the closure in
@@ -313,31 +318,48 @@ Now let's carefully consider the first example, the integral \eqref{exam:1}
 \[
 	I=\int_0^\infty \int_0^\infty\frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y+x y)^{-\alpha' c},
 \]
-for which the leading contribution come from the neighbourhoods of four vertices $(0,0)$, $(0,\infty)$, $(\infty,0)$ and $(\infty,\infty)$. One can easily see that the vertices $(0,\infty)$, $(\infty,0)$ and $(\infty,\infty)$ are normal crossing. The consequece of this fact is the integrand decouples into powers of $x$ and $y$, then the leading contribution can be trivially obtained, for example 
+whose leading contribution come from the neighbourhoods of four vertices $(0,0)$, $(0,\infty)$, $(\infty,0)$ and $(\infty,\infty)$. One can easily see that the vertices $(0,\infty)$, $(\infty,0)$ and $(\infty,\infty)$ are normal crossing. The consequence of this fact is the integrand decouples into powers of $x$ and $y$, then the leading contribution can be trivially obtained, for example 
 \begin{align*}
 	I(0,\infty)&=\int_{0}^\epsilon\int_{1/\epsilon}^\infty \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y+xy)^{-\alpha' c} \\
 	&\approx \int_{0}^\epsilon\int_{1/\epsilon}^\infty \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' (b-c)}= 
-	\frac{1}{{\alpha'}^2}\frac{1}{a} \frac{1}{c-b}+O({\alpha'}^{-1})
+	\frac{1}{{\alpha'}^2}\frac{1}{a} \frac{1}{c-b}+O({\alpha'}^{-1}),
 \end{align*}
+where we throw away $x$ and $xy$ in $x+y+xy$ after $\approx$ because in this case $x\ll y$
+so that they do not contribute the leading order when $\alpha' \to 0$.
+In this article, the symbol $\approx$ is used to relate two expressions 
+(usually integrals) with the same leading terms 
+or two polynomials which contribute the same leading terms in the integration.
 Similarly, $I(\infty,0)\approx ({\alpha'}^2 b (c-a))^{-1}$ and $I(\infty,\infty)\approx (\alpha'^{2}(c-a) (c-b))^{-1}.$
 
-The vertex $(0,0)$ is harder due to the behavor of the mixed factor $(x+y+xy)^{-\alpha' c}$ at the neighbourhood of thie vertex. % $(x,y)\to (0,0)$
+The vertex $(0,0)$ is harder due to the behaviour of the mixed factor $(x+y+xy)^{-\alpha' c}$ at the neighbourhood of this vertex. 
 % \[
 % I(0,0)=\int^{\epsilon}_0 \int^{\epsilon}_0 \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y+xy)^{-\alpha' c}
 % %\sim\int^{\epsilon}_0 \int^{\epsilon}_0\frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y)^{-\alpha' c}.
 % \]
 % when $(x,y)\to (0,0)$, we cannot decouple $x$ and $y$ in the mixed factor $(x+y+xy)^{-\alpha' c}$ 
 % because we don't know which one is dominated. 
-However, we can always drop the term $xy$ which becomes irrelevant when $(x,y)\to (0,0)$. %because $xy\ll x$, $y$. 
-%For the remaining terms $x+y$, 
-Then we can introduce new variables $(t,p)$ by the map $x = tp$ and $y=t(1-p)$, \textit{i.e. blow-up}. The vertex (0,0) is blowed up to a unit interval with $t=0$ and $p\in [0,1]$ under this map, and it is easy to see that the factor $(x+y)$ is dominated by $x$ when $p\to 0$ and by $y$ when $p \to1$. By intersering $t$ and $p$, we have
+However, we can always drop the term $xy$ which becomes irrelevant 
+when $(x,y)\to (0,0)$ because $xy\ll x$, $y$. 
+For remaining terms $x+y$, 
+we blow up the plane along $(0,0)$ by introducing new variables 
+$(t,[u:v])$ defined by equations $x=tu$ and $y=tv$ in
+$\mathbb R\times\mathbb P^1$. 
+Because $x$, $y\geq 0$ in the integral region,
+%It's convenient to further identify the $\mathbb P^1$ with
+%the line $u+v=1$ defined in $\mathbb R^2$.
+the vertex $(0,0)$ is blown up to a $1$-dimensional simplex $\mathbb P^1_+=\{[u:v]\,:\,u,v\geq 0\}$ 
+with two new vertices $u=0$ and $v=0$ under this map, 
+and it is easy to see that the factor $(x+y)$ is dominated by $x$ near the vertex $u=0$ or 
+by $y$ near the vertex $v = 0$. More precisely,
+the one-dimensional simplex $\mathbb P^1_+$ can be identified with 
+the unit interval $[0,1]$ by setting $u+v=1$, so
  \begin{equation}\label{canonicalformunderblowup}
-	\frac{dxdy}{xy} = \frac{dp}{p(1-p)}\frac{dt}{t},
+	\frac{dxdy}{xy} = \frac{du}{u(1-u)}\frac{dt}{t},
  \end{equation}
 and
 \begin{equation*}
-	I(0,0)\approx\int_0^\epsilon\frac{dt}{t} t^{\alpha'(a+b-c)}\int_0^{1}\frac{dp}{p(1-p)}p^{\alpha' a}(1-p)^{\alpha' b}%\sim \frac{1}{\alpha'}\frac{1}{a+b-c}\int_0^{1}\frac{dp}{p(1-p)}p^{\alpha' a}(1-p)^{\alpha' b}
-	= \frac{1}{{\alpha'}^2}\frac{1}{a+b-c}\biggl(\frac 1a+\frac 1b\biggr)
+	I(0,0)\approx\int_0^\epsilon\frac{dt}{t} t^{\alpha'(a+b-c)}\int_0^{1}\frac{du}{u(1-u)}u^{\alpha' a}(1-u)^{\alpha' b}%\sim \frac{1}{\alpha'}\frac{1}{a+b-c}\int_0^{1}\frac{dp}{p(1-p)}p^{\alpha' a}(1-p)^{\alpha' b}
+	= \frac{1}{{\alpha'}^2}\frac{1}{a+b-c}\biggl(\frac 1a+\frac 1b\biggr).
 	+O({\alpha'}^{-1})
 \end{equation*}
 % In this example, whether $x$ or $y$ is dominated in the integration is characterized by $p$, 
@@ -353,7 +375,7 @@ and
 \draw[->] (-4.6,-0.8) -- (-1.5,-0.8);
 \draw[->] (-4.5,-0.9) -- (-4.5,2.2);
 \draw (-3.5,-0.8) -- (-4.5,0.2);
-\draw[densely dashed,->] (-4.5,0.2) -- (-3.2,-1.1)node[right]{$p$};
+\draw[densely dashed,->] (-4.5,0.2) -- (-3.2,-1.1)node[right]{$u$};
 \draw[->]  plot[smooth, tension=.7] coordinates {(-4.4,0.3) (-2.7,1.7) (-0.6,2)};
 \draw[->]  plot[smooth, tension=.7] coordinates {(-3.5,-0.9) (-2.4,-2.4) (-0.6,-2.6)};
 \fill[gray!30,opacity=0.4] (0.8,-3.4) -- (2.8,-3.4) -- (2.8,-0.4) -- (-0.2,-0.4) -- (-0.2,-3.4);
@@ -362,14 +384,14 @@ and
 \fill[gray!30,opacity=0.4] (0.8,1) -- (2.8,1) -- (2.8,4) -- (-0.2,4) -- (-0.2,1);
 \draw[->] (-0.3,1) -- (2.8,1);
 \draw[->] (-0.2,0.9) -- (-0.2,4);
-\node at (-2.8,2) {\small $p\approx 0$};
-\node at (-2.2,-2) {\small $p\approx 1$};
+\node at (-2.8,2) {\small $u\to 0$};
+\node at (-2.2,-2) {\small $v\to 0$};
 \node at (-4,-1) {\small $t$};
 \node at (-4.6,-0.4) {\small $t$};
-\node at (2.8,0.8) {\small $p$};
+\node at (2.8,0.8) {\small $u$};
 \node at (-0.4,4) {\small $t$};
 \node at (-0.4,-0.4) {\small $t$};
-\node at (2.8,-3.6) {\small $1-p$};
+\node at (2.8,-3.6) {\small $v$};
 \end{tikzpicture}
 \end{center}
 % Similarly, one can work out 
@@ -377,13 +399,13 @@ and
 % 	I(\infty,\infty)\approx \frac{1}{{\alpha'}^2}\frac{1}{(c-a) (c-b)} 
 % \]
 % and 
-Finally
+Finally,
 \begin{align*}
 	I&\approx I(0,0)+I(0,\infty)+I(\infty,0)+I(\infty,\infty)\\
 	 &\approx \frac{1}{{\alpha'}^2}
 	 \biggl(
 \frac{1}{b (a+b-c)}+\frac{1}{b (c-a)}+\frac{1}{a (c-b)}+\frac{1}{(c-a) (c-b)}+\frac{1}{a (a+b-c)}
-	 \biggr)
+	 \biggr).
 \end{align*}
 %similarly, 
 %\[
@@ -394,90 +416,120 @@ Finally
 %	I\sim I(0,0)+I(0,\infty)+I(\infty,0)+I(\infty,\infty).
 %\]
 
-% For the second example \eqref{exam:2}, the regulating polynomial $p=x^3+y^3+x y$ has a singularity at (0,0). This singularity can be blowed up by setting
-% $x=tu$ and $y=tv$, then when $u\approx 1$, 
-% $p=t^2(t +t v^3+ v)\approx t^2(t+v)=t(x^2+y)$. 
-% Similarly, if $v=1$, we will get $p\approx t(x+y^2)$. 
-% If we draw new curves $x^2+y=0$ and $x+y^2=0$ and the original curve $x^3+y^3+xy=0$, 
-% we can see that the original curve is 
-% decomposed into two curves generated by blowing up in the above diagram, so that 
-% the contribution of integral is also decomposed.
 
+For the second example \eqref{exam:2}, we 
+blow up the singularity $(0,0)$ by the same map $x=tu$ and $y=tv$. For the polynomial $p=x^3+y^3+x y$,
+when $u=1$, 
+$p=t^2(t +t v^3+ v)\approx t^2(t+v)=t(x^2+y)$. 
+Similarly, when $v=1$, we will get $p\approx t(x+y^2)$. 
+If we draw new curves $x^2+y=0$ and $x+y^2=0$ and the original curve $x^3+y^3+xy=0$, 
+we can see that the original curve is 
+decomposed into two curves generated by blowing up in the above diagram
+so that the contribution of integral is also decomposed.
+\begin{figure}[th]
+	\centering\includegraphics[scale=0.7]{fig_2.pdf}	
+	\caption{
+		Blue curve: $x^3+y^3+xy=0$; Green curve: $y+x^2=0$;
+		Orange curve $x+y^2=0$.
+	}
+\end{figure}
+>>>>>>> master
 
+%In other words, in the expansion 
+%\[
+	%(y+x^2)(x+y^2)=xy+x^3+y^3+xy^2+x^2y+x^2y^2\approx x^3+y^3+xy,
+%\]
+%where $xy^2$, $x^2y$, $x^2y^2\ll xy$ so that they don't contribute in the integral near $(0,0)$.
 
-For the second example \eqref{exam:2}, the regulating polynomial $p=x^3+y^3+x y$ has a singularity at (0,0). This singularity can be blowed up by setting $x=tu$ and $y=tv$, then we can see that the original curve is decomposed into two curves $x^2+y=0$ and $x+y^2=0$ generated by blowing up as in the diagram 
-\begin{center}
-	\includegraphics[scale=0.7]{fig_2.pdf}	
-\end{center}
-where the blue curve is $x^3+y^3+xy=0$, the green curve is $y+x^2=0$ and
-the orange curve $x+y^2=0$.
+From the last two examples, we can see that polynomials are not canonical objects 
+for the leading order of a integral because different polynomials can give the 
+same contribution, %\textit{i.e} we can throw away irrelevant terms, 
+so a natural question arises. What's the canonical object to describe the 
+leading contribution of a polynomial in a integral near a vertex? The answer is 
+the \textit{Newton polyhedron} of this polynomial.
 
-In other words, in the expansion 
-\[
-	(y+x^2)(x+y^2)=xy+x^3+y^3+xy^2+x^2y+x^2y^2\approx x^3+y^3+xy,
-\]
-where $xy^2$, $x^2y$, $x^2y^2\ll xy$ so that they don't contribute in the integral near $(0,0)$.
-
-% Generally, we want to decompose a polynomial into
-% \[
-% 	p\sim \prod_{i\leq j} \prod_k (x_i^{a^k_{ij}}+x_j^{b^k_{ij}})
-% \]
-
-The similar method used above can be generalized. We now carefully consider which terms can be thrown away.
-% Generally, the integral near a vertex need not to be decoupled as $I(0,\infty)$ above, 
-% so blowing-up is necessary. 
-Suppose we come to the vertex defined locally by $x_1=\cdots=x_D=0$, 
+%We now carefully consider which terms can be thrown away.
+Precisely, suppose we come to the vertex defined locally by $x_1=\cdots=x_D=0$, 
 \[
 	I(0,\dots,0)=\int_{[0,\epsilon]^D} \frac{d x_1}{x_1}\cdots \frac{d x_D}{x_D} 
-	\prod_i(p_i(x))^{\alpha' s_i}.
+	\prod_a(p_a(x))^{\alpha' s_a}.
 \]
-In each polynomial $p_i$, 
+In each polynomial 
 \[
-	p_i(x)=\sum_{I} a_{iI} x^{n^I},
+	p_a(x)=\sum_{I} c_{aI} x^{n^I}:=\sum_I c_{aI} \prod_{i=1}^N x_i^{n^I_i},
 \]
-we need to worry about which $x^{n^I}$ is dominated (by blowing up) in the integration,
-however not all terms can dominate 
-the integral. For example, if we find that $x^{n^J}=x^{n^I}x^{v}$ or equivalently $n^J=n^I+v$ for some 
-non-zero positive vector $v$, there's no need to consider $x^{n^J}$ anymore because it goes to zero faster 
-than $x^{n^I}$. Geometrically, one can assign each term with a cone $C_{I}=(n^I+\mathbb R^D_{+})$, the above
-claim is equivalently that other terms in this cone can be thrown away.
-
+if we find $x^{n^J}$ and $x^{n^I}$ where
+$n^J_i\geq n^I_i$ for every $i$, then there's no need to consider 
+$x^{n^J}$ anymore because it goes to zero faster than $x^{n^I}$. 
+Geometrically, one can assign each term with a cone 
+$C_{I}=(n^I+\mathbb R^D_{+}):=\{(n^I_1+v_1,\dots,n^I_D+v_D)\,:\, 
+\text{$v_i\geq 0$ for all $i$}\}$, the above
+claim is equivalently that terms in this cone can be thrown away.
 Furthermore, we can consider the \textit{convex hull} of these cones $\{C_I\}$, 
 \textit{i.e.} the smallest convex set contains these cones,
-which is a polyhedron. It's usually larger than
-the union of these cones $\bigcup_I C_I$, but terms other than vertices in this polyhedron 
-are also not dominated! Here let's consider an example $p(x)=x^6+y^6+x^2y^2$. 
-\begin{center}
-	\begin{tikzpicture}
-		\fill[gray,opacity=0.2] (0,4) -- (0,3) -- (4,3) -- (4,4);
-		\fill[gray,opacity=0.2] (1,4) -- (1,1) -- (4,1) -- (4,4);
-		\fill[gray,opacity=0.2] (3,4) -- (3,0) -- (4,0) -- (4,4); 
-		\fill[green,opacity=0.2] (0,3) -- (1,3) -- (1,1); 
-		\fill[green,opacity=0.2] (3,0) -- (3,1) -- (1,1); 
-		\draw[thick] (0,4) -- (0,3) -- (1,1) -- (3,0) -- (4,0);
-		\draw[->](-0.1,0) -- (4.1,0);
-		\draw[->](0,-0.1) -- (0,4.1);
-		\node[inner sep=1.5pt,circle,fill=blue] at (0,3) {};
-		\node[inner sep=1.5pt,circle,fill=blue] at (1,1) {};
-		\node[inner sep=1.5pt,circle,fill=blue] at (3,0) {};
-	\end{tikzpicture}
-\end{center}
-In the above diagram, besides gray cones, the polyhedron contains two green regions. 
-If we add terms like $x^5y^2$ in the interior of green regions to the polynomial, 
-we will show in the next lemma that the leading terms of the integral 
-from this vertices $x_1=x_2=\cdots=x_D=0$ do not change.
+which is the \textit{Newton polyhedron} $C[p]$ of the polynomial $p$. 
+It's usually larger than the union of these cones $\bigcup_I C_I$, 
+but terms other than vertices of the Newton polyhedron 
+also doesn't contribute! 
+%Here let's consider an example $p(x)=x^6+y^6+x^2y^2$. 
+%\begin{center}
+	%\begin{tikzpicture}
+		%\fill[gray,opacity=0.2] (0,4) -- (0,3) -- (4,3) -- (4,4);
+		%\fill[gray,opacity=0.2] (1,4) -- (1,1) -- (4,1) -- (4,4);
+		%\fill[gray,opacity=0.2] (3,4) -- (3,0) -- (4,0) -- (4,4); 
+		%\fill[green,opacity=0.2] (0,3) -- (1,3) -- (1,1); 
+		%\fill[green,opacity=0.2] (3,0) -- (3,1) -- (1,1); 
+		%\draw[thick] (0,4) -- (0,3) -- (1,1) -- (3,0) -- (4,0);
+		%\draw[->](-0.1,0) -- (4.1,0);
+		%\draw[->](0,-0.1) -- (0,4.1);
+		%\node[inner sep=1.5pt,circle,fill=blue] at (0,3) {};
+		%\node[inner sep=1.5pt,circle,fill=blue] at (1,1) {};
+		%\node[inner sep=1.5pt,circle,fill=blue] at (3,0) {};
+	%\end{tikzpicture}
+%\end{center}
+%In the above diagram, besides gray cones, the polyhedron contains two green regions. 
+%If we add terms like $x^5y^2$ in the interior of green regions to the polynomial, 
+%we will show in the next lemma that the leading terms of the integral 
+%from this vertices $x_1=x_2=\cdots=x_D=0$ do not change.
 
-\begin{lem}
-Suppose $p(x)=\sum_{I\in \mathscr A}a_I x^{n^I}$ is a polynomial, and $C[p]$ is the convex hull
-of cones $\{C_{I}=(n^I+\mathbb R^D_{+})\}$. 
-When we consider the integral near the vertices $x_1=\cdots=x_D=0$, 
-then we can replace $p(x)$ by a new polynomial $\bar p(x)=\sum_{J\in \mathscr B}a_J x^{n^J}$ such that
-the leading order of the integral does not change.
-\end{lem}
+\begin{pro}
+The leading order of integrals
+\[
+	I=\int_{[0,\epsilon]^D} \left(\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i}\right)
+	p_1^{-\alpha' c} \prod_I q_I^{-\alpha' c_I}
+	\quad \text{and} \quad 
+	I'=\int_{[0,\epsilon]^D} \left(\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i}\right)
+	p_2^{-\alpha' c} \prod_I q_I^{-\alpha' c_I}
+\]
+are the same if and only if $p_1$ and $p_2$ have the same Newton polyhedron,
+\textit{i.e.} $C[p_1]=C[p_2]$.
+\end{pro}
+
+From the theorem in \cite{Arkani-Hamed:2019mrd}, the leading order of the integral eq.\eqref{int1} 
+only depends on the Minkowski sum of Newton polytopes of polynomials $p_I$.
+The \textit{Newton polytope} of a polynomial is very like the Newton polyhedron of a polynomial defined above.
+For a polynomial $q=\sum_I a_I x^{n^I}$, it's the convex hull of vectors $\{n^I\}$. The
+\textit{Minkowski sum} (or vector sum) of two set $A$ and $B$ is the set $\{x+y\,:\,x\in A,\,y\in B\}$. 
+Note that the Newton polyhedron of a polynomial is just the Minkowski sum of Newton polytope and $\mathbb R_+^D$.
+
+Therefore, the above proposition is like the local version of this theorem, so that 
+it seems trivial. However, it's more free to use the local version because 
+the cone is not as rigid as the Newton polytope, and it just looks  
+like a `corner' of the Newton polytope.
+
+%\begin{lem}
+%Suppose $p(x)=\sum_{I\in \mathscr A}a_I x^{n^I}$ is a polynomial, and $C[p]$ is the convex hull
+%of cones $\{C_{I}=(n^I+\mathbb R^D_{+})\}$. 
+%When we consider the integral near the vertices $x_1=\cdots=x_D=0$, 
+%then we can replace $p(x)$ by a new polynomial $\bar p(x)=\sum_{J\in \mathscr B}a_J x^{n^J}$ such that
+%the leading order of the integral does not change.
+%\end{lem}
 
 % In the following proof, we define $|v|=\sum_{i=1}^D v_i$ for any vector $v\in \mathbb R^D$.
 
 \begin{proof}
+We only need to prove that terms in the Newton polyhedron can be dropped in the 
+integration for a polynomial $p=\sum_I a_I x^{n^I}$.
 We have seen that terms other than vertices in $\bigcup_I C_I$ do not contribute. Suppose a term $x^v$ 
 is in the interior of $C[p]-\bigcup_I C_I$,  
 then there exist non-negative numbers $\{c_J\}$ such that it can be written as 
@@ -505,36 +557,10 @@ We can prove the result by showing this terms goes to zero faster than some vert
 same boundary, so we can further assume that $p$ is a homogeneous polynomial.
 After blowing-up, near the new vertex
 $y_i=1$, the polynomial becomes $p'=t^{\sum_i v_i}\sum_{I}a_I y^{n^I}|_{y_i=1}$. 
-Since $v$ is not a vertex, it should be in the interior of the cone of this new polynomial or 
-on the boundary of the cone (for all $i$), and then by 
+Since $v$ is not a vertex, it should be in the interior of the polyhedron of this new polynomial or 
+on the boundary of the polyhedron (for all $i$), and then by 
 the proven part of lemma and induction on codimension, it doesn't contribute the integral.
 \end{proof}
-
-In other words, we have proven the following proposition. 
-
-\begin{pro}
-The leading order of integrals
-\[
-	I=\int_{[0,\epsilon]^D} \left(\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i}\right)
-	p_1^{-\alpha' c} \prod_I q_I^{-\alpha' c_I}
-	\quad \text{and} \quad 
-	I'=\int_{[0,\epsilon]^D} \left(\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i}\right)
-	p_2^{-\alpha' c} \prod_I q_I^{-\alpha' c_I}
-\]
-are the same if and only if $C[p_1]=C[p_2]$.
-\end{pro}
-
-From the theorem in \cite{Arkani-Hamed:2019mrd}, the leading order of the integral eq.\eqref{int1} 
-only depends on the Minkowski sum of Newton polytopes of polynomials $p_I$.
-The \textit{Newton polytope} of a polynomial is very like the polyhedron of a polynomial defined above.
-For a polynomial $q=\sum_I a_I x^{n^I}$, it's the convex hull of vectors $\{n^I\}$. The
-\textit{Minkowski sum} (or vector sum) of two set $A$ and $B$ is the set $\{x+y\,:\,x\in A,\,y\in B\}$. 
-Note that the polyhedron of a polynomial is just the Minkowski sum of Newton polytope and $\mathbb R_+^D$.
-
-Therefore, the above proposition is like the local version of this theorem, so that 
-it seems trivial. However, it's more free to use the local version because 
-the cone is not as rigid as the Newton polytope, and it just looks  
-like a `corner' of the Newton polytope.
 
 % Geometrically, if we consider the cone $C$ spanned by all $\{n^I\}$, then the basis can be choosen as the vertices on the boundary of $C$, and terms corresponding to points inside $C$ can be dropped.
 % For example, suppose that $p(x,y)=x^3+y^3+xy+x^3y^2+xy^3$, we draw each $n^I$ in the following diagram,
@@ -578,7 +604,7 @@ the integral
 	\approx\int_{[0,\epsilon]^D} \left(\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' (X_i-cv_i)}\right)
 	\prod_I q_I^{-\alpha' c_I},
 \] 
-can be reduced to a new integral with less polynomials but with the same leading order. 
+is reduced to a new integral with less polynomials but with the same leading order. 
 Since blow-ups never increase the 
 number of the polynomial in the integral, we only need to consider the integrals with only one 
 polynomial
@@ -589,7 +615,8 @@ polynomial
 Our aim is to find a series of blow-ups to make this polynomial $p$ decoupled at
 each generated vertices.
 
-Now it's a good time to consider general blow-ups, and see what they do on integrals and polyhedrons.
+After declaring the aim of blow-ups by the language of polyhedra, 
+it's a good time to consider general blow-ups and see what they do on integrals and polyhedra.
 
 As hinted by eq.\eqref{canonicalformunderblowup}, one important feature of $\Omega_{\mathcal P}$
 is `invariant' under the blowing-up because the residue of the canonical form on the boundary is
@@ -597,7 +624,7 @@ the canonical form of the boundary.
 Suppose we blow up near the boundary defined locally by $x_1=\cdots=x_n=0$ in integral eq.\eqref{int1}. 
 It's already the most general cases. In fact, if in the definition of a boundary $x_i=\infty$, we can
 change the variable $x_i\mapsto 1/x_i$ and then $x_i=0$.
-Let $x_i=ty_i$, where $[y_1,\dots,y_n]$ are positive projective coordinates. 
+Let $x_i=ty_i$, where $[y_1:\dots:y_n]$ are positive projective coordinates. 
 Near the boundary, the canonical form of $\Omega$ performs as 
 \[
 	\Omega=\frac{dx_1}{x_1}\wedge \cdots\wedge\frac{dx_n}{x_n}
@@ -612,7 +639,7 @@ where $y_n=1-(y_1+\cdots+y_{n-1})$ and $\Phi$ is the canonical form of the bound
 \[
 	\operatorname{Res}_{t=0}(\Omega)=\frac{1}{y_n}\frac{dy_1}{y_1}\wedge \cdots\wedge\frac{dy_{n-1}}{y_{n-1}}\wedge \Phi(x')=\Omega_{n-1}(y)\wedge \Phi(x'),
 \]
-$\Omega_{n-1}(y)$ the canonical form of a standard $(n-1)$-dimensional simplex $\Delta_{n-1}$ defined by
+$\Omega_{n-1}(y)$ the canonical form of a standard $(n-1)$-dimensional simplex $\mathbb P^{n-1}_+$ defined by
 $
 	\sum_{i=1}^n y_i=1
 $ and $y_i\geq 0$. 
@@ -659,7 +686,7 @@ $ and $y_i\geq 0$.
 % however we still need to worry about the blowing-up of $t$, $y$ and $x'$ in $q_I$ because
 % it's still unknown that which one is dominated.
 
-Another important feature of the canonical form is about the rescale of powers of variables.
+Another important feature of the canonical form is about the rescale of exponents of variables.
 If we change the variables by
 \(
 	x_i\mapsto x_i^{1/c_i}
@@ -673,7 +700,7 @@ for $i\in S$, where $c_i$ is a positive rational number, then integral becomes
 \]
 Note that the rescale of the integral region doesn't change the leading order of the integral
 because $\epsilon^{\alpha'}$ and $(\epsilon^{1/c_i})^{\alpha'}$ both behave as $1+O(\alpha')$
-when $\alpha'\to 0$. Therefore, it only introduces a prefactor $\prod_{i\in S}c_i$ 
+when $\alpha'\to 0$. Thus, it only introduces a factor $\prod_{i\in S}c_i$ 
 for the integral and doesn't break the form of the integral 
 thanks to $\dif \log$ singularities of the canonical form.
 
@@ -681,12 +708,12 @@ Blowing up produces new vertices
 $
 	\{v_i:x'=0,t=0,y_i=1\}
 $.
-Note that $y_i=1$ means that $y_j=0$ for $j\neq i$ because $\sum_i y_i=1$. Therefore, it's equivalent to 
-do such change of variables
+Note that $y_i=1$ means that $y_j=0$ for $j\neq i$ because $\sum_i y_i=1$. 
+Therefore, it's equivalent to do such change of variables
 \[
-	x'\to x',\quad x_j\to tx_j\quad \text{for $j\neq i$},\quad x_i\to t,
+	x'\to x',\quad x_j\to ty_j\quad \text{for $j\neq i$},\quad x_i\to t,
 \]
-or by reusing the name of $x_i$ for $t$ to save the namespace,
+or by reusing the name of $x_i$ for $t$ and $x_j$ for $y_j$ to save the namespace,
 \[
 	x_j\to x_ix_j\quad \text{for $j\neq i$}.
 \]
@@ -721,9 +748,23 @@ but it's not the wanted (decoupled) polyhedron, so we blow up it again and we ge
 	\draw[dashed,->] (2.2,1) -- (2.8,1);
 \end{tikzpicture}
 \end{center}
-Note that we still need to work out other vertices generated by blowing up. 
+Note that we still need to work out other vertices generated by blow-ups. 
 
-Now, a natural question arises. For a given polynomial $p$, 
+However, usually a bad choice of set of variables to blow up may lead to the
+infinite recursion in higher dimension.
+For example, 
+\[
+	p(x_1,x_2,x_3)=x_1x_3^2+x_2^2+x_2x_3,
+\]
+if we choose $x_1$ and $x_2$ to blow up, then for the vertex 
+$\{x_1\mapsto x_1, x_2\mapsto x_1x_2, x_3\mapsto x_3\}$,
+\[
+	p(x_1,x_2,x_3)\mapsto x_1(x_1x_2^2+x_3^2+x_2x_3)=x_1 p(x_1,x_3,x_2).
+\]
+We will get the polynomial $p$ again and then an endless loop if we always choose such
+variables to blow up.
+
+Therefore, a natural question arises. For a given polynomial $p$, 
 can we terminate after finite steps such that near each generated vertex, $p$ becomes 
 decoupled? This question is first declared by Hironaka \cite{hironaka1967}. 
 He designed a game to describe this question, which is 
@@ -736,11 +777,14 @@ $x_{i_j} \to x_{i_k}x_{i_j}$ for $j\neq k$.
 If $p$ becomes decoupled, then player A wins, otherwise they start a new round by using the 
 new generated polynomial. If player A cannot win in finite rounds, player B wins.
 
-How to win this game is equivalent to how to resolve singularities
-by a series of blow-ups, \textit{i.e.}
-a winning strategy for player A is a construction of resolution of singularities. 
-There are many known winning strategies for player A. 
+%How to win this game is equivalent to how to resolve singularities
+%by a series of blow-ups, \textit{i.e.}
+%a winning strategy for player A is a construction of resolution of singularities. 
+
+It's clear that any winning strategy for player A will tell us how to 
+calculate stringy integrals. There're many know winning strategies.
 \cite{spivakovsky1983solution,zeillinger2006short,hauser2003hironaka}
+However, they are not so efficient. ... 
 % [Spivakovsky 83], [Encinas \& Hauser 02], [Zeillinger 05], \dots.
 
 % We mainly use the Zeillinger's method in the calculation. 
@@ -786,7 +830,160 @@ There are many known winning strategies for player A.
 % Denote the minimal element by $(G,L)=(g(v),l(v))$. 
 % The triple designed by Zeillinger is $(|M_p|,G,L)$. We will not go into details of the proof. 
 
-In this article, we design another strategy to win the game.
+
+\section{Application and Example}
+
+% string Z integral, Cn, Gkn ...
+In this section, we will give several examples to illustrate this blow-up method, most of examples comes from the so-called cluster stringy integrals~\cite{} which are closely related to the origin string integrals.
+The dimension of all examples in this section is 2 or 3, so we avoid
+endless loops ad hoc.
+
+
+\subsubsection*{Cluster string integral: $A_{2}$}
+This integral is equivalent to the $Z$-integral $Z_{12345}(1,2,3,4,5)$~\cite{}, which in a positive parameterization takes the form of 
+\[
+	\mathcal{I}_{A_{2}}=\int_{\mathbb R_+^2} \frac{\dif x_1}{x_1}\frac{\dif x_2}{x_2}x_1^{\alpha' X}x_2^{\alpha' Y}
+	(1+x_1)^{-\alpha' a}(1+x_2)^{-\alpha' b}(1+x_1+x_1x_2)^{-\alpha' c}
+\] 
+where $1+x_{1}$, $1+x_{2}$ and $1+x_{1}+x_{1}x_{2}$ are $F$-polynomials with the initial seed $A_{2}$ quiver. With variable substitutions
+\[
+	x_{1}=\frac{1-z_{3}}{z_{3}}\,,\qquad x_{2}=\frac{z_{3}-z_{2}}{z_{2}(1-z_{3})}
+\]
+and 
+\[
+	X=s_{12},\quad Y=s_{45},\quad a=-s_{24},\quad b=-s_{35},\quad c=-s_{25} \:,
+	\] 
+the integral $\mathcal{I}_{A_{2}}$ becomes $Z_{12345}(12345)$ under the usual gauge fixing $\{z_{1},z_{4},z_{5}\}\to\{0,1,\infty\}$. It is easy to see that vertices $(0,0)$, $(0,\infty)$ and $(\infty,0)$ are all normal crossing, then no blow up is needed and their contributions to leading order simply are
+\begin{align*}
+	&\mathcal{I}_{A_{2}}(0,0)=\frac{1}{\alpha'^{2}}\frac{1}{XY}+O(\alpha'^{-1}) \:, \\
+	%&\mathcal{I}_{A_{2}}(0,\infty)=\frac{1}{\alpha'^{2}}\frac{1}{(a+c-X)Y}+O(\alpha'^{-1}) \:, 
+	&\mathcal{I}_{A_{2}}(\infty,0)=\frac{1}{\alpha'^{2}}\frac{1}{(a+c-X)Y}+O(\alpha'^{-1}) \:, \\
+	&\mathcal{I}_{A_{2}}(\infty,\infty)=\frac{1}{\alpha'^{2}}\frac{1}{(a+c-X)(b+c-Y)}+O(\alpha'^{-1}) \:.
+\end{align*}
+The vertex $(0,\infty)$ is not normal crossing, we bring this vertex to the origin by taking $x_{2}\to x_{2}^{-1}$, then the integral over the neighbourhood of this vertex reads
+\[
+    \mathcal{I}_{A_{2}}(0,\infty) \approx \int_{[0,\epsilon]^{2}} \frac{\dif x_{1}\,\dif x_{2}}{x_{1} x_{2}} x_{1}^{\alpha'X}x_{2}^{\alpha'(b+c-Y)}(x_{1}+x_{2}+x_{1}x_{2})^{-\alpha'c}
+\]
+where some irrelevant power functions of the form $(1+\cdots)$ have been dropped. This is exactly the example we used in section 2, then the leading order contribution of $\mathcal{I}_{A_{2}}$ is simply
+\begin{align*}
+   \mathcal{I}_{A_2}&=\frac{1}{\alpha'^{-2}}\biggl(\frac{1}{(a+c-X) (b+c-Y)}+\frac{1}{X (b+X-Y)} \\
+   &\quad +\frac{1}{(b+c-Y) (b+X-Y)}+\frac{1}{Y (a+c-X)}+\frac{1}{X Y}\biggr) + O(\alpha'^{-1}) 
+\end{align*}
+
+\subsubsection*{Cluster stringy integral: $A_3$}
+
+This integral is equivalent to the $Z$-integral $Z_{123456}(1,2,3,4,5,6)$, which in a positive parameterization takes the form of 
+\begin{align*}
+	\int_{\mathbb R_+^3} \frac{\dif x_1}{x_1}\frac{\dif x_2}{x_2}\frac{\dif x_3}{x_3}
+	x_1^{\alpha' X}x_2^{\alpha' Y}x_3^{\alpha' Z}
+	&(x_1 + 1)^{-\alpha' a_1}
+	(x_2 + 1)^{-\alpha'a_2}
+	(x_3 + 1)^{-\alpha'a_3}
+	(x_1x_2 + x_1 + 1)^{-\alpha'a_4}\\
+	&(x_2x_3 + x_3 + 1)^{-\alpha'a_5}
+	(x_1x_2x_3 + x_1x_3 + x_1 + x_3 + 1)^{-\alpha'a_6}
+\end{align*}
+where 6 polynomials with constant term 1 are $F$-polynomials with the initial seed $A_{3}$ quiver. With variable substitutions
+\[
+x_{1}=\frac{(z_{2}-z_{3})(1-z_{4})}{(1-z_{2})(z_{3}-z_{4})}\:,\quad x_{2}=\frac{z_{4}-z_{2}}{z_{2}(1-z_{4})}\:, \quad
+x_{3}=\frac{z_{2}}{1-z_{2}}
+\]
+and
+\begin{gather*}
+	X=s_{12},\quad Y=s_{123},\quad Z=s_{45} \\
+	a_{1}=-s_{24},\quad a_{2}=-s_{36},\quad a_{3}=-s_{15},\quad a_{4}=-s_{26},\quad a_{5}=-s_{35},\quad a_{6}=-s_{25}	
+\end{gather*}
+the integral $\mathcal{I}_{A_{3}}$ becomes $Z_{123456}(1,2,3,4,5,6)$ under the usual gauge fixing $\{z_{1},z_{5},z_{6}\}\to\{0,1,\infty\}$. Of the 8 vertices, $(0,0,0)$, $(0,0,\infty)$, $(\infty,0,0)$, $(\infty,0,\infty)$ and $(\infty,\infty,\infty)$ are normal crossing ones, and their contributions to leading order is 
+\begin{align*}
+	\mathcal{I}_{A_{3}}^{(1)}&=\frac{1}{\alpha'^{2}}\biggl(\frac{1}{XYZ}+\frac{1}{F_{1}XY} +\frac{1}{F_{2}YZ}+\frac{1}{F_{1}F_{2}Y} 
+	+\frac{1}{F_{1}F_{2}F_{3}}\biggr) +O(\alpha'^{-1})
+\end{align*}	
+where
+\begin{align*}
+	F_{1} &= a_{3}+a_{5}+a_{6}-Z \\
+	F_{2} &= a_{1}+a_{4}+a_{6}-X \\
+	F_{3} &= a_{2}+a_{4}+a_{5}+a_{6}-Y
+\end{align*}
+For the remaining vertices, we bring them to the origin by setting $x_{i}\to x_{i}^{-1}$,
+\begin{align*}
+	\mathcal{I}_{A_{3}}(0,\infty,0)&\approx\int_{[0,\epsilon]^{3}}\prod_{i=1}^{3}\frac{\dif x_{i}}{x_{i}} x_{1}^{\alpha' X}
+	x_{2}^{\alpha' F_{3}}x_{3}^{\alpha' Z}(x_{1}+x_{2})^{-\alpha' a_{4}}(x_{2}+x_{3})^{-\alpha' a_{5}}
+	\biggl(x_{2}+\sum_{i<j} x_{i}x_{j}\biggr)^{-\alpha' a_{6}} \\
+	\mathcal{I}_{A_{3}}(\infty,\infty,0)&\approx \int_{[0,\epsilon]^{3}}\frac{\dif x_{i}}{x_{i}}x_{1}^{\alpha' F_{2}}x_{2}^{\alpha' F_{3}}x_{3}^{\alpha'Z} (x_{2}+x_{3})^{-\alpha'(a_{5}+a_{6})} \\
+	\mathcal{I}_{A_{3}}(0,\infty,\infty)&\approx \int_{[0,\epsilon]^{3}}\frac{\dif x_{i}}{x_{i}}x_{1}^{\alpha' X}x_{2}^{\alpha' F_{3}}x_{3}^{\alpha' F_{1}} (x_{1}+x_{2})^{-\alpha'(a_{4}+a_{6})}
+\end{align*}
+where we have dropped some irrelevant terms according to our algorithm. The last two again are the cases we have encountered before, then a further attention is needed only for the first one, which can be decomposed into six normal crossing pieces 
+\begin{equation*}
+	\mathcal{I}_{A_{3}}(0,\infty,0)\approx
+	\begin{cases}
+		\int_{[0,\epsilon]^{3}}\prod_{i=1}^{3}\frac{\dif y_{i}}{y_{i}} y_{1}^{\alpha'X} y_{2}^{\alpha' F_{4}}
+		y_{3}^{\alpha'F_{5} }  & \{x_{1}=y_{1}y_{2}y_{3}, x_{2}=y_{2}y_{3},x_{3}=y_{3}\} \\
+		\int_{[0,\epsilon]^{3}}\prod_{i=1}^{3}\frac{\dif y_{i}}{y_{i}} y_{1}^{\alpha'X} y_{2}^{\alpha' (X+Z)}
+		y_{3}^{\alpha'F_{5} }  & \{x_{1}=y_{1}y_{2}y_{3}, x_{3}=y_{2}y_{3},x_{2}=y_{3}\}  \\
+		\int_{[0,\epsilon]^{3}}\prod_{i=1}^{3}\frac{\dif y_{i}}{y_{i}} y_{1}^{\alpha' F_{3}} y_{2}^{\alpha' F_{4}}
+		y_{3}^{\alpha'F_{5} }  & \{x_{2}=y_{1}y_{2}y_{3}, x_{1}=y_{2}y_{3},x_{3}=y_{3}\}  \\
+		\int_{[0,\epsilon]^{3}}\prod_{i=1}^{3}\frac{\dif y_{i}}{y_{i}} y_{1}^{\alpha' F_{3}} y_{2}^{\alpha' F_{6}}
+		y_{3}^{\alpha'F_{5} }  & \{x_{2}=y_{1}y_{2}y_{3}, x_{3}=y_{2}y_{3},x_{1}=y_{3}\}  \\
+		\int_{[0,\epsilon]^{3}}\prod_{i=1}^{3}\frac{\dif y_{i}}{y_{i}} y_{1}^{\alpha' Z} y_{2}^{\alpha' (X+Z)}
+		y_{3}^{\alpha'F_{5} }  & \{x_{3}=y_{1}y_{2}y_{3}, x_{1}=y_{2}y_{3},x_{2}=y_{3}\}  \\
+		\int_{[0,\epsilon]^{3}}\prod_{i=1}^{3}\frac{\dif y_{i}}{y_{i}} y_{1}^{\alpha' Z} y_{2}^{\alpha' F_{6}}
+		y_{3}^{\alpha'F_{5} }  & \{x_{3}=y_{1}y_{2}y_{3}, x_{2}=y_{2}y_{3},x_{1}=y_{3}\}  
+	\end{cases}
+\end{equation*}
+where each piece correspond to a simplex $0<x_{i}<x_{j}<x_{k}$, irrelevant terms are dropped again and we have introduced
+\begin{align*}
+	&F_{4}=X+F_{3}-a_{4}-a_{6} \:, \\
+	&F_{5}=F_{3}+X+Z-a_{4}-a_{5}-a_{6} \:, \\
+	&F_{6}=F_{3}+Z-a_{5}-a_{6} \:.
+\end{align*}
+It can be easily checked that all $F$'s are planar and remaining poles, although the spurious pole $X+Z$ appears in the process, and the result for leading order is exactly the 6 point amplitude for bi-adjoint $\phi^{3}$ theory.
+
+\subsubsection*{Cluster stringy integral: $C_2$}
+
+This integral is equivalent to the $Z$-integral $Z(1^{+}2^{+})$ defined on the moduli space of paired punctures~\cite{Li:2018mnq}, which in a positive parameterization is 
+\begin{align*}
+\int_{\mathbb R_+^2} \frac{\dif x_1}{x_1}\frac{\dif x_2}{x_2}x_1^{\alpha' X}x_2^{\alpha' Y}
+&(x_1 + 1)^{-\alpha' a} 
+(x_2 + 1)^{-\alpha' b}\\
+&(x_1x_2 + x_1 + 1)^{-\alpha' c}
+(x_1^2x_2 + x_1^2 + 2x_1 + 1)^{-\alpha' d} 
+\end{align*}
+where 4 polynomials with constant term 1 are $F$-polynomials with a $C_{2}$ quiver as the initial seed.
+This integral are related to $Z(1^{+}2^{+})$ (with gauge fixing $z_{0}=1$) by 
+\begin{equation*}
+	x_{1}=\frac{(1-z_{1})(z_{2}-z_{1})}{2z_{1}(1+z_{2})} \:,\qquad x_{2}=-\frac{(1+z_{1})^{2}}{(1-z_{1})^{2}}
+\end{equation*}
+and
+\begin{align*}
+	X=2s_{01}\:,\quad Y=s_{012}\:,\quad a=-2s_{1\tilde{2}}\:,\quad b=-s_{2\tilde{2}}\:,\quad 
+	c=-2s_{02}\:,\quad d=-s_{0\tilde{0}}
+\end{align*}
+with the Mandelstam variables defined therein. In this case, only vertex $(0,\infty)$ is not normal crossing, we transform this vertex to the origin as before, then we have
+\begin{align*}
+	\mathcal{I}_{C_{2}}(0,\infty)\approx \int_{[0,\epsilon]^{2}} \frac{\dif x_{1}\dif x_{2}}{x_{1}x_{2}} x_{1}^{\alpha' X}x_{2}^{\alpha' G_{1}}
+	(x_{1}+x_{2})^{-\alpha' c} (x_{1}^{2}+x_{2})^{-\alpha' d}
+\end{align*}
+where we have dropped irrelevant terms and introduced $G_{1}=b+c+d-Y$. This vertex can be decomposed into 3 normal crossing piece by the following blow ups
+\begin{align*}
+	\mathcal{I}_{C_{2}}(0,\infty)\approx\left\{
+	\begin{aligned}
+		&\int_{0<x_{1}<x_{2}}\frac{\dif y_{1}\dif y_{2}}{y_{1}y_{2}} y_{1}^{\alpha' X}y_{2}^{\alpha' G_{2}} \\
+		&\int_{0<x_{2}<x_{1}}\frac{\dif y_{1}\dif y_{2}}{y_{1}y_{2}} y_{1}^{\alpha' G_{1}}y_{2}^{\alpha' G_{2}}(y_{1}+y_{2})^{-\alpha'd} \approx
+		\left\{\begin{aligned}
+			\int_{0<y_{1}<y_{2}}\frac{\dif z_{1} \dif z_{2}}{z_{1}z_{2}}z_{1}^{\alpha' G_{1}}
+			z_{2}^{\alpha'(G_{1}+G_{2}-d)} \\
+			\int_{0<y_{2}<y_{1}}\frac{\dif z_{1}\dif z_{2}}{z_{1}z_{2}} z_{2}^{\alpha' G_{2}}
+			z_{1}^{\alpha'(G_{1}+G_{2}-d)}
+		\end{aligned} \right. 
+	\end{aligned} \right.
+\end{align*}
+where $G_{2}=G_{1}+X-c-d$, and the integration region for integration variables should be understood as $[0,\epsilon]^{2}$ while the subscript of integrals indicate the integration region before blow ups.
+
+\section{Algorithm}
+
+In this section, we design another strategy for player A to win the Hironaka's
+polyhedra game from a new viewpoint. 
+
 Let's first introduce the language of the matrix for future use.
 For the polynomial $p=\sum_I a_I x^{n^I}$, write down the matrix $(n^I_i)$, 
 \[
@@ -818,15 +1015,6 @@ reduced matrices.
 For example, 
 \[
 \begin{pmatrix}
-	1&2\\
-	3&2
-\end{pmatrix}\cong 
-\begin{pmatrix}
-	1&2\\
-	3&2\\
-	2&2
-\end{pmatrix}\cong
-\begin{pmatrix}
 	1&2&3\\
 	3&2&4\\
 	2&2&3
@@ -835,7 +1023,16 @@ For example,
 	0&1&2\\
 	1&0&2\\
 	0&0&1
-\end{pmatrix}.
+\end{pmatrix}\cong
+\begin{pmatrix}
+	0&1\\
+	1&0\\
+	0&0
+\end{pmatrix}\cong
+\begin{pmatrix}
+	0&1\\
+	1&0
+\end{pmatrix} 
 \]
 For two equivalent matrices $(n^I_i)\cong (m^J_k)$, there exists a vector $v$ such that 
 $\sum_I a_I x^{n^I}\approx x^v\sum_J a_J x^{m^J}$, so equivalent matrices give us
@@ -911,7 +1108,7 @@ Our algorithm is based on the following observations:
 		\draw[dashed] (-2,-0.5) -- (4,1);
 		\draw (-2,-0.5) -- (4,2);
 		\draw (3.6,1.3) -- (-2,-0.5);
-		\node[fill=green,circle,inner sep=1pt] at (2.4,0.9) {};
+		\node[fill=green!70!black,circle,inner sep=1pt] at (2.4,0.9) {};
 		\end{tikzpicture}
 	\end{center}
 	We can use the gray polygon, the intersection of this cone with a hyperplain,
@@ -925,7 +1122,7 @@ Our algorithm is based on the following observations:
 			-- (3.2,-2.8) node[fill=red,circle,inner sep=1pt] {}
 			-- (4,-1.5) node[fill=red,circle,inner sep=1pt] {}
 			-- cycle;
-		\node[fill=green,circle,inner sep=1pt] at (3.1,-1.3) {};
+		\node[fill=green!70!black,circle,inner sep=1pt] at (3.1,-1.3) {};
 		\end{tikzpicture}
 		$\longmapsto$
 		\begin{tikzpicture}[scale=0.75,baseline={([yshift=-.5ex]current bounding box.center)}]
@@ -935,7 +1132,7 @@ Our algorithm is based on the following observations:
 			-- (4,-1.5) node[fill=red,circle,inner sep=1pt] {}
 			-- cycle;
 		\draw[fill=gray!30] (2.5,0.2) -- (3.1,-1.3) -- (3.2,-2.8) -- (1.6,-1.6) --cycle;
-		\node[fill=green,circle,inner sep=1pt] at (3.1,-1.3) {};
+		\node[fill=green!70!black,circle,inner sep=1pt] at (3.1,-1.3) {};
 		\end{tikzpicture}
 		\begin{tikzpicture}[scale=0.75,baseline={([yshift=-.5ex]current bounding box.center)}]
 		\draw[gray] (2.5,0.2) node[fill=red,circle,inner sep=1pt] {}
@@ -944,7 +1141,7 @@ Our algorithm is based on the following observations:
 			-- (4,-1.5) node[fill=red,circle,inner sep=1pt] {}
 			-- cycle;
 		\draw[fill=gray!30] (3.1,-1.3) -- (4,-1.5) -- (3.2,-2.8) -- (1.6,-1.6) --cycle;
-		\node[fill=green,circle,inner sep=1pt] at (3.1,-1.3) {};
+		\node[fill=green!70!black,circle,inner sep=1pt] at (3.1,-1.3) {};
 		\end{tikzpicture}
 		\begin{tikzpicture}[scale=0.75,baseline={([yshift=-.5ex]current bounding box.center)}]
 		\draw[gray] (2.5,0.2) node[fill=red,circle,inner sep=1pt] {}
@@ -953,7 +1150,7 @@ Our algorithm is based on the following observations:
 			-- (4,-1.5) node[fill=red,circle,inner sep=1pt] {}
 			-- cycle;
 		\draw[fill=gray!30] (2.5,0.2) -- (4,-1.5) -- (1.6,-1.6) -- (1.6,-1.6) --cycle;
-		\node[fill=green,circle,inner sep=1pt] at (3.1,-1.3) {};
+		\node[fill=green!70!black,circle,inner sep=1pt] at (3.1,-1.3) {};
 		\end{tikzpicture}
 	\end{center}
 
@@ -1269,153 +1466,6 @@ in above example.
 % 
 
 
-\section{Application and Example}
-
-% string Z integral, Cn, Gkn ...
-In this section, we will give several examples to illustrate this blow up algorithm, most of examples comes from the so-called cluster stringy integrals~\cite{} which are closely related to the origin string integrals.
-
-\subsubsection*{Cluster string integral: $A_{2}$}
-This integral is equivalent to the $Z$-integral $Z_{12345}(1,2,3,4,5)$~\cite{}, which in a positive parameterization takes the form of 
-\[
-	\mathcal{I}_{A_{2}}=\int_{\mathbb R_+^2} \frac{\dif x_1}{x_1}\frac{\dif x_2}{x_2}x_1^{\alpha' X}x_2^{\alpha' Y}
-	(1+x_1)^{-\alpha' a}(1+x_2)^{-\alpha' b}(1+x_1+x_1x_2)^{-\alpha' c}
-\] 
-where $1+x_{1}$, $1+x_{2}$ and $1+x_{1}+x_{1}x_{2}$ are $F$-polynomials with the initial seed $A_{2}$ quiver. With variable substitutions
-\[
-	x_{1}=\frac{1-z_{3}}{z_{3}}\,,\qquad x_{2}=\frac{z_{3}-z_{2}}{z_{2}(1-z_{3})}
-\]
-and 
-\[
-	X=s_{12},\quad Y=s_{45},\quad a=-s_{24},\quad b=-s_{35},\quad c=-s_{25} \:,
-	\] 
-the integral $\mathcal{I}_{A_{2}}$ becomes $Z_{12345}(12345)$ under the usual gauge fixing $\{z_{1},z_{4},z_{5}\}\to\{0,1,\infty\}$. It is easy to see that vertices $(0,0)$, $(0,\infty)$ and $(\infty,0)$ are all normal crossing, then no blow up is needed and their contributions to leading order simply are
-\begin{align*}
-	&\mathcal{I}_{A_{2}}(0,0)=\frac{1}{\alpha'^{2}}\frac{1}{XY}+O(\alpha'^{-1}) \:, \\
-	%&\mathcal{I}_{A_{2}}(0,\infty)=\frac{1}{\alpha'^{2}}\frac{1}{(a+c-X)Y}+O(\alpha'^{-1}) \:, 
-	&\mathcal{I}_{A_{2}}(\infty,0)=\frac{1}{\alpha'^{2}}\frac{1}{(a+c-X)Y}+O(\alpha'^{-1}) \:, \\
-	&\mathcal{I}_{A_{2}}(\infty,\infty)=\frac{1}{\alpha'^{2}}\frac{1}{(a+c-X)(b+c-Y)}+O(\alpha'^{-1}) \:.
-\end{align*}
-The vertex $(0,\infty)$ is not normal crossing, we bring this vertex to the origin by taking $x_{2}\to x_{2}^{-1}$, then the integral over the neighbourhood of this vertex reads
-\[
-    \mathcal{I}_{A_{2}}(0,\infty) \approx \int_{[0,\epsilon]^{2}} \frac{\dif x_{1}\,\dif x_{2}}{x_{1} x_{2}} x_{1}^{\alpha'X}x_{2}^{\alpha'(b+c-Y)}(x_{1}+x_{2}+x_{1}x_{2})^{-\alpha'c}
-\]
-where some irrelevant power functions of the form $(1+\cdots)$ have been dropped. This is exactly the example we used in section 2, then the leading order contribution of $\mathcal{I}_{A_{2}}$ is simply
-\begin{align*}
-   \mathcal{I}_{A_2}&=\frac{1}{\alpha'^{-2}}\biggl(\frac{1}{(a+c-X) (b+c-Y)}+\frac{1}{X (b+X-Y)} \\
-   &\quad +\frac{1}{(b+c-Y) (b+X-Y)}+\frac{1}{Y (a+c-X)}+\frac{1}{X Y}\biggr) + O(\alpha'^{-1}) 
-\end{align*}
-
-
-
-\subsubsection*{Cluster stringy integral: $A_3$}
-
-This integral is equivalent to the $Z$-integral $Z_{123456}(1,2,3,4,5,6)$, which in a positive parameterization takes the form of 
-\begin{align*}
-	\int_{\mathbb R_+^3} \frac{\dif x_1}{x_1}\frac{\dif x_2}{x_2}\frac{\dif x_3}{x_3}
-	x_1^{\alpha' X}x_2^{\alpha' Y}x_3^{\alpha' Z}
-	&(x_1 + 1)^{-\alpha' a_1}
-	(x_2 + 1)^{-\alpha'a_2}
-	(x_3 + 1)^{-\alpha'a_3}
-	(x_1x_2 + x_1 + 1)^{-\alpha'a_4}\\
-	&(x_2x_3 + x_3 + 1)^{-\alpha'a_5}
-	(x_1x_2x_3 + x_1x_3 + x_1 + x_3 + 1)^{-\alpha'a_6}
-\end{align*}
-where 6 polynomials with constant term 1 are $F$-polynomials with the initial seed $A_{3}$ quiver. With variable substitutions
-\[
-x_{1}=\frac{(z_{2}-z_{3})(1-z_{4})}{(1-z_{2})(z_{3}-z_{4})}\:,\quad x_{2}=\frac{z_{4}-z_{2}}{z_{2}(1-z_{4})}\:, \quad
-x_{3}=\frac{z_{2}}{1-z_{2}}
-\]
-and
-\begin{gather*}
-	X=s_{12},\quad Y=s_{123},\quad Z=s_{45} \\
-	a_{1}=-s_{24},\quad a_{2}=-s_{36},\quad a_{3}=-s_{15},\quad a_{4}=-s_{26},\quad a_{5}=-s_{35},\quad a_{6}=-s_{25}	
-\end{gather*}
-the integral $\mathcal{I}_{A_{3}}$ becomes $Z_{123456}(1,2,3,4,5,6)$ under the usual gauge fixing $\{z_{1},z_{5},z_{6}\}\to\{0,1,\infty\}$. Of the 8 vertices, $(0,0,0)$, $(0,0,\infty)$, $(\infty,0,0)$, $(\infty,0,\infty)$ and $(\infty,\infty,\infty)$ are normal crossing ones, and their contributions to leading order is 
-\begin{align*}
-	\mathcal{I}_{A_{3}}^{(1)}&=\frac{1}{\alpha'^{2}}\biggl(\frac{1}{XYZ}+\frac{1}{F_{1}XY} +\frac{1}{F_{2}YZ}+\frac{1}{F_{1}F_{2}Y} 
-	+\frac{1}{F_{1}F_{2}F_{3}}\biggr) +O(\alpha'^{-1})
-\end{align*}	
-where
-\begin{align*}
-	F_{1} &= a_{3}+a_{5}+a_{6}-Z \\
-	F_{2} &= a_{1}+a_{4}+a_{6}-X \\
-	F_{3} &= a_{2}+a_{4}+a_{5}+a_{6}-Y
-\end{align*}
-For the remaining vertices, we bring them to the origin by setting $x_{i}\to x_{i}^{-1}$,
-\begin{align*}
-	\mathcal{I}_{A_{3}}(0,\infty,0)&\approx\int_{[0,\epsilon]^{3}}\prod_{i=1}^{3}\frac{\dif x_{i}}{x_{i}} x_{1}^{\alpha' X}
-	x_{2}^{\alpha' F_{3}}x_{3}^{\alpha' Z}(x_{1}+x_{2})^{-\alpha' a_{4}}(x_{2}+x_{3})^{-\alpha' a_{5}}
-	\biggl(x_{2}+\sum_{i<j} x_{i}x_{j}\biggr)^{-\alpha' a_{6}} \\
-	\mathcal{I}_{A_{3}}(\infty,\infty,0)&\approx \int_{[0,\epsilon]^{3}}\frac{\dif x_{i}}{x_{i}}x_{1}^{\alpha' F_{2}}x_{2}^{\alpha' F_{3}}x_{3}^{\alpha'Z} (x_{2}+x_{3})^{-\alpha'(a_{5}+a_{6})} \\
-	\mathcal{I}_{A_{3}}(0,\infty,\infty)&\approx \int_{[0,\epsilon]^{3}}\frac{\dif x_{i}}{x_{i}}x_{1}^{\alpha' X}x_{2}^{\alpha' F_{3}}x_{3}^{\alpha' F_{1}} (x_{1}+x_{2})^{-\alpha'(a_{4}+a_{6})}
-\end{align*}
-where we have dropped some irrelevant terms according to our algorithm. The last two again are the cases we have encountered before, then a further attention is needed only for the first one, which can be decomposed into six normal crossing pieces 
-\begin{equation*}
-	\mathcal{I}_{A_{3}}(0,\infty,0)\approx
-	\begin{cases}
-		\int_{[0,\epsilon]^{3}}\prod_{i=1}^{3}\frac{\dif y_{i}}{y_{i}} y_{1}^{\alpha'X} y_{2}^{\alpha' F_{4}}
-		y_{3}^{\alpha'F_{5} }  & \{x_{1}=y_{1}y_{2}y_{3}, x_{2}=y_{2}y_{3},x_{3}=y_{3}\} \\
-		\int_{[0,\epsilon]^{3}}\prod_{i=1}^{3}\frac{\dif y_{i}}{y_{i}} y_{1}^{\alpha'X} y_{2}^{\alpha' (X+Z)}
-		y_{3}^{\alpha'F_{5} }  & \{x_{1}=y_{1}y_{2}y_{3}, x_{3}=y_{2}y_{3},x_{2}=y_{3}\}  \\
-		\int_{[0,\epsilon]^{3}}\prod_{i=1}^{3}\frac{\dif y_{i}}{y_{i}} y_{1}^{\alpha' F_{3}} y_{2}^{\alpha' F_{4}}
-		y_{3}^{\alpha'F_{5} }  & \{x_{2}=y_{1}y_{2}y_{3}, x_{1}=y_{2}y_{3},x_{3}=y_{3}\}  \\
-		\int_{[0,\epsilon]^{3}}\prod_{i=1}^{3}\frac{\dif y_{i}}{y_{i}} y_{1}^{\alpha' F_{3}} y_{2}^{\alpha' F_{6}}
-		y_{3}^{\alpha'F_{5} }  & \{x_{2}=y_{1}y_{2}y_{3}, x_{3}=y_{2}y_{3},x_{1}=y_{3}\}  \\
-		\int_{[0,\epsilon]^{3}}\prod_{i=1}^{3}\frac{\dif y_{i}}{y_{i}} y_{1}^{\alpha' Z} y_{2}^{\alpha' (X+Z)}
-		y_{3}^{\alpha'F_{5} }  & \{x_{3}=y_{1}y_{2}y_{3}, x_{1}=y_{2}y_{3},x_{2}=y_{3}\}  \\
-		\int_{[0,\epsilon]^{3}}\prod_{i=1}^{3}\frac{\dif y_{i}}{y_{i}} y_{1}^{\alpha' Z} y_{2}^{\alpha' F_{6}}
-		y_{3}^{\alpha'F_{5} }  & \{x_{3}=y_{1}y_{2}y_{3}, x_{2}=y_{2}y_{3},x_{1}=y_{3}\}  
-	\end{cases}
-\end{equation*}
-where each piece correspond to a simplex $0<x_{i}<x_{j}<x_{k}$, irrelevant terms are dropped again and we have introduced
-\begin{align*}
-	&F_{4}=X+F_{3}-a_{4}-a_{6} \:, \\
-	&F_{5}=F_{3}+X+Z-a_{4}-a_{5}-a_{6} \:, \\
-	&F_{6}=F_{3}+Z-a_{5}-a_{6} \:.
-\end{align*}
-It can be easily checked that all $F$'s are planar and remaining poles, although the spurious pole $X+Z$ appears in the process, and the result for leading order is exactly the 6 point amplitude for bi-adjoint $\phi^{3}$ theory.
-
-
-\subsubsection*{Cluster stringy integral: $C_2$}
-This integral is equivalent to the $Z$-integral $Z(1^{+}2^{+})$ defined on the moduli space of paired punctures~\cite{Li:2018mnq}, which in a positive parameterization is 
-\begin{align*}
-\int_{\mathbb R_+^2} \frac{\dif x_1}{x_1}\frac{\dif x_2}{x_2}x_1^{\alpha' X}x_2^{\alpha' Y}
-&(x_1 + 1)^{-\alpha' a} 
-(x_2 + 1)^{-\alpha' b}\\
-&(x_1x_2 + x_1 + 1)^{-\alpha' c}
-(x_1^2x_2 + x_1^2 + 2x_1 + 1)^{-\alpha' d} 
-\end{align*}
-where 4 polynomials with constant term 1 are $F$-polynomials with a $C_{2}$ quiver as the initial seed.
-This integral are related to $Z(1^{+}2^{+})$ (with gauge fixing $z_{0}=1$) by 
-\begin{equation*}
-	x_{1}=\frac{(1-z_{1})(z_{2}-z_{1})}{2z_{1}(1+z_{2})} \:,\qquad x_{2}=-\frac{(1+z_{1})^{2}}{(1-z_{1})^{2}}
-\end{equation*}
-and
-\begin{align*}
-	X=2s_{01}\:,\quad Y=s_{012}\:,\quad a=-2s_{1\tilde{2}}\:,\quad b=-s_{2\tilde{2}}\:,\quad 
-	c=-2s_{02}\:,\quad d=-s_{0\tilde{0}}
-\end{align*}
-with the Mandelstam variables defined therein. In this case, only vertex $(0,\infty)$ is not normal crossing, we transform this vertex to the origin as before, then we have
-\begin{align*}
-	\mathcal{I}_{C_{2}}(0,\infty)\approx \int_{[0,\epsilon]^{2}} \frac{\dif x_{1}\dif x_{2}}{x_{1}x_{2}} x_{1}^{\alpha' X}x_{2}^{\alpha' G_{1}}
-	(x_{1}+x_{2})^{-\alpha' c} (x_{1}^{2}+x_{2})^{-\alpha' d}
-\end{align*}
-where we have dropped irrelevant terms and introduced $G_{1}=b+c+d-Y$. This vertex can be decomposed into 3 normal crossing piece by the following blow ups
-\begin{align*}
-	\mathcal{I}_{C_{2}}(0,\infty)\approx\left\{
-	\begin{aligned}
-		&\int_{0<x_{1}<x_{2}}\frac{\dif y_{1}\dif y_{2}}{y_{1}y_{2}} y_{1}^{\alpha' X}y_{2}^{\alpha' G_{2}} \\
-		&\int_{0<x_{2}<x_{1}}\frac{\dif y_{1}\dif y_{2}}{y_{1}y_{2}} y_{1}^{\alpha' G_{1}}y_{2}^{\alpha' G_{2}}(y_{1}+y_{2})^{-\alpha'd} \approx
-		\left\{\begin{aligned}
-			\int_{0<y_{1}<y_{2}}\frac{\dif z_{1} \dif z_{2}}{z_{1}z_{2}}z_{1}^{\alpha' G_{1}}
-			z_{2}^{\alpha'(G_{1}+G_{2}-d)} \\
-			\int_{0<y_{2}<y_{1}}\frac{\dif z_{1}\dif z_{2}}{z_{1}z_{2}} z_{2}^{\alpha' G_{2}}
-			z_{1}^{\alpha'(G_{1}+G_{2}-d)}
-		\end{aligned} \right. 
-	\end{aligned} \right.
-\end{align*}
-where $G_{2}=G_{1}+X-c-d$, and the integration region for integration variables should be understood as $[0,\epsilon]^{2}$ while the subscript of integrals indicate the integration region before blow ups.
-
 
 \section{Conclusions and Outlook}
 
@@ -1425,7 +1475,7 @@ In this article, we have shown how to obtain the leading order contribution of s
 All information about the leading order of such integrals is contained in the Minkowski sum $N_{P}$ of Newton polytopes of the regulating polynomials. In this sense, the blow-up method gives a way to reconstruct the polytope $N_{P}$ from its vertices. However, as we saw in section 3, spurious poles and hence spurious vertices are produced in the process of blow-ups. Additional efforts are still needed to recognize the real poles and vertices, especially when the dimensionality increases (curse of dimensionality) and the regulating polynomials get more and more complicated. The result obtained by blowing up is correct but redundant, thus a interesting question is how the polytope $N_{P}$ emerges form this (usually tedious) result. 
 
 
-Another way to reconstruct $N_{P}$ is, along with the opposite direction, to find the facets of $N_{P}$ by using the scattering-equation map. Where the aim is to find all directions such that $\mathbf{X}$ approaches facets of $N_{P}$ as $\mathbf{x}$ approaches boundaries of $\mathds{R}^{D}$ along with these directions~\cite{}. It would be interesting to find any relations between the reconstruction from the bottom up, the blow-up, and the reconstructiong from the top down, the scattering-equation map.
+Another way to reconstruct $N_{P}$ is, along with the opposite direction, to find the facets of $N_{P}$ by using the scattering-equation map. Where the aim is to find all directions such that $\mathbf{X}$ approaches facets of $N_{P}$ as $\mathbf{x}$ approaches boundaries of $\mathbb{R}^{D}$ along with these directions~\cite{}. It would be interesting to find any relations between the reconstruction from the bottom up, the blow-up, and the reconstructiong from the top down, the scattering-equation map.
 
 As we saw in section 2, lots of terms have been dropped during the process of blow-ups, while higher order contributions of such integrals with respect to $\alpha'$ certainly depend on the details of regulating polynomials. One way to obtain the higher order contribution is to expand the integrand with respect to $\alpha'$ then integration, the obstacle to this expansion is singularities in poles. The blow-up procedure provide a way to remove this obstacle: each integration region produced by blow-ups only meets singularities of the canonical form at one vertex, then a subtractation can be easily made such that the integrand have no divergence in the integration region.
 
