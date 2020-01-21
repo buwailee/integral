@@ -1219,34 +1219,59 @@ the linear combination of outside vertices, then the number of outside
 vertices of each subcone is reduced by $1$. Therefore, after finite such operation,
 any subcone is contained in some semi-spaces defined by outside hyperplains.
 
-\item In higher dimensional space, hyperplains $h^{IJ}$ divide the whole space $\mathbb R_+^N$
-	into many small cones which can be labeled by a permutation of $(1,\dots,N)$. 
+\item 
+	In higher dimensional space, hyperplains $h^{IJ}$ divide 
+	the whole space $\mathbb R_+^N$ into many small cones which 
+	can be labeled by a permutation of $(1,\dots,N)$. 
 	For a region label by $\eta$, it's given by the inequality 
 	$0\leq z^{\eta_1}\leq \cdots\leq z^{\eta_N}$. 
 	
 	For a given cone, we can find a hyperplain $H:\hat{n}\cdot z=0$ crossing
 	$(1,1,\dots,1)$ (the green line in the above diagram) 
 	such that the cone is contained in one side of this hyperplain.
+	In other words, we are looking for a vector $\hat{n}\in \mathbb R^N$ 
+	such that
+	\[
+		\sum_{I=1}^N \hat{n}^I=0\quad \text{and}\quad \hat{n}\cdot
+		n_i=\sum_{I=1}^N\hat{n}^In^I_i\geq 0 \text{ for all $i$}.
+	\]
+
 	Note that, in $N=3$ case, a outside region can cross the hyperplain $H$ 
 	but a inside region cannot, so we just generalize it to higher dimension.
 
 	Equivalently, a region is inside if and only if $\hat{n}$ is contained in 
-	its dual cone spanned by normal vectors of its facets.
+	its dual cone spanned by normal vectors of surrounding hyperplains 
+	$\{h^{IJ}\}$. Precisely, 
+	for the region $R$ label by a permutation $\eta$,
+	its dual cone is spanned by
+	\[
+		\{\mathbf{b}^I_\eta=\mathbf{e}_{\eta_{I+1}}-\mathbf{e}_{\eta_{I}}
+		\,:\, 1\leq I\leq N-1\},
+	\]
+	where $\mathbf{e}_i\in \mathbb R^N$ is the vector whose $i$-th element 
+	is $1$ and the other elements are all zero, then
+	the region $R$ is inside if and only if there exist nonnegative numbers
+	$\{c_I\}$ such that $\hat{n}=\sum_I c_I\mathbf{b}^I_\eta$.
 \end{enumerate}
 %
-Now our algorithm is simple: For a given set $\mathcal M$ of matrix,
+Now our algorithm (for one polynomial) is simple: 
+For a given cone $(n^I_i)$,
 \begin{enumerate}
-	\item[(1).] Replace any matrix by its reduced matrix. If all matrix in the set
-	have only one column or row, the algorithm stops.
-	\item[(2).] For each matrix in $\mathcal M$, 
-		find the minimal cone containing $(1,\dots,1)$, blow up according to
-		the set of variables corresponding to its edges, 
-		add all generated matrix into the set $\mathcal M$ and goto step (1).
+	\item[(0).] Define a set of matrices $\mathcal M$ and initialize it 
+		to $\{(n^I_i)\}$.
+	\item[(1).] Replace any matrix by its reduced matrix. If all matrices
+		in the set $\mathcal M$ have only one column or row, 
+		the algorithm stops.
+	\item[(2).] 
+		Look for cones containing $(1,\dots,1)$ in $\mathcal M$.
 		If there's no cone containing $(1,\dots,1)$, goto step (3).
-	\item[(3).] For each cone, reduce the number of outside vertices by blow-ups 
-		such that each generated subcone is totally contained in some semi-spaces 
-		$\{H^{IJ}\}$, 
+		Otherwise, blow up such matrices along $(1,\dots,1)$, 
 		add all generated matrix into the set $\mathcal M$ and goto step (1).
+	\item[(3).] For each cone in $\mathcal M$, 
+		reduce the number of outside vertices by blow-ups 
+		such that each generated matrix is totally contained in some 
+		semi-spaces $\{H^{IJ}\}$, add all generated matrices into 
+		the set $\mathcal M$ and goto step (1).
 \end{enumerate}
 
 This algorithm always terminates in finite steps. If we do not want to rescale powers
