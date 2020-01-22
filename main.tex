@@ -523,7 +523,7 @@ then the contribution of integral from this process is
 \end{align*}
 but $s_I^{-\alpha' c}=1+O(\alpha')$ doesn't affect its leading terms.
 
-Nest we prove that terms in the Newton polyhedron can be dropped in the 
+Next we prove that terms in the Newton polyhedron can be dropped in the 
 integration.
 For a term $x^{n^J}\neq x^{n^I}$ in the cone $C_I$, we should get that
 $n^J_i\geq n^I_i$ for every $i$, then there's no need to consider 
@@ -1074,22 +1074,22 @@ Our algorithm is based on the following observations:
 	obtained by deleting the $i$-th row of the old matrix. 
 	Therefore, we can reduce the number of variables of the polynomial or equivalently 
 	the number of \emph{rows} of the matrix in this case.
-
-	% \item Geometrically, eq.\eqref{linearprog} means that the constant vector $(1,\dots,1)$ 
-	% is in the cone spanned by row vectors $\{n_i\,:\,i\in S\}$. 
-	%which is a standard linear programming problem. 
-
-
 	
-	\item In the viewpoint of cones, the blowing up is nearly a subdivision of the cone.
+	\item In the viewpoint of cones, 
+	a blow-up is nearly a subdivision of the cone.
 	If a blow-up produces a vector $\sum_{i\in S} c_i n_i$ in the cone 
-	or on a boundary of the cone (and let's call it the blow-up along 
-	this vector from now on),
+	or on the boundary of the cone, 
 	then the $j$-th generated cone for $j\in S$ is spanned by 
 	vectors $\{n_i\,:\,i\neq j\}$ and the vector $\sum_{i\in S} c_i n_i$,
 	which is a proper sub-cone of the original cone. 
 	The union of these cones is the original cone,
 	but they usually intersect with each other, so it's not a subdivision. 
+
+	For future convenience, if the blow-up produces a vector $v$, we call
+	it \textit{the blow-up along $v$}.
+	Note that it may be confused with the similar terminology used 
+	in the usual mathematical context.
+
 	For example, consider a cone with $D=4$ and $N=3$
 	\begin{center}
 		\begin{tikzpicture}[scale=0.75]
@@ -1169,34 +1169,33 @@ Our algorithm is based on the following observations:
 	%\end{center}
 	%we blow up the cone according to the middle vector on the above diagram, and
 	%three generated cones form a subdivision of the original cone.
-
-	% However, if $n_j$ is not the vector of a edge of the cone and $\sum_{i\in S} c_i n_i\neq n_j$,
-	% then generated cones may have overlaps with each other. In this case, usually we
-	% blow up such that $\sum_{i\in S} c_i n_i\neq n_j$ and $j\not\in S$, and we will get cones 
-	% without overlaps. What's more, the generated matrices have two identical rows. 
-	% Suppose that $n_j=n_k$ in the matrix, it's equivalent to say that the polynomial is the 
-	% function of the product $x_jx_k$.
 	
 	The bonus of this viewpoint is that we can see information of many rounds 
 	in only one picture.
 
 	\item If $n^J_i \geq n^I_i$ for all $i$, we can drop column vector $n^J$. Geometrically, 
 	it means that the cone spanned by $\{n_i\}$ is in the semi-space defined by $z^J\geq z^I$.
-	Thus let's define $H^{IJ}$ as the semi-space defined by $z^I\leq z^J$ in the space of column vectors for future use. Therefore, if we can cut the cone by blowing up into small cones such that 
+	Thus let's define $H^{IJ}$ as the semi-space defined by $z^I\leq z^J$ 
+	in the space of column vectors for future use. 
+	Therefore, if we can `divide' the cone by blow-ups into small cones such that 
 	each of them is totally contained in some semi-spaces $\{H^{IJ}\}$, then
-	the number of columns of generated matrices decreases strictly.
+	the numbers of columns of generated matrices decrease strictly.
 
-	The possible obstacle to do this is that the intersection of all hyperplains $h^{IJ}=\{z\,:\, z^I=z^J\}$, 
+	The possible obstacle to do this is that the intersection of 
+	all hyperplains $h^{IJ}=\{z\,:\, z^I=z^J\}$, 
 	or equivalently the vector $(1,1,\dots,1)$, 
-	is contained in the original cone.
+	is contained in the interior of the cone.
 	In this case, no matter how blow-ups `divide' the cone, 
 	there always exists a cone contain
 	$(1,1,\dots,1)$ so that it is not contained in any semi-space $H^{IJ}$.
-    In this case, the number of \emph{columns} rather than the number of rows is reduced.
+	However, in this case, we can reduce the number of rows from the observation
+	2.
 
-\item One possible way to `divide' the cone is to reduce the number of outside vertices.
-	Before giving the explicit definition of outside or insider, let's first consider a $N=3$ 
-	example to show this idea.
+\item 
+	One possible way to `divide' the cone is to reduce the number 
+	of outside vertices.
+	Before giving the explicit definition of outside or inside, 
+	let's first consider a $N=3$ example to show this idea.
 	\begin{center}
 	\begin{tikzpicture}
 		\draw (2,-1.5) -- (1.5,-2.5) -- (2,-4) -- (4,-3.5) -- (4.5,-2) -- (3,-1) -- cycle;
@@ -1219,15 +1218,19 @@ the linear combination of outside vertices, then the number of outside
 vertices of each subcone is reduced by $1$. Therefore, after finite such operation,
 any subcone is contained in some semi-spaces defined by outside hyperplains.
 
-\item 
+\item
 	In higher dimensional space, hyperplains $h^{IJ}$ divide 
 	the whole space $\mathbb R_+^N$ into many small cones which 
 	can be labeled by a permutation of $(1,\dots,N)$. 
-	For a region label by $\eta$, it's given by the inequality 
+	The region labeled by $\eta$ is given by the inequality 
 	$0\leq z^{\eta_1}\leq \cdots\leq z^{\eta_N}$. 
+	We only need to figure out which regions are inside or outside 
+	after giving a cone, \textit{then inside (outside) vertices are vertices 
+	in the interior of inside (outside) regions.}
 	
-	For a given cone, we can find a hyperplain $H:\hat{n}\cdot z=0$ crossing
-	$(1,1,\dots,1)$ (the green line in the above diagram) 
+	For a convex given cone not containing $(1,1,\dots,1)$, 
+	we can find a hyperplain $H:\hat{n}\cdot z=0$ crossing
+	$(1,1,\dots,1)$ (\textit{e.g.} the green line in the above diagram) 
 	such that the cone is contained in one side of this hyperplain.
 	In other words, we are looking for a vector $\hat{n}\in \mathbb R^N$ 
 	such that
@@ -1235,13 +1238,13 @@ any subcone is contained in some semi-spaces defined by outside hyperplains.
 		\sum_{I=1}^N \hat{n}^I=0\quad \text{and}\quad \hat{n}\cdot
 		n_i=\sum_{I=1}^N\hat{n}^In^I_i\geq 0 \text{ for all $i$}.
 	\]
-
 	Note that, in $N=3$ case, a outside region can cross the hyperplain $H$ 
-	but a inside region cannot, so we just generalize it to higher dimension.
-
-	Equivalently, a region is inside if and only if $\hat{n}$ is contained in 
-	its dual cone spanned by normal vectors of surrounding hyperplains 
-	$\{h^{IJ}\}$. Precisely, 
+	but a inside region cannot. We just generalize this criterion to 
+	higher dimension.
+	
+	Equivalently, a region is inside (outside) if and only if $\hat{n}$ 
+	is (not) contained in its dual cone spanned by normal vectors of 
+	surrounding hyperplains $\{h^{IJ}\}$. Precisely, 
 	for the region $R$ label by a permutation $\eta$,
 	its dual cone is spanned by
 	\[
@@ -1254,23 +1257,28 @@ any subcone is contained in some semi-spaces defined by outside hyperplains.
 	$\{c_I\}$ such that $\hat{n}=\sum_I c_I\mathbf{b}^I_\eta$.
 \end{enumerate}
 %
-Now our algorithm (for one polynomial) is simple: 
-For a given cone $(n^I_i)$,
+Now our algorithm (for one polynomial) is simple: For a given cone $(n^I_i)$,
 \begin{enumerate}
 	\item[(0).] Define a set of matrices $\mathcal M$ and initialize it 
-		to $\{(n^I_i)\}$.
+		to $\{(n^I_i)\}$. Note that we may add matrices with different 
+		sizes to $\mathcal M$ in the algorithm, so the dimension of 
+		$(1,1,\dots,1)$ in the context depends on the matrix.
 	\item[(1).] Replace any matrix by its reduced matrix. If all matrices
 		in the set $\mathcal M$ have only one column or row, 
 		the algorithm stops.
 	\item[(2).] 
-		Look for cones containing $(1,\dots,1)$ in $\mathcal M$.
-		If there's no cone containing $(1,\dots,1)$, goto step (3).
-		Otherwise, blow up such matrices along $(1,\dots,1)$, 
+		Look for cones containing $(1,1,\dots,1)$ in $\mathcal M$.
+		If there's no such cone, goto step (3).
+		Otherwise, blow up such matrices along $(1,1,\dots,1)$, 
 		add all generated matrix into the set $\mathcal M$ and goto step (1).
-	\item[(3).] For each cone in $\mathcal M$, 
-		reduce the number of outside vertices by blow-ups 
-		such that each generated matrix is totally contained in some 
-		semi-spaces $\{H^{IJ}\}$, add all generated matrices into 
+	\item[(3).] 
+		For a matrix $C$ with more than one column in $\mathcal M$, 
+		choose two outside vertices $n_i$ and $n_j$ in different regions.
+		Since there exists a hyperplain $h^{AB}$ separating them, 
+		we can find positive integers $p$ and $q$ such that
+		$pn_i+qn_j$ is on the hyperplain $h^{AB}$. 
+		Blow up this cone $C$ along this vector so that the number of 
+		outside vertices is reduced by one, add generated matrices into 
 		the set $\mathcal M$ and goto step (1).
 \end{enumerate}
 
@@ -1278,10 +1286,85 @@ This algorithm always terminates in finite steps. If we do not want to rescale p
 as the original Hironaka polyhedron game, we may use more steps because in this case 
 usually we can only slowly shrink the cone such that outside vertices approach the outside 
 hyperplains step by step. However, after finite steps, we can still make sure that 
-the number of outside vertices can be reduced, so the algorithm still terminates, but
+each generated subcone is contained in some semispaces, 
+so the algorithm still terminates, but
 the algorithm involving rescaling of powers usually is more efficient.
 
-Now let's give a simple example to end this section. Consider the matrix
+%This algorithm always terminates in finite steps from observations stated above,
+%but it's not a winning strategy of original Hironaka polyhedra game 
+%because we rescale powers of variables in the algorithm.
+%For a winning strategy from the viewpoint of cones,
+%we can only blow up along vectors like $n_{i_1}+\cdots+n_{i_k}$ such that
+%i) the vector $(1,1,\dots,1)$ is not in the interior of any subcones,
+%and ii) each subcone is contained in a semispace. Although we cannot always
+%reduce the number of rows by i), it's still necessary for ii) to reduce
+%the number of columns.
+
+%For i), suppose $C$ is a given cone containing $(1,1,\dots,1)$, then
+%\[
+	%\sum_i c_in_i=(k,\dots,k).
+%\]
+
+%(relation with Euclidean algorithm)
+
+%For two outside vertices $n_i$ and $n_j$ of a matrix
+%$(n_i,n_j,\dots)^{\mathsf T}$ in different
+%regions, we can find two hyperplains separating them
+%such that these two hyperplains $h^{AB}$ and $h^{CD}$
+%doesn't cross inside regions
+%(or equivalently they are facets of the union of inside regions).
+%If $n_i+n_j$ is not in outside regions, this blow-up reduce
+%the number of outsider vertices. Otherwise, as shown in
+%the following diagram (where the gray region is the union of
+%inside regions),
+%\begin{center}
+	%\begin{tikzpicture}
+		%\fill[gray!30] (4,-1) -- (1,-1) -- (3.1,-4);
+		%\draw[thick,densely dotted] (1,-1) -- (3.6,-4.7);
+		%\draw[thick,densely dotted] (4,-1) -- (2.9,-4.7);
+		%\draw[thick] (1.7,-3.5) -- (5.7,-1.9);
+		%\node[circle,inner sep=1.5pt,fill=blue] at (1.7,-3.5) {};
+		%\node[circle,inner sep=1.5pt,fill=blue] at (5.7,-1.9) {};
+		%\node at (4.1,-0.6) {$h^{CD}$};
+		%\node at (1,-0.7) {$h^{AB}$};
+		%\node[circle,inner sep=1.5pt,fill=red]  at (4.2,-2.5) {};
+		%\node at (5.7,-2.2) {$n_j$};
+		%\node at (1.7,-3.8) {$n_i$};
+		%\node at (4.2,-2.9) {$n_i+n_j$};
+	%\end{tikzpicture}
+%\end{center}
+%for $\{n_i,n_i+n_j\}$, $n_i+n_j$ is closer to inside regions
+%than $n_j$, and for 
+%$\{n_j,n_i+n_j\}$, the number of vertices outside $h^{AB}$ is
+%reduced by one. Therefore, after finite blow-ups according
+%to $i$-th and $j$-th rows, for each generated matrix (cone),
+%the $j$-th row vector is in inside regions,
+%or the number of vertices outside $h^{AB}$ is reduced.
+
+%Thanks to this observation, we should use the following (2') and (3')
+%instead in the algorithm.
+%\begin{enumerate}
+	%\item[(2').] 
+		%Look for cones containing $(1,\dots,1)$ in $\mathcal M$.
+		%If there's no such cone, goto step (3').
+		%Otherwise, blow up such matrices such that any generated subcone
+		%doesn't contain $(1,\dots,1)$.
+		%add all generated matrix into the set $\mathcal M$ and goto step (1).
+	%\item[(3').] 
+		%For a matrix $C$ with more than one column in $\mathcal M$, 
+		%choose a facet $h^{AB}$ of the union of inside regions 
+		%such that the number of
+		%vertices outside it is minimal, a vertex $n_i$ 
+		%outside $h^{AB}$ and another outside vertex $n_j$ 
+		%inside $h^{AB}$.
+		%Blow up $C$ and generated matrices according to $n_i$ and $n_j$ 
+		%many times such that the number of 
+		%outside vertices or the number of vertices outside 
+		%$h^{AB}$ is reduced by one, add generated matrices into 
+		%the set $\mathcal M$ and goto step (1).
+%\end{enumerate}
+
+Finally we use a simple example to end this section. Consider the matrix
 \[
 	M=\left(
 		\begin{array}{ccc}
@@ -1311,16 +1394,16 @@ the hyperplain $z^1+z^2+z^3=12$ on the $z^1$-$z^2$ plane.
 \draw[densely dotted] (0.7,4.6)  -- (2.7,0.6)  node[below] {$z^1=z^3$};
 \draw[thick,dashed] (2,4) -- (1.7,2.6) node[circle, fill=red, inner sep=1pt] {};
 %\node[red] at (1.6,2.4) {$q$};
-\node at (2.2,4.3) {$n^3$};
-\node at (4.1,-0.3) {$n^2$};
-\node at (-0.3,4.5) {$n^1$};
+\node at (2.2,4.3) {$n_3$};
+\node at (4.1,-0.3) {$n_2$};
+\node at (-0.3,4.5) {$n_1$};
 \end{tikzpicture}
 \end{center}
 The intersection of three dotted line is the vector $(4,4,4)$, 
 so the cone doesn't contain $(1,1,1)$ and we can directly goto step (3).
 The outside vertices are $n^1$ and $n^2$, so we first find a inside red point 
 as the intersection of the hyperplain 
-$z^1=z^3$ and the facet spanned by $\{n^1,n^2\}$ of the cone, 
+$z^1=z^3$ and the facet spanned by $\{n_1,n_2\}$ of the cone, 
 so in fact the red point represents the vector $n_1+n_2$, 
 which tells us that we should blow up $x_1$ and $x_2$.
 Therefore, the cone is decomposed into two new cones 
