@@ -119,13 +119,13 @@ On the one hand, performing Minkowski sum for polytopes analytically is nearly i
 
 
 The main purpose of this article is to show an efficient method, {\it{blowing up}}, %(\textcolor{red}{C: or blowing-up map?}),
-to calculate the leading order of the integral eq.\eqref{int1} with respect to $\alpha'$. This is a general method which is closely related to the so-called \emph{Hironaka's polyhedra game}~\cite{}. We will see that the situation is easier when this method is applied in stringy integrals due to some features of canonical forms, and especially its closed relation to the polytope $N_{P}$. This method is based on two simple observations: i) the leading order contribution in $\alpha'$-expansion of stringy integrals arises from each vertex of the integration region $\mathbb{R}_{+}^{D}$, ii) suppose that all $p_I(0)\neq 0$ in the integral eq.\eqref{int1}, then the integral at the neighbourhood of the origin becomes 
+to calculate the leading order of the integral eq.\eqref{int1} with respect to $\alpha'$. This is a general method which is closely related to the so-called \emph{Hironaka's polyhedra game}~\cite{hironaka1967}. We will see that the situation is easier when this method is applied in stringy integrals due to some features of canonical forms, and especially its closed relation to the polytope $N_{P}$. This method is based on two simple observations: i) the leading order contribution in $\alpha'$-expansion of stringy integrals arises from each vertex of the integration region $\mathbb{R}_{+}^{D}$, ii) suppose that all $p_I(0)\neq 0$ in the integral eq.\eqref{int1}, then the integral at the neighbourhood of the origin becomes 
 \begin{equation}\label{int2}
 	\int_{[0,\epsilon]^D}\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i} \prod_{I}p_{I}(0)^{-\alpha' c_{I}}
 	=\prod_{i=1}^D\frac{\epsilon^{\alpha' X_i}p_{I}(0)^{-\alpha' c_{I}}}{\alpha' X_i}
 	= \frac{1}{(\alpha')^D}\frac{1}{X_1\cdots X_D}+O(\alpha'^{-D+1}).
 \end{equation}
-Generally, it would not be such simple case, some polynomials $p_{I}$ may vanish or even is singular\footnote{A point $Q$ is a singular point of the surface defined by $p(x_{1},\cdots,x_{n})$=0 if $p(Q)=0$ and $\partial p(Q)/\partial x_{i} =0$ for all $i$~\cite{}. } at the origin (or a vertex).
+Generally, it would not be such simple case, some polynomials $p_{I}$ may vanish or even is singular\footnote{A point $Q$ is a singular point of the surface defined by $p(x_{1},\dots,x_{n})=0$ if $p(Q)=0$ and $\partial p(Q)/\partial x_{i} =0$ for all $i$~\cite{}. } at the origin (or a vertex).
 % \begin{itemize}
 % 	\item Some polynomials $p_I$ may vanish at the origin (or a vertex).
 % 	\item Furthermore, some $p_I$ may own the origin (or a vertex) as their singular point\footnote{A point $Q$ is a singular point of the surface defined by $p(\mathrm{x})$=0 if $p(Q)=0$ and $\partial p(Q)/\partial x_{i} =0$ for all $i$}.
@@ -240,7 +240,7 @@ Section 5 contains discussion and outlook.
 In this section, we first use some heuristic examples 
 to show the general procedure to calculate the leading order of stringy integrals
 by blowing up and catch some important features of this calculation.
-Then we go to the general case and prove the equivalence of this procedure 
+Then we go to the general case and show the equivalence of this procedure 
 and the famous Hironaka's polyhedra game.
 
 Before going into details of blowing up, let us clarify the problem mentioned in introduction. To this end, it is useful to recover a more general form of string integrals
@@ -272,8 +272,8 @@ the vertex $(0,0)$ is crossed by $x=0$ and $y=0$ once and by $x^3+y^3+xy=0$ twic
 \end{figure}
 
 The main tool used in this article to solve this problem is blowing up (or blow-up).
-Briefly speaking, blow-up (along the original point) introduces additional dimensions for the original point such that
-curves crossing it in different directions are lifted to new curves intersecting the additional dimensions in different points.
+Briefly speaking, blow-up (along the original point) introduces extra dimensions for the original point such that
+curves crossing it in different directions are lifted to new curves intersecting the extra dimensions in different points.
 
 % In mathematics, blowing up or blowup is a type of geometric transformation which replaces 
 % a subspace of a given space with all the directions pointing out of that subspace.
@@ -291,8 +291,8 @@ new variables $u$, $v$ and $t$ such that
 	x=ut,\quad y=vt,
 \] 
 where $[u:v]$ is a projective coordinate, since any common factor of $u$ and $v$ can be absorbed into the definition of $t$, the line $l_i:a_ix+b_iy=0$ hence becomes a line parameterized 
-by $t$ with an additional point $[-b_i:a_i]\in \mathbb P^1$. These additional points in $\mathbb P^1$ tell us how these line approach $(0,0)$ so that they can be used to distinguish different lines.
-In other words, we replace the point $(0,0)$ with $\mathbb P^1$, which is the additional dimension mentioned above. 
+by $t$ with an extra point $[-b_i:a_i]\in \mathbb P^1$. These extra points in $\mathbb P^1$ tell us how these line approach $(0,0)$ so that they can be used to distinguish different lines.
+In other words, we replace the point $(0,0)$ with $\mathbb P^1$, which is the extra dimension mentioned above. 
 
 % Now Let us see how blowing up resolves singularities. 
 % Consider the curve $x^3+y^3+xy=0$ on the plane, which is drawn in Fig.\ref{fig_1}.
@@ -303,18 +303,39 @@ In other words, we replace the point $(0,0)$ with $\mathbb P^1$, which is the ad
 The above example is called the blow-up of the plane along the original point.
 In this article, we will consider the blow-up of $\mathbb R^D$
 along subspace $\mathbb R^n$ defined by $x_{i_1}=\cdots=x_{i_n}=0$. 
-The blow-up is the variety defined by equations $\{x_{i_j}y_k=x_{i_k}y_j\,:\, 1\leq j<k\leq n\}$ in space 
+The blow-up is the variety defined by equations 
+$\{x_{i_j}y_k=x_{i_k}y_j\,:\, 1\leq j<k\leq n\}$ in space 
 $\mathbb R^{D}\times \mathbb P^{n-1}$,
 where $[y_1:\dots:y_n]$ is the projective coordinate. 
-%These equations can be easily solved by 
-%$x_{i_j}=ty_{j}$ for $t\neq 0$.
+These equations can be easily solved by $x_{i_j}=ty_{j}$ with
+$\sum_{i=1}^n y_i=1$ for $t\neq 0$. 
+The integral near the boundary defined by $x_{i_1}=\cdots=x_{i_n}=0$
+becomes the integral over a interval of $t$ and a $(n-1)$-simplex $\mathbb P_+^{n-1}$ 
+defined by
+\[
+	\sum_{i=1}^n y_i=1,\quad \text{$y_i>0$ for all $1\leq i\leq n$}.
+\]
 
-% Generally, let $X=\operatorname{Spec} A$ be an affine scheme, and let $V(f_1,\dots,f_n)\subset X$
-% is a closed subscheme of $X$. The blow-up of $Y$ in X is the closure in
-% $X\times_A \mathbb P_A^{n-1}=\mathbb P_A^{n-1}$ of the graph of the morphism 
-% \[
-% \alpha_{(f_1,\dots,f_n)}:X-Y\to \mathbb P_A^{n-1}.
-% \] 
+This blow-up produces $n$ new vertices 
+$
+	\{v_i:x'=0,t=0,y_i=1\}
+$, where $x'$ is the other coordinates of $\mathbb R^D$.
+Near the new vertex defined by $y_k=1$, it's equivalent to do 
+the following change of variables
+\[
+	x'\to x',\quad x_{i_j}\to ty_j\quad \text{for $j\neq k$},\quad x_{i_k}\to t,
+\]
+or by reusing the name of $x_{i_k}$ for $t$ and $x_{i_j}$ 
+for $y_j$ to save the namespace,
+\begin{equation}\label{sec_doc}
+	x_{i_j}\to x_{i_k}x_{i_j}\quad \text{for $j\neq k$}.
+\end{equation}
+which is related to the sector decomposition~\cite{Heinrich:2008si}. 
+%In fact, the blow-up of $\{x_{i_1},\dots,x_{i_n}\}$ corresponds to a 
+%decomposition of $[0,1]^n$ into $n$ sectors, where the $i_k$-th
+%sector $\{(x_{i_1},\dots,x_{i_n})\,:\,x_{i_k}< x_{i_l} \text{ for all $l\neq k$}\}$
+The neighbourhood of this vertex in the integral region 
+can be taken as $0<x_i<\epsilon$ for all $i$.
 
 Now let's carefully consider the first example, the integral \eqref{exam:1}
 \[
@@ -334,12 +355,6 @@ or two polynomials which contribute the same leading terms in the integration.
 Similarly, $I(\infty,0)\approx ({\alpha'}^2 b (c-a))^{-1}$ and $I(\infty,\infty)\approx (\alpha'^{2}(c-a) (c-b))^{-1}.$
 
 The vertex $(0,0)$ is harder due to the behaviour of the mixed factor $(x+y+xy)^{-\alpha' c}$ at the neighbourhood of this vertex. 
-% \[
-% I(0,0)=\int^{\epsilon}_0 \int^{\epsilon}_0 \frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y+xy)^{-\alpha' c}
-% %\sim\int^{\epsilon}_0 \int^{\epsilon}_0\frac{dx}{x}\frac{dy}{y}x^{\alpha' a}y^{\alpha' b}(x+y)^{-\alpha' c}.
-% \]
-% when $(x,y)\to (0,0)$, we cannot decouple $x$ and $y$ in the mixed factor $(x+y+xy)^{-\alpha' c}$ 
-% because we don't know which one is dominated. 
 However, we can always drop the term $xy$ which becomes irrelevant 
 when $(x,y)\to (0,0)$ because $xy\ll x$, $y$. 
 For remaining terms $x+y$, 
@@ -347,25 +362,31 @@ we blow up the plane along $(0,0)$ by introducing new variables
 $(t,[u:v])$ defined by equations $x=tu$ and $y=tv$ in
 $\mathbb R\times\mathbb P^1$. 
 Because $x$, $y\geq 0$ in the integral region,
-%It's convenient to further identify the $\mathbb P^1$ with
-%the line $u+v=1$ defined in $\mathbb R^2$.
-the vertex $(0,0)$ is blown up to an one-dimensional simplex $\mathbb P^1_+=\{[u:v]\,:\,u,v\geq 0\}$ 
+the vertex $(0,0)$ is blown up to an $1$-simplex 
+$\mathbb P^1_+=\{[u:v]\,:\,u,v\geq 0\}$ 
 with two new vertices $u=0$ and $v=0$ under this map, 
-and it is easy to see that the factor $(x+y)$ is dominated by $x$ near the vertex $u=0$ or 
-by $y$ near the vertex $v = 0$. More precisely,
-the one-dimensional simplex $\mathbb P^1_+$ can be identified with 
+and it is easy to see that the factor $(x+y)$ is dominated by $x$ 
+near the vertex $u=0$ or by $y$ near the vertex $v = 0$. More precisely,
+the $1$-simplex $\mathbb P^1_+$ can be identified with 
 the unit interval $[0,1]$ by setting $u+v=1$, so
  \begin{equation}\label{canonicalformunderblowup}
 	\frac{dxdy}{xy} = \frac{du}{u(1-u)}\frac{dt}{t},
  \end{equation}
 and
 \begin{equation*}
-	I(0,0)\approx\int_0^\epsilon\frac{dt}{t} t^{\alpha'(a+b-c)}\int_0^{1}\frac{du}{u(1-u)}u^{\alpha' a}(1-u)^{\alpha' b}%\sim \frac{1}{\alpha'}\frac{1}{a+b-c}\int_0^{1}\frac{dp}{p(1-p)}p^{\alpha' a}(1-p)^{\alpha' b}
-	= \frac{1}{{\alpha'}^2}\frac{1}{a+b-c}\biggl(\frac 1a+\frac 1b\biggr)
-	+O({\alpha'}^{-1}).
+	I(0,0)\approx\int_0^\epsilon\frac{dt}{t} t^{\alpha'(a+b-c)}
+	\int_0^{1}\frac{du}{u(1-u)}u^{\alpha' a}(1-u)^{\alpha' b}
+	= \frac{1}{\alpha'}
+	\frac{\epsilon^{\alpha'(a+b-c)}}{a+b-c}
+	\int_0^{1}\frac{du}{u(1-u)}u^{\alpha' a}(1-u)^{\alpha' b},
 \end{equation*}
-% In this example, whether $x$ or $y$ is dominated in the integration is characterized by $p$, 
-% and both vertices $p\approx 0$ ($x\ll y$) and $p\approx 1$ ($y\ll x$) contribute.
+the left one-dimensional integral of $u$ is again a stringy integral, and
+its leading order comes from two vertices $u=0$ and $v=0$ ($u=1$). Therefore,
+\[
+	I(0,0)
+	= \frac{1}{{\alpha'}^2} \frac{1}{a+b-c}
+	\biggl(\frac 1a+\frac 1b\biggr) +O({\alpha'}^{-1}).
+\]
 \begin{center}
 \begin{tikzpicture}[scale=0.8]
 \fill[gray!30,opacity=0.4] (-6.9,1.4) -- (-3.9,1.4) -- (-3.9,4.4) -- (-6.9,4.4);
@@ -398,11 +419,6 @@ and
 \node at (2.8,-3.6) {\small $v$};
 \end{tikzpicture}
 \end{center}
-% Similarly, one can work out 
-% \[
-% 	I(\infty,\infty)\approx \frac{1}{{\alpha'}^2}\frac{1}{(c-a) (c-b)} 
-% \]
-% and 
 Finally,
 \begin{align*}
 	I&\approx I(0,0)+I(0,\infty)+I(\infty,0)+I(\infty,\infty)\\
@@ -411,16 +427,6 @@ Finally,
 \frac{1}{b (a+b-c)}+\frac{1}{b (c-a)}+\frac{1}{a (c-b)}+\frac{1}{(c-a) (c-b)}+\frac{1}{a (a+b-c)}
 	 \biggr).
 \end{align*}
-%similarly, 
-%\[
-%	I(\infty,\infty)\sim \frac{1}{{\alpha'}^2}\frac{1}{c-a-b}\biggl(\frac 1{c-a}+\frac 1{c-b}\biggr),
-%\]
-%so the leading terms of original integral is 
-%\[
-%	I\sim I(0,0)+I(0,\infty)+I(\infty,0)+I(\infty,\infty).
-%\]
-
-
 
 From the last example, we see that polynomials are not canonical objects 
 for the leading order of a integral because different polynomials may give the 
@@ -438,10 +444,10 @@ $C_{I}=(n^I+\mathbb R^D_{+}):=\{(n^I_1+v_1,\dots,n^I_D+v_D)\,:\,
 \text{$v_i\geq 0$ for all $i$}\}$. The 
 \textit{Newton polyhedron} $C[p]$ of the polynomial $p$ 
 is the \textit{convex hull} of cones $\{C_I\}$, 
-\textit{i.e.} the smallest convex set (\textcolor{red}{C: What is the smallest convex set?}) contains these cones.
+\textit{i.e.} the smallest convex set contains these cones.
 \end{defi}
 
-Note that the Newton polyhedron of $p$ is independent of positive coefficients $s_I$.
+%Note that the Newton polyhedron of $p$ is independent of positive coefficients $s_I$.
 
 %Concretely, suppose we come to the vertex defined locally by $x_1=\cdots=x_D=0$, 
 %and consider the integral
@@ -475,7 +481,7 @@ Note that the Newton polyhedron of $p$ is independent of positive coefficients $
 %we will show in the next lemma that the leading terms of the integral 
 %from this vertices $x_1=x_2=\cdots=x_D=0$ do not change.
 
-\begin{pro}
+\begin{pro}\label{pro:1}
 The leading order of integrals
 \[
 	I=\int_{[0,\epsilon]^D} \left(\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i}\right)
@@ -491,70 +497,8 @@ $\{n^I=(n^I_1,\dots,n^I_D)\}$, while \textit{Minkowski sum} (or vector sum) of t
 
 Therefore, the above proposition is like the local version of this theorem, 
 so it may seem trivial. However, it's more convenient to use the local version because 
-the cone (\textcolor{red}{C: Is Newton polyhedron more appropriate?}) is not as rigid as the Newton polytope, and it just looks like a `corner' of the Newton polytope.
-
-%\begin{lem}
-%Suppose $p(x)=\sum_{I\in \mathscr A}a_I x^{n^I}$ is a polynomial, and $C[p]$ is the convex hull
-%of cones $\{C_{I}=(n^I+\mathbb R^D_{+})\}$. 
-%When we consider the integral near the vertices $x_1=\cdots=x_D=0$, 
-%then we can replace $p(x)$ by a new polynomial $\bar p(x)=\sum_{J\in \mathscr B}a_J x^{n^J}$ such that
-%the leading order of the integral does not change.
-%\end{lem}
-
-% In the following proof, we define $|v|=\sum_{i=1}^D v_i$ for any vector $v\in \mathbb R^D$.
-
-\begin{proof}
-Suppose $p=\sum_I s_I x^{n^I}$.
-We first prove that the integral is independent of positive coefficients $\{s_I\}$.
-In fact, if $x^{n^I}$ dominates $p$ in the integral region $\mathcal L$, 
-then the contribution of integral from this region is
-\begin{align*}
-	\int_{\mathcal L} 
-	\biggl(\prod_{i=1}^D\frac{d x_i}{x_i}x_i^{\alpha' X_i}\biggr)
-	p(x)^{-\alpha'c}\prod_a(q_a(x))^{-\alpha' c_a}
-	&\approx s_I^{-\alpha' c}
-	\int_{\mathcal L} 
-	\biggl(\prod_{i=1}^D\frac{d x_i}{x_i}x_i^{\alpha' X_i-\alpha' cn^I_i}
-	\biggr)\prod_a(q_a(x))^{-\alpha' c_a},
-\end{align*}
-but $s_I^{-\alpha' c}=1+O(\alpha')$ doesn't affect its leading terms.
-
-Next we prove that terms in the Newton polyhedron can be dropped in the integration.
-For a term $x^{n^J}\neq x^{n^I}$ in the cone $C_I$, we should get that
-$n^J_i\geq n^I_i$ for every $i$, then there's no need to consider 
-$x^{n^J}$ anymore because it goes to zero faster than $x^{n^I}$. Thus
-terms other than vertices in $\bigcup_I C_I$ do not contribute. 
-
-Suppose a term $x^v$ is in the interior of $C[p]-\bigcup_I C_I$,  
-then there exist non-negative numbers $\{c_J\}$ such that it can be written as 
-\[
-	v = \sum_{J\in \mathscr B}c_J n^J,\quad \sum_{J\in \mathscr B} c_J>1.
-\]
-If $x^{n^L}$ dominates some limit process, 
-then for other $J\in \mathscr B$, there exists a non-negative number $r_J$ such that
-$x^{w^J}:=x^{n^L-n^J}\leq r_J$, then 
-\[
-	x^v = \prod_{J\in\mathscr B} (x^{n_J})^{c_J} = 
-	(x^{n_L})^{\sum_J c_J}\prod_{J\in \mathscr B} 
-	(x^{w_J})^{c_J}\leq R\,(x^{n_L})^{\sum_J c_J}
-\] 
-where $R$ is a non-negative number and $\sum_J c_J>1$, so $x^v$ goes to 
-zero faster than $x^{n_L}$. Since $L\in \mathscr B$ is arbitrary, $x^v$ can be thrown away.
-
-Finally, suppose that $v$ is on the boundary of $C[p]$ but not a vertex.
-% then it can be written as 
-% \[
-% 	v = \sum_{J\in \mathscr C}c_J n^J,\quad \sum_{J\in \mathscr C} c_J=1,
-% \]
-% where $\mathscr C$ is the set of vertices on the same boundary as $v$.
-We can prove the result by showing this terms goes to zero faster than some vertices on the 
-same boundary, so we can further assume that $p$ is a homogeneous polynomial.
-After blowing-up, near the new vertex
-$y_i=1$, the polynomial becomes $p'=t^{\sum_i v_i}\sum_{I}a_I y^{n^I}|_{y_i=1}$. 
-Since $v$ is not a vertex, it should be in the interior of the polyhedron of this new polynomial or 
-on the boundary of the polyhedron (for all $i$), and then by 
-the proven part of lemma and induction on codimension, it doesn't contribute the integral.
-\end{proof}
+the Newton polyhedron is not as rigid as the Newton polytope, 
+and it just looks like a `corner' of the Newton polytope.
 
 % Geometrically, if we consider the cone $C$ spanned by all $\{n^I\}$, then the basis can be choosen as the vertices on the boundary of $C$, and terms corresponding to points inside $C$ can be dropped.
 % For example, suppose that $p(x,y)=x^3+y^3+xy+x^3y^2+xy^3$, we draw each $n^I$ in the following diagram,
@@ -586,51 +530,65 @@ If one gets the polyhedron of a polynomial $p$ like
 \node at (-0.5,0) {$v$};
 \end{tikzpicture}
 \end{center}
-then we call that $p\approx x^v$ is \emph{decoupled}. In other words, $p$ has the form of %
-$p(x)=x^v(\text{const.}+q(x)) $ for a vector $v$ and polynomial $q$ with $q(0)=0$. 
-Suppose $p\approx x^v$ is a decoupled polynomial, then
+then we call that $p\approx x^v$ is \emph{decoupled}. In other words, $p$ 
+has the form of $p(x)=x^v(a+q(x))$ for a positive constant, a vector $v$ and 
+polynomial $q$ with $q(0)=0$. Suppose $p=x^v(a+q(x))$ is a decoupled polynomial, then
 the integral
 \[
 	I=\int_{[0,\epsilon]^D} \left(\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i}\right)
 	p^{-\alpha' c} \prod_I q_I^{-\alpha' c_I}
 	\approx\int_{[0,\epsilon]^D} \left(\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' (X_i-cv_i)}\right)
-	\prod_I q_I^{-\alpha' c_I},
+	\prod_I q_I^{-\alpha' c_I}
 \] 
 is reduced to a new integral with less polynomials but with the same leading order. 
-Since blow-ups never increase the number of polynomials in the integral, we only need to consider the cases that only contain one 
+This is the simplest case of Proposition \ref{pro:1}, and it's very easy to prove.
+In fact, other terms in the cone $C[p]$ other than $v$ go to zero faster then $a x^v$,
+and the factor $a^{-\alpha'c}=1+O(\alpha')$ introduced by the coefficient $a$ 
+doesn't affect the leading order of the integral.
+
+Therefore, our aim is to find a series of blow-ups to make $p$ decoupled at 
+all generated vertices.
+If we can find it, the proof of Proposition \ref{pro:1} will be reduced to the trivial 
+and proven case where $p$ is decoupled.%
+%\footnote{Here one should prove that points in the polyhedron
+	%will still be in the polyhedron after blow-ups (and other operations we used).
+%}
+Since blow-ups never increase the number of polynomials in the integral, 
+we only need to consider integrals that only contain one 
 polynomial
 \[
 	I=\int_{[0,\epsilon]^D} \left(\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i}\right)
 	p^{-\alpha' c}.
 \] 
-Our aim is to find a series of blow-ups to make $p$ decoupled at each generated vertices.
 
 %After declaring the aim of blow-ups by the language of polyhedra, 
-Now it's a good time to consider general blow-ups and see their effect on integrals and polyhedra. 
-As hinted by eq.\eqref{canonicalformunderblowup}, one important feature of $\Omega_{\mathcal P}$
-is the `invariance' under blowing up, since the residue of the canonical form on the boundary is
+Now it's a good time to consider general blow-ups and see their effect on 
+integrals and polyhedra. As hinted by eq.\eqref{canonicalformunderblowup}, 
+one important feature of $\Omega_{\mathcal P}$ is the `invariance' under blowing up, 
+since the residue of the canonical form on the boundary is
 the canonical form of the boundary.
 Suppose we blow up the boundary defined locally by $x_1=\cdots=x_n=0$ in integral eq.\eqref{int1}. 
-It's already the most general cases. In fact, if in the definition of a boundary $x_i=\infty$, we can
-change the variable $x_i\mapsto 1/x_i$. Let $x_i=ty_i$, where $[y_1:\dots:y_n]$ are positive projective coordinates. 
+It's already the most general cases. In fact, if $x_i=\infty$ in the definition 
+of a boundary, we change the variable $x_i\mapsto 1/x_i$. Let $x_i=ty_i$, 
+where $[y_1:\dots:y_n]$ are positive projective coordinates. 
 Near the boundary, the canonical form of $\Omega$ behaves as 
 \[
 	\Omega=\frac{dx_1}{x_1}\wedge \cdots\wedge\frac{dx_n}{x_n}
 	\wedge \Phi(x'),
 \]
-where $x'$ are other coordinates. In new coordinates, it can be written as 
-\[
-	\Omega=\frac{1}{y_n}\frac{dt}{t}\wedge \frac{dy_1}{y_1}\wedge \cdots
-	\wedge\frac{dy_{n-1}}{y_{n-1}}\wedge \Phi(x')+O(t^0),
-\]
-where $y_n=1-(y_1+\cdots+y_{n-1})$ and $\Phi$ is the canonical form of the boundary of $\mathcal P$ given by $x_1=\cdots=x_n=0$. Therefore,
-\[
-	\operatorname{Res}_{t=0}(\Omega)=\frac{1}{y_n}\frac{dy_1}{y_1}\wedge \cdots\wedge\frac{dy_{n-1}}{y_{n-1}}\wedge \Phi(x')=\Omega_{n-1}(y)\wedge \Phi(x'),
-\]
-$\Omega_{n-1}(y)$ the canonical form of a standard $(n-1)$-dimensional simplex $\mathbb P^{n-1}_+$ defined by
-$
-	\sum_{i=1}^n y_i=1
-$ and $y_i\geq 0$. 
+where $x'$ are other coordinates. 
+At each generated vertex of $(n-1)$-simplex $\mathbb P_+^{n-1}$, the canonical
+form $\Omega$ is invariant under the change of variables eq.\eqref{sec_doc}.
+%in new coordinates, it can be written as 
+%\[
+	%\Omega=\frac{1}{y_n}\frac{dt}{t}\wedge \frac{dy_1}{y_1}\wedge \cdots
+	%\wedge\frac{dy_{n-1}}{y_{n-1}}\wedge \Phi(x')=:\frac{\dif t}{t}\wedge
+	%\Omega_{n-1}(y)\wedge\Phi(x')
+%\]
+%where $\Phi$ is the canonical form of the boundary of $\mathcal P$ given by
+%$x_1=\cdots=x_n=0$ and $\Omega_{n-1}(y)$ is the canonical form of the 
+%$(n-1)$-simplex $\mathbb P^{n-1}_+$.
+
 % If we rewrite it in new coordinates $\{z_i\}$ such that
 % \[
 % 	z_0=0,\quad y_i=z_i-z_{i-1},\quad z_{n}=1,
@@ -640,8 +598,6 @@ $ and $y_i\geq 0$.
 % 	\Omega_{n-1}(z)=\frac{dz_1\wedge\cdots\wedge dz_n}{(z_1-z_0)\cdots (z_n-z_{n-1})}.
 % \]
 % It's the more familiar form.
-
-% Consider a set of irreducible polynomials $\{p_i\}$, let $Z(p_i)$ be the zero point set of $p_i$ in $\mathbb{R}^n$. Suppose a curved polytope $\mathcal P$ is bounded by $\bigcup_i Z(p_i)$, if $F_k$ is a codimension $k$ face of $\mathcal P$ where $\#\{i\,:\,F_k\subset Z(p_i)\}>k$, then we call it a degenerated face.
 
 % Now Consider the integration
 % \[
@@ -692,21 +648,6 @@ when $\alpha'\to 0$. Thus, it only introduces a factor $\prod_{i\in S}c_i$
 for the integral and doesn't break the form of the integral 
 thanks to $\dif \log$ singularities of the canonical form.
 
-Blowing up produces new vertices 
-$
-	\{v_i:x'=0,t=0,y_i=1\}
-$.
-Note that $y_i=1$ means that $y_j=0$ for $j\neq i$ because $\sum_i y_i=1$. 
-Therefore, it's equivalent to do such change of variables
-\[
-	x'\to x',\quad x_j\to ty_j\quad \text{for $j\neq i$},\quad x_i\to t,
-\]
-or by reusing the name of $x_i$ for $t$ and $x_j$ for $y_j$ to save the namespace,
-\[
-	x_j\to x_ix_j\quad \text{for $j\neq i$}.
-\]
-% which is related to the sector decomposition. 
-% We will use this change of variable from now on.
 In terms of this change of variables, the polynomial $p=\sum_I a_I x^{n^I}$ becomes 
 $p'=\sum_I a_I x^{(n^I)'}$, where
 \[
@@ -1575,10 +1516,77 @@ As we saw in section 2, lots of terms have been dropped during the process of bl
 
 (Relation with sector decomposition...)
 
-
-
 %\appendix
+%\section{Proof of Proposition~\ref{pro:1}}
 
+%\newtheorem*{pro:2.1}{Proposition~\ref{pro:1}}
+%\begin{pro:2.1}
+%The leading order of integrals
+%\[
+	%I=\int_{[0,\epsilon]^D} \left(\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i}\right)
+	%p^{-\alpha' c} \prod_a q_a^{-\alpha' c_I}
+%\]
+%only depends on the Newton polyhedron $C[p]$.
+%\end{pro:2.1}
+
+%\begin{proof}
+%Suppose that $p=\sum_{I\in\mathscr A} s_I x^{n^I}$.
+%We first prove that the integral is independent of positive coefficients $\{s_I\}$.
+%In fact, if $x^{n^I}$ dominates $p$ near a vertex generated by blow-ups,
+%then the contribution of integral from the neighbourhood of this vertex is
+%\begin{align*}
+	%\int
+	%\biggl(\prod_{i=1}^D\frac{d x_i}{x_i}x_i^{\alpha' X_i}\biggr)
+	%p(x)^{-\alpha'c}\prod_a(q_a(x))^{-\alpha' c_a}
+	%&\approx s_I^{-\alpha' c}
+	%\int 
+	%\biggl(\prod_{i=1}^D\frac{d x_i}{x_i}x_i^{\alpha' X_i-\alpha' cn^I_i}
+	%\biggr)\prod_a(q_a(x))^{-\alpha' c_a},
+%\end{align*}
+%but $s_I^{-\alpha' c}=1+O(\alpha')$ doesn't affect its leading terms.
+
+%Next we prove that terms in the Newton polyhedron can be dropped in the integration.
+%For a term $x^{n^J}\neq x^{n^I}$ in the cone $C_I$, we should get that
+%$n^J_i\geq n^I_i$ for every $i$, then there's no need to consider 
+%$x^{n^J}$ anymore because it goes to zero faster than $x^{n^I}$. Thus
+%terms other than vertices in $\bigcup_I C_I$ do not contribute. 
+
+%Suppose a term $x^v$ is in the interior of $C[p]-\bigcup_I C_I$,  
+%then there exist nonnegative numbers 
+%$\{c_J\,:\, J\in\mathscr A\}$ such that 
+%\[
+	%v = \sum_{J\in \mathscr A}c_J n^J\quad \text{and}
+	%\quad \sum_{J\in \mathscr A} c_J>1.
+%\]
+%Near the vertex (generated by blow-ups) where $x^{n^L}$ dominates the polynomial $p$,
+%for other $J\in \mathscr A$, there exists a non-negative number $r_J$ such that
+%$x^{w^J}:=x^{n^L-n^J}\leq r_J$, then 
+%\[
+	%x^v = \prod_{J\in\mathscr A} (x^{n_J})^{c_J} = 
+	%(x^{n_L})^{\sum_J c_J}\prod_{J\in \mathscr B} 
+	%(x^{w_J})^{c_J}\leq R\,(x^{n_L})^{\sum_J c_J}
+%\] 
+%where $R=\prod_J r_J$ is a non-negative number and $\sum_J c_J>1$, so $x^v$ goes to 
+%zero faster than $x^{n_L}$. 
+%Since $L\in \mathscr B$ is arbitrary, $x^v$ can be thrown away.
+
+%Finally, suppose that $v$ is on the boundary of $C[p]$ but not a vertex.
+%% then it can be written as 
+%% \[
+%% 	v = \sum_{J\in \mathscr C}c_J n^J,\quad \sum_{J\in \mathscr C} c_J=1,
+%% \]
+%% where $\mathscr C$ is the set of vertices on the same boundary as $v$.
+%We can prove the result by showing that this term goes to zero faster than 
+%some vertices on the same boundary.
+%After blowing-up, near the new vertex
+%$y_i=1$, the polynomial becomes 
+%\[
+	%p'=\sum_{I}a_I x_i^{\sum_i n^I}\prod_j x_j^{n^I_j}.
+%\]
+%Since $v$ is not a vertex, it should be in the interior of the polyhedron of this new polynomial or 
+%on the boundary of the polyhedron (for all $i$), and then by 
+%the proven part of lemma and induction on codimension, it doesn't contribute the integral.
+%\end{proof}
 %\section{Proof of bijectivity of the scattering-equation map}
 %In section 2, we find that the blowing up procedure is simplified by the fact that the leading order contribution of stringy integrals are given by the canonical function for $N_{P}$, which is the Minkowski sum of Newton polytopes of polynomials forming the regulator. This fact is equivalent to say that the scattering-equation map is a bijection~\cite{}. Here we give another proof for this proposition. 
 
