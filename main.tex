@@ -7,6 +7,16 @@
 % \usepackage[T1]{fontenc}
 % \renewcommand{\baselinestretch}{1.1}
 
+
+
+\usepackage{hyperref}
+
+\definecolor{darkred}{RGB}{173,34,48}
+\hypersetup{bookmarksnumbered=true,
+            colorlinks,
+            linkcolor=darkred,
+            citecolor=blue}
+
 \theoremstyle{definition}
 	\newtheorem{para}{}[section]
 		\renewcommand{\thepara}{\thesection.\arabic{para}}
@@ -33,11 +43,11 @@
 
 \pagestyle{plain}
 \definecolor{shadecolor}{RGB}{32,32,32}
-%\definecolor{textcolor}{RGB}{204,204,255}
+\definecolor{textcolor}{RGB}{204,204,255}
 %\definecolor{textcolor}{RGB}{224,224,224}
-\definecolor{textcolor}{RGB}{204,255,204}
-\pagecolor{shadecolor}
-\color{textcolor}
+%\definecolor{textcolor}{RGB}{204,255,204}
+%\pagecolor{shadecolor}
+%\color{textcolor}
 
 \date{\today}
 \title{Blowing up Stringy Canonical Forms: How to win Hironaka's polyhedra game}
@@ -288,9 +298,9 @@ crossing the original point $(0,0)$.
 % at a common point on the plane. 
 If we want know how these lines cross the point $(0,0)$, we can introduce 
 new variables $u$, $v$ and $t$ such that
-\[
+\begin{equation} \label{2dimblowup}
 	x=ut,\quad y=vt,
-\] 
+\end{equation} 
 where $[u:v]$ is a projective coordinate, since any common factor of $u$ and $v$ can be absorbed into the definition of $t$, the line $l_i:a_ix+b_iy=0$ hence becomes a line parameterized 
 by $t$ with an extra point $[-b_i:a_i]\in \mathbb P^1$. These extra points in $\mathbb P^1$ tell us how these line approach $(0,0)$ so that they can be used to distinguish different lines.
 In other words, we replace the point $(0,0)$ with $\mathbb P^1$, which is the extra dimension mentioned above. 
@@ -301,42 +311,42 @@ In other words, we replace the point $(0,0)$ with $\mathbb P^1$, which is the ex
 % directions. Therefore, after blowing up, the uplifted curve intersects $\mathbb P^1$ with two 
 % different points so that it has no self-intersection. 
 
-The above example is called the blow-up of the plane along the original point.
-In this article, we will consider the blow-up of $\mathbb R^D$
-along subspace $\mathbb R^n$ defined by $x_{i_1}=\cdots=x_{i_n}=0$. 
-The blow-up is the variety defined by equations 
-$\{x_{i_j}y_k=x_{i_k}y_j\,:\, 1\leq j<k\leq n\}$ in space 
-$\mathbb R^{D}\times \mathbb P^{n-1}$,
-where $[y_1:\dots:y_n]$ is the projective coordinate. 
-These equations can be easily solved by $x_{i_j}=ty_{j}$ with
-$\sum_{i=1}^n y_i=1$ for $t\neq 0$. 
-The integral near the boundary defined by $x_{i_1}=\cdots=x_{i_n}=0$
-becomes the integral over a interval of $t$ and a $(n-1)$-simplex $\mathbb P_+^{n-1}$ 
-defined by
-\[
-	\sum_{i=1}^n y_i=1,\quad \text{$y_i>0$ for all $1\leq i\leq n$}.
-\]
+% The above example is called the blow-up of the plane along the original point.
+% In this article, we will consider the blow-up of $\mathbb R^D$
+% along subspace $\mathbb R^n$ defined by $x_{i_1}=\cdots=x_{i_n}=0$. 
+% The blow-up is the variety defined by equations 
+% $\{x_{i_j}y_k=x_{i_k}y_j\,:\, 1\leq j<k\leq n\}$ in space 
+% $\mathbb R^{D}\times \mathbb P^{n-1}$,
+% where $[y_1:\dots:y_n]$ is the projective coordinate. 
+% These equations can be easily solved by $x_{i_j}=ty_{j}$ with
+% $\sum_{i=1}^n y_i=1$ for $t\neq 0$. 
+% The integral near the boundary defined by $x_{i_1}=\cdots=x_{i_n}=0$
+% becomes the integral over a interval of $t$ and a $(n-1)$-simplex $\mathbb P_+^{n-1}$ 
+% defined by
+% \[
+% 	\sum_{i=1}^n y_i=1,\quad \text{$y_i>0$ for all $1\leq i\leq n$}.
+% \]
 
-This blow-up produces $n$ new vertices 
-$
-	\{v_i:x'=0,t=0,y_i=1\}
-$, where $x'$ is the other coordinates of $\mathbb R^D$.
-Near the new vertex defined by $y_k=1$, it's equivalent to do 
-the following change of variables
-\[
-	x'\to x',\quad x_{i_j}\to ty_j\quad \text{for $j\neq k$},\quad x_{i_k}\to t,
-\]
-or by reusing the name of $x_{i_k}$ for $t$ and $x_{i_j}$ 
-for $y_j$ to save the namespace,
-\begin{equation}\label{sec_doc}
-	x_{i_j}\to x_{i_k}x_{i_j}\quad \text{for $j\neq k$}.
-\end{equation}
-which is related to the sector decomposition~\cite{Heinrich:2008si}. 
-%In fact, the blow-up of $\{x_{i_1},\dots,x_{i_n}\}$ corresponds to a 
-%decomposition of $[0,1]^n$ into $n$ sectors, where the $i_k$-th
-%sector $\{(x_{i_1},\dots,x_{i_n})\,:\,x_{i_k}< x_{i_l} \text{ for all $l\neq k$}\}$
-The neighbourhood of this vertex in the integral region 
-can be taken as $0<x_i<\epsilon$ for all $i$.
+% This blow-up produces $n$ new vertices 
+% $
+% 	\{v_i:x'=0,t=0,y_i=1\}
+% $, where $x'$ is the other coordinates of $\mathbb R^D$.
+% Near the new vertex defined by $y_k=1$, it's equivalent to do 
+% the following change of variables
+% \[
+% 	x'\to x',\quad x_{i_j}\to ty_j\quad \text{for $j\neq k$},\quad x_{i_k}\to t,
+% \]
+% or by reusing the name of $x_{i_k}$ for $t$ and $x_{i_j}$ 
+% for $y_j$ to save the namespace,
+% \begin{equation}\label{sec_doc}
+% 	x_{i_j}\to x_{i_k}x_{i_j}\quad \text{for $j\neq k$}.
+% \end{equation}
+% which is related to the sector decomposition~\cite{Heinrich:2008si}. 
+% %In fact, the blow-up of $\{x_{i_1},\dots,x_{i_n}\}$ corresponds to a 
+% %decomposition of $[0,1]^n$ into $n$ sectors, where the $i_k$-th
+% %sector $\{(x_{i_1},\dots,x_{i_n})\,:\,x_{i_k}< x_{i_l} \text{ for all $l\neq k$}\}$
+% The neighbourhood of this vertex in the integral region 
+% can be taken as $0<x_i<\epsilon$ for all $i$.
 
 Now let's carefully consider the first example, the integral \eqref{exam:1}
 \[
@@ -521,7 +531,7 @@ and it just looks like a `corner' of the Newton polytope.
 % where $x^3y^2\leftrightarrow (3,2)$ and $xy^3\leftrightarrow (1,3)$ are represented by $\times$ in the diagram and other terms are represented by blue points. The basis is given by blue points $\{x^3\leftrightarrow (3,0),y^3\leftrightarrow (0,3),xy\leftrightarrow (1,1)\}$, and the gray region is the set of all vectors $v=\sum_{J\in \mathscr B}c^I_J n^J$ where $\sum_J c^I_J>1$, therefore we throw away terms in the gray region and then get that $\bar p(x)=x^3+y^3+xy$. 
 
 By using the language of the polyhedron for polynomials, the goal of blowing up is clear.
-If one gets the polyhedron of a polynomial $p$ like
+If one gets the polyhedron of a polynomial $p$ like an {\it{orthant}}
 \begin{center}
 \begin{tikzpicture}[scale=0.75,baseline={([yshift=-.5ex]current bounding box.center)}]
 \fill[gray!20] (2,3) -- (0,3) -- (0,0) -- (3,0) -- (3,1) -- (3,3);
@@ -563,15 +573,50 @@ polynomial
 \] 
 
 %After declaring the aim of blow-ups by the language of polyhedra, 
-Now it's a good time to consider general blow-ups and see their effect on 
-integrals and polyhedra. As hinted by eq.\eqref{canonicalformunderblowup}, 
-one important feature of $\Omega_{\mathcal P}$ is the `invariance' under blowing up, 
+Now it's a good time to consider general blow-ups and see their effect on integrals and polyhedra. 
+
+The above blow-up \eqref{2dimblowup} is called the blow-up of the plane along the original point. In this article, we will consider the general blow-up of $\mathbb R^D$ along subspace $\mathbb R^n$ defined by $x_{i_1}=\cdots=x_{i_n}=0$. For those boundaries defined by %
+$x_{i}=\infty$, we can change the variables by $x_i\mapsto 1/x_i$.
+The blow-up is the variety in $\mathbb R^{D}\times \mathbb P^{n-1}$ defined by 
+\begin{equation}
+	\{x_{i_j}y_k=x_{i_k}y_j\,:\, 1\leq j<k\leq n\}\:,  \label{genblowup}
+\end{equation}
+where $[y_1:\dots:y_n]$ is the projective coordinate. These equations can be easily solved by $x_{i_j}=ty_{j}$ with
+$\sum_{i=1}^n y_i=1$ for $t\neq 0$. 
+The integral near the boundary defined by $x_{i_1}=\cdots=x_{i_n}=0$ becomes the integral over a interval of $t$ and a $(n-1)$-simplex $\mathbb P_+^{n-1}$ 
+defined by
+\[
+	\sum_{i=1}^n y_i=1,\quad \text{$y_i>0$ for all $1\leq i\leq n$}.
+\]
+This blow-up produces $n$ new vertices 
+$
+	\{v_i:x'=0,t=0,y_i=1\}
+$, where $x'$ is the other coordinates of $\mathbb R^D$.
+Near the new vertex defined by $y_k=1$, it's equivalent to do 
+the following change of variables
+\[
+	x'\to x',\quad x_{i_j}\to ty_j\quad \text{for $j\neq k$},\quad x_{i_k}\to t,
+\]
+or by reusing the name of $x_{i_k}$ for $t$ and $x_{i_j}$ 
+for $y_j$ to save the namespace,
+\begin{equation}\label{sec_doc}
+	x_{i_j}\to x_{i_k}x_{i_j}\quad \text{for $j\neq k$}.
+\end{equation}
+which is related to the sector decomposition~\cite{Heinrich:2008si}. 
+%In fact, the blow-up of $\{x_{i_1},\dots,x_{i_n}\}$ corresponds to a 
+%decomposition of $[0,1]^n$ into $n$ sectors, where the $i_k$-th
+%sector $\{(x_{i_1},\dots,x_{i_n})\,:\,x_{i_k}< x_{i_l} \text{ for all $l\neq k$}\}$
+The neighbourhood of this vertex in the integral region 
+can be taken as $0<x_i<\epsilon$ for all $i$.
+
+
+As hinted by eq.\eqref{canonicalformunderblowup}, one important feature of $\Omega_{\mathcal P}$ is the `invariance' under blowing up, 
 since the residue of the canonical form on the boundary is
 the canonical form of the boundary.
 Suppose we blow up the boundary defined locally by $x_1=\cdots=x_n=0$ in integral eq.\eqref{int1}. 
-It's already the most general cases. In fact, if $x_i=\infty$ in the definition 
-of a boundary, we change the variable $x_i\mapsto 1/x_i$. Let $x_i=ty_i$, 
-where $[y_1:\dots:y_n]$ are positive projective coordinates. 
+% It's already the most general cases. In fact, if $x_i=\infty$ in the definition 
+% of a boundary, we change the variable $x_i\mapsto 1/x_i$. 
+Let $x_i=ty_i$, where $[y_1:\dots:y_n]$ are positive projective coordinates. 
 Near the boundary, the canonical form of $\Omega$ behaves as 
 \[
 	\Omega=\frac{dx_1}{x_1}\wedge \cdots\wedge\frac{dx_n}{x_n}
@@ -631,33 +676,31 @@ form $\Omega$ is invariant under the change of variables eq.\eqref{sec_doc}.
 % however we still need to worry about the blowing-up of $t$, $y$ and $x'$ in $q_I$ because
 % it's still unknown that which one is dominated.
 
-Another important feature of the canonical form is about rescaling exponents of variables.
-If we change the variables by
-\(
-	x_i\mapsto x_i^{1/c_i}
-\)
-for $i\in S$, where $c_i$ is a positive rational number, then integral becomes
-\[
-	\prod_{i\in S}c_i\int
-	\prod_{j\not\in S}\frac{\dif x_j}{x_j}x_j^{\alpha' X_j}
-	\prod_{i\in S}\frac{\dif x_i}{x_i}x_i^{\alpha' c_iX_i}
-	p(\{x_i^{c_i}\,:\, i\in S\};\{x_j\,:\, j\not\in S\})^{-\alpha' c}.
-\]
-Note that rescaling of the integral region doesn't change the leading order of the integral
-because $\epsilon^{\alpha'}$ and $(\epsilon^{1/c_i})^{\alpha'}$ both behave as $1+O(\alpha')$
-when $\alpha'\to 0$. Thus, it only introduces a factor $\prod_{i\in S}c_i$ 
-for the integral and doesn't break the form of the integral 
-thanks to $\dif \log$ singularities of the canonical form.
+% Another important feature of the canonical form is about rescaling exponents of variables.
+% If we change the variables by
+% \(
+% 	x_i\mapsto x_i^{1/c_i}
+% \)
+% for $i\in S$, where $c_i$ is a positive rational number, then integral becomes
+% \[
+% 	\prod_{i\in S}c_i\int
+% 	\prod_{j\not\in S}\frac{\dif x_j}{x_j}x_j^{\alpha' X_j}
+% 	\prod_{i\in S}\frac{\dif x_i}{x_i}x_i^{\alpha' c_iX_i}
+% 	p(\{x_i^{c_i}\,:\, i\in S\};\{x_j\,:\, j\not\in S\})^{-\alpha' c}.
+% \]
+% Note that rescaling of the integral region doesn't change the leading order of the integral
+% because $\epsilon^{\alpha'}$ and $(\epsilon^{1/c_i})^{\alpha'}$ both behave as $1+O(\alpha')$
+% when $\alpha'\to 0$. Thus, it only introduces a factor $\prod_{i\in S}c_i$ 
+% for the integral and doesn't break the form of the integral 
+% thanks to $\dif \log$ singularities of the canonical form.
 
-For the blow-up of $\{x_{i_1},\dots,x_{i_n}\}$, near the $k$-th vertex, 
-the polynomial $p=\sum_I a_I x^{n^I}$ becomes 
-$p'=\sum_I a_I x^{(n^I)'}$ by $x_{i_j}\mapsto x_{i_k}x_{i_j}$ for all $j\neq k$, where
+Now let us consider the effect of blow-up on the polynomial $p$. 
+For the blow-up of $\{x_{i_1},\dots,x_{i_n}\}$, the polynomial $p=\sum_I a_I x^{n^I}$ becomes 
+$p'=\sum_I a_I x^{(n^I)'}$ by $x_{i_j}\mapsto x_{i_k}x_{i_j}$ for all $j\neq k$ in the neighbourhood of the $k$-th vertex, where
 \[
-	(n^I)'_{i_k}\longrightarrow \sum_{j=1}^n n^I_{i_j},
+	(n^I)'_{i_k}\longrightarrow \sum_{j=1}^n n^I_{i_j}.
 \]
-and it can be visualized by the polyhedron.
-For example, for $p(x)=x^3+xy+y^3$, the gray polyhedron, we first get the green polyhedron, 
-but it's not the wanted (decoupled) polyhedron, so we blow up it again and we get the red polyhedron.
+This can be visualized by the polyhedron. For instance, the Newton polyhedron of $p(x)=x^3+xy+y^3$ is the gray polyhedron, we first get the green polyhedron by $ y\mapsto xy$, but it's not the wanted (decoupled) polyhedron, so we blow up it by $y\mapsto xy$ again and we get the red polyhedron.
 \begin{center}
 \begin{tikzpicture}[scale=0.75]
 	\fill[gray!20] (0,4) -- (0,3) -- (1,1) -- (3,0) -- (4,0) -- (7.5,4);
@@ -679,44 +722,52 @@ but it's not the wanted (decoupled) polyhedron, so we blow up it again and we ge
 	\draw[dashed,->] (2.2,1) -- (2.8,1);
 \end{tikzpicture}
 \end{center}
-Note that we still need to work out other vertices generated by blow-ups. 
+Note that we still need to deal with other vertices generated by blow-ups. 
 
-However, usually a bad choice of set of variables to blow up may lead to the
-infinite recursion in higher dimension.
+Due to the behaviours of the canonical form and the polynomial $p$ under the blow-up. Finding a {\it{finite}} series of blow-ups such that the polynomial $p$ decouple in each generated vertices is essentially reformulated into a game by Hironaka~\cite{hironaka1967}. In this game, according to the given polynomial $p$, two players $\mathcal{P}_{1}$ and $\mathcal{P}_{2}$ make the following moves:
+\begin{enumerate}
+	\item $\mathcal{P}_{1}$ choose a set of variables $\{x_{i_1},\dots,x_{i_n}\}$.
+	\item $\mathcal{P}_{2}$ choose one variable $x_{i_k}$ out of them and make variable substitutions  $x_{i_j} \to x_{i_k}x_{i_j}$ for $j\neq k$
+\end{enumerate}
+If $p$ becomes decoupled (or geometrically, $C[p]$ becomes an orthant), then player $\mathcal{P}_1$ wins, otherwise they start a new round by using the new generated polynomial. If this never occurs, player $\mathcal{P}_{2}$ will have won.
+%   then
+% B choose one variable $x_{i_k}$ out of them and make variable substitutions
+% $x_{i_j} \to x_{i_k}x_{i_j}$ for $j\neq k$. If $p$ becomes decoupled, then player A wins, otherwise they start a new round by using the 
+% new generated polynomial. If player A cannot win in finite rounds, player B wins.
+% That is, the so-called {\it{Hironaka's polyhedron game}}:
+% However, usually a bad choice of set of variables to blow up may lead to the
+% infinite recursion in higher dimension.
 For example, 
 \[
 	p(x_1,x_2,x_3)=x_1x_3^2+x_2^2+x_2x_3,
 \]
-if we choose $x_1$ and $x_2$ to blow up, then for the vertex 
-$\{x_1\mapsto x_1, x_2\mapsto x_1x_2, x_3\mapsto x_3\}$,
+if $\mathcal{P}_{1}$ choose $\{x_1,x_2\}$, $\mathcal{P}_{2}$ choose $x_{1}$ and make the variable substitution $x_2\mapsto x_1x_2$, 
+since under this variable substitution
 \[
-	p(x_1,x_2,x_3)\mapsto x_1(x_1x_2^2+x_3^2+x_2x_3)=x_1 p(x_1,x_3,x_2).
+	p(x_1,x_2,x_3)\mapsto x_1(x_1x_2^2+x_3^2+x_2x_3)=x_1 p(x_1,x_3,x_2),
 \]
-We will get the polynomial $p$ again and then an endless loop if we always choose such
-variables to blow up.
+then $\mathcal{P}_{2}$ will win if $\mathcal{P}_{1}$ always choose such variables to blow up.
 
-Therefore, a natural question arises. For a given polynomial $p$, 
-can we terminate after finite steps such that near each generated vertex, $p$ becomes 
-decoupled? This question is first declared by Hironaka \cite{hironaka1967}. 
-He designed a game to describe this question, which is 
-called Hironaka's polyhedra game. Let's recall the game rule in our language.
+% Therefore, a natural question arises. For a given polynomial $p$, 
+% can we terminate after finite steps such that near each generated vertex, $p$ becomes 
+% decoupled? This question is first declared by Hironaka \cite{hironaka1967}. 
+% He designed a game to describe this question, which is 
+% called Hironaka's polyhedra game. Let's recall the game rule in our language.
 
-Suppose $p$ is a given polynomial. There are two players A and B in the game. 
-At each round, first A choose a set of variables $\{x_{i_1},\dots,x_{i_n}\}$, then
-B choose one variable $x_{i_k}$ out of them and make variable substitutions
-$x_{i_j} \to x_{i_k}x_{i_j}$ for $j\neq k$.
-If $p$ becomes decoupled, then player A wins, otherwise they start a new round by using the 
-new generated polynomial. If player A cannot win in finite rounds, player B wins.
+% Suppose $p$ is a given polynomial. There are two players A and B in the game. 
+% At each round, first A choose a set of variables $\{x_{i_1},\dots,x_{i_n}\}$, then
+% B choose one variable $x_{i_k}$ out of them and make variable substitutions
+% $x_{i_j} \to x_{i_k}x_{i_j}$ for $j\neq k$.
+% If $p$ becomes decoupled, then player A wins, otherwise they start a new round by using the 
+% new generated polynomial. If player A cannot win in finite rounds, player B wins.
 
 %How to win this game is equivalent to how to resolve singularities
 %by a series of blow-ups, \textit{i.e.}
 %a winning strategy for player A is a construction of resolution of singularities. 
 
-It's clear that any winning strategy for player A will tell us how to 
-calculate stringy integrals. There're many know winning strategies
-\cite{spivakovsky1983solution,zeillinger2006short,hauser2003hironaka}.
+An winning strategy for $\mathcal{P}_{1}$ will tell us how to blow up the polynomial $p$ and hence calculate stringy integrals. There're many known winning strategies \cite{spivakovsky1983solution,zeillinger2006short,hauser2003hironaka}, and we will give another winning strategy from a geometric viewpoint in this article. Before elaborating this strategy, we first give several simple examples to get a feeling of this blow-up method.
 %However, they are not so efficient. 
-... 
+
 % [Spivakovsky 83], [Encinas \& Hauser 02], [Zeillinger 05], \dots.
 
 % We mainly use the Zeillinger's method in the calculation. 
