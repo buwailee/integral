@@ -61,7 +61,8 @@
 
 \begin{abstract}
 We provide an efficient method of blowing up to compute leading order contributions of the recently introduced stringy integrals. 
-The algorithm also gives a new winning strategy of the well-known Hironaka's polyhedra game.
+The algorithm is related to the well-known Hironaka's polyhedra game and 
+can be used to similar problems, \textit{e.g.} sector decomposition.
 \end{abstract}
 \newpage
 
@@ -149,7 +150,7 @@ Essentially, finding such a series of blow-ups is equivalent to give a winning s
 In section 2, we review the definition of blow-up and describe its relation to Hironaka's polyhedra game.
 %then elaborate the principle and procedures of the blowing up algorithm. 
 Section 3 uses several examples arising form cluster stringy integrals to illustrate this method.
-In section 4, we introduce a new viewpoint to approach the Hironaka's polyhedra game and give a new winning strategy of the game.
+In section 4, we introduce a new geometric viewpoint to approach a simplified version of Hironaka's polyhedra game and find a new algorithm to win.
 Section 5 contains discussion and outlook. 
 %Finally, in the appendix, we will give another proof for the proposition firstly given in \cite{Arkani-Hamed:2017tmz} that the scattering-equation map \eqref{SEmap} is a bijection. 
 %from the interior of $\mathbb R_+^D$ to the interior of Minkowski sum of Newton polytopes of $p_I$. 
@@ -768,7 +769,13 @@ then $\mathcal{P}_{2}$ will win if $\mathcal{P}_{1}$ always choose such variable
 %by a series of blow-ups, \textit{i.e.}
 %a winning strategy for player A is a construction of resolution of singularities. 
 
-An winning strategy for $\mathcal{P}_{1}$ will tell us how to blow up the polynomial $p$ and hence calculate stringy integrals. There're many known winning strategies \cite{spivakovsky1983solution,zeillinger2006short,hauser2003hironaka}, and we will give another winning strategy from a geometric viewpoint in this article. Before elaborating this strategy, we first give several simple examples to get a feeling of this blow-up method.
+An winning strategy for $\mathcal{P}_{1}$ will tell us how to blow up the polynomial $p$ and hence calculate stringy integrals. There're many known winning strategies \cite{spivakovsky1983solution,zeillinger2006short,hauser2003hironaka}.
+In this article, we will give a new algorithm to win a simplified version of this game 
+from a geometric viewpoint. The simplified version allow $\mathcal P_1$ to 
+use another operation $x_j\mapsto x_j^c$ for any $j$ in the choosen set and any
+positive rational number $c$, and the algorithm tells us how to calculate 
+the leading order of stringy integrals more efficiently.
+Before elaborating this algorithm, we first give several simple examples to get a feeling of this blow-up method.
 %However, they are not so efficient. 
 
 % [Spivakovsky 83], [Encinas \& Hauser 02], [Zeillinger 05], \dots.
