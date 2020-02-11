@@ -7,7 +7,7 @@
 % \usepackage[T1]{fontenc}
 % \renewcommand{\baselinestretch}{1.1}
 
-
+\usepackage{authblk}
 
 \usepackage{hyperref}
 
@@ -50,19 +50,23 @@
 %\color{textcolor}
 
 \date{\today}
-\title{Blowing up Stringy Canonical Forms: How to win Hironaka's polyhedra game}
+\title{Blowing up Stringy Canonical Forms: An Algorithm to 
+Win a Simplified Hironaka's Polyhedra Game}
 
-\author{Zhenjie Li\and Chi Zhang}
-
+\author[a,b]{Zhenjie Li}
+\author[a,b]{Chi Zhang}
+\affil[a]{\small CAS Key Laboratory of Theoretical Physics, Institute of Theoretical Physics, Chinese Academy of Sciences, Beijing 100190, China}
+\affil[b]{\small School of Physical Sciences, University of Chinese Academy of Sciences, No.19A Yuquan Road, Beijing 100049, China}
+\affil[ ]{Emails: \texttt{\{lizhenjie, zhangchi\}@itp.ac.cn}}
 
 \begin{document}
 
 \maketitle
 
 \begin{abstract}
-We provide an efficient method of blowing up to compute leading order contributions of the recently introduced stringy integrals. 
-The algorithm is related to the well-known Hironaka's polyhedra game and 
-can be used to similar problems, \textit{e.g.} sector decomposition.
+We provide an efficient method of blowing up to compute leading order contributions of the recently introduced stringy canonical forms. 
+The method is related to the well-known Hironaka's polyhedra game, and the given 
+algorithm can be used on similar problems, \textit{e.g.} sector decomposition.
 \end{abstract}
 \newpage
 
@@ -130,26 +134,23 @@ More concretely, {\it{ i) the leading order of a stringy integral is given by th
 In general, however, it's difficult to calculate the leading order of stringy integrals directly from the above two properties.
 On the one hand, performing Minkowski sum for polytopes analytically is nearly impossible. On the other hand, to obtain the canonical form $\Omega(N_{P})$ from the pushforward $\Phi_{\ast}\bigl(\bigwedge_{i=1}^{D} \dif \log x_{i}\bigr)$ requires to solve highly non-linear equations, just like the case in CHY formalism.
 
-
 The main purpose of this article is to show an efficient method, {\it{blowing up}}, %(\textcolor{red}{C: or blowing-up map?}),
-to calculate the leading order of the integral eq.\eqref{int1}  with respect to $\alpha'$. This is a general method which is closely related to the so-called \emph{Hironaka's polyhedra game}~\cite{hironaka1967} and also generally used in the calculation of Feynman diagrams to disentangle the singularities where this method is called {\emph{sector decomposition}}\cite{}. We will see that the situation is easier when this method is applied in stringy integrals due to some features of canonical forms, and especially its closed relation to the polytope $N_{P}$. This method is based on two simple observations: i) the leading order contribution in $\alpha'$-expansion of stringy integrals arises from each vertex of the integration region $\mathbb{R}_{+}^{D}$, ii) suppose that all $p_I(0)\neq 0$ in the integral eq.\eqref{int1}, then the integral at the neighbourhood of the origin becomes 
+to calculate the leading order of the integral eq.\eqref{int1}  with respect to $\alpha'$. This is a general method which is closely related to the so-called \emph{Hironaka's polyhedra game}~\cite{hironaka1967} and also generally used in the calculation of Feynman diagrams to disentangle the singularities where this method is called \emph{sector decomposition} (see \textit{e.g.} \cite{Binoth:2000ps,Binoth:2003ak,Heinrich:2008si}). We will see that the situation is easier when this method is applied in stringy integrals due to some features of canonical forms, and especially its closed relation to the polytope $N_{P}$. This method is based on two simple observations: i) the leading order contribution in $\alpha'$-expansion of stringy integrals arises from each vertex of the integration region $\mathbb{R}_{+}^{D}$, ii) suppose that all $p_I(0)\neq 0$ in the integral eq.\eqref{int1}, then the integral at the neighbourhood of the origin becomes 
 \begin{equation}\label{int2}
 	\int_{[0,\epsilon]^D}\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i} \prod_{I}p_{I}(0)^{-\alpha' c_{I}}
 	=\prod_{i=1}^D\frac{\epsilon^{\alpha' X_i}p_{I}(0)^{-\alpha' c_{I}}}{\alpha' X_i}
 	= \frac{1}{(\alpha')^D}\frac{1}{X_1\cdots X_D}+O(\alpha'^{-D+1}).
 \end{equation}
-Generally, it would not be such simple case, some polynomials $p_{I}$ may vanish or even is singular\footnote{A point $Q$ is a singular point of the surface defined by $p(x_{1},\dots,x_{n})=0$ if $p(Q)=0$ and $\partial p(Q)/\partial x_{i} =0$ for all $i$~%
+Generally, it would not be such simple case, some polynomials $p_{I}$ may vanish or even is singular\footnote{A point $Q$ is a singular point of the surface defined by $p(x_{1},\dots,x_{n})=0$ if $\partial p(Q)/\partial x_{i} =0$ for all $i$~%
 \cite{shafarevich1994basic}. } at the origin (or a vertex).
 % \begin{itemize}
 % 	\item Some polynomials $p_I$ may vanish at the origin (or a vertex).
 % 	\item Furthermore, some $p_I$ may own the origin (or a vertex) as their singular point\footnote{A point $Q$ is a singular point of the surface defined by $p(\mathrm{x})$=0 if $p(Q)=0$ and $\partial p(Q)/\partial x_{i} =0$ for all $i$}.
 % \end{itemize}
 They can be overcome by a series of blows-ups, after which the stringy integral is decomposed into many integrals like eq.\eqref{int2}, then the leading order is given by a summation. %
-Essentially, finding such a series of blow-ups is equivalent to give a winning strategy for a (simplified) Hironaka's polyhedra game.
-
+Essentially, finding such a series of blow-ups is equivalent to give a winning strategy for the (simplified) Hironaka's polyhedra game.
 
 In section 2, we review the definition of blow-up and describe its relation to Hironaka's polyhedra game.
-%then elaborate the principle and procedures of the blowing up algorithm. 
 Section 3 uses several examples arising form cluster stringy integrals to illustrate this method.
 In section 4, we introduce a new geometric viewpoint to approach a simplified version of Hironaka's polyhedra game and find a new algorithm to win.
 Section 5 contains discussion and outlook. 
@@ -533,7 +534,7 @@ and it just looks like a `corner' of the Newton polytope.
 % \end{center}
 % where $x^3y^2\leftrightarrow (3,2)$ and $xy^3\leftrightarrow (1,3)$ are represented by $\times$ in the diagram and other terms are represented by blue points. The basis is given by blue points $\{x^3\leftrightarrow (3,0),y^3\leftrightarrow (0,3),xy\leftrightarrow (1,1)\}$, and the gray region is the set of all vectors $v=\sum_{J\in \mathscr B}c^I_J n^J$ where $\sum_J c^I_J>1$, therefore we throw away terms in the gray region and then get that $\bar p(x)=x^3+y^3+xy$. 
 
-By using the language of the polyhedron for polynomials, the goal of blowing up is clear.
+By using the language of the polyhedra for polynomials, the goal of blowing up is clear.
 If one gets the polyhedron of a polynomial $p$ like an {\it{orthant}}
 \begin{center}
 \begin{tikzpicture}[scale=0.75,baseline={([yshift=-.5ex]current bounding box.center)}]
@@ -770,12 +771,13 @@ then $\mathcal{P}_{2}$ will win if $\mathcal{P}_{1}$ always choose such variable
 %by a series of blow-ups, \textit{i.e.}
 %a winning strategy for player A is a construction of resolution of singularities. 
 
-An winning strategy for $\mathcal{P}_{1}$ will tell us how to blow up the polynomial $p$ and hence calculate stringy integrals. There're many known winning strategies \cite{spivakovsky1983solution,zeillinger2006short,hauser2003hironaka}.
+An winning strategy for $\mathcal{P}_{1}$ will tell us how to blow up the polynomial $p$ and hence calculate stringy integrals. There're many known winning strategies \cite{spivakovsky1983solution,zeillinger2005polyederspiele,zeillinger2006short,hauser2003hironaka},
+and they have been used in many programs (see \textit{e.g.} \cite{Smirnov:2008py,Ueda:2009xx}).
 In this article, we will give a new algorithm to win a simplified version of this game 
 from a geometric viewpoint. The simplified version allow $\mathcal P_1$ to 
 use another operation $x_j\mapsto x_j^c$ for any $j$ in the choosen set and any
-positive rational number $c$, and the algorithm tells us how to calculate 
-the leading order of stringy integrals more efficiently.
+positive rational number $c$, and the algorithm also tells us how to calculate 
+the leading order of stringy integrals.
 Before elaborating this algorithm, we first give several simple examples to get a feeling of this blow-up method.
 %However, they are not so efficient. 
 
@@ -829,7 +831,6 @@ Before elaborating this algorithm, we first give several simple examples to get 
 
 % string Z integral, Cn, Gkn ...
 In this section, we will give several examples to illustrate this blow-up method, all examples comes from the so-called cluster stringy integrals~\cite{Arkani-Hamed:2019mrd,Arkani-Hamed:2019plo} which are closely related to the origin string integrals. The dimension of all examples in this section is 2 or 3 and the regulating polynomials are simple, so the blow-up prescriptions can be designed \emph{ad hoc} without a universal algorithm.
-
 
 \subsubsection*{Cluster string integral: $A_{2}$}
 This integral is equivalent to the $Z$-integral $Z_{12345}(1,2,3,4,5)$~\cite{Mafra:2016mcc}, which in a positive parameterization takes the form of 
@@ -1011,7 +1012,7 @@ then variable substitutions used by blowing up
 \[
 	x_j\to x_ix_j \quad \text{for $j\neq i$ and $j\in S$}
 \] 
-is just replacing the $i$-th row with $\sum_{i\in S} n_i^I$.
+is just replacing the $i$-th row with $\sum_{j\in S} n_j^I$.
 
 \begin{defi}
 If a matrix $A=(A^I_i)_{1\leq i\leq D,1\leq I\leq N}$ 
@@ -1583,17 +1584,16 @@ in above example.
 
 \section{Conclusions and Outlook}
 
-
 In this article, we have shown how to obtain the leading order contribution of stringy integrals by a blow-up algorithm. These integrals are generations of tree-level scattering of open strings and provide natural $\alpha'$-deformed canonical forms for general polytopes. Interestingly, the algorithm is equivalent to a winning strategy for a simplified version of Hironaka's polyhedra game since more moves can be taken in our case.
 
 All information about the leading order of such integrals is contained in the Minkowski sum $N_{P}$ of Newton polytopes of the regulating polynomials. In this sense, the blow-up method gives a way to reconstruct the polytope $N_{P}$ from its vertices. However, as we saw in section 3, spurious poles and hence spurious vertices are produced in the process of blow-ups. Additional efforts are still needed to recognize the real poles and vertices, especially when the dimensionality increases (curse of dimensionality) and the regulating polynomials get more and more complicated. The result obtained by blowing up is correct but redundant, thus a interesting question is how the polytope $N_{P}$ emerges from this (usually tedious) result. 
 
 
-Another way to reconstruct $N_{P}$ is, along with the opposite direction, to find the facets of $N_{P}$ by using the scattering-equation map. Where the aim is to find all directions such that $\mathbf{X}$ approaches facets of $N_{P}$ as $\mathbf{x}$ approaches boundaries of $\mathbb{R}^{D}$ along with these directions~\cite{He:2020ray}. It would be interesting to find any relations between the reconstruction from the bottom up, the blow-up, and the reconstructiong from the top down, the scattering-equation map.
+Another way to reconstruct $N_{P}$ is, along with the opposite direction, to find the facets of $N_{P}$ by using the scattering-equation map. Where the aim is to find all directions such that $\mathbf{X}$ approaches facets of $N_{P}$ as $\mathbf{x}$ approaches boundaries of $\mathbb{R}^{D}$ along with these directions~\cite{He:2020ray}. It would be interesting to find any relations between the reconstruction from the bottom up, the blow-up, and the reconstructing from the top down, the scattering-equation map.
 
 As we saw in section 2, lots of terms have been dropped during the process of blow-ups, while higher order contributions of such integrals with respect to $\alpha'$ certainly depend on the details of regulating polynomials. One way to obtain the higher order contribution is to expand the integrand with respect to $\alpha'$ then integration, the obstacle to this expansion is singularities in poles. The blow-up procedure provide a way to remove this obstacle: each integration region produced by blow-ups only meets singularities of the canonical form at one vertex, then a subtraction can be easily made such that the integrand have no divergence in the integration region.
 
-The algorithm introduced in section \ref{s:alg} is,  in a sense, the byproduct of the geometric viewpoint, and there is still much room to improve. Some possible improvements could happen in the procedure (3) of the algorithm. 
+The algorithm introduced in section \ref{s:alg} is, in some sense, the byproduct of the geometric viewpoint, and there is still much room to improve. Some possible improvements could happen in the procedure (3) of the algorithm. 
 For example, we haven't figured out what's the most efficient way to choose 
 two outside vertices to blow up, and it should be more efficient to blow up along vectors in the inside region than
 vectors on hyperplanes $\{h^{IJ}\}$. One should even invent more efficient new methods 
@@ -1602,7 +1602,9 @@ from this viewpoint. What's more, it's believed that this new viewpoint could br
 us a new winning procedure of the original Hironaka's polyhedra game. 
 We leave these for the future.
 
-Although the situation here is easier than the Feynman diagram calculation due to the agreeable property of canonical forms and the extra rescaling operation, we expect that this kind of geometric view point will give some insights of the calculation of Feynman diagrams in which some efforts have been made (see \cite{Kaneko:2009qx}). On the other hand, Another objects for Feynman diagrams, Hepp's bound, are recently found to have a closed relation to the polytope geometry~\cite{Panzer:2019yxl}. It would be facinating to explore further relations between the leading order contribution of the stringy canonical forms and Feynman diagrams from this geometric viewpoint.
+Since the situation here is similar with the sector decomposition,
+we expect that this kind of geometric view point will give some insights of the calculation of Feynman diagrams in which some efforts have been made (see \textit{e.g.} \cite{Kaneko:2009qx}). On the other hand, another object for Feynman diagrams, Hepp's bound, is recently found to have a closed relation to the polytope geometry~\cite{Panzer:2019yxl}. 
+It would be fascinating to explore further relations between the leading order contribution of the stringy canonical forms and Feynman diagrams from this geometric viewpoint.
 
 
 \section*{Acknowledgement}
