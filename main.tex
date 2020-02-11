@@ -79,7 +79,8 @@ can be used to similar problems, \textit{e.g.} sector decomposition.
 
 \section{Introduction}
 
-Very recently, a vast generalization of tree level strings integrals has been proposed in \cite{Arkani-Hamed:2019mrd}. This generalization is realized by identifying the Parke-Taylor form 
+
+Very recently, a vast generalization of tree level strings integrals has been proposed in \cite{Arkani-Hamed:2019mrd}. This generalization is realized by identifying the Parke-Taylor form  
 \[
 	\mathsf{PT}(n):=\frac{\dif^{n}z}{\mathrm{SL}(2,\mathbb{R})} \prod_{i=1}^{n}\frac{1}{z_{i}-z_{i+1}}
 \]
@@ -87,7 +88,7 @@ as the canonical form of the moduli space $\mathcal{M}_{0,n}^{+}$ and the Koba-N
 \begin{equation} 
 	\int_{\mathbb{R}_{+}^{D}} \prod_{i=1}^{D}\frac{\dif x_{i}}{x_{i}}x_{i}^{\alpha' X_{i}}\prod_{I}p_{I}(\mathbf{x})^{-\alpha'c_{I}}	\:, \label{int1}
 \end{equation}
-where $D=n{-}3$, $X_{i}$ and $c_{I}$ are linear combinations of Mandelstam variables $s_{ij}$'s. A \emph{stringy} integral is a integral of form eq.(\ref{int1}) but with arbitrary subtraction-free polynomials $p_{I}$. 
+where $D=n{-}3$, $X_{i}$ and $c_{I}$ are linear combinations of Mandelstam variables $s_{ij}$'s. A \emph{stringy} integral is an integral of form eq.(\ref{int1}) but with arbitrary subtraction-free polynomials $p_{I}$. 
 
 % In string theory, the tree level $n$-pt open superstring amplitudes
 % \[
@@ -131,7 +132,7 @@ On the one hand, performing Minkowski sum for polytopes analytically is nearly i
 
 
 The main purpose of this article is to show an efficient method, {\it{blowing up}}, %(\textcolor{red}{C: or blowing-up map?}),
-to calculate the leading order of the integral eq.\eqref{int1} with respect to $\alpha'$. This is a general method which is closely related to the so-called \emph{Hironaka's polyhedra game}~\cite{hironaka1967}. We will see that the situation is easier when this method is applied in stringy integrals due to some features of canonical forms, and especially its closed relation to the polytope $N_{P}$. This method is based on two simple observations: i) the leading order contribution in $\alpha'$-expansion of stringy integrals arises from each vertex of the integration region $\mathbb{R}_{+}^{D}$, ii) suppose that all $p_I(0)\neq 0$ in the integral eq.\eqref{int1}, then the integral at the neighbourhood of the origin becomes 
+to calculate the leading order of the integral eq.\eqref{int1}  with respect to $\alpha'$. This is a general method which is closely related to the so-called \emph{Hironaka's polyhedra game}~\cite{hironaka1967} and also generally used in the calculation of Feynman diagrams to disentangle the singularities where this method is called {\emph{sector decomposition}}\cite{}. We will see that the situation is easier when this method is applied in stringy integrals due to some features of canonical forms, and especially its closed relation to the polytope $N_{P}$. This method is based on two simple observations: i) the leading order contribution in $\alpha'$-expansion of stringy integrals arises from each vertex of the integration region $\mathbb{R}_{+}^{D}$, ii) suppose that all $p_I(0)\neq 0$ in the integral eq.\eqref{int1}, then the integral at the neighbourhood of the origin becomes 
 \begin{equation}\label{int2}
 	\int_{[0,\epsilon]^D}\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' X_i} \prod_{I}p_{I}(0)^{-\alpha' c_{I}}
 	=\prod_{i=1}^D\frac{\epsilon^{\alpha' X_i}p_{I}(0)^{-\alpha' c_{I}}}{\alpha' X_i}
@@ -260,7 +261,7 @@ Before going into details of blowing up, let us clarify the problem mentioned in
 \begin{equation*}
   \mathcal{I}(\alpha';W_{I})=\int_{\mathcal{P}} \Omega_{\mathcal{P}}(\mathbf{x}) \prod_{I}p_{I}(\mathbf{x})^{\alpha'W_{I}}\,,
 \end{equation*}
-where $\mathcal{P}$ is some positive geometry (in our case, it is some simple polytope) of dimension $D$ parameterized by $\mathbf{x}:= \{x_{1},\ldots,x_{D}\}$, $\Omega_{\mathcal{P}}$ is its associated canonical form~\cite{}, and $p_{I}(\mathbf{x})$ are polynomials vanishing at boundaries of $\mathcal{P}$ and hence regulate the logarithm divergence of $\Omega_{\mathcal{P}}$ at boundaries. For $p_{I}(x)^{\alpha' W_{I}}$ to be single valued in $\mathcal{P}$, we require that $p_{I}(\mathbf{x})$ is nonnegative in the interior of $\mathcal{P}$. %which is equivalent to say that $p_{I}$ is subtraction-free under a positive parameterization. 
+where $\mathcal{P}$ is some positive geometry (in our case, it is some simple polytope) of dimension $D$ parameterized by $\mathbf{x}:= \{x_{1},\ldots,x_{D}\}$, $\Omega_{\mathcal{P}}$ is its associated canonical form~\cite{Arkani-Hamed:2017tmz}, and $p_{I}(\mathbf{x})$ are polynomials vanishing at boundaries of $\mathcal{P}$ and hence regulate the logarithm divergence of $\Omega_{\mathcal{P}}$ at boundaries. For $p_{I}(x)^{\alpha' W_{I}}$ to be single valued in $\mathcal{P}$, we require that $p_{I}(\mathbf{x})$ is nonnegative in the interior of $\mathcal{P}$. %which is equivalent to say that $p_{I}$ is subtraction-free under a positive parameterization. 
 
 The leading order contribution of $\mathcal{I}$ with respect to $\alpha'$ arise from the integral over the neighbourhood of each vertex of $\mathcal{P}$. For any vertex, the leading order contribution can be trivially obtained if there are just $D$ polynomials $p_{I}$ vanishing and regular (non-singular) at this vertex as in \eqref{int2}, and such vertex is called {\it{normal crossing}} since this vertex has been crossed $D$ times geometrically. All troubles are caused by vertices which are {\it not} normal crossing. For example (see Fig. \ref{fig_1}), consider the integral 
 \begin{equation}\label{exam:1}
@@ -291,7 +292,7 @@ curves crossing it in different directions are lifted to new curves intersecting
 % In mathematics, blowing up or blowup is a type of geometric transformation which replaces 
 % a subspace of a given space with all the directions pointing out of that subspace.
 Let's first consider a simple but heuristic example of blowing up. 
-Suppose there's a family of line $\{l_i: a_ix+b_iy=0\}_{i=1,\dots,n}$ on the plane 
+Suppose there's a family of lines $\{l_i: a_ix+b_iy=0\}_{i=1,\dots,n}$ on the plane 
 $\mathbb R^2$
 crossing the original point $(0,0)$. 
 % The point $(0,0)$ is the common zero set of these lines,
@@ -361,7 +362,7 @@ whose leading contribution comes from the neighbourhoods of four vertices $(0,0)
 	\frac{1}{{\alpha'}^2}\frac{1}{a} \frac{1}{c-b}+O({\alpha'}^{-1}),
 \end{align*}
 where we throw away $x$ and $xy$ in $x+y+xy$ after $\approx$ because in this case $x\ll y$
-so that they do not contribute the leading order when $\alpha' \to 0$.
+so that they have no contribution to the leading order when $\alpha' \to 0$.
 In this article, the symbol $\approx$ is used to relate two expressions 
 (usually integrals) with the same leading terms 
 or two polynomials which contribute the same leading terms in the integration.
@@ -446,7 +447,7 @@ for the leading order of a integral because different polynomials may give the
 same contribution. For example, we can throw away irrelevant terms in the 
 polynomial. Besides, the integral also doesn't depend on positive coefficients
 in the polynomial which we will explain later.
-Thus a natural question arises. What's the canonical object to describe the 
+A natural question thus arises. What's the canonical object to describe the 
 leading contribution of a polynomial in a integral near a vertex? The answer is 
 the \textit{Newton polyhedron} of this polynomial.
 
@@ -553,7 +554,7 @@ the integral
 	\approx\int_{[0,\epsilon]^D} \left(\prod_{i=1}^D\frac{\dif x_i}{x_i}x_i^{\alpha' (X_i-cv_i)}\right)
 	\prod_I q_I^{-\alpha' c_I}
 \] 
-is reduced to a new integral with less polynomials but with the same leading order. 
+is reduced to a new integral with fewer polynomials but with the same leading order. 
 This is the simplest case of Proposition \ref{pro:1}, and it's very easy to prove.
 In fact, other terms in the cone $C[p]$ go to zero faster than $a x^v$,
 and the factor $a^{-\alpha'c}=1+O(\alpha')$ introduced by the coefficient $a$ 
@@ -585,7 +586,7 @@ The blow-up is the variety in $\mathbb R^{D}\times \mathbb P^{n-1}$ defined by
 \end{equation}
 where $[y_1:\dots:y_n]$ is the projective coordinate. These equations can be easily solved by $x_{i_j}=ty_{j}$ with
 $\sum_{i=1}^n y_i=1$ for $t\neq 0$. 
-The integral near the boundary defined by $x_{i_1}=\cdots=x_{i_n}=0$ becomes the integral over a interval of $t$ and a $(n-1)$-simplex $\mathbb P_+^{n-1}$ 
+The integral near the boundary defined by $x_{i_1}=\cdots=x_{i_n}=0$ becomes the integral over an interval of $t$ and a $(n-1)$-simplex $\mathbb P_+^{n-1}$ 
 defined by
 \[
 	\sum_{i=1}^n y_i=1,\quad \text{$y_i>0$ for all $1\leq i\leq n$}.
@@ -602,7 +603,7 @@ the following change of variables
 or by reusing the name of $x_{i_k}$ for $t$ and $x_{i_j}$ 
 for $y_j$ to save the namespace,
 \begin{equation}\label{sec_doc}
-	x_{i_j}\to x_{i_k}x_{i_j}\quad \text{for $j\neq k$}.
+	x_{i_j}\to x_{i_k}x_{i_j}\quad \text{for $j\neq k$} ,
 \end{equation}
 which is related to the sector decomposition~\cite{Heinrich:2008si}. 
 %In fact, the blow-up of $\{x_{i_1},\dots,x_{i_n}\}$ corresponds to a 
@@ -702,7 +703,7 @@ $p'=\sum_I a_I x^{(n^I)'}$ by $x_{i_j}\mapsto x_{i_k}x_{i_j}$ for all $j\neq k$ 
 \[
 	(n^I)'_{i_k}\longrightarrow \sum_{j=1}^n n^I_{i_j}.
 \]
-This can be visualized by the polyhedron. For instance, the Newton polyhedron of $p(x)=x^3+xy+y^3$ is the gray polyhedron, we first get the green polyhedron by $ y\mapsto xy$, but it's not the wanted (decoupled) polyhedron, so we blow up it by $y\mapsto xy$ again and we get the red polyhedron.
+This can be visualized by the polyhedron. For instance, the Newton polyhedron of $p(x)=x^3+xy+y^3$ is the gray polyhedron, we first get the green polyhedron by $ y\mapsto xy$, but it's not the wanted (decoupled) polyhedron, so we blow up it by $y\mapsto xy$ again, then we get the red polyhedron.
 \begin{center}
 \begin{tikzpicture}[scale=0.75]
 	\fill[gray!20] (0,4) -- (0,3) -- (1,1) -- (3,0) -- (4,0) -- (7.5,4);
@@ -728,7 +729,7 @@ This can be visualized by the polyhedron. For instance, the Newton polyhedron of
 \end{center}
 Note that we still need to deal with other vertices generated by blow-ups. 
 
-Due to the behaviours of the canonical form and the polynomial $p$ under the blow-up. Finding a {\it{finite}} series of blow-ups such that the polynomial $p$ decouple in each generated vertices is essentially reformulated into a game by Hironaka~\cite{hironaka1967}. In this game, according to the given polynomial $p$, two players $\mathcal{P}_{1}$ and $\mathcal{P}_{2}$ make the following moves:
+Due to the behaviors of the canonical form and the polynomial $p$ under the blow-up. Finding a {\it{finite}} series of blow-ups such that the polynomial $p$ decouple in each generated vertices is essentially reformulated into a game by Hironaka~\cite{hironaka1967}. In this game, according to the given polynomial $p$, two players $\mathcal{P}_{1}$ and $\mathcal{P}_{2}$ make the following moves:
 \begin{enumerate}
 	\item $\mathcal{P}_{1}$ choose a set of variables $\{x_{i_1},\dots,x_{i_n}\}$.
 	\item $\mathcal{P}_{2}$ choose one variable $x_{i_k}$ out of them and make variable substitutions  $x_{i_j} \to x_{i_k}x_{i_j}$ for $j\neq k$
@@ -827,7 +828,7 @@ Before elaborating this algorithm, we first give several simple examples to get 
 \section{Application and Example}
 
 % string Z integral, Cn, Gkn ...
-In this section, we will give several examples to illustrate this blow-up method, all examples comes from the so-called cluster stringy integrals~\cite{Arkani-Hamed:2019mrd} which are closely related to the origin string integrals. The dimension of all examples in this section is 2 or 3 and the regulating polynomials are simple, so the blow-up prescriptions can be designed \emph{ad hoc} without a universal algorithm.
+In this section, we will give several examples to illustrate this blow-up method, all examples comes from the so-called cluster stringy integrals~\cite{Arkani-Hamed:2019mrd,Arkani-Hamed:2019plo} which are closely related to the origin string integrals. The dimension of all examples in this section is 2 or 3 and the regulating polynomials are simple, so the blow-up prescriptions can be designed \emph{ad hoc} without a universal algorithm.
 
 
 \subsubsection*{Cluster string integral: $A_{2}$}
@@ -836,7 +837,8 @@ This integral is equivalent to the $Z$-integral $Z_{12345}(1,2,3,4,5)$~\cite{Maf
 	\mathcal{I}_{A_{2}}=\int_{\mathbb R_+^2} \frac{\dif x_1}{x_1}\frac{\dif x_2}{x_2}x_1^{\alpha' X}x_2^{\alpha' Y}
 	(1+x_1)^{-\alpha' a}(1+x_2)^{-\alpha' b}(1+x_1+x_1x_2)^{-\alpha' c}
 \] 
-where $1+x_{1}$, $1+x_{2}$ and $1+x_{1}+x_{1}x_{2}$ are $F$-polynomials with the initial seed $A_{2}$ quiver. With variable substitutions
+where $1+x_{1}$, $1+x_{2}$ and $1+x_{1}+x_{1}x_{2}$ are $F$-polynomials with the initial seed $A_{2}$ quiver %
+(see \cite{fomin2007cluster} for cluster algebra). With variable substitutions
 \[
 	x_{1}=\frac{1-z_{3}}{z_{3}}\,,\qquad x_{2}=\frac{z_{3}-z_{2}}{z_{2}(1-z_{3})}
 \]
@@ -858,7 +860,7 @@ The vertex $(0,\infty)$ is not normal crossing, we bring this vertex to the orig
 where some irrelevant power functions of the form $(1+\cdots)$ have been dropped. This is exactly the example we used in section 2, then the leading order contribution of $\mathcal{I}_{A_{2}}$ is simply
 \begin{align*}
    \mathcal{I}_{A_2}&=\frac{1}{\alpha'^{-2}}\biggl(\frac{1}{(a+c-X) (b+c-Y)}+\frac{1}{X (b+X-Y)} \\
-   &\quad +\frac{1}{(b+c-Y) (b+X-Y)}+\frac{1}{Y (a+c-X)}+\frac{1}{X Y}\biggr) + O(\alpha'^{-1}) 
+   &\quad +\frac{1}{(b+c-Y) (b+X-Y)}+\frac{1}{Y (a+c-X)}+\frac{1}{X Y}\biggr) + O(\alpha'^{-1}) .
 \end{align*}
 
 \subsubsection*{Cluster stringy integral: $A_3$}
@@ -921,7 +923,7 @@ where we have dropped some irrelevant terms according to our algorithm. The last
 		y_{3}^{\alpha'F_{5} }  & \{x_{3}=y_{1}y_{2}y_{3}, x_{2}=y_{2}y_{3},x_{1}=y_{3}\}  
 	\end{cases}
 \end{equation*}
-where each piece correspond to a simplex $0<x_{i}<x_{j}<x_{k}$, irrelevant terms are dropped again and we have introduced
+where each piece correspond to a simplex $0<x_{i}<x_{j}<x_{k}$, irrelevant terms are dropped again, and we have introduced
 \begin{align*}
 	&F_{4}=X+F_{3}-a_{4}-a_{6} \:, \\
 	&F_{5}=F_{3}+X+Z-a_{4}-a_{5}-a_{6} \:, \\
@@ -954,7 +956,7 @@ with the Mandelstam variables defined therein. In this case, only vertex $(0,\in
 	\mathcal{I}_{C_{2}}(0,\infty)\approx \int_{[0,\epsilon]^{2}} \frac{\dif x_{1}\dif x_{2}}{x_{1}x_{2}} x_{1}^{\alpha' X}x_{2}^{\alpha' G_{1}}
 	(x_{1}+x_{2})^{-\alpha' c} (x_{1}^{2}+x_{2})^{-\alpha' d}
 \end{align*}
-where we have dropped irrelevant terms and introduced $G_{1}=b+c+d-Y$. This vertex can be decomposed into 3 normal crossing piece by the following blow ups
+where we have dropped irrelevant terms and introduced $G_{1}=b+c+d-Y$. This vertex can be decomposed into 3 normal crossing pieces by the following blow ups
 \begin{align*}
 	\mathcal{I}_{C_{2}}(0,\infty)\approx\left\{
 	\begin{aligned}
@@ -966,9 +968,9 @@ where we have dropped irrelevant terms and introduced $G_{1}=b+c+d-Y$. This vert
 			\int_{0<y_{2}<y_{1}}\frac{\dif z_{1}\dif z_{2}}{z_{1}z_{2}} z_{2}^{\alpha' G_{2}}
 			z_{1}^{\alpha'(G_{1}+G_{2}-d)}
 		\end{aligned} \right. 
-	\end{aligned} \right.
-\end{align*}
-where $G_{2}=G_{1}+X-c-d$, and the integral region for integration variables should be understood as $[0,\epsilon]^{2}$ while the subscript of integrals indicate the integration region before blow ups.
+	\end{aligned} \right. ,
+\end{align*} 
+where $G_{2}=G_{1}+X-c-d$, and the integral region for integration variables should be understood as $[0,\epsilon]^{2}$ while the subscripts of integrals indicate the integration region before blow ups.
 
 \section{Algorithm}\label{s:alg}
 
@@ -1018,8 +1020,7 @@ can be obtained from another matrix $B$ by joining/deleting constant row vectors
 joining/deleting column vectors $w$ which are in the cone $A^I+\mathbb R_+^D$ for 
 some $I$ or adding/subtracting a matrix $C$ whose row vectors are all constant vectors,
 then we say that $A$ and $B$ are equivalent, denoted by $A\cong B$.
-It's a equivalence relation.
-In a given equivalence class, we call matrices with minimal number of rows and columns 
+It's an equivalence relation. In a given equivalence class, we call matrices with minimal number of rows and columns 
 reduced matrices.
 \end{defi}
 
@@ -1056,7 +1057,7 @@ Our algorithm is based on the following observations:
 	The coordinate variables of the row vectors are denoted  $\{z^I\}$.
 	For a given $i$, $n_i$ is the vector $(n_i^1,\dots,n_i^N)$.
 	
-	\item If $(n^I_i)$ is equivalent to a $1\times N$ or $D\times 1$ matrix, player A wins. 
+	\item If $(n^I_i)$ is equivalent to a $1\times N$ or $D\times 1$ matrix, player $\mathcal{P}_{1}$ wins. 
 	Therefore, if we can choose a set $S$ for a given matrix such that $N$ or $D$ 
 	decreases strictly in generated matrices, then it's a winning strategy.
 
@@ -1242,7 +1243,7 @@ any subcone is contained in some semi-spaces defined by outside hyperplains.
 	in the interior of inside (outside) regions.}
 	
 	For a convex given cone not containing $(1,1,\dots,1)$, 
-	we can find a hyperplain $H:\hat{n}\cdot z=0$ crossing
+	we can find a hyperplain $H:\hat{n}\cdot z=0$ crossing 
 	$(1,1,\dots,1)$ (\textit{e.g.} the green line in the above diagram) 
 	such that the cone is contained in one side of this hyperplain.
 	In other words, we are looking for a vector $\hat{n}\in \mathbb R^N$ 
@@ -1252,8 +1253,7 @@ any subcone is contained in some semi-spaces defined by outside hyperplains.
 		n_i=\sum_{I=1}^N\hat{n}^In^I_i\geq 0 \text{ for all $i$}.
 	\]
 	Note that, in $N=3$ case, a outside region can cross the hyperplain $H$ 
-	but a inside region cannot. We just generalize this criterion to 
-	higher dimension.
+	but a inside region cannot. We just generalize this criterion to higher dimension.
 	
 	Equivalently, a region is inside (outside) if and only if $\hat{n}$ 
 	is (not) contained in its dual cone spanned by normal vectors of 
@@ -1285,11 +1285,10 @@ Now our algorithm (for one polynomial) is simple: For a given cone $(n^I_i)$,
 		Otherwise, blow up such matrices along $(1,1,\dots,1)$, 
 		add all generated matrix into the set $\mathcal M$ and goto step (1).
 	\item[(3).] 
-		For a matrix $C$ with more than one column in $\mathcal M$, 
-		choose two outside vertices $n_i$ and $n_j$ in different regions.
-		Since there exists a hyperplain $h^{AB}$ separating them, 
+		For a matrix $C$ with more than one column in $\mathcal M$, choose two outside vertices $n_i$ and $n_j$ in different regions.
+		Since there exists a hyperplane $h^{AB}$ separating them, 
 		we can find positive integers $p$ and $q$ such that
-		$pn_i+qn_j$ is on the hyperplain $h^{AB}$. 
+		$pn_i+qn_j$ is on the hyperplane $h^{AB}$. 
 		Blow up this cone $C$ along this vector so that the number of 
 		outside vertices is reduced by one, add generated matrices into 
 		the set $\mathcal M$ and goto step (1).
@@ -1418,10 +1417,7 @@ The intersection of three dotted line is the vector $(4,4,4)$,
 so the cone doesn't contain $(1,1,1)$ and we can directly goto step (3).
 The outside vertices are $n_1$ and $n_2$, so we first find a inside red point 
 as the intersection of the hyperplain 
-$z^1=z^3$ and the facet spanned by $\{n_1,n_2\}$ of the cone, 
-so in fact the red point represents the vector $n_1+n_2$, 
-which tells us that we should blow up $x_1$ and $x_2$.
-Therefore, the cone is decomposed into two new cones 
+$z^1=z^3$ and the facet spanned by $\{n_1,n_2\}$ of the cone, so in fact the red point represents the vector $n_1+n_2$, which tells us that we should blow up $x_1$ and $x_2$. Therefore, the cone is decomposed into two new cones 
 \[
 	M\mapsto \biggl\{
 		\begin{pmatrix}
@@ -1597,27 +1593,20 @@ Another way to reconstruct $N_{P}$ is, along with the opposite direction, to fin
 
 As we saw in section 2, lots of terms have been dropped during the process of blow-ups, while higher order contributions of such integrals with respect to $\alpha'$ certainly depend on the details of regulating polynomials. One way to obtain the higher order contribution is to expand the integrand with respect to $\alpha'$ then integration, the obstacle to this expansion is singularities in poles. The blow-up procedure provide a way to remove this obstacle: each integration region produced by blow-ups only meets singularities of the canonical form at one vertex, then a subtraction can be easily made such that the integrand have no divergence in the integration region.
 
-The algorithm introduced in section \ref{s:alg} is in a sense 
-the byproduct of the geometric viewpoint, and there is still much room to improve.
-Some possible improvements could happen in the procedure (3) of the algorithm. 
+The algorithm introduced in section \ref{s:alg} is,  in a sense, the byproduct of the geometric viewpoint, and there is still much room to improve. Some possible improvements could happen in the procedure (3) of the algorithm. 
 For example, we haven't figured out what's the most efficient way to choose 
-two outside vertices to blow up, 
-and it chould be more efficient to blow up along vectors in the inside region than
-vectors on hyperplains $\{h^{IJ}\}$. One chould even invent more efficient new methods 
+two outside vertices to blow up, and it should be more efficient to blow up along vectors in the inside region than
+vectors on hyperplanes $\{h^{IJ}\}$. One should even invent more efficient new methods 
 to realize the procedure (3), \textit{i.e.} reduce the number of columns of matrices, 
 from this viewpoint. What's more, it's believed that this new viewpoint could bring
 us a new winning procedure of the original Hironaka's polyhedra game. 
 We leave these for the future.
 
-(Relation with sector decomposition...)
+Although the situation here is easier than the Feynman diagram calculation due to the agreeable property of canonical forms and the extra rescaling operation, we expect that this kind of geometric view point will give some insights of the calculation of Feynman diagrams in which some efforts have been made (see \cite{Kaneko:2009qx}). On the other hand, Another objects for Feynman diagrams, Hepp's bound, are recently found to have a closed relation to the polytope geometry~\cite{Panzer:2019yxl}. It would be facinating to explore further relations between the leading order contribution of the stringy canonical forms and Feynman diagrams from this geometric viewpoint.
+
 
 \section*{Acknowledgement}
-The original idea for this work came from the study of positive geometries, 
-stringy canonical forms and integrals related to cluster associahedra,
-by Nima Arkani-Hamed, Song He and Thomas Lam, to whom we are grateful 
-for suggesting the project, sharing ideas and many valuable inputs.  C.Z. thanks the Institute for Advanced Study, Princeton
- for hospitality during the start stage of the work. We also thank Qinglin Yang for useful discussions and collaborations in an early stage of the
-project.
+The original idea for this work came from the study of positive geometries, stringy canonical forms and integrals related to cluster associahedra, by Nima Arkani-Hamed, Song He and Thomas Lam, to whom we are grateful for suggesting the project, sharing ideas and many valuable inputs.  C.Z. thanks the Institute for Advanced Study, Princeton for hospitality during the start stage of the work. We also thank Qinglin Yang for useful discussions and collaborations in an early stage of the project.
 
 %\appendix
 %\section{Proof of Proposition~\ref{pro:1}}
