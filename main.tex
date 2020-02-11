@@ -65,8 +65,7 @@ Win a Simplified Hironaka's Polyhedra Game}
 
 \begin{abstract}
 We provide an efficient method of blowing up to compute leading order contributions of the recently introduced stringy canonical forms. 
-The method is related to the well-known Hironaka's polyhedra game, and the given 
-algorithm can be used on similar problems, \textit{e.g.} sector decomposition.
+The method is related to the well-known Hironaka's polyhedra game, and the given algorithm is also useful on similar problems, \textit{e.g.} sector decomposition.
 \end{abstract}
 \newpage
 
@@ -92,7 +91,7 @@ as the canonical form of the moduli space $\mathcal{M}_{0,n}^{+}$ and the Koba-N
 \begin{equation} 
 	\int_{\mathbb{R}_{+}^{D}} \prod_{i=1}^{D}\frac{\dif x_{i}}{x_{i}}x_{i}^{\alpha' X_{i}}\prod_{I}p_{I}(\mathbf{x})^{-\alpha'c_{I}}	\:, \label{int1}
 \end{equation}
-where $D=n{-}3$, $X_{i}$ and $c_{I}$ are linear combinations of Mandelstam variables $s_{ij}$'s. A \emph{stringy} integral is an integral of form eq.(\ref{int1}) but with arbitrary subtraction-free polynomials $p_{I}$. 
+where $D=n{-}3$, $X_{i}$ and $c_{I}$ are linear combinations of Mandelstam variables $s_{ij}$'s. A \emph{stringy} canonical form (or a \emph{stringy} integral) is an integral of form eq.(\ref{int1}) but with arbitrary subtraction-free polynomials $p_{I}$. 
 
 % In string theory, the tree level $n$-pt open superstring amplitudes
 % \[
@@ -148,10 +147,15 @@ Generally, it would not be such simple case, some polynomials $p_{I}$ may vanish
 % 	\item Furthermore, some $p_I$ may own the origin (or a vertex) as their singular point\footnote{A point $Q$ is a singular point of the surface defined by $p(\mathrm{x})$=0 if $p(Q)=0$ and $\partial p(Q)/\partial x_{i} =0$ for all $i$}.
 % \end{itemize}
 They can be overcome by a series of blows-ups, after which the stringy integral is decomposed into many integrals like eq.\eqref{int2}, then the leading order is given by a summation. %
-Essentially, finding such a series of blow-ups is equivalent to give a winning strategy for the (simplified) Hironaka's polyhedra game.
+Essentially, finding such a series of blow-ups is equivalent to give a winning strategy for the Hironaka's polyhedra game.
+Besides, we can introduce an extra operation $x_i\mapsto x_i^c$ 
+for any variable $x_i$ and any positive rational number $c$ 
+which keeps the form of the integral eq.\eqref{int2} so that it leads to a simplified 
+version of the Hironaka's polyhedra game. It's enough for us to win this 
+simplified game to calculate the leading order of a stringy integral.
 
 In section 2, we review the definition of blow-up and describe its relation to Hironaka's polyhedra game.
-Section 3 uses several examples arising form cluster stringy integrals to illustrate this method.
+Section 3 uses several examples arising from cluster stringy integrals to illustrate this method.
 In section 4, we introduce a new geometric viewpoint to approach a simplified version of Hironaka's polyhedra game and find a new algorithm to win.
 Section 5 contains discussion and outlook. 
 %Finally, in the appendix, we will give another proof for the proposition firstly given in \cite{Arkani-Hamed:2017tmz} that the scattering-equation map \eqref{SEmap} is a bijection. 
@@ -264,7 +268,7 @@ Before going into details of blowing up, let us clarify the problem mentioned in
 \end{equation*}
 where $\mathcal{P}$ is some positive geometry (in our case, it is some simple polytope) of dimension $D$ parameterized by $\mathbf{x}:= \{x_{1},\ldots,x_{D}\}$, $\Omega_{\mathcal{P}}$ is its associated canonical form~\cite{Arkani-Hamed:2017tmz}, and $p_{I}(\mathbf{x})$ are polynomials vanishing at boundaries of $\mathcal{P}$ and hence regulate the logarithm divergence of $\Omega_{\mathcal{P}}$ at boundaries. For $p_{I}(x)^{\alpha' W_{I}}$ to be single valued in $\mathcal{P}$, we require that $p_{I}(\mathbf{x})$ is nonnegative in the interior of $\mathcal{P}$. %which is equivalent to say that $p_{I}$ is subtraction-free under a positive parameterization. 
 
-The leading order contribution of $\mathcal{I}$ with respect to $\alpha'$ arise from the integral over the neighbourhood of each vertex of $\mathcal{P}$. For any vertex, the leading order contribution can be trivially obtained if there are just $D$ polynomials $p_{I}$ vanishing and regular (non-singular) at this vertex as in \eqref{int2}, and such vertex is called {\it{normal crossing}} since this vertex has been crossed $D$ times geometrically. All troubles are caused by vertices which are {\it not} normal crossing. For example (see Fig. \ref{fig_1}), consider the integral 
+The leading order contribution of $\mathcal{I}$ with respect to $\alpha'$ arises from the integral over the neighbourhood of each vertex of $\mathcal{P}$. For any vertex, the leading order contribution can be trivially obtained if there are just $D$ polynomials $p_{I}$ vanishing and regular (non-singular) at this vertex as in \eqref{int2}, and such vertex is called {\it{normal crossing}} since this vertex has been crossed $D$ times geometrically. All troubles are caused by vertices which are {\it not} normal crossing. For example (see Fig. \ref{fig_1}), consider the integral 
 \begin{equation}\label{exam:1}
 	\int_0^\infty \int_0^\infty \frac{\dif x}{x}\frac{\dif y}{y}x^{\alpha' X}
 	y^{\alpha' Y}(x+y+ xy)^{-\alpha' c},
@@ -449,7 +453,7 @@ same contribution. For example, we can throw away irrelevant terms in the
 polynomial. Besides, the integral also doesn't depend on positive coefficients
 in the polynomial which we will explain later.
 A natural question thus arises. What's the canonical object to describe the 
-leading contribution of a polynomial in a integral near a vertex? The answer is 
+leading contribution of a polynomial in an integral near a vertex? The answer is 
 the \textit{Newton polyhedron} of this polynomial.
 
 \begin{defi}[Newton polyhedron]
@@ -774,11 +778,11 @@ then $\mathcal{P}_{2}$ will win if $\mathcal{P}_{1}$ always choose such variable
 An winning strategy for $\mathcal{P}_{1}$ will tell us how to blow up the polynomial $p$ and hence calculate stringy integrals. There're many known winning strategies \cite{spivakovsky1983solution,zeillinger2005polyederspiele,zeillinger2006short,hauser2003hironaka},
 and they have been used in many programs (see \textit{e.g.} \cite{Smirnov:2008py,Ueda:2009xx}).
 In this article, we will give a new algorithm to win a simplified version of this game 
-from a geometric viewpoint. The simplified version allow $\mathcal P_1$ to 
+from a geometric viewpoint. The simplified version allows $\mathcal P_1$ to 
 use another operation $x_j\mapsto x_j^c$ for any $j$ in the choosen set and any
 positive rational number $c$, and the algorithm also tells us how to calculate 
 the leading order of stringy integrals.
-Before elaborating this algorithm, we first give several simple examples to get a feeling of this blow-up method.
+Before elaborating on this algorithm, we first give several simple examples to get a feeling of this blow-up method.
 %However, they are not so efficient. 
 
 % [Spivakovsky 83], [Encinas \& Hauser 02], [Zeillinger 05], \dots.
@@ -830,7 +834,7 @@ Before elaborating this algorithm, we first give several simple examples to get 
 \section{Application and Example}
 
 % string Z integral, Cn, Gkn ...
-In this section, we will give several examples to illustrate this blow-up method, all examples comes from the so-called cluster stringy integrals~\cite{Arkani-Hamed:2019mrd,Arkani-Hamed:2019plo} which are closely related to the origin string integrals. The dimension of all examples in this section is 2 or 3 and the regulating polynomials are simple, so the blow-up prescriptions can be designed \emph{ad hoc} without a universal algorithm.
+In this section, we will give several examples to illustrate this blow-up method, all examples come from the so-called cluster stringy integrals~\cite{Arkani-Hamed:2019mrd,Arkani-Hamed:2019plo} which are closely related to the origin string integrals. The dimension of all examples in this section is 2 or 3 and the regulating polynomials are simple, so the blow-up prescriptions can be designed \emph{ad hoc} without a universal algorithm.
 
 \subsubsection*{Cluster string integral: $A_{2}$}
 This integral is equivalent to the $Z$-integral $Z_{12345}(1,2,3,4,5)$~\cite{Mafra:2016mcc}, which in a positive parameterization takes the form of 
@@ -971,11 +975,11 @@ where we have dropped irrelevant terms and introduced $G_{1}=b+c+d-Y$. This vert
 		\end{aligned} \right. 
 	\end{aligned} \right. ,
 \end{align*} 
-where $G_{2}=G_{1}+X-c-d$, and the integral region for integration variables should be understood as $[0,\epsilon]^{2}$ while the subscripts of integrals indicate the integration region before blow ups.
+where $G_{2}=G_{1}+X-c-d$, and the integral region for integration variables should be understood as $[0,\epsilon]^{2}$ while the subscripts of integrals indicate the integration region before blow-ups.
 
 \section{Algorithm}\label{s:alg}
 
-In this section, we design new algorithm to `win' the Hironaka's
+In this section, we design a new algorithm to `win' the Hironaka's
 polyhedra game from a new viewpoint. The algorithm use not only blow-ups
 but also an extra kind of operation, rescaling exponents of variables. 
 %Besides features mentioned in section 2, another important feature of the canonical form is about rescaling exponents of variables.
@@ -1054,7 +1058,7 @@ $\sum_I a_I x^{n^I}\approx x^v\sum_J a_J x^{m^J}$, so we only need to consider b
 
 Our algorithm is based on the following observations:
 \begin{enumerate}
-	\item[0.](Notation). The row vectors are $N$-vector and the column vector are $D$-vector by default. We mainly consider the row vectors whose index are capital letters, \textit{e.g.} $I$, $J$, .... 
+	\item[0.](Notation). The row vectors are $N$-vector and the column vectors are $D$-vector by default. We mainly consider the row vectors whose index are capital letters, \textit{e.g.} $I$, $J$, .... 
 	The coordinate variables of the row vectors are denoted  $\{z^I\}$.
 	For a given $i$, $n_i$ is the vector $(n_i^1,\dots,n_i^N)$.
 	
@@ -1182,7 +1186,7 @@ Our algorithm is based on the following observations:
 	%we blow up the cone according to the middle vector on the above diagram, and
 	%three generated cones form a subdivision of the original cone.
 	
-	The bonus of this viewpoint is that we can see information of many rounds 
+	The bonus of this viewpoint is that we can see the information of many rounds 
 	in only one picture.
 
 	\item If $n^J_i \geq n^I_i$ for all $i$, we can drop column vector $n^J$. Geometrically, 
@@ -1198,7 +1202,7 @@ Our algorithm is based on the following observations:
 	or equivalently the vector $(1,1,\dots,1)$, 
 	is contained in the interior of the cone.
 	In this case, no matter how blow-ups `divide' the cone, 
-	there always exists a cone contain
+	there always exists a cone containing
 	$(1,1,\dots,1)$ so that it is not contained in any semi-space $H^{IJ}$.
 	However, in this case, we can reduce the number of rows from the observation
 	2.
@@ -1603,7 +1607,7 @@ us a new winning procedure of the original Hironaka's polyhedra game.
 We leave these for the future.
 
 Since the situation here is similar with the sector decomposition,
-we expect that this kind of geometric view point will give some insights of the calculation of Feynman diagrams in which some efforts have been made (see \textit{e.g.} \cite{Kaneko:2009qx}). On the other hand, another object for Feynman diagrams, Hepp's bound, is recently found to have a closed relation to the polytope geometry~\cite{Panzer:2019yxl}. 
+we expect that this kind of geometric viewpoint will give some insights of the calculation of Feynman diagrams in which some efforts have been made (see \textit{e.g.} \cite{Kaneko:2009qx}). On the other hand, another object for Feynman diagrams, Hepp's bound, is recently found to have a closed relation to the polytope geometry~\cite{Panzer:2019yxl}. 
 It would be fascinating to explore further relations between the leading order contribution of the stringy canonical forms and Feynman diagrams from this geometric viewpoint.
 
 
